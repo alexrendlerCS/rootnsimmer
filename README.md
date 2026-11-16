@@ -1,21 +1,69 @@
 # Root & Simmer Hospitality Co.
 
-Static HTML, CSS, and JavaScript website. No dependencies or build step.
+Website for Root & Simmer: home and family history research, preservation, and respectful hospitality in Lincolnville, St. Augustine, Florida.
 
-## Edit with Codex
-Open this folder in the Codex app or terminal. Main files:
-- `dist/index.html`: page content
-- `dist/style.css`: styling
-- `dist/app.js`: services, selections, and email forms
-- `dist/*.jpeg`: images
+Built with [Next.js](https://nextjs.org) and deployed on [Vercel](https://vercel.com).
 
-Preview locally: `python3 -m http.server 3000 --directory dist`, then open http://localhost:3000.
+## Editing the words on the site
 
-## GitHub and Vercel
-Create a GitHub repository and push this folder. In Vercel, import the repository.
-Use framework preset **Other**, no build command, and output directory **dist**.
-The included vercel.json sets the output directory. No environment variables are needed.
-Future pushes to the production branch will deploy through Vercel's GitHub integration.
+Almost every word on the site lives in **`content/site.ts`**. Open it, change the text between the quotes, and save. That includes the offerings (titles, descriptions, what's included), Kimberly's letter, the values, and the form choices.
 
-Forms open the visitor's email app; there is no backend or payment processing.
-This export preserves the live website assets and excludes internal reference PDFs and Sites metadata.
+- Keep the quotes `"..."` and the commas at the end of lines.
+- To use an apostrophe inside text, use the curly one: `’`.
+- The contact email is set once at the top: `contactEmail`.
+
+Images are in **`public/`**:
+
+| File | Used for |
+| --- | --- |
+| `lincolnville-home.jpeg` | Hero photo in the arched doorway |
+| `logo.jpeg` | Full logo in Kimberly's section |
+| `oak-mark.jpg` | Round tree mark in the header |
+
+To swap a photo, replace the file and keep the same name. The browser-tab icons are `app/icon.png` and `app/apple-icon.png`.
+
+Colors and fonts are defined at the top of **`app/globals.css`** under "design tokens".
+
+## Running it on your computer
+
+You need [Node.js](https://nodejs.org) 20 or newer.
+
+```bash
+npm install
+npm run dev
+```
+
+Then open http://localhost:3000. Changes show up as soon as you save.
+
+To check that a production build works before pushing:
+
+```bash
+npm run build
+```
+
+## Deploying
+
+1. In Vercel, choose **Add New → Project** and import this GitHub repository.
+2. Leave every setting at its default. Vercel detects Next.js automatically.
+3. Click **Deploy**.
+
+Every push to `main` deploys automatically after that. Pull requests get their own preview link.
+
+Optional: once you have a custom domain, add an environment variable `NEXT_PUBLIC_SITE_URL` (for example `https://rootandsimmer.com`) so link previews on social media and texts use the right address.
+
+## How the forms work
+
+There's no server or database. Each form (inquiry, Lincolnville Connection, records request) opens a pre-written email draft in the visitor's own email app, addressed to `rootnsimmer@gmail.com`. Nothing is sent until the visitor presses send there. Selections in "Your inquiry" are remembered in the visitor's browser.
+
+## Project layout
+
+```
+app/
+  layout.tsx        fonts, page title, link-preview info
+  page.tsx          the page, section by section
+  globals.css       all styling
+components/         interactive parts (header menu, offerings, dialogs, forms)
+content/site.ts     all the words
+lib/email.ts        builds the email drafts
+public/             images
+```
