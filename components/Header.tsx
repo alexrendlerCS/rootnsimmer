@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/content/site";
 import { useInquiry } from "./InquiryProvider";
@@ -8,6 +10,7 @@ import { useInquiry } from "./InquiryProvider";
 export function Header() {
   const { count, open } = useInquiry();
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -19,19 +22,24 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="identity" href="#top" aria-label={`${site.fullName}, back to top`}>
+        <Link className="identity" href="/#top" aria-label={`${site.fullName}, home`}>
           <Image src="/oak-mark.jpg" alt="" width={52} height={52} className="identity-mark" priority />
           <span className="identity-name">
             Root <span className="amp">&amp;</span> Simmer
             <small>Hospitality Co.</small>
           </span>
-        </a>
+        </Link>
 
         <nav id="site-nav" className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Main">
           {nav.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={item.href === pathname ? "page" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

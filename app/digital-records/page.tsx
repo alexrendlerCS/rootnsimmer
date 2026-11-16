@@ -1,0 +1,127 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { drCollection, drHero, drMembership, drOrder, recordGuides } from "@/content/digital-records";
+import { site } from "@/content/site";
+import { DigitalRecordsForm } from "@/components/DigitalRecordsForm";
+import { EmailDraftButton } from "@/components/EmailDraftButton";
+import { OfferingArt } from "@/components/OfferingArt";
+import { SiteShell } from "@/components/SiteShell";
+
+export const metadata: Metadata = {
+  title: `Digital Records & Lincolnville Love Membership | ${site.fullName}`,
+  description: drHero.lede,
+  alternates: { canonical: "/digital-records" },
+};
+
+export default function DigitalRecordsPage() {
+  return (
+    <SiteShell>
+      <section id="top" className="page-hero" aria-labelledby="dr-title">
+        <div className="wrap">
+          <p className="section-label">{drHero.label}</p>
+          <h1 id="dr-title" className="page-title">
+            {drHero.title}
+          </h1>
+          <p className="page-lede">{drHero.lede}</p>
+          <nav className="subnav" aria-label="On this page">
+            {drHero.subnav.map((s) => (
+              <a key={s.href} href={s.href}>
+                {s.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </section>
+
+      {/* The collection */}
+      <section id="dr-collection" className="page-section work" aria-labelledby="dr-collection-title">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="section-label">{drCollection.label}</p>
+            <h2 id="dr-collection-title" className="h-medium">
+              {drCollection.title}
+            </h2>
+            <p className="muted">{drCollection.intro}</p>
+          </div>
+          <ul className="offerings">
+            {recordGuides.map((g) => (
+              <li key={g.id} className="offering">
+                <OfferingArt offering={{ art: "paper", artTitle: g.artTitle }} />
+                <div className="offering-body">
+                  <p className="offering-tagline">{g.kind}</p>
+                  <h3>{g.title}</h3>
+                  <p>{g.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <p className="notice">{drCollection.note}</p>
+        </div>
+      </section>
+
+      {/* Membership */}
+      <section id="dr-membership" className="page-section" aria-labelledby="dr-membership-title">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="section-label">{drMembership.label}</p>
+            <h2 id="dr-membership-title" className="h-medium">
+              {drMembership.title}
+            </h2>
+            <p className="muted">{drMembership.intro}</p>
+          </div>
+          <div className="goal-grid four">
+            {drMembership.included.map((f) => (
+              <article key={f.title} className="goal">
+                <p className="goal-kicker">Included</p>
+                <h3>{f.title}</h3>
+                <p>
+                  {f.body}
+                  {f.link && (
+                    <>
+                      {" "}
+                      <Link className="text-link" href={f.link.href}>
+                        {f.link.label}
+                      </Link>
+                    </>
+                  )}
+                </p>
+              </article>
+            ))}
+          </div>
+          <div className="split split-tight">
+            <div className="panel">
+              <h3>{drMembership.votes.title}</h3>
+              <p>{drMembership.votes.body}</p>
+            </div>
+            <div className="panel">
+              <h3>{drMembership.free.title}</h3>
+              <p>{drMembership.free.body}</p>
+            </div>
+          </div>
+          <div className="membership-cta">
+            <EmailDraftButton
+              label={drMembership.button}
+              subject={drMembership.emailSubject}
+              body={drMembership.emailBody}
+            />
+            <p className="fine">{drMembership.fine}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Order record guides */}
+      <section id="dr-order" className="page-section band" aria-labelledby="dr-order-title">
+        <div className="wrap split">
+          <div className="prose">
+            <p className="section-label">{drOrder.label}</p>
+            <h2 id="dr-order-title" className="h-medium">
+              {drOrder.title}
+            </h2>
+            <p>{drOrder.intro}</p>
+          </div>
+          <DigitalRecordsForm />
+        </div>
+      </section>
+    </SiteShell>
+  );
+}

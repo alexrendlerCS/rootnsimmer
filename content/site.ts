@@ -17,12 +17,18 @@ export const site = {
     "Root & Simmer documents Lincolnville home and family histories, supports preservation, and welcomes guests to learn and respect the community.",
 };
 
+/**
+ * Top menu. Links starting with "/#" jump to a section of the home page;
+ * "/cra-lincolnville" and "/digital-records" are their own pages.
+ */
 export const nav = [
-  { href: "#mission", label: "Mission" },
-  { href: "#values", label: "Values" },
-  { href: "#work", label: "Our work" },
-  { href: "#kimberly", label: "About Kimberly" },
-  { href: "#records", label: "Contact" },
+  { href: "/#mission", label: "Mission" },
+  { href: "/#values", label: "Values" },
+  { href: "/#work", label: "Our work" },
+  { href: "/#kimberly", label: "About Kimberly" },
+  { href: "/cra-lincolnville", label: "CRA – Lincolnville" },
+  { href: "/digital-records", label: "Digital Records" },
+  { href: "/#records", label: "Contact" },
 ];
 
 export const hero = {
@@ -140,6 +146,8 @@ export const work = {
   intro:
     "Every project begins with a conversation. We agree on scope and fee before any work starts. Online ordering is coming soon.",
   note: "Choose the offerings you’re curious about and send them as one inquiry. There’s no payment or commitment, and scope, availability and fees are confirmed together.",
+  recordsPrompt: "Looking for City records or membership?",
+  recordsLink: "See Digital Records",
 };
 
 export const offerings: Offering[] = [

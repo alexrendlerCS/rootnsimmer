@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   closing,
   connection,
@@ -9,18 +10,16 @@ import {
   mission,
   records,
   respect,
-  site,
   threshold,
   values,
   why,
   work,
 } from "@/content/site";
+import { craTeaser } from "@/content/cra";
 import { ConnectionForm } from "@/components/ConnectionForm";
-import { Header } from "@/components/Header";
-import { InquiryDialog } from "@/components/InquiryDialog";
-import { InquiryProvider } from "@/components/InquiryProvider";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
+import { SiteShell } from "@/components/SiteShell";
 import homePhoto from "@/public/lincolnville-home.jpeg";
 import logo from "@/public/logo.jpeg";
 
@@ -28,13 +27,7 @@ const LETTER_PREVIEW = 3;
 
 export default function Home() {
   return (
-    <InquiryProvider>
-      <a className="skip-link" href="#main">
-        Skip to content
-      </a>
-      <Header />
-
-      <main id="main">
+    <SiteShell>
         {/* Hero: the house, framed as a doorway */}
         <section id="top" className="hero">
           <div className="wrap hero-grid">
@@ -146,6 +139,30 @@ export default function Home() {
           </div>
         </section>
 
+        {/* CRA teaser: links to the full CRA – Lincolnville page */}
+        <section id="cra" className="cra-teaser" aria-labelledby="cra-teaser-title">
+          <div className="wrap split">
+            <div className="prose">
+              <p className="section-label">{craTeaser.label}</p>
+              <h2 id="cra-teaser-title" className="h-medium">
+                {craTeaser.title}
+              </h2>
+              <p>{craTeaser.body}</p>
+              <Link className="button" href="/cra-lincolnville">
+                {craTeaser.link}
+              </Link>
+            </div>
+            <div className="panel">
+              <ol className="goal-list">
+                {craTeaser.goals.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ol>
+              <p className="fine">{craTeaser.source}</p>
+            </div>
+          </div>
+        </section>
+
         {/* Offerings */}
         <section id="work" className="section work">
           <div className="wrap">
@@ -158,6 +175,12 @@ export default function Home() {
             </div>
             <Offerings />
             <p className="work-note">{work.note}</p>
+            <p className="work-note">
+              {work.recordsPrompt}{" "}
+              <Link className="text-link" href="/digital-records">
+                {work.recordsLink}
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -249,25 +272,6 @@ export default function Home() {
             </a>
           </div>
         </section>
-      </main>
-
-      <footer className="site-footer">
-        <div className="wrap footer-grid">
-          <div>
-            <p className="footer-name">{site.fullName}</p>
-            <p>Independent preservation and community storytelling rooted in Lincolnville.</p>
-          </div>
-          <div>
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-            <p>{site.place}</p>
-          </div>
-          <p className="footer-fine">
-            © {new Date().getFullYear()} {site.fullName} Not affiliated with the City of St. Augustine or the Lincolnville CRA.
-          </p>
-        </div>
-      </footer>
-
-      <InquiryDialog />
-    </InquiryProvider>
+    </SiteShell>
   );
 }
