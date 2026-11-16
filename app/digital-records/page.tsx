@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { drCollection, drHero, drMembership, drOrder, recordGuides } from "@/content/digital-records";
+import { drCollection, drHero, drMembership, drOrder, drPhotos, recordGuides } from "@/content/digital-records";
 import { site } from "@/content/site";
 import { DigitalRecordsForm } from "@/components/DigitalRecordsForm";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { OfferingArt } from "@/components/OfferingArt";
+import { Photo } from "@/components/Photo";
+import heroPhoto from "@/public/photos/washington-street-home.jpg";
+import membershipPhoto from "@/public/photos/yellow-two-story-home.jpg";
 import { SiteShell } from "@/components/SiteShell";
 
 export const metadata: Metadata = {
@@ -18,11 +21,24 @@ export default function DigitalRecordsPage() {
     <SiteShell>
       <section id="top" className="page-hero" aria-labelledby="dr-title">
         <div className="wrap">
-          <p className="section-label">{drHero.label}</p>
-          <h1 id="dr-title" className="page-title">
-            {drHero.title}
-          </h1>
-          <p className="page-lede">{drHero.lede}</p>
+          <div className="page-hero-grid">
+            <div>
+              <p className="section-label">{drHero.label}</p>
+              <h1 id="dr-title" className="page-title">
+                {drHero.title}
+              </h1>
+              <p className="page-lede">{drHero.lede}</p>
+            </div>
+            <Photo
+              src={heroPhoto}
+              alt={drPhotos.hero.alt}
+              caption={drPhotos.hero.caption}
+              credit={drPhotos.hero.credit}
+              sizes="(max-width: 900px) 90vw, 380px"
+              className="photo-arch"
+              priority
+            />
+          </div>
           <nav className="subnav" aria-label="On this page">
             {drHero.subnav.map((s) => (
               <a key={s.href} href={s.href}>
@@ -62,12 +78,21 @@ export default function DigitalRecordsPage() {
       {/* Membership */}
       <section id="dr-membership" className="page-section" aria-labelledby="dr-membership-title">
         <div className="wrap">
-          <div className="section-head">
-            <p className="section-label">{drMembership.label}</p>
-            <h2 id="dr-membership-title" className="h-medium">
-              {drMembership.title}
-            </h2>
-            <p className="muted">{drMembership.intro}</p>
+          <div className="split split-media">
+            <div className="section-head">
+              <p className="section-label">{drMembership.label}</p>
+              <h2 id="dr-membership-title" className="h-medium">
+                {drMembership.title}
+              </h2>
+              <p className="muted">{drMembership.intro}</p>
+            </div>
+            <Photo
+              src={membershipPhoto}
+              alt={drPhotos.membership.alt}
+              caption={drPhotos.membership.caption}
+              credit={drPhotos.membership.credit}
+              sizes="(max-width: 900px) 90vw, 560px"
+            />
           </div>
           <div className="goal-grid four">
             {drMembership.included.map((f) => (

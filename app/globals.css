@@ -480,6 +480,32 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .page-hero { padding-block: clamp(48px, 7vw, 88px) clamp(36px, 5vw, 56px); border-bottom: 1px solid var(--line); }
 .page-title { font-size: clamp(2.5rem, 5.6vw, 4.25rem); line-height: 1.04; max-width: 20ch; }
 .page-lede { font-size: 1.125rem; max-width: 44rem; }
+.page-hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  gap: clamp(32px, 6vw, 88px); align-items: center;
+}
+.page-hero-grid .page-lede { margin-bottom: 0; }
+
+/* photos: same quiet frame everywhere; credit kept small but readable */
+.photo { margin: 0; }
+.photo-img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--radius); background: var(--haint-soft);
+}
+.photo figcaption { margin-top: 10px; font-size: 0.875rem; line-height: 1.45; color: var(--muted); }
+.photo-credit { display: block; margin-top: 2px; font-size: 0.75rem; }
+.photo-credit a { color: inherit; }
+.photo-credit a:hover { color: var(--rail); }
+/* page-hero photo: the home page's arched doorway, smaller */
+.photo-arch .photo-img {
+  aspect-ratio: 4 / 5; border-radius: var(--arch);
+  border: 12px solid var(--haint); box-shadow: 0 14px 0 -2px var(--oak);
+}
+.photo-arch figcaption { margin-top: 22px; }
+.photo-section { margin-top: 2rem; }
+.stack { display: grid; gap: 28px; align-content: start; }
+.split-media { align-items: center; margin-bottom: 1rem; }
+.split-media .section-head { margin-bottom: 0; }
 .facts {
   display: grid; grid-template-columns: repeat(4, 1fr); margin: 2rem 0 1.75rem;
   border-block: 1px solid var(--line);
@@ -590,6 +616,8 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 @media (max-width: 900px) {
   .goal-grid { grid-template-columns: 1fr; }
   .facts { grid-template-columns: repeat(2, 1fr); }
+  .page-hero-grid { grid-template-columns: 1fr; }
+  .page-hero-grid .photo-arch { width: min(100%, 340px); justify-self: center; margin-top: 8px; }
   .facts > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .facts > div:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .voices { grid-template-columns: 1fr; }

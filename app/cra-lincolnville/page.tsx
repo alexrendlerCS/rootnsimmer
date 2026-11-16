@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { craHero, craHistory, craMembers, craNow, craPlan, craRole, craVoices, craWhy } from "@/content/cra";
+import { craHero, craHistory, craMembers, craNow, craPhotos, craPlan, craRole, craVoices, craWhy } from "@/content/cra";
 import { site } from "@/content/site";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
+import { Photo } from "@/components/Photo";
+import markerPhoto from "@/public/photos/lincolnville-historic-district-marker.jpg";
+import benedictPhoto from "@/public/photos/st-benedict-the-moor-church.jpg";
+import trinityPhoto from "@/public/photos/trinity-methodist-church.jpg";
 import { Rich } from "@/components/Rich";
 import { SiteShell } from "@/components/SiteShell";
 
@@ -17,11 +21,24 @@ export default function CraPage() {
     <SiteShell>
       <section id="top" className="page-hero" aria-labelledby="cra-title">
         <div className="wrap">
-          <p className="section-label">{craHero.label}</p>
-          <h1 id="cra-title" className="page-title">
-            {craHero.title}
-          </h1>
-          <p className="page-lede">{craHero.lede}</p>
+          <div className="page-hero-grid">
+            <div>
+              <p className="section-label">{craHero.label}</p>
+              <h1 id="cra-title" className="page-title">
+                {craHero.title}
+              </h1>
+              <p className="page-lede">{craHero.lede}</p>
+            </div>
+            <Photo
+              src={markerPhoto}
+              alt={craPhotos.hero.alt}
+              caption={craPhotos.hero.caption}
+              credit={craPhotos.hero.credit}
+              sizes="(max-width: 900px) 90vw, 380px"
+              className="photo-arch"
+              priority
+            />
+          </div>
           <dl className="facts">
             {craHero.facts.map((f) => (
               <div key={f.label}>
@@ -102,6 +119,14 @@ export default function CraPage() {
                 </table>
               </div>
               <p className="fine table-note">{craHistory.institutionsNote}</p>
+              <Photo
+                src={benedictPhoto}
+                alt={craPhotos.history.alt}
+                caption={craPhotos.history.caption}
+                credit={craPhotos.history.credit}
+                sizes="(max-width: 900px) 90vw, 560px"
+                className="photo-section"
+              />
             </div>
           </div>
         </div>
@@ -176,6 +201,14 @@ export default function CraPage() {
               ))}
             </ol>
           </div>
+          <div className="stack">
+            <Photo
+              src={trinityPhoto}
+              alt={craPhotos.now.alt}
+              caption={craPhotos.now.caption}
+              credit={craPhotos.now.credit}
+              sizes="(max-width: 900px) 90vw, 560px"
+            />
           <div className="panel">
             <h3>{craNow.underwayTitle}</h3>
             <ul className="work-list">
@@ -186,6 +219,7 @@ export default function CraPage() {
               ))}
             </ul>
             <p className="fine">{craNow.note}</p>
+          </div>
           </div>
         </div>
       </section>

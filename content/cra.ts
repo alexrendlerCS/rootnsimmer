@@ -200,3 +200,40 @@ export const craRole = {
   sources:
     "Sources: Lincolnville Redevelopment Plan Amendment (Strategic Planning Group, Inc., June 20, 2017), including its summary of the 2012 Finding of Necessity and the 1991 National Register nomination; Lincolnville CRA records through August 2026, including the FY2025 annual report, the FY2026 adopted budget and Steering Committee meetings of January 5 and April 6, 2026; CRA interview, The Break Room, 2022. Summarized by Root & Simmer.",
 };
+
+/**
+ * Photos on the CRA – Lincolnville page. The image files are in public/photos.
+ * Credits are required by each photo's free license; keep them with the photo.
+ */
+export const craPhotos = {
+  hero: {
+    alt: "The green Lincolnville Historic District state marker, framed by sea oats and a blue sky",
+    caption: "The Lincolnville Historic District marker, placed by the City and the State of Florida in 1994.",
+    credit: {
+      by: "w_lemay",
+      source: "https://commons.wikimedia.org/wiki/File:Lincolnville_Historic_District_Historical_Marker,_Lincolnville,_St._Augustine,_FL.jpg",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    },
+  },
+  history: {
+    alt: "St. Benedict the Moor Catholic Church, a red brick church with a curved front gable, arched stained-glass windows and a white block wall",
+    caption: "St. Benedict the Moor Catholic Church on Martin Luther King Avenue, built 1910 – 1911.",
+    credit: {
+      by: "Ebyabe",
+      source: "https://commons.wikimedia.org/wiki/File:St_Aug_Lincolnville_St_Benedict_the_Moor_church01.jpg",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    },
+  },
+  now: {
+    alt: "Trinity Methodist Church, now Trinity Independent Church, a yellow brick church whose bell tower is braced with steel supports",
+    caption: "Trinity Methodist Church (now Trinity Independent) on Bridge Street, built 1913. Its bell tower is among the restoration work under way.",
+    credit: {
+      by: "w_lemay",
+      source: "https://commons.wikimedia.org/wiki/File:Trinity_Methodist_Church_(Trinity_Independent_Church),_Bridge_Street,_Lincolnville,_St._Augustine,_FL.jpg",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    },
+  },
+};

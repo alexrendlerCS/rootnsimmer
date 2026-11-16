@@ -32,7 +32,7 @@ export const nav = [
 ];
 
 export const hero = {
-  title: "Homes, not hotels.",
+  title: "Homes, Not Hotels.",
   subtitle: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
   lede:
     "Root & Simmer brings historical records and family memories together, helps homeowners document the stories behind their homes, and connects guests to Lincolnville with understanding and respect.",

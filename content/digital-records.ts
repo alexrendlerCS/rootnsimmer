@@ -139,3 +139,30 @@ export const drOrder = {
     fine: "This opens a draft in your email app. Nothing is sent until you press send there, and no payment is taken on this page.",
   },
 };
+
+/**
+ * Photos on the Digital Records page. The image files are in public/photos.
+ * Credits are required by each photo's free license; keep them with the photo.
+ */
+export const drPhotos = {
+  hero: {
+    alt: "A blue Lincolnville cottage with a red tile roof, white columned entry and a brick front walk",
+    caption: "A Lincolnville home on Washington Street.",
+    credit: {
+      by: "w_lemay",
+      source: "https://commons.wikimedia.org/wiki/File:Washington_Street,_Lincolnville,_St._Augustine,_FL.jpg",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    },
+  },
+  membership: {
+    alt: "A two-story yellow Lincolnville home with a bay window, diamond-pane windows and a columned front porch",
+    caption: "Every Lincolnville home has a story in the records.",
+    credit: {
+      by: "Ebyabe",
+      source: "https://commons.wikimedia.org/wiki/File:St_Aug_Lincolnville_house01.jpg",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    },
+  },
+};

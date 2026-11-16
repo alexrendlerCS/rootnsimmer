@@ -2,12 +2,14 @@ import { contactEmail, site } from "@/content/site";
 import { Header } from "./Header";
 import { InquiryDialog } from "./InquiryDialog";
 import { InquiryProvider } from "./InquiryProvider";
+import { ScrollToTop } from "./ScrollToTop";
 import Link from "next/link";
 
 /** Header, footer and the inquiry dialog shared by every page. */
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <InquiryProvider>
+      <ScrollToTop />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
