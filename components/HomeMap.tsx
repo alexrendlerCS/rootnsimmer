@@ -182,10 +182,22 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
       )}
 
       {demolishedLots[parcelOf(home.id)] && (
-        <p className="home-demolished">
-          <strong>Demolished:</strong> {demolishedLots[parcelOf(home.id)].note}
-          <span className="home-source">From the City’s HARB and permit records.</span>
-        </p>
+        <div className="home-demolished">
+          {demolishedLots[parcelOf(home.id)].photo && (
+            <figure className="home-status-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={demolishedLots[parcelOf(home.id)].photo!.src} alt={demolishedLots[parcelOf(home.id)].photo!.alt} loading="lazy" />
+              <figcaption>{demolishedLots[parcelOf(home.id)].photo!.caption}</figcaption>
+            </figure>
+          )}
+          <p>
+            <strong>Demolished:</strong> {demolishedLots[parcelOf(home.id)].note}
+            <span className="home-source">From the City’s HARB and permit records.</span>
+          </p>
+          {demolishedLots[parcelOf(home.id)].link && (
+            <a href={demolishedLots[parcelOf(home.id)].link!.href}>{demolishedLots[parcelOf(home.id)].link!.label}</a>
+          )}
+        </div>
       )}
 
       {home.watch && (

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { contactEmail, site } from "@/content/site";
 import Image from "next/image";
-import { demolition, stairs } from "@/content/protect";
+import { demolition, preserveIntro, south103, stairs } from "@/content/protect";
 import { filingIntro, filingSteps, floodExemption, needsReview } from "@/content/demolition-filing";
 import { GuideSection } from "@/components/CraGuide";
 import { PacketCards, PreserveGuide } from "@/components/PreserveGuide";
@@ -21,6 +21,42 @@ export default function DemolitionPage() {
       title="Demolition"
       lede="Once a historic house or one of its defining features is gone, it cannot be brought back. Here is how the City reviews demolition, how neighbors can speak up, and what an owner must file."
     >
+      <GuideSection id={preserveIntro.id} title={preserveIntro.title}>
+        <p className="stairs-lead">{preserveIntro.mission}</p>
+        <p>{preserveIntro.body}</p>
+        <p className="stairs-closing">{preserveIntro.tagline}</p>
+      </GuideSection>
+
+      <GuideSection id={south103.id} title={south103.title}>
+        <p>{south103.intro}</p>
+        <figure className="ba-before">
+          <Image src={south103.before.src} width={south103.before.width} height={south103.before.height} alt={south103.before.alt} sizes="(max-width: 720px) 90vw, 640px" />
+          <figcaption>{south103.before.caption}</figcaption>
+        </figure>
+        <div className="ba-after">
+          {[south103.after, south103.wall].map((p) => (
+            <figure key={p.src}>
+              <Image src={p.src} width={p.width} height={p.height} alt={p.alt} sizes="(max-width: 720px) 90vw, 320px" />
+              <figcaption>{p.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <dl className="glance">
+          {south103.record.map((r) => (
+            <div key={r.label}>
+              <dt>{r.label}</dt>
+              <dd>{r.body}</dd>
+            </div>
+          ))}
+        </dl>
+        <p>{south103.lesson}</p>
+        <p>
+          <Link className="button" href={south103.mapLink.href}>
+            {south103.mapLink.label}
+          </Link>
+        </p>
+      </GuideSection>
+
       <GuideSection id={stairs.id} title={stairs.title}>
         <div className="stairs-intro">
           <div>

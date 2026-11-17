@@ -51,6 +51,54 @@ export const preservePaths = [
   { slug: "map", title: "Lincolnville Home Map", body: "Every lot in Lincolnville, sorted three ways: historic homes, demolition watch, and vacant and abandoned.", packet: "" },
 ] as const;
 
+/** The Demolition page's opening: why Root & Simmer does this work. */
+export const preserveIntro = {
+  id: "preserving",
+  title: "Preserving history and homes",
+  mission:
+    "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and heritage. Independent and rooted in the neighborhood, we research the story of each home, record the voices of the families who made it home, and carry both forward, so 160 years of Lil Africa are known, kept and heard from generation to generation.",
+  body: "This page begins with what demolition leaves behind: an empty lot where a century-old house stood, and steps standing alone in a yard. Then it shows how the City reviews demolition, how neighbors can speak up, and what an owner must file, so the next house can stay standing.",
+  tagline: "Every home known. Every voice kept. Every generation connected.",
+};
+
+/**
+ * 103 South Street, before and after. Public facts from the City's HARB order (case 2019-0109), demolition permit
+ * PR2020-1652 and the County record; photos by Root & Simmer, October 13, 2026. No owner names.
+ */
+export const south103 = {
+  id: "103-south",
+  title: "103 South Street: before and after",
+  intro: "A frame house built about 1904 to 1910 stood at 103 South Street, a contributing building in the 1991 Lincolnville Historic District. Today the lot is empty.",
+  before: {
+    src: "/photos/103-south-st-original-east-elevation.jpg",
+    width: 1400,
+    height: 711,
+    alt: "Architect’s drawing of a one-story frame house with a gabled roof, a chimney, wood siding and a wide front porch.",
+    caption: "Before: the house’s original front, from the architect’s drawings filed with the City’s demolition permit (PR2020-1652).",
+  },
+  after: {
+    src: "/photos/103-south-st-lot-2026-10.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "An empty grassy lot with rainwater pooled across it, beside a two-story house, with a low masonry wall at the back.",
+    caption: "After: the lot on October 13, 2026. No building stands, and rainwater pools where the house was. Photo: Root & Simmer.",
+  },
+  wall: {
+    src: "/photos/103-south-st-wall-2026-10.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "A weathered, moss-covered masonry block wall along the back of the lot, with palms and a house behind it.",
+    caption: "Still standing: the masonry wall along the back of the lot appears to be preserved. Photo: Root & Simmer, October 2026.",
+  },
+  record: [
+    { label: "December 19, 2019", body: "The Historic Architectural Review Board approved a partial demolition with conditions (case 2019-0109). An earlier demolition approval had expired." },
+    { label: "December 18, 2020", body: "A licensed contractor filed demolition permit PR2020-1652, the day before the one-year approval ran out. The City lists the permit as closed." },
+    { label: "Today", body: "The County lists the parcel as vacant residential. A masonry wall is the only feature it lists, and that wall still stands along the back of the lot." },
+  ],
+  lesson: "The order in the file approved a partial demolition, yet no building stands today. We have asked the City, plainly and without blame, what approval covered the rest. This is how a contributing house can be lost step by step: an expired approval, a new partial approval, a permit filed at the deadline.",
+  mapLink: { label: "See 103 South Street on the home map", href: "/preserve-historic-homes/map" },
+};
+
 /**
  * Introduction to the Demolition page: "The Stairs That Remain", from Kimberly's story of the same name (Oct 2026).
  * Public version: records and what anyone can see from the street. Family names and memories (the Wells and
