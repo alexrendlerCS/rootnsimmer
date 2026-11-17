@@ -165,6 +165,13 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
       {st && card && (
         <section className={`home-status home-status-${st.status}`} aria-label={card.title}>
           <h3>{card.title}</h3>
+          {st.photo && (
+            <figure className="home-status-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={st.photo.src} alt={st.photo.alt} loading="lazy" />
+              <figcaption>{st.photo.caption}</figcaption>
+            </figure>
+          )}
           <p>{st.note}</p>
           {card.button && card.emailSubject && card.emailBody && (
             <button type="button" className="button" onClick={() => openEmailDraft(card.emailSubject!, card.emailBody!(home.address))}>

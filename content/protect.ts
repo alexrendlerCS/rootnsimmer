@@ -51,6 +51,41 @@ export const preservePaths = [
   { slug: "map", title: "Lincolnville Home Map", body: "Every lot in Lincolnville, sorted three ways: historic homes, demolition watch, and vacant and abandoned.", packet: "" },
 ] as const;
 
+/**
+ * Introduction to the Demolition page: "The Stairs That Remain", from Kimberly's story of the same name (Oct 2026).
+ * Public version: records and what anyone can see from the street. Family names and memories (the Wells and
+ * Payton families at 145 Twine; Marcus at 101 South) are added only once each family approves the wording.
+ */
+export const stairs = {
+  id: "stairs",
+  title: "The stairs that remain",
+  paragraphs: [
+    "Walk Lincolnville slowly and you will find them: a few concrete or stone steps standing alone in a yard, climbing to a door that is no longer there. The building is gone. The steps stayed.",
+    "Each set of stairs marks a threshold someone crossed every day: into a home, a church, a shop, a workshop. They are some of the last physical pieces of buildings that once stood on these lots, and they ask a simple question of anyone passing by: who walked up here, and what were they going to do?",
+  ],
+  photo: {
+    src: "/photos/stairs-145-twine-st.jpg",
+    width: 1000,
+    height: 1333,
+    alt: "Three weathered concrete steps standing alone in a side yard, with C H W 1951 carved into the top step and a small plaque beside it.",
+    caption: "The steps at 145 Twine Street, carved “C H W - 1951.” Photo: Root & Simmer, October 2026.",
+  },
+  sets: [
+    {
+      place: "145 Twine Street",
+      body: "Three concrete steps on a small landing stand alone in the side yard, with a cracked slab at the base. Pressed into the top riser are the initials C H W and the year 1951. The house on the lot today was built in 1986, so the steps belonged to something older. Who C H W was, and what door these steps once reached, is still an open question.",
+    },
+    {
+      place: "101 South Street",
+      body: "Steps and a slab remain on a lot where a 1954 house was demolished in 2019, after the Historic Architectural Review Board approved it. The steps may be older than that house. The old Sanborn maps, and the memories of the family who knew the lot, can tell what they once led into.",
+    },
+  ],
+  trail: "Root & Simmer is gathering these stairs into one story, a trail of thresholds across the neighborhood. Each set will be photographed, located, and paired with whatever the records and the families can tell us: who built it, who used it, and why it is the only part left standing. Where the records are silent, the neighbors’ memories will carry the story, labeled clearly as their own words.",
+  closing: "The stairs that remain are Lincolnville’s way of saying: we were here, we worked here, and we are still here.",
+  ask: { label: "Know of a set of stairs standing alone? Tell us", subject: "The stairs that remain" },
+  bridge: "Steps like these are what demolition leaves behind. Below is how the City reviews demolition, and how to speak up before the next building goes.",
+};
+
 export const demolition = {
   id: "demolition",
   title: "How the City reviews demolition",

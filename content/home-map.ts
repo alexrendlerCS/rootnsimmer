@@ -64,9 +64,14 @@ export const homeMapLegend = [
  * To add a home, copy a line and change the parcel number (shown in the County's records) and the note.
  */
 export type HomeStatus = "owners" | "guests";
-export const homeStatus: Record<string, { status: HomeStatus; note: string }> = {
+export const homeStatus: Record<string, { status: HomeStatus; note: string; photo?: { src: string; alt: string; caption: string } }> = {
   "2105700000": {
     status: "owners",
+    photo: {
+      src: "/photos/56-lovett-st-2026-10.jpg",
+      alt: "A small light blue house with boarded windows and an overgrown front yard.",
+      caption: "56 Lovett St, October 2026. Photo: Root & Simmer.",
+    },
     note: "This house is standing but empty, and its 2019 demolition approval has lapsed. It was listed as contributing to the Lincolnville Historic District in 1991, and it faces Twine Park across Lovett Street. We are trying to reach the owners about its history and its future.",
   },
   "2104200000": {
