@@ -1388,3 +1388,22 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .home-status h3 { margin: 0 0 0.375rem; font-size: 1.0625rem; }
 .home-status p { margin: 0; font-size: 0.9375rem; }
 .home-status p + .button { margin-top: 0.75rem; }
+
+/* Twine Park Proposal (members only, CRA guide) */
+.route-members { font-size: 0.75rem; font-weight: 600; color: var(--rail); white-space: nowrap; }
+.members-flag { margin: -0.5rem 0 1.5rem; font-size: 0.875rem; font-weight: 600; color: var(--rail); }
+.members-flag a { color: var(--rail); }
+.twine-brief { font-size: 1.0625rem; }
+.twine-vision blockquote { font-size: 1.25rem; }
+.twine-passion { margin-top: 1.25rem; }
+.twine-list { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 6px; }
+.twine-places { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.twine-places li { display: flex; gap: 12px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.twine-places h3 { margin: 0 0 0.25rem; font-size: 1.0625rem; }
+.twine-places p { margin: 0 0 0.375rem; font-size: 0.9375rem; }
+.twine-num { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--oak); color: #fff; font-weight: 700; font-size: 0.875rem; }
+.twine-project { color: var(--rail); font-weight: 600; }
+.twine-milestone { margin-bottom: 1rem; }
+.twine-milestone h3 { margin: 0.25rem 0 0.5rem; }
+@media (max-width: 720px) { .twine-places { grid-template-columns: 1fr; } }
+.twine-label { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--rail); }

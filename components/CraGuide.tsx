@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { craContact, craKicker, craPages, joinCta, type CraSlug } from "@/content/cra";
+import { craContact, craKicker, craMembersOnly, craPages, joinCta, type CraSlug } from "@/content/cra";
 import { SiteShell } from "./SiteShell";
 
 export const craHref = (slug: CraSlug) => (slug ? `/cra-lincolnville/${slug}` : "/cra-lincolnville");
@@ -23,7 +23,10 @@ function Route({ current, id }: { current: CraSlug; id: string }) {
         <li key={p.slug} aria-current={p.slug === current ? "page" : undefined}>
           <Link href={craHref(p.slug)}>
             <span className="route-num">{i + 1}</span>
-            <span>{p.title}</span>
+            <span>
+              {p.title}
+              {craMembersOnly.includes(p.slug) && <span className="route-members"> · Members only</span>}
+            </span>
           </Link>
         </li>
       ))}

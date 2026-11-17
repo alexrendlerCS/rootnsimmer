@@ -31,6 +31,7 @@ export const craPages = [
   { slug: "", title: "Understanding the Lincolnville CRA" },
   { slug: "institutional-landmarks", title: "Institutional Landmarks" },
   { slug: "parks-and-named-places", title: "Parks and Named Places" },
+  { slug: "twine-park", title: "Twine Park Proposal" },
   { slug: "historic-district", title: "The Historic District and Home History" },
   { slug: "fix-it-up", title: "Fix-It-Up and Staying in Place" },
   { slug: "take-part", title: "How to Take Part" },
@@ -39,6 +40,9 @@ export const craPages = [
 ] as const;
 
 export type CraSlug = (typeof craPages)[number]["slug"];
+
+/** Guide pages only Lincolnville Connection members can open (marked with a lock in the menu). */
+export const craMembersOnly: readonly CraSlug[] = ["twine-park"];
 
 export const craContact = {
   name: "Kimberly Joyce",
