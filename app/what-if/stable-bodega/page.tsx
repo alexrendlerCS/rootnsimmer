@@ -112,6 +112,11 @@ export default function StableBodegaPage() {
             ))}
           </dl>
           <p className="stairs-closing">{s.site.stance}</p>
+          <p>
+            <Link className="button" href={s.site.mapLink.href}>
+              {s.site.mapLink.label}
+            </Link>
+          </p>
         </section>
 
         <section id="vendors" className="bodega-section bodega-vendors" aria-labelledby="vendors-title">

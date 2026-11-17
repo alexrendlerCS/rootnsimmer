@@ -25,7 +25,7 @@ type Home = {
 /** "2075600000-2" -> "2075600000": a map lot back to its City parcel number. */
 const parcelOf = (id: string) => id.replace(/-\d+$/, "");
 const statusOf = (h: Home) => homeStatus[parcelOf(h.id)];
-const searching = (h: Home) => statusOf(h)?.status === "owners";
+const searching = (h: Home) => statusOf(h)?.status === "owners" || statusOf(h)?.status === "vision";
 type Sort = (typeof homeMapSorts)[number]["id"];
 const SORT_COLORS: Record<Exclude<Sort, "all">, string> = { historic: "#a8843f", watch: "#a32e28", vacant: "#4f7f78" };
 const inSort = (h: Home, sort: Sort) =>
@@ -50,7 +50,7 @@ function lotStyle(kind: Kind, selected = false, sort: Sort = "all", home?: Home)
   // Homes Root & Simmer is working with stand out in their own solid color: abandoned homes (teal) in
   // "All lots" and "Vacant and abandoned"; homes that welcome guests (dark green) in "All lots".
   const st = home && statusOf(home);
-  if (st && (sort === "all" || (sort === "vacant" && st.status === "owners"))) {
+  if (st && (sort === "all" || (sort === "vacant" && st.status !== "guests"))) {
     const color = homeStatusCards[st.status].color;
     return { color: selected ? "#a32e28" : color, weight: selected ? 3 : 2, opacity: 1, fillColor: color, fillOpacity: 0.85, dashArray: undefined };
   }
@@ -173,6 +173,11 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
             </figure>
           )}
           <p>{st.note}</p>
+          {st.link && (
+            <a className="button button-red" href={st.link.href}>
+              {st.link.label}
+            </a>
+          )}
           {card.button && card.emailSubject && card.emailBody && (
             <button type="button" className="button" onClick={() => openEmailDraft(card.emailSubject!, card.emailBody!(home.address))}>
               {card.button}
@@ -251,7 +256,7 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
             {homeMapCard.mineButton}
           </a>
         </div>
-      ) : (
+      ) : st?.status === "vision" ? null : (
         <div className="home-join">
           <h3>{homeMapCard.joinTitle}</h3>
           <p>{homeMapCard.joinBody}</p>

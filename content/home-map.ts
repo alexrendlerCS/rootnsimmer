@@ -18,6 +18,7 @@ export const homeMapHero = {
  *     red          History researched by Root & Simmer               (kind "researched")
  *     teal         Abandoned home: we are looking for the owners      (homeStatus "owners")
  *     dark green   Family home welcoming guests: vacation and long-term stays (homeStatus "guests")
+ *     amber        What if…? A vacant place we picture a new life for       (homeStatus "vision")
  *     red outline  Your own home (members only, after signing in)
  *   From the public records:
  *     gold         Historic: contributing in 1991, or a potential contributor (kind "historic")
@@ -31,7 +32,7 @@ export const homeMapKey = {
   ourWork: "Our work",
   records: "From the public records",
   yourHome: "Your home (outlined in red)",
-  sorts: "The buttons above the map light up one group at a time: Historic homes in gold, Demolition watch in red, Vacant and abandoned in teal. The lot you click is outlined in red.",
+  sorts: "The buttons above the map light up one group at a time: Historic homes in gold, Demolition watch in red, Vacant and abandoned in teal (with our What if…? places in amber). The lot you click is outlined in red.",
 };
 
 /**
@@ -65,12 +66,23 @@ export const homeMapLegend = [
  * Homes Root & Simmer is working with, by City parcel number, each in its own color on the map:
  *   owners = an abandoned home we are trying to reach the owners of (teal, the "Vacant and abandoned" color)
  *   guests = a family home that welcomes guests for vacation and long-term stays (dark green)
+ *   vision = a vacant place with a Root & Simmer "What if…?" idea (amber), linked to its idea page
  * Public words only: never owners' names, trust names, mailing addresses, prices, bedrooms or booking details.
  * Each home's papers stay private: in the members' area for members, or in the back office.
  * To add a home, copy a line and change the parcel number (shown in the County's records) and the note.
  */
-export type HomeStatus = "owners" | "guests";
-export const homeStatus: Record<string, { status: HomeStatus; note: string; photo?: { src: string; alt: string; caption: string } }> = {
+export type HomeStatus = "owners" | "guests" | "vision";
+export const homeStatus: Record<string, { status: HomeStatus; note: string; photo?: { src: string; alt: string; caption: string }; link?: { label: string; href: string } }> = {
+  "1495900010": {
+    status: "vision",
+    note: "The City’s former carriage stables: about one acre of painted concrete-block barns with tin roofs and red barn doors around a grass yard. The buildings are vacant, and the acre has sat behind a locked fence since the stable lease ended on September 30, 2026. What if the gate opened again as the Stable Bodega?",
+    photo: {
+      src: "/photos/stable-bodega-barn.jpg",
+      alt: "A long dark barn with a rusted tin roof behind a grass strip and an old paved drive.",
+      caption: "The main barn from the drive, October 2026. Photo: Root & Simmer.",
+    },
+    link: { label: "See the idea, vote and add yours", href: "/what-if/stable-bodega" },
+  },
   "2105700000": {
     status: "owners",
     photo: {
@@ -96,6 +108,12 @@ export const homeStatusCards: Record<HomeStatus, { color: string; label: string;
     emailSubject: "Lincolnville home map: reaching the owners",
     emailBody: (address: string) =>
       `Hello Kimberly,\n\nI may be able to help you reach the owners of ${address}.\n\nWhat I know:\n\nBest way to reach me:`,
+  },
+  vision: {
+    color: "#e8a33d",
+    label: "Vacant building · What if…?",
+    legend: "What if…? A vacant place we picture a new life for",
+    title: "What if…? The Stable Bodega",
   },
   guests: {
     color: "#1f3a2c",

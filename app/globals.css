@@ -1363,6 +1363,9 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .swatch-guests { background: rgb(31 58 44 / 0.85); border-color: #1f3a2c; }
 .home-kind-owners { color: var(--haint-deep); }
 .home-kind-guests { color: var(--oak); }
+.swatch-vision { background: rgb(232 163 61 / 0.85); border-color: #b97d22; }
+.home-kind-vision { color: #8a5a12; }
+.home-status-vision { background: #fdf4e6; border-color: #e8a33d; }
 .home-status { margin: 0 0 1rem; padding: 12px 14px; border-left: 4px solid; border-radius: 0 var(--radius) var(--radius) 0; }
 .home-status-owners { background: var(--haint-soft); border-color: var(--haint-deep); }
 .home-status-guests { background: #eef2ee; border-color: var(--oak); }

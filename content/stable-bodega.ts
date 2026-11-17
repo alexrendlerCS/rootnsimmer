@@ -23,7 +23,7 @@ export const stableBodega = {
   label: "What if…? · A Root & Simmer vision",
   title: "The Stable Bodega",
   tagline: "Lincolnville is the Journey. Little Africa is the Heartbeat. 160 Years of Lil Africa. Welcome In.",
-  lede: "At the south end of Riberia Street sits a City-owned acre that has held stables, horses and working hands for most of a century. The carriages are gone now. What if the gate opened again, not as a stable, but as the Stable Bodega: a neighborhood corner store, a makers’ barn behind red doors, a string-lit yard, a market lawn and a free heritage walk? A place to visit. A place to thrive.",
+  lede: "At 650 Riberia Street, the south end of Riberia, sits a City-owned acre that has held stables, horses and working hands for most of a century. The carriages are gone now. What if the gate opened again, not as a stable, but as the Stable Bodega: a neighborhood corner store, a makers’ barn behind red doors, a string-lit yard, a market lawn and a free heritage walk? A place to visit. A place to thrive.",
   idea: "An idea for discussion, not a plan. The City owns this land, and only the City Commission can decide its future.",
 
   barn: {
@@ -112,11 +112,12 @@ export const stableBodega = {
   site: {
     title: "Where things stand",
     facts: [
-      { label: "The land", body: "About one acre, owned by the City of St. Augustine, inside the Lincolnville National Register Historic District and the Lincolnville Community Redevelopment Agency (CRA) area." },
-      { label: "What stands there", body: "Painted concrete-block barns with tin roofs and red X-braced doors around a grass yard, with paver walks toward the street." },
+      { label: "The land", body: "650 Riberia Street. About one acre, owned by the City of St. Augustine, inside the Lincolnville National Register Historic District and the Lincolnville Community Redevelopment Agency (CRA) area." },
+      { label: "What stands there", body: "Vacant buildings: painted concrete-block barns with tin roofs and red X-braced doors around a grass yard, with paver walks toward the street." },
       { label: "Today", body: "The City’s carriage stable lease ended September 30, 2026. The acre sits behind a locked fence, with no next use announced." },
       { label: "Still to learn", body: "Whether the barns count as historic buildings, how the lot drains (it is low ground), and what the City has planned. We are asking." },
     ],
+    mapLink: { label: "See 650 Riberia Street on the home map", href: "/preserve-historic-homes/map" },
     stance: "Local first. Nothing new built. We are asking for a conversation and a seat at the table, not a lease, money or a promise.",
   },
 
