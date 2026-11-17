@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { homeMapCard, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
+import { homeMapCard, homeMapKey, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
 import { openEmailDraft } from "@/lib/email";
 
 type Ring = [number, number][];
@@ -406,22 +406,53 @@ export default function HomeMap() {
         <div className="home-map-frame">
           <div ref={mapEl} className="home-map-canvas" aria-label="Map of Lincolnville lots" role="region" tabIndex={0} />
           {!data && <p className="home-map-loading">Loading the map…</p>}
-          <ul className="home-legend">
-            {homeMapLegend.map((l) => (
-              <li key={l.kind}>
-                <span className={`swatch swatch-${l.kind}`} aria-hidden="true" />
-                {l.label}
-                {data && <span className="legend-count">{data.homes.filter((h) => h.kind === l.kind).length}</span>}
-              </li>
-            ))}
-            {(Object.keys(homeStatusCards) as HomeStatus[]).map((k) => (
-              <li key={k}>
-                <span className={`swatch swatch-${k}`} aria-hidden="true" />
-                {homeStatusCards[k].legend}
-                {data && <span className="legend-count">{new Set(data.homes.filter((h) => statusOf(h)?.status === k).map((h) => parcelOf(h.id))).size}</span>}
-              </li>
-            ))}
-          </ul>
+          <section className="home-key" aria-labelledby="home-key-title">
+            <h2 id="home-key-title" className="home-key-title">{homeMapKey.title}</h2>
+            <div className="home-key-groups">
+              <div>
+                <h3 className="home-key-group">{homeMapKey.ourWork}</h3>
+                <ul className="home-legend">
+                  {homeMapLegend
+                    .filter((l) => l.kind === "researched")
+                    .map((l) => (
+                      <li key={l.kind}>
+                        <span className={`swatch swatch-${l.kind}`} aria-hidden="true" />
+                        {l.label}
+                        {data && <span className="legend-count">{data.homes.filter((h) => h.kind === l.kind).length}</span>}
+                      </li>
+                    ))}
+                  {(Object.keys(homeStatusCards) as HomeStatus[]).map((k) => (
+                    <li key={k}>
+                      <span className={`swatch swatch-${k}`} aria-hidden="true" />
+                      {homeStatusCards[k].legend}
+                      {data && <span className="legend-count">{new Set(data.homes.filter((h) => statusOf(h)?.status === k).map((h) => parcelOf(h.id))).size}</span>}
+                    </li>
+                  ))}
+                  {!!data?.mine?.length && (
+                    <li>
+                      <span className="swatch swatch-mine" aria-hidden="true" />
+                      {homeMapKey.yourHome}
+                    </li>
+                  )}
+                </ul>
+              </div>
+              <div>
+                <h3 className="home-key-group">{homeMapKey.records}</h3>
+                <ul className="home-legend">
+                  {homeMapLegend
+                    .filter((l) => l.kind !== "researched")
+                    .map((l) => (
+                      <li key={l.kind}>
+                        <span className={`swatch swatch-${l.kind}`} aria-hidden="true" />
+                        {l.label}
+                        {data && <span className="legend-count">{data.homes.filter((h) => h.kind === l.kind).length}</span>}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+            <p className="home-key-sorts">{homeMapKey.sorts}</p>
+          </section>
         </div>
         <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFiles?.[selected.id.replace(/-\d+$/, "")]} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
       </div>
