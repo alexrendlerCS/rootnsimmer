@@ -176,6 +176,15 @@ export const stableBodegaSignup: WhatIfSignupConfig = {
 export const whatIfTeasers = [
   {
     label: "What if…?",
+    title: "What if Washington Street were Lil Africa’s Main Street again?",
+    body: "Grocers, barbers, cafés, doctors and dance halls once served the neighborhood that built them. What if local businesses served the community on Washington Street again?",
+    link: "See the idea, vote and add yours",
+    href: "/what-if/washington-street",
+    image: "/photos/washington-street-home.jpg",
+    credit: "Photo: w_lemay, Wikimedia Commons, CC BY-SA 2.0",
+  },
+  {
+    label: "What if…?",
     title: "What if Twine Park honored the Twines the way they deserve?",
     body: "A Twine Grove around the memorial trees, a new history panel, dry benches and a history walk at the corner of Riberia and Lovett. The design is under way: add your voice.",
     link: "See the idea, vote and add yours",

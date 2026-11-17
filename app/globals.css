@@ -1464,3 +1464,4 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .story-asks { grid-template-columns: 1fr; }
 .story-heart { padding: 2rem clamp(18px, 3vw, 32px); margin-top: 2.5rem; background: var(--haint-soft); border-radius: var(--radius); }
 @media (max-width: 900px) { .story-marker { justify-self: start; } }
+.what-if-credit { margin: 0.75rem 0 0; font-size: 0.75rem !important; color: var(--muted); }

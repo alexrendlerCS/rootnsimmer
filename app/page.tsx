@@ -201,6 +201,7 @@ export default function Home() {
                   <h2 className="h-medium">{w.title}</h2>
                   <p>{w.body}</p>
                   <span className="button button-red">{w.link}</span>
+                  {"credit" in w && w.credit && <p className="what-if-credit">{w.credit}</p>}
                 </div>
               </Link>
             ))}
