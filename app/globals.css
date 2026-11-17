@@ -1218,3 +1218,14 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .admin-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); }
   .admin-table th, .admin-table td { display: block; border: 0; padding: 4px 0; }
 }
+
+/* Members' page: the member's own home file */
+.welcome-card {
+  margin: 0 0 1.5rem; padding: clamp(22px, 3vw, 30px); max-width: 46rem;
+  background: var(--oak); color: #fff; border-radius: var(--radius); border-left: 6px solid var(--sun);
+}
+.welcome-card .latest-title { margin-bottom: 0.5rem; }
+.welcome-card p { color: var(--oak-tint); }
+.home-file-section + .home-file-section { margin-top: 1.25rem; }
+.guide-h2 + .welcome-card { margin-top: 0.5rem; }
+.home-file-title { font-size: 1.1875rem; margin: 0 0 0.625rem; }

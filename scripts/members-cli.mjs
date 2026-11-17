@@ -1,0 +1,137 @@
+/**
+ * Members' area helper, run on Kimberly's laptop with the Supabase keys in .env.local.
+ *
+ *   Add a member (or an admin):
+ *     node --env-file=.env.local scripts/members-cli.mjs add-member --email you@example.com --name "Full Name" [--role admin] [--parcel 2115600000]
+ *
+ *   Preview what would be loaded, without uploading: add --dry-run
+ *
+ *   Load a member's whole home file from a folder, in reading order (private to that member):
+ *     node --env-file=.env.local scripts/members-cli.mjs upload-folder --email owner@example.com --folder "C:\...\Members (private)\74 South St"
+ *
+ * Folder layout (numbers set the order and are dropped from what the member sees):
+ *   1 Start here/01 Welcome letter.pdf        <- the first file in "Start here" is shown first, as the welcome letter
+ *   2 Your home's history/03 Home History Packet.pdf
+ *   3 Next steps/...
+ *   4 The records, one by one/1 Ownership/Record 1.1 ....pdf   -> section "The records: Ownership"
+ *
+ * Files already in that member's file (same file name) are skipped, so it is safe to run again.
+ * Nothing here is ever written to the repo: member files go only to the private Supabase bucket.
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { randomUUID } from "node:crypto";
+import { createClient } from "@supabase/supabase-js";
+
+const BUCKET = "member-files";
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const secret = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
+const dryRun = process.argv.includes("--dry-run");
+if (!dryRun && (!url || !secret)) {
+  console.error("Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SECRET_KEY. Run with: node --env-file=.env.local scripts/members-cli.mjs ...");
+  process.exit(1);
+}
+const db = dryRun ? null : createClient(url, secret, { auth: { persistSession: false, autoRefreshToken: false } });
+
+const [command, ...rest] = process.argv.slice(2);
+const args = {};
+for (let i = 0; i < rest.length; i++) if (rest[i].startsWith("--")) args[rest[i].slice(2)] = rest[i + 1]?.startsWith("--") || rest[i + 1] === undefined ? true : rest[++i];
+
+const SECTION_NAMES = {
+  "start here": "Start here",
+  "your home's history": "Your home’s history",
+  "your home’s history": "Your home’s history",
+  "next steps": "Next steps",
+};
+const stripNumber = (s) => s.replace(/^\d+\s+/, "").trim();
+const TYPES = { ".pdf": "application/pdf", ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png" };
+
+async function findUserId(email) {
+  for (let page = 1; page < 50; page++) {
+    const { data, error } = await db.auth.admin.listUsers({ page, perPage: 200 });
+    if (error) throw error;
+    const hit = data.users.find((u) => u.email?.toLowerCase() === email);
+    if (hit) return hit.id;
+    if (data.users.length < 200) return null;
+  }
+  return null;
+}
+
+async function addMember() {
+  const email = String(args.email ?? "").toLowerCase();
+  if (!email.includes("@")) throw new Error("--email is required");
+  const created = await db.auth.admin.createUser({ email, email_confirm: true });
+  const id = created.data.user?.id ?? (await findUserId(email));
+  if (!id) throw new Error(created.error?.message ?? "Could not create or find the sign-in account.");
+  const row = { id, email, active: true, role: args.role === "admin" ? "admin" : "member" };
+  if (typeof args.name === "string") row.full_name = args.name;
+  if (typeof args.parcel === "string") row.home_parcels = [args.parcel];
+  const { error } = await db.from("members").upsert(row, { onConflict: "id" });
+  if (error) throw error;
+  console.log(`Member ready: ${args.name ?? email} (${row.role})${row.home_parcels ? `, home parcel ${row.home_parcels[0]}` : ""}`);
+}
+
+function walk(dir, parts = []) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, "en", { numeric: true }))) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walk(full, [...parts, entry.name]));
+    else if (TYPES[path.extname(entry.name).toLowerCase()]) out.push({ full, parts, name: entry.name });
+  }
+  return out;
+}
+
+function sectionFor(parts) {
+  const top = stripNumber(parts[0] ?? "");
+  if (/^the records/i.test(top)) return `The records: ${stripNumber(parts[1] ?? "Other")}`;
+  return SECTION_NAMES[top.toLowerCase()] ?? top;
+}
+
+async function uploadFolder() {
+  const email = String(args.email ?? "").toLowerCase();
+  const folder = String(args.folder ?? "");
+  if (!fs.existsSync(folder)) throw new Error("an existing --folder is required");
+  if (dryRun) {
+    for (const file of walk(folder)) console.log(`  ${sectionFor(file.parts)}  |  ${stripNumber(path.basename(file.name, path.extname(file.name)))}`);
+    return console.log("(dry run: nothing uploaded)");
+  }
+  if (!email) throw new Error("--email is required");
+  const { data: member } = await db.from("members").select("id, full_name").eq("email", email).maybeSingle();
+  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
+  const { data: existing } = await db.from("documents").select("file_name").eq("member_id", member.id);
+  const have = new Set((existing ?? []).map((d) => d.file_name));
+
+  for (const file of walk(folder)) {
+    if (have.has(file.name)) {
+      console.log(`  skip (already there): ${file.name}`);
+      continue;
+    }
+    const ext = path.extname(file.name).toLowerCase();
+    const storagePath = `members/${member.id}/${randomUUID()}${ext}`;
+    const body = fs.readFileSync(file.full);
+    const up = await db.storage.from(BUCKET).upload(storagePath, body, { contentType: TYPES[ext], upsert: false });
+    if (up.error) throw up.error;
+    const { error } = await db.from("documents").insert({
+      title: stripNumber(path.basename(file.name, ext)),
+      category: sectionFor(file.parts),
+      storage_path: storagePath,
+      file_name: file.name,
+      size_bytes: body.length,
+      visibility: "private",
+      member_id: member.id,
+    });
+    if (error) throw error;
+    console.log(`  added: ${sectionFor(file.parts)} / ${file.name}`);
+  }
+  console.log(`Done: ${member.full_name ?? email}'s home file is up to date.`);
+}
+
+const commands = { "add-member": addMember, "upload-folder": uploadFolder };
+if (!commands[command]) {
+  console.error("Commands: add-member, upload-folder (see the top of this file)");
+  process.exit(1);
+}
+commands[command]().catch((e) => {
+  console.error("Stopped:", e.message ?? e);
+  process.exit(1);
+});

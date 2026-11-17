@@ -8,7 +8,7 @@ import { MEMBER_BUCKET } from "@/lib/supabase/env";
  * Opens a members' document. The lookup runs as the signed-in member, so row level security decides
  * whether they may see it; only then does the server make a link that works for two minutes.
  */
-export async function GET(request: NextRequest, ctx: RouteContext<"/members/document/[id]">) {
+export async function GET(request: NextRequest, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
   const member = await getMember();
   if (!member) {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { DOCUMENT_CATEGORIES, requireAdmin, type Member } from "@/lib/members";
+import { DOCUMENT_CATEGORIES, HOME_FILE_SECTIONS, requireAdmin, type Member } from "@/lib/members";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { loadHomeMapData, parcelOf } from "@/lib/home-map-data";
 import { AddMemberForm, MemberHomeForm, ToggleButton, UploadForm } from "@/components/admin/AdminForms";
@@ -62,6 +62,7 @@ export default async function AdminPage() {
           </h2>
           <UploadForm
             categories={DOCUMENT_CATEGORIES}
+            homeSections={HOME_FILE_SECTIONS}
             members={members.filter((m) => m.active).map((m) => ({ id: m.id, label: m.full_name ? `${m.full_name} (${m.email})` : m.email }))}
             documents={live.map((d) => ({ id: d.id, label: d.title }))}
           />

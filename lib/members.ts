@@ -47,5 +47,20 @@ export const DOCUMENT_CATEGORIES = [
   "Voices from City Hall",
   "Projects and landmarks",
   "Guides",
-  "Home history packets",
+] as const;
+
+/**
+ * Sections of a member's own (private) home file, in the order they read it.
+ * The first document in "Start here" (the welcome letter) is shown first, on its own.
+ */
+export const HOME_FILE_SECTIONS = [
+  "Start here",
+  "Your home’s history",
+  "Next steps",
+  "The records: Ownership",
+  "The records: Repairs and permits",
+  "The records: Historic status",
+  "The records: Historic maps",
+  "The records: Plan and protections",
+  "The records: Research",
 ] as const;

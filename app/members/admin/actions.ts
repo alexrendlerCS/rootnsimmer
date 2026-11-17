@@ -2,7 +2,7 @@
 
 import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
-import { DOCUMENT_CATEGORIES, requireAdmin } from "@/lib/members";
+import { DOCUMENT_CATEGORIES, HOME_FILE_SECTIONS, requireAdmin } from "@/lib/members";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { MEMBER_BUCKET } from "@/lib/supabase/env";
 import { loadHomeMapData, parcelOf } from "@/lib/home-map-data";
@@ -86,7 +86,8 @@ export async function recordDocument(input: {
 }): Promise<ActionResult> {
   await requireAdmin();
   if (!input.title.trim()) return { ok: false, message: "Give the document a title." };
-  if (!(DOCUMENT_CATEGORIES as readonly string[]).includes(input.category)) return { ok: false, message: "Pick a category." };
+  const allowed: readonly string[] = input.visibility === "private" ? HOME_FILE_SECTIONS : DOCUMENT_CATEGORIES;
+  if (!allowed.includes(input.category)) return { ok: false, message: "Pick a category." };
   if (input.visibility === "private" && !input.memberId) return { ok: false, message: "Pick the member this private document is for." };
   const db = createAdminClient();
   const { error } = await db.from("documents").insert({

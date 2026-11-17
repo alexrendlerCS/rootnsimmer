@@ -104,7 +104,17 @@ export function ToggleButton({
 
 type Option = { id: string; label: string };
 
-export function UploadForm({ categories, members, documents }: { categories: readonly string[]; members: Option[]; documents: Option[] }) {
+export function UploadForm({
+  categories,
+  homeSections,
+  members,
+  documents,
+}: {
+  categories: readonly string[];
+  homeSections: readonly string[];
+  members: Option[];
+  documents: Option[];
+}) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const [visibility, setVisibility] = useState<"shared" | "private">("shared");
@@ -160,12 +170,12 @@ export function UploadForm({ categories, members, documents }: { categories: rea
           <input name="title" required />
         </label>
         <label>
-          Category
-          <select name="category" required defaultValue="">
+          {visibility === "private" ? "Section of their home file" : "Category"}
+          <select key={visibility} name="category" required defaultValue="">
             <option value="" disabled>
               Choose…
             </option>
-            {categories.map((c) => (
+            {(visibility === "private" ? homeSections : categories).map((c) => (
               <option key={c}>{c}</option>
             ))}
           </select>
