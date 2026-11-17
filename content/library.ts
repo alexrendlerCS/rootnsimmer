@@ -264,15 +264,6 @@ export const shelves: Shelf[] = [
       { title: "City Archaeologist interview on the Yallaha Plantation dig", source: "Summary and transcript", access: "members" },
     ],
   },
-  {
-    id: "guides",
-    title: "Guides",
-    question: "How do I find my way around Lincolnville?",
-    kind: "members",
-    docs: [
-      { title: "Lincolnville Navigation Guide", source: "Root & Simmer Hospitality Co.", access: "members" },
-    ],
-  },
 ];
 
 /** Shown on each locked document. */
