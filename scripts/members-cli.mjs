@@ -5,7 +5,10 @@
  *     node --env-file=.env.local scripts/members-cli.mjs add-member --email you@example.com --name "Full Name" [--role admin] [--parcel 2115600000]
  *
  *   Move a whole home file from one member to another (e.g. from Kimberly's test account to the owner), no re-upload:
- *     node --env-file=.env.local scripts/members-cli.mjs move-file --from rootnsimmer@gmail.com --to owner@example.com
+ *     node --env-file=.env.local scripts/members-cli.mjs move-file --from rootnsimmer@gmail.com --to owner@example.com [--parcel 2115600000]
+ *
+ *   Give a member another home (their files for each home stay separate; add --parcel to upload-folder and add-file):
+ *     node --env-file=.env.local scripts/members-cli.mjs add-home --email you@example.com --parcel 2104000000
  *
  *   Load the shared members' library from the back office folders (every member can open these):
  *     node --env-file=.env.local scripts/members-cli.mjs upload-shared --folder "C:\...\Root & Simmer Member Library"
@@ -107,10 +110,7 @@ async function uploadFolder() {
     return console.log("(dry run: nothing uploaded)");
   }
   if (!email) throw new Error("--email is required");
-  const { data: member } = await db.from("members").select("id, full_name").eq("email", email).maybeSingle();
-  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
-  const { data: existing } = await db.from("documents").select("file_name").eq("member_id", member.id);
-  const have = new Set((existing ?? []).map((d) => d.file_name));
+  const { member, parcel, have } = await memberHome(email);
 
   for (const file of walk(folder)) {
     if (have.has(file.name)) {
@@ -118,7 +118,7 @@ async function uploadFolder() {
       continue;
     }
     const ext = path.extname(file.name).toLowerCase();
-    const storagePath = `members/${member.id}/${randomUUID()}${ext}`;
+    const storagePath = `members/${member.id}/${parcel}/${randomUUID()}${ext}`;
     const body = fs.readFileSync(file.full);
     const up = await db.storage.from(BUCKET).upload(storagePath, body, { contentType: TYPES[ext], upsert: false });
     if (up.error) throw up.error;
@@ -147,11 +147,9 @@ async function addFile() {
   const name = path.basename(file);
   const title = typeof args.title === "string" ? args.title : stripNumber(path.basename(file, ext));
   if (dryRun) return console.log(`  ${section}  |  ${title}  (${name})\n(dry run: nothing uploaded)`);
-  const { data: member } = await db.from("members").select("id, full_name").eq("email", email).maybeSingle();
-  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
-  const { data: existing } = await db.from("documents").select("id").eq("member_id", member.id).eq("file_name", name);
-  if (existing?.length) return console.log(`  skip (already there): ${name}`);
-  const storagePath = `members/${member.id}/${randomUUID()}${ext}`;
+  const { member, parcel, have } = await memberHome(email);
+  if (have.has(name)) return console.log(`  skip (already there): ${name}`);
+  const storagePath = `members/${member.id}/${parcel}/${randomUUID()}${ext}`;
   const body = fs.readFileSync(file);
   const up = await db.storage.from(BUCKET).upload(storagePath, body, { contentType: TYPES[ext], upsert: false });
   if (up.error) throw up.error;
@@ -160,20 +158,74 @@ async function addFile() {
   console.log(`  added: ${section} / ${title}`);
 }
 
+/** Which home of a member a stored file belongs to (same rule as lib/home-map-data.ts homeOfDoc). */
+const homeOfDoc = (storagePath, homeParcels) => storagePath.match(/^members\/[^/]+\/(\d{6,})\//)?.[1] ?? homeParcels[0] ?? "";
+
+/** The member, the home (--parcel, or their only home) and the file names already in that home's file. */
+async function memberHome(email) {
+  const { data: member } = await db.from("members").select("id, full_name, home_parcels").eq("email", email).maybeSingle();
+  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
+  const homes = member.home_parcels ?? [];
+  const parcel = typeof args.parcel === "string" ? args.parcel : homes.length === 1 ? homes[0] : "";
+  if (!parcel) throw new Error(`${email} has ${homes.length} homes (${homes.join(", ") || "none"}). Say which with --parcel.`);
+  if (!homes.includes(parcel)) throw new Error(`Parcel ${parcel} is not one of ${email}'s homes. Run add-home first.`);
+  const { data: existing } = await db.from("documents").select("file_name, storage_path").eq("member_id", member.id).eq("visibility", "private");
+  const have = new Set((existing ?? []).filter((d) => homeOfDoc(d.storage_path, homes) === parcel).map((d) => d.file_name));
+  return { member, parcel, have };
+}
+
+/** Give a member another home on the map (e.g. a second house). */
+async function addHome() {
+  const email = String(args.email ?? "").toLowerCase();
+  const parcel = String(args.parcel ?? "");
+  if (!/^\d{6,}$/.test(parcel)) throw new Error("--parcel is required (the City parcel number, e.g. 2104000000)");
+  const { data: member } = await db.from("members").select("id, home_parcels").eq("email", email).maybeSingle();
+  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
+  // Older files stored without a parcel belong to the first home: tag them before a second home is added.
+  if (member.home_parcels.length === 1) await tagFiles(member, member.home_parcels[0]);
+  if (member.home_parcels.includes(parcel)) return console.log(`${email} already has home ${parcel}.`);
+  const { error } = await db.from("members").update({ home_parcels: [...member.home_parcels, parcel] }).eq("id", member.id);
+  if (error) throw error;
+  console.log(`Added home ${parcel} for ${email}. Homes: ${[...member.home_parcels, parcel].join(", ")}`);
+}
+
+/** Move a member's untagged files into members/<id>/<parcel>/ so each file names its home. */
+async function tagFiles(member, parcel) {
+  const { data: docs } = await db.from("documents").select("id, storage_path").eq("member_id", member.id).eq("visibility", "private");
+  let n = 0;
+  for (const d of docs ?? []) {
+    if (/^members\/[^/]+\/\d{6,}\//.test(d.storage_path)) continue;
+    const to = d.storage_path.replace(/^(members\/[^/]+)\//, `$1/${parcel}/`);
+    const mv = await db.storage.from(BUCKET).move(d.storage_path, to);
+    if (mv.error) throw mv.error;
+    const { error } = await db.from("documents").update({ storage_path: to }).eq("id", d.id);
+    if (error) throw error;
+    n++;
+  }
+  if (n) console.log(`  tagged ${n} existing files with home ${parcel}`);
+}
+
+/** Hand one home's whole file to its owner (e.g. from Kimberly's test account), with the home on the map. */
 async function moveFile() {
   const from = String(args.from ?? "").toLowerCase();
   const to = String(args.to ?? "").toLowerCase();
   const { data: a } = await db.from("members").select("id, home_parcels").eq("email", from).maybeSingle();
   const { data: b } = await db.from("members").select("id, home_parcels").eq("email", to).maybeSingle();
   if (!a || !b) throw new Error("Both --from and --to must already be members (run add-member for the owner first).");
-  const { data, error } = await db.from("documents").update({ member_id: b.id }).eq("member_id", a.id).eq("visibility", "private").select("id");
-  if (error) throw error;
-  // The home on the map goes with the file.
-  if (!b.home_parcels?.length && a.home_parcels?.length) {
-    await db.from("members").update({ home_parcels: a.home_parcels }).eq("id", b.id);
-    await db.from("members").update({ home_parcels: [] }).eq("id", a.id);
+  const parcel = typeof args.parcel === "string" ? args.parcel : a.home_parcels.length === 1 ? a.home_parcels[0] : "";
+  if (!parcel || !a.home_parcels.includes(parcel)) throw new Error(`Say which home to move with --parcel (${from} has: ${a.home_parcels.join(", ")}).`);
+  const { data: docs } = await db.from("documents").select("id, storage_path").eq("member_id", a.id).eq("visibility", "private");
+  const ids = (docs ?? []).filter((d) => homeOfDoc(d.storage_path, a.home_parcels) === parcel).map((d) => d.id);
+  // Tag first, so the files still say which home they are once they belong to someone else.
+  await tagFiles(a, a.home_parcels[0]);
+  if (ids.length) {
+    const { error } = await db.from("documents").update({ member_id: b.id }).in("id", ids);
+    if (error) throw error;
   }
-  console.log(`Moved ${data.length} private files from ${from} to ${to}.`);
+  // The home on the map goes with the file.
+  await db.from("members").update({ home_parcels: [...new Set([...(b.home_parcels ?? []), parcel])] }).eq("id", b.id);
+  await db.from("members").update({ home_parcels: a.home_parcels.filter((p) => p !== parcel) }).eq("id", a.id);
+  console.log(`Moved ${ids.length} private files for home ${parcel} from ${from} to ${to}.`);
 }
 
 /** Back office folder -> library category. Anything not listed here is never uploaded. */
@@ -227,7 +279,7 @@ async function uploadShared() {
   console.log("Done: the shared library is up to date.");
 }
 
-const commands = { "add-member": addMember, "upload-folder": uploadFolder, "add-file": addFile, "move-file": moveFile, "upload-shared": uploadShared };
+const commands = { "add-member": addMember, "add-home": addHome, "upload-folder": uploadFolder, "add-file": addFile, "move-file": moveFile, "upload-shared": uploadShared };
 if (!commands[command]) {
   console.error("Commands: add-member, upload-folder (see the top of this file)");
   process.exit(1);

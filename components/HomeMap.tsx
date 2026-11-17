@@ -30,7 +30,7 @@ const inSort = (h: Home, sort: Sort) =>
   (sort === "watch" && (!!h.watch || h.kind === "lost")) ||
   (sort === "vacant" && !!h.vacant);
 type MyFile = { id: string; title: string; download: boolean; size: number | null };
-type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[]; myFile?: MyFile[] };
+type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[]; myFiles?: Record<string, MyFile[]> };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
   researched: { fill: "#a32e28", opacity: 0.6 },
@@ -208,7 +208,7 @@ function HomeCard({ home, isMine, myFile = [] }: { home: Home; isMine: boolean; 
               ))}
             </ul>
           )}
-          <a className="button button-red" href="/members#my-home">
+          <a className="button button-red" href={`/members#home-${home.id.replace(/-\d+$/, "")}`}>
             {homeMapCard.mineButton}
           </a>
         </div>
@@ -386,7 +386,7 @@ export default function HomeMap() {
             ))}
           </ul>
         </div>
-        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFile} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
+        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFiles?.[selected.id.replace(/-\d+$/, "")]} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
       </div>
     </div>
   );
