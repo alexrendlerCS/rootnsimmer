@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { homeMapCard, homeMapKey, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
+import { demolishedLots, homeMapCard, homeMapKey, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
 import { openEmailDraft } from "@/lib/email";
 
 type Ring = [number, number][];
@@ -38,7 +38,7 @@ type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[]
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
   researched: { fill: "#a32e28", opacity: 0.6 },
   historic: { fill: "#a8843f", opacity: 0.5 },
-  lost: { fill: "#5b584e", opacity: 0.22 },
+  lost: { fill: "#6e4466", opacity: 0.5 },
   other: { fill: "#c9d6cb", opacity: 0.45 },
 };
 // GeoJSON is [lng, lat]; Leaflet wants [lat, lng].
@@ -71,7 +71,7 @@ function lotStyle(kind: Kind, selected = false, sort: Sort = "all", home?: Home)
     opacity: selected ? 1 : 0.55,
     fillColor: COLORS[kind].fill,
     fillOpacity: COLORS[kind].opacity,
-    dashArray: kind === "lost" && !selected ? "3 3" : undefined,
+    dashArray: undefined,
   };
 }
 
@@ -174,6 +174,13 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
         </section>
       )}
 
+      {demolishedLots[parcelOf(home.id)] && (
+        <p className="home-demolished">
+          <strong>Demolished:</strong> {demolishedLots[parcelOf(home.id)].note}
+          <span className="home-source">From the City’s HARB and permit records.</span>
+        </p>
+      )}
+
       {home.watch && (
         <p className="home-watch">
           <strong>Demolition watch:</strong> {home.watch}.
@@ -262,7 +269,11 @@ export default function HomeMap() {
   useEffect(() => {
     fetch("/data/lincolnville-homes.json")
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then(setData)
+      // Lots in demolishedLots count as demolished everywhere: color, key, sorts and card.
+      .then((d: MapData) => {
+        for (const h of d.homes) if (demolishedLots[parcelOf(h.id)]) h.kind = "lost";
+        setData(d);
+      })
       .catch(() => setError(true));
   }, []);
 

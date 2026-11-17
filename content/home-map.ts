@@ -21,7 +21,7 @@ export const homeMapHero = {
  *     red outline  Your own home (members only, after signing in)
  *   From the public records:
  *     gold         Historic: contributing in 1991, or a potential contributor (kind "historic")
- *     grey dashed  Historic building no longer standing              (kind "lost")
+ *     plum         Demolished: a building here is no longer standing (kind "lost", plus demolishedLots below)
  *     pale green   Other lots                                         (kind "other")
  *   Sort buttons light up one group: Historic homes = gold, Demolition watch = red, Vacant and abandoned = teal.
  *   A lot you click gets a thick red outline.
@@ -34,10 +34,20 @@ export const homeMapKey = {
   sorts: "The buttons above the map light up one group at a time: Historic homes in gold, Demolition watch in red, Vacant and abandoned in teal. The lot you click is outlined in red.",
 };
 
+/**
+ * Lots where the City's records show a building was demolished but the map data does not already mark it
+ * (it was not on the 1991 contributing list). Shown in the demolished color. Public facts from City records only.
+ */
+export const demolishedLots: Record<string, { note: string }> = {
+  "2120700000": {
+    note: "A 1954 concrete block house at 101 South St was demolished in 2019, after the Historic Architectural Review Board approved it in November 2018 (City permit PR2019-0244). Steps and a slab remain on the lot.",
+  },
+};
+
 export const homeMapLegend = [
   { kind: "researched", label: "History researched by Root & Simmer" },
   { kind: "historic", label: "Historic: contributing in 1991, or a potential contributor in the State site file" },
-  { kind: "lost", label: "Historic building no longer standing" },
+  { kind: "lost", label: "Demolished: a building here is no longer standing" },
   { kind: "other", label: "Other lots" },
 ] as const;
 

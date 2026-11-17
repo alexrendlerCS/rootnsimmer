@@ -1117,7 +1117,9 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .swatch { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgb(31 58 44 / 0.5); flex: none; }
 .swatch-researched { background: rgb(163 46 40 / 0.6); }
 .swatch-historic { background: rgb(168 132 63 / 0.5); }
-.swatch-lost { background: rgb(91 88 78 / 0.22); border-style: dashed; }
+.swatch-lost { background: rgb(110 68 102 / 0.5); border-color: #6e4466; }
+.home-kind-lost { color: #6e4466; }
+.home-demolished { margin: 0 0 1rem; padding: 10px 12px; font-size: 0.9375rem; background: #f3ecf2; border-left: 3px solid #6e4466; border-radius: 0 var(--radius) var(--radius) 0; }
 .swatch-other { background: rgb(201 214 203 / 0.6); }
 
 .home-card-wrap { position: sticky; top: 96px; }
