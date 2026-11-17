@@ -28,6 +28,8 @@ export const nav = [
   { href: "/#kimberly", label: "About Kimberly" },
   { href: "/cra-lincolnville", label: "CRA – Lincolnville" },
   { href: "/digital-records", label: "Digital Records" },
+  { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
+  { href: "/library", label: "Library" },
   { href: "/#records", label: "Contact" },
 ];
 

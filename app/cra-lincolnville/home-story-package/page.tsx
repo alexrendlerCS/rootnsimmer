@@ -69,6 +69,29 @@ export default function HomeStoryPage() {
           </div>
         </div>
       </GuideSection>
+
+      <GuideSection id="sample" title={c.sample.title}>
+        <p>{c.sample.intro}</p>
+        <ol className="sample-parts">
+          {c.sample.parts.map((s) => (
+            <li key={s.name}>
+              <h3>{s.name}</h3>
+              <p className="doc-size">{s.size}</p>
+              <p>{s.body}</p>
+            </li>
+          ))}
+        </ol>
+        <h3 className="steps-title">{c.sample.sectionsTitle}</h3>
+        <dl className="glance">
+          {c.sample.sections.map((s) => (
+            <div key={s.name}>
+              <dt>{s.name}</dt>
+              <dd>{s.body}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="sample-extras">{c.sample.extras}</p>
+      </GuideSection>
     </CraGuide>
   );
 }

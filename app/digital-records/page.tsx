@@ -93,12 +93,17 @@ export default function DigitalRecordsPage() {
               sizes="(max-width: 900px) 90vw, 560px"
             />
           </div>
-          <div className="goal-grid">
+          <div className="goal-grid four">
             {drMembership.included.map((f) => (
               <article key={f.title} className="goal">
                 <p className="goal-kicker">Included</p>
                 <h3>{f.title}</h3>
                 <p>{f.body}</p>
+                {f.href && (
+                  <p className="goal-more">
+                    <Link className="goal-link" href={f.href}>{f.linkLabel}</Link>
+                  </p>
+                )}
               </article>
             ))}
           </div>

@@ -72,6 +72,15 @@ export default function CraLandingPage() {
         </ul>
       </GuideSection>
 
+      <GuideSection id="library" title={l.library.title}>
+        <p>{l.library.body}</p>
+        <p>
+          <Link className="button" href="/library">
+            {l.library.link}
+          </Link>
+        </p>
+      </GuideSection>
+
       <GuideSection id="follow" title={l.follow.title}>
         <p>{l.follow.body}</p>
         <ol className="stages">
@@ -85,6 +94,23 @@ export default function CraLandingPage() {
             <li key={q}>{q}</li>
           ))}
         </ul>
+      </GuideSection>
+
+      <GuideSection id="minutes" title={l.minutes.title}>
+        <p>{l.minutes.intro}</p>
+        <ul className="minutes-list">
+          {l.minutes.quotes.map((q) => (
+            <li key={q.text}>
+              <figure className="minutes-quote">
+                <blockquote>{q.text}</blockquote>
+                <figcaption>
+                  {q.who}, {q.date}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+        <p className="fine">{l.minutes.note}</p>
       </GuideSection>
 
       <GuideSection id="take-part" title="How to take part">

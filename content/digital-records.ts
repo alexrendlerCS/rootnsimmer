@@ -71,6 +71,7 @@ export const drMembership = {
     { title: "Digital welcome packet", body: "A sourced history of your home: records gathered in one place, historical context, and your family’s memories in your own words. Scope agreed together." },
     { title: "Electronic documents", body: "The three member documents above: Homes, Not Hotels, Why Lincolnville Homes Are Lost, and the Lincolnville Places and People Guide." },
     { title: "Membership", body: "One year in the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection. Updates on events and CRA votes, a voice, and knowing what is happening in Lincolnville." },
+    { title: "The full Library", body: "Every plan, budget, meeting record and City interview in the Library, including the members-only documents, with new ones added as they come in.", href: "/library", linkLabel: "See what is in the Library" },
   ],
   votes: {
     title: "How member votes work",

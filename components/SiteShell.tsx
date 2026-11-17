@@ -25,10 +25,15 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <p className="footer-links">
               <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link>
               <Link href="/digital-records">Digital Records</Link>
+              <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
+              <Link href="/library">Library</Link>
             </p>
           </div>
           <div>
             <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+            <p>
+              <a href="tel:+17604814961">760-481-4961</a>
+            </p>
             <p>{site.place}</p>
           </div>
           <p className="footer-fine">

@@ -93,6 +93,26 @@ export const craLanding = {
       { goal: "Place", slug: "parks-and-named-places", title: "Parks, public spaces and streets", body: "Eddie Vickers Park, Lincolnville Park and Robert B. Hayling Park, plus the MLK Avenue streetscape, a current CRA project covering street, utility and safety work." },
     ],
   },
+  library: {
+    title: "Read the documents yourself",
+    body: "The 2013 Redevelopment Plan, the 2017 amendment, the budgets and our latest meeting guide are gathered in one place, each with a plain-words note on what it is.",
+    link: "Open the Library",
+  },
+  /** Quotes from the City’s Steering Committee minutes. Quote them only "according to the City’s minutes". */
+  minutes: {
+    title: "In the City’s own words",
+    intro: "What City staff and Steering Committee members said about Lincolnville’s residents, homes and parks, according to the City’s minutes.",
+    quotes: [
+      { text: "The 2017 plan “asked the CRA to focus on assisting Lincolnville long term residents to age in place and the Fix It Up Program is the program the CRA implemented to address that concern.”", who: "Jaime Perkins, CRA Manager", date: "January 29, 2024" },
+      { text: "Challenges include “a lack of housing stock, the costs of improved and unimproved parcels in Lincolnville, and how to determine how to make these properties at an affordable rate where it made sense to spend taxpayers’ dollars.”", who: "Jaime Perkins, CRA Manager", date: "July 7, 2025" },
+      { text: "Acquisition is difficult “due to the current economic state of rising costs of properties in that area”; the current budget line “was specifically for consultation services to monitor data in the Lincolnville area.”", who: "Jaime Perkins, CRA Manager", date: "April 6, 2026" },
+      { text: "On the MLK Avenue streetscape, she “would not want to implement eminent domain for a beautification project, but it was possible.”", who: "Jaime Perkins, CRA Manager", date: "April 7, 2025" },
+      { text: "Encouraged the board “to be gentle with residents”; the City “would not want anyone to feel coerced or that their neighbors were against them because they had not signed off on it.”", who: "Isabelle Lopez, City Attorney", date: "January 5, 2026" },
+      { text: "Questioned why the kayak launch had no fishing pier; “it was the first time she heard that there would not be a fishing pier.”", who: "Madeline Wise, Steering Committee member", date: "April 6, 2026" },
+      { text: "The fishing pier at Eddie Vickers Park “had always been an important component for the community” and “she did not want to drop it.”", who: "Mari Hayes, Steering Committee Vice-Chair", date: "April 6, 2026" },
+    ],
+    note: "The City’s minutes are summaries written by the City Clerk’s staff, not word-for-word transcripts. Source: Lincolnville CRA Steering Committee minutes, January 29, 2024 to April 6, 2026.",
+  },
   follow: {
     title: "Following the work",
     body: "A budget figure is not the same as a finished project. A helpful way to follow any CRA item is to ask where it stands:",
@@ -368,6 +388,30 @@ export const craHomeStory = {
       ["Electronic documents", "Three member documents: Homes, Not Hotels: A Lincolnville Proposal; Why Lincolnville Homes Are Lost: Risks and Protections; and the Lincolnville Places and People Guide."],
       ["Membership", "One year in the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection. Updates on events and CRA votes, a voice, and knowing what is happening in Lincolnville."],
     ],
+  },
+  /**
+   * "Inside a finished packet": modeled on a real packet delivered in November 2026 (the home in the
+   * Then/Now photos). Never add the address, the owner’s name or the deeds here: the packet belongs to the family.
+   */
+  sample: {
+    title: "Inside a finished packet",
+    intro: "This is what one Lincolnville family received in November 2026, for the home in the photos above. Every fact is traced to a record, and where the records disagree or fall silent, the packet says so. The packet belongs to the family, so its pages are not shown here.",
+    parts: [
+      { name: "Folder presentation", size: "18 pages", body: "Everything known about the house and its land, with a table of contents for the records." },
+      { name: "A personal letter", size: "3 pages", body: "What we found, what is still missing, and the questions only the family can answer." },
+      { name: "Home History Packet", size: "13 pages", body: "The full written history of the home, with every source named." },
+      { name: "Digital Records Collection", size: "80 pages", body: "Copies of 19 public records in six sections, each with a one-page summary." },
+    ],
+    sectionsTitle: "The six sections of records",
+    sections: [
+      { name: "Ownership", body: "The Property Appraiser record and the chain of deeds." },
+      { name: "Repairs and permits", body: "Roof and electrical permits, and a roof certificate of completion." },
+      { name: "Historic status", body: "The Florida Master Site File record and its survey photographs, the 1991 National Register nomination, and the 1991 Lincolnville Historic District map." },
+      { name: "Historic maps", body: "Sanborn fire insurance maps from 1910 and 1917." },
+      { name: "Plan and protections", body: "The page of the 2013 Lincolnville Redevelopment Plan that touches the street, the Ad Valorem Tax Exemption for Historic Preservation, and the City Code on the Historic Architectural Review Board." },
+      { name: "Research", body: "Pages from a university study of the neighborhood, and the findings of a file search." },
+    ],
+    extras: "Where it helps, the packet also includes a draft of the State’s National Register Preliminary Site Information Questionnaire for the home, and the Lincolnville Connection Member Guide.",
   },
 };
 
