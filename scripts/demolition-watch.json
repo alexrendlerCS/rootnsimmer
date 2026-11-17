@@ -1,0 +1,21 @@
+{
+  "_source": "Lincolnville Demolition Permits Still Open or Issued (Root & Simmer, October 30, 2026), from the City of St. Augustine staff list of demolition permits (latest entry January 2026). Statuses may have lapsed: permits become void if work does not begin within 180 days. Confirm with Planning & Building, 904-825-1065.",
+  "addresses": [
+    { "address": "103 South St", "work": "Whole building; the lot is already empty" },
+    { "address": "112 Carrie Johnson Way", "work": "Demolition permit; the City gave no scope" },
+    { "address": "144 Martin Luther King Ave", "work": "Partial demolition of a contributing home" },
+    { "address": "95 Oneida St", "work": "Partial demolition of a contributing home" },
+    { "address": "129 Washington St", "work": "Partial demolition: front porch and rear addition" },
+    { "address": "186 Blanco St", "work": "Partial demolition: rear addition" },
+    { "address": "163 School St", "work": "Detached garage" },
+    { "address": "111 Washington St", "work": "Garage" },
+    { "address": "83 Lincoln St", "work": "Rear concrete stoop and sheds" },
+    { "address": "79 Park Pl", "work": "Rear accessory structure (79A Park Place)" },
+    { "address": "26 Sebastian Ave", "work": "Shed" },
+    { "address": "113 La Quinta Pl", "work": "Shed" },
+    { "address": "107 Cedar St", "work": "Shed" },
+    { "address": "11 Bridge St", "work": "Emergency demolition, completed June 8, 2024, per the City's note" },
+    { "address": "160 Oneida St", "work": "HARB case HP2026-0076: partial demolition tied to rehabilitation, heard October 15, 2026" },
+    { "address": "56 Lovett St", "work": "A 2019 demolition permit (PR2019-0404) on the City's list has expired" }
+  ]
+}

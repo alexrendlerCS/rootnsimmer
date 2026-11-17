@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
 import {
+  abandoned,
   demolition,
   packets,
   protectFacts,
@@ -33,6 +34,7 @@ const sections = [
   { href: "#records", label: protectFacts.title },
   { href: `#${demolition.id}`, label: demolition.title },
   { href: `#${recognition.id}`, label: recognition.title },
+  { href: `#${abandoned.id}`, label: abandoned.title },
   { href: "#packets", label: "The member packets" },
   { href: "#your-home", label: "Your own home’s history" },
 ];
@@ -131,6 +133,19 @@ export default function PreserveHistoricHomesPage() {
               <h3>{recognition.tax.title}</h3>
               <p>{recognition.tax.body}</p>
             </div>
+          </GuideSection>
+
+          <GuideSection id={abandoned.id} title={abandoned.title}>
+            <figure className="minutes-quote">
+              <blockquote>“{abandoned.quote}”</blockquote>
+              <figcaption>{abandoned.source}</figcaption>
+            </figure>
+            <p>{abandoned.body}</p>
+            <p>
+              <Link className="button" href={abandoned.mapLink.href}>
+                {abandoned.mapLink.label}
+              </Link>
+            </p>
           </GuideSection>
 
           <GuideSection id="packets" title="The member packets">

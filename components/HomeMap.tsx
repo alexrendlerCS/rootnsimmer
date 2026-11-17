@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { homeMapCard, homeMapLegend } from "@/content/home-map";
+import { homeMapCard, homeMapLegend, homeMapPackets, homeMapSorts } from "@/content/home-map";
 import { openEmailDraft } from "@/lib/email";
 
 type Ring = [number, number][];
@@ -18,7 +18,17 @@ type Home = {
   nr1991?: { status: string | null; date: string | null; style: string | null; lost: boolean };
   research?: { address: string; built: string | null; builtSource: string | null; sources: { label: string; url?: string }[] }[];
   kind: Kind;
+  historic?: boolean;
+  vacant?: boolean;
+  watch?: string;
 };
+type Sort = (typeof homeMapSorts)[number]["id"];
+const SORT_COLORS: Record<Exclude<Sort, "all">, string> = { historic: "#a8843f", watch: "#a32e28", vacant: "#4f7f78" };
+const inSort = (h: Home, sort: Sort) =>
+  sort === "all" ||
+  (sort === "historic" && !!h.historic && h.kind !== "lost") ||
+  (sort === "watch" && (!!h.watch || h.kind === "lost")) ||
+  (sort === "vacant" && !!h.vacant);
 type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine?: string[] };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
@@ -32,7 +42,18 @@ const flip = (r: Ring) => r.map(([x, y]) => [y, x] as [number, number]);
 const toLatLngs = (g: Ring[][]) => g.map((poly) => poly.map(flip));
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 
-function lotStyle(kind: Kind, selected = false): L.PathOptions {
+function lotStyle(kind: Kind, selected = false, sort: Sort = "all", home?: Home): L.PathOptions {
+  if (sort !== "all" && home && !selected) {
+    const on = inSort(home, sort);
+    return {
+      color: on ? SORT_COLORS[sort] : "#1f3a2c",
+      weight: on ? 1.5 : 0.4,
+      opacity: on ? 0.95 : 0.25,
+      fillColor: on ? SORT_COLORS[sort] : "#c9d6cb",
+      fillOpacity: on ? 0.55 : 0.08,
+      dashArray: undefined,
+    };
+  }
   return {
     color: selected ? "#a32e28" : "#1f3a2c",
     weight: selected ? 3 : 0.6,
@@ -41,6 +62,27 @@ function lotStyle(kind: Kind, selected = false): L.PathOptions {
     fillOpacity: COLORS[kind].opacity,
     dashArray: kind === "lost" && !selected ? "3 3" : undefined,
   };
+}
+
+function Packets({ home }: { home: Home }) {
+  const list: string[] = [];
+  if (home.historic && home.kind !== "lost") list.push(homeMapPackets.recognize, homeMapPackets.protect);
+  else if (home.watch || home.kind === "lost") list.push(homeMapPackets.protect);
+  if (home.vacant) list.push(homeMapPackets.owners);
+  if (!list.length) return null;
+  return (
+    <section className="home-packets" aria-label={homeMapPackets.title}>
+      <h3>{homeMapPackets.title}</h3>
+      <ul>
+        {[...new Set(list)].map((p) => (
+          <li key={p}>
+            <a href={homeMapPackets.href}>{p}</a>
+          </li>
+        ))}
+      </ul>
+      <p className="home-source">{homeMapPackets.note}</p>
+    </section>
+  );
 }
 
 function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
@@ -102,6 +144,13 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
         ))}
       </dl>
 
+      {home.watch && (
+        <p className="home-watch">
+          <strong>Demolition watch:</strong> {home.watch}.
+          <span className="home-source">From the City’s 2019-2025 demolition permit list. Confirm with Planning &amp; Building, 904-825-1065.</span>
+        </p>
+      )}
+
       {home.research ? (
         <section className="home-research" aria-label="Root & Simmer research">
           <h3>From our research</h3>
@@ -137,6 +186,8 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
         <p className="home-coming">{homeMapCard.historyComingSoon}</p>
       )}
 
+      <Packets home={home} />
+
       {isMine ? (
         <div className="home-join home-mine">
           <h3>{homeMapCard.mineTitle}</h3>
@@ -169,6 +220,12 @@ export default function HomeMap() {
   const [error, setError] = useState(false);
   const [selected, setSelected] = useState<Home | null>(null);
   const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<Sort>("all");
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get("sort");
+    if (homeMapSorts.some((s) => s.id === wanted)) setSort(wanted as Sort);
+  }, []);
+  const sortRef = useRef<Sort>("all");
   const [notFound, setNotFound] = useState(false);
   const selectedId = useRef<string | null>(null);
 
@@ -182,7 +239,7 @@ export default function HomeMap() {
   const select = (home: Home, fly = false) => {
     const prev = selectedId.current && layers.current.get(selectedId.current);
     const prevHome = prev && data?.homes.find((h) => h.id === selectedId.current);
-    if (prev && prevHome) prev.setStyle(lotStyle(prevHome.kind));
+    if (prev && prevHome) prev.setStyle(lotStyle(prevHome.kind, false, sortRef.current, prevHome));
     const layer = layers.current.get(home.id);
     layer?.setStyle(lotStyle(home.kind, true)).bringToFront();
     selectedId.current = home.id;
@@ -226,6 +283,20 @@ export default function HomeMap() {
     };
   }, [data]);
 
+  // Restyle every lot when the sort changes.
+  useEffect(() => {
+    sortRef.current = sort;
+    if (!data) return;
+    for (const h of data.homes) {
+      const layer = layers.current.get(h.id);
+      if (!layer) continue;
+      layer.setStyle(lotStyle(h.kind, h.id === selectedId.current, sort, h));
+      if (sort !== "all" && inSort(h, sort)) layer.bringToFront();
+    }
+    const sel = selectedId.current && layers.current.get(selectedId.current);
+    if (sel) sel.bringToFront();
+  }, [sort, data]);
+
   const index = useMemo(() => (data ? data.homes.filter((h) => h.address).map((h) => ({ h, k: norm(h.address) })) : []), [data]);
 
   const onSearch = (e: React.FormEvent) => {
@@ -267,6 +338,22 @@ export default function HomeMap() {
         </datalist>
         {notFound && <p className="home-search-miss">No Lincolnville lot matches that address. Try the house number and street name.</p>}
       </form>
+
+      <div className="home-sorts" role="group" aria-label="Sort the map">
+        {homeMapSorts.map((s) => (
+          <button
+            key={s.id}
+            type="button"
+            className={`home-sort home-sort-${s.id}`}
+            aria-pressed={sort === s.id}
+            onClick={() => setSort(s.id)}
+          >
+            {s.label}
+            {data && s.id !== "all" && <span className="home-sort-count">{data.homes.filter((h) => inSort(h, s.id)).length}</span>}
+          </button>
+        ))}
+      </div>
+      {sort !== "all" && <p className="home-sort-hint">{homeMapSorts.find((s) => s.id === sort)?.hint}</p>}
 
       <div className="home-map-layout">
         <div className="home-map-frame">

@@ -49,7 +49,7 @@ export const pillars: Pillar[] = [
     body: "What owners need to know: how demolition review works, how a home is recognized as historic, and the tax relief that can follow.",
     links: [
       { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
-      { href: "/library#budgets", label: "The plans and budgets" },
+      { href: "/preserve-historic-homes/map?sort=historic", label: "Historic homes on the map" },
     ],
   },
   {

@@ -195,11 +195,12 @@ export const shelves: Shelf[] = [
   {
     id: "packets",
     title: "Home protection packets",
-    question: "How do I protect my home from demolition, or get it recognized as historic?",
+    question: "How do I protect a home from demolition, get it recognized as historic, or reach the owner of an abandoned one?",
     kind: "members",
     docs: [
       { title: "Packet 1: Protecting Your Home from Demolition", source: "Root & Simmer Hospitality Co., with the City’s records, 65 pages", access: "members" },
       { title: "Packet 2: Getting Your Home Recognized as Historic", source: "Root & Simmer Hospitality Co., with the official records, 114 pages", access: "members" },
+      { title: "Packet 3: Abandoned and Vacant Homes: Reaching the Owners", source: "Root & Simmer Hospitality Co., with the redevelopment plan pages, 14 pages", access: "members" },
     ],
   },
   {

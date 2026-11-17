@@ -10,7 +10,7 @@
 export const protectHero = {
   label: "Preserve Historic Homes",
   title: "Preserve Lincolnville’s historic homes.",
-  lede: "Lincolnville’s homes carry its history in their walls. Once a historic house or one of its defining features is gone, it cannot be brought back. Here is how demolition review works, how a home can be recognized as historic, and the two member packets that walk you through both.",
+  lede: "Lincolnville’s homes carry its history in their walls. Once a historic house or one of its defining features is gone, it cannot be brought back. Here is how demolition review works, how a home can be recognized as historic, how to reach the owner of an abandoned home, and the three member packets that walk you through each.",
 };
 
 /** From "Lincolnville Demolitions at a Glance", drawn from the City's own records. */
@@ -102,10 +102,33 @@ export const packets = [
       "Historic Preservation Officer interview on guidelines and landmarks, with summary and transcript",
     ],
   },
+  {
+    id: "packet-3",
+    number: "Packet 3",
+    title: "Abandoned and Vacant Homes: Reaching the Owners",
+    pages: "14 pages",
+    contents: [
+      "Reaching the owners: a plain-words guide, seven steps and a sample letter you can copy",
+      "The 2013 Redevelopment Plan pages on abandoned structures, contacting owners and legal help with titles",
+      "The 2017 amendment pages on title clearing, the Community Land Trust and rehabilitating vacant homes",
+      "Appendix A, the Lincolnville Community Land Trust, and Appendix B, the rehabilitation programs",
+    ],
+  },
 ];
 
+/** If a home is abandoned: what the City's own plan says, and where to start. */
+export const abandoned = {
+  id: "abandoned",
+  title: "If a home is abandoned",
+  quote:
+    "The Community Redevelopment Agency should … compile a database of those abandoned, dilapidated and/or deteriorating structures that contribute to the blight in the Lincolnville CRA. The Agency would then proactively contact the owners of these structures to assess what is preventing them from complying with City code.",
+  source: "Lincolnville Redevelopment Plan, adopted April 8, 2013, page 31",
+  body: "An empty house is still someone’s family home. Packet 3 shows how to find the owner of record, how to write to them kindly, and the help that may bring the house back: Fix-It-Up repair grants, help clearing titles, and historic preservation tax relief. Root & Simmer does not buy, sell or list homes.",
+  mapLink: { href: "/preserve-historic-homes/map?sort=vacant", label: "See vacant lots on the map" },
+};
+
 export const protectJoin = {
-  title: "Get both packets",
+  title: "Get all three packets",
   body: "The packets come with the Lincolnville Connection, part of the Home Story Package.",
   button: "See the Lincolnville Connection",
   href: "/digital-records#dr-membership",
