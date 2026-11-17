@@ -1407,3 +1407,13 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .twine-milestone h3 { margin: 0.25rem 0 0.5rem; }
 @media (max-width: 720px) { .twine-places { grid-template-columns: 1fr; } }
 .twine-label { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--rail); }
+/* Demolition page: "The stairs that remain" introduction */
+.stairs-intro { display: grid; grid-template-columns: 1fr 260px; gap: 24px; align-items: start; margin-bottom: 1rem; }
+.stairs-lead { font: 1.25rem/1.45 var(--font-display); color: var(--oak); }
+.stairs-photo { margin: 0; }
+.stairs-photo img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+.stairs-photo figcaption, .home-status-photo figcaption { margin-top: 6px; font-size: 0.8125rem; color: var(--muted); }
+.stairs-closing { font-family: var(--font-display); font-size: 1.125rem; color: var(--oak); }
+.home-status-photo { margin: 0.25rem 0 0.75rem; }
+.home-status-photo img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+@media (max-width: 720px) { .stairs-intro { grid-template-columns: 1fr; } .stairs-photo { max-width: 320px; } }

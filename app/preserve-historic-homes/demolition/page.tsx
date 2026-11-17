@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { site } from "@/content/site";
-import { demolition } from "@/content/protect";
+import { contactEmail, site } from "@/content/site";
+import Image from "next/image";
+import { demolition, stairs } from "@/content/protect";
 import { filingIntro, filingSteps, floodExemption, needsReview } from "@/content/demolition-filing";
 import { GuideSection } from "@/components/CraGuide";
 import { PacketCards, PreserveGuide } from "@/components/PreserveGuide";
@@ -20,6 +21,38 @@ export default function DemolitionPage() {
       title="Demolition"
       lede="Once a historic house or one of its defining features is gone, it cannot be brought back. Here is how the City reviews demolition, how neighbors can speak up, and what an owner must file."
     >
+      <GuideSection id={stairs.id} title={stairs.title}>
+        <div className="stairs-intro">
+          <div>
+            {stairs.paragraphs.map((p) => (
+              <p key={p.slice(0, 30)} className={p === stairs.paragraphs[0] ? "stairs-lead" : undefined}>
+                {p}
+              </p>
+            ))}
+          </div>
+          <figure className="stairs-photo">
+            <Image src={stairs.photo.src} width={stairs.photo.width} height={stairs.photo.height} alt={stairs.photo.alt} sizes="(max-width: 720px) 90vw, 300px" />
+            <figcaption>{stairs.photo.caption}</figcaption>
+          </figure>
+        </div>
+        <dl className="glance">
+          {stairs.sets.map((s) => (
+            <div key={s.place}>
+              <dt>{s.place}</dt>
+              <dd>{s.body}</dd>
+            </div>
+          ))}
+        </dl>
+        <p>{stairs.trail}</p>
+        <p className="stairs-closing">{stairs.closing}</p>
+        <p>
+          <a className="button" href={`mailto:${contactEmail}?subject=${encodeURIComponent(stairs.ask.subject)}`}>
+            {stairs.ask.label}
+          </a>
+        </p>
+        <p className="fine">{stairs.bridge}</p>
+      </GuideSection>
+
       <GuideSection id={demolition.id} title={demolition.title}>
         <p>{demolition.intro}</p>
         <dl className="glance">
