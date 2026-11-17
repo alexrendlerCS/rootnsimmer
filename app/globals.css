@@ -1450,3 +1450,17 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .project-help-list h3 { margin: 0 0 0.25rem; font-size: 1.0625rem; }
 .project-help-list p { margin: 0; font-size: 0.9375rem; }
 @media (max-width: 760px) { .what-if-grid, .project-help-list { grid-template-columns: 1fr; } .project-records li { flex-direction: column; gap: 6px; } }
+
+/* Where it began: the visitor map story (/visitor-map) and its home-page opening */
+.story-open { padding-block: clamp(28px, 4vw, 48px); background: var(--oak); }
+.story-open-card { display: block; text-decoration: none; color: #fff; }
+.story-open-card > * { max-width: 52rem; }
+.story-open-card .section-label { color: var(--sun); }
+.story-open-card .h-medium { color: #fff; }
+.story-open-card p { color: var(--oak-tint); font-size: 1.0625rem; }
+.story-open-card:hover .h-medium { text-decoration: underline; text-decoration-color: var(--sun); }
+.story-marker { max-width: 360px; justify-self: end; }
+.story-quote { font-size: 1.375rem; color: var(--rail); }
+.story-asks { grid-template-columns: 1fr; }
+.story-heart { padding: 2rem clamp(18px, 3vw, 32px); margin-top: 2.5rem; background: var(--haint-soft); border-radius: var(--radius); }
+@media (max-width: 900px) { .story-marker { justify-self: start; } }

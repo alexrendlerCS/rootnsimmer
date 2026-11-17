@@ -17,6 +17,7 @@ import {
 } from "@/content/site";
 import { craTeaser } from "@/content/cra";
 import { whatIfTeasers } from "@/content/stable-bodega";
+import { visitorMapTeaser } from "@/content/visitor-map";
 import { ConnectionForm } from "@/components/ConnectionForm";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
@@ -81,6 +82,18 @@ export default function Home() {
               <li key={line}>{line}</li>
             ))}
           </ol>
+        </section>
+
+        {/* Where it began: bringing Lincolnville onto the visitor map */}
+        <section className="story-open" aria-labelledby="story-open-title">
+          <Link href={visitorMapTeaser.href} className="wrap story-open-card">
+            <p className="section-label">{visitorMapTeaser.label}</p>
+            <h2 id="story-open-title" className="h-medium">
+              {visitorMapTeaser.title}
+            </h2>
+            <p>{visitorMapTeaser.body}</p>
+            <span className="button button-red">{visitorMapTeaser.link}</span>
+          </Link>
         </section>
 
         {/* Mission & vision */}
@@ -243,6 +256,9 @@ export default function Home() {
                   <p key={p}>{p}</p>
                 ))}
               </details>
+              <p>
+                <Link href={visitorMapTeaser.href}>How it began: bringing Lincolnville onto the visitor map</Link>
+              </p>
               <p className="signature">{kimberly.name}</p>
             </div>
           </div>
