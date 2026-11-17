@@ -65,7 +65,7 @@ function lotStyle(kind: Kind, selected = false, sort: Sort = "all", home?: Home)
 }
 
 function Packets({ home }: { home: Home }) {
-  const list: string[] = [];
+  const list: { label: string; href: string }[] = [];
   if (home.historic && home.kind !== "lost") list.push(homeMapPackets.recognize, homeMapPackets.protect);
   else if (home.watch || home.kind === "lost") list.push(homeMapPackets.protect);
   if (home.vacant) list.push(homeMapPackets.owners);
@@ -74,9 +74,9 @@ function Packets({ home }: { home: Home }) {
     <section className="home-packets" aria-label={homeMapPackets.title}>
       <h3>{homeMapPackets.title}</h3>
       <ul>
-        {[...new Set(list)].map((p) => (
-          <li key={p}>
-            <a href={homeMapPackets.href}>{p}</a>
+        {list.map((p) => (
+          <li key={p.href}>
+            <a href={p.href}>{p.label}</a>
           </li>
         ))}
       </ul>

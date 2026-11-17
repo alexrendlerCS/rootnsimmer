@@ -48,10 +48,9 @@ export const homeMapSorts = [
 /** The member packets, by what each one is for. All three are on the Preserve Historic Homes page. */
 export const homeMapPackets = {
   title: "Packets for this home",
-  recognize: "Packet 2: Getting Your Home Recognized as Historic",
-  protect: "Packet 1: Protecting Your Home from Demolition",
-  owners: "Packet 3: Abandoned and Vacant Homes: Reaching the Owners",
-  href: "/preserve-historic-homes#packets",
+  recognize: { label: "Packet 2: Getting Your Home Recognized as Historic", href: "/preserve-historic-homes/historic-recognition#packets" },
+  protect: { label: "Packet 1: Protecting Your Home from Demolition", href: "/preserve-historic-homes/demolition#packets" },
+  owners: { label: "Packet 3: Abandoned and Vacant Homes: Reaching the Owners", href: "/preserve-historic-homes/abandoned-homes#packets" },
   note: "Members’ packets come with the Lincolnville Connection.",
 };
 

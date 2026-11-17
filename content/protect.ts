@@ -1,6 +1,7 @@
 /**
  * Root & Simmer — Preserve Historic Homes (/preserve-historic-homes), a tab in the top menu.
- * Demolition review and historic recognition: a free overview, plus two members' packets.
+ * Pages: Overview, Demolition, Historic Recognition, Abandoned Homes and the Home Map (see preservePages).
+ * Each page has a free overview; the full packets come with the Lincolnville Connection.
  *
  * Words come from the Lincolnville Connection Member Resource Bundle (sections 2 and 3),
  * "Lincolnville Demolitions at a Glance" (October 30, 2026) and the City's Steering Committee minutes.
@@ -32,22 +33,41 @@ export const protectQuote = {
 
 export type Step = string;
 
+/** The pages of Preserve Historic Homes, in order (side menu and previous/next). */
+export const preservePages = [
+  { slug: "", title: "Overview" },
+  { slug: "demolition", title: "Demolition" },
+  { slug: "historic-recognition", title: "Historic Recognition" },
+  { slug: "abandoned-homes", title: "Abandoned Homes" },
+  { slug: "map", title: "Lincolnville Home Map" },
+] as const;
+export type PreserveSlug = (typeof preservePages)[number]["slug"];
+
+/** The overview's four ways in. */
+export const preservePaths = [
+  { slug: "demolition", title: "Demolition", body: "How the City reviews demolition, how to speak up when one is proposed, and the paperwork an owner files.", packet: "Packet 1" },
+  { slug: "historic-recognition", title: "Historic Recognition", body: "The three kinds of recognition, how to seek each one, and the tax relief that can follow.", packet: "Packet 2" },
+  { slug: "abandoned-homes", title: "Abandoned Homes", body: "What the City’s plans say about empty homes, and how to reach an owner respectfully.", packet: "Packet 3" },
+  { slug: "map", title: "Lincolnville Home Map", body: "Every lot in Lincolnville, sorted three ways: historic homes, demolition watch, and vacant and abandoned.", packet: "" },
+] as const;
+
 export const demolition = {
   id: "demolition",
-  title: "If a demolition is proposed",
-  intro: "St. Augustine reviews demolition before it happens, and owners and neighbors can take part in that review.",
+  title: "How the City reviews demolition",
+  intro: "St. Augustine reviews demolition before it happens, and owners and neighbors can take part in that review. These rules apply to every building in the city, whatever its zoning.",
   reviews: [
-    { label: "Full demolition", body: "Any building 50 years old or older needs a Certificate of Demolition after review by the Historic Architectural Review Board (HARB)." },
-    { label: "Partial demolition", body: "On designated or contributing historic buildings, permanently removing or replacing significant features is reviewed: roofs (chimneys, dormers, parapets), windows, exterior finishes, porches and balconies, and foundations. Minor repair, such as re-roofing or matching a few siding boards, is not covered." },
+    { label: "Full demolition", body: "A Certificate of Demolition is required before completely demolishing any structure 50 years old or older. The Historic Architectural Review Board (HARB) must approve it before a demolition permit is issued." },
+    { label: "Partial demolition", body: "The permanent removal of historic exterior features: roofs, chimneys, exterior walls or finishes, porches, windows, foundations and other visible features, and removing 50% or more of a feature’s appraised value even where it is not visible." },
     { label: "Replacement in kind", body: "Compatible replacements with matching material and design can often be approved by City staff during permit review." },
     { label: "Archaeology", body: "Digging more than 3 inches deep over 100 square feet may need review first. Check with the City Archaeologist before foundation work, additions or trenching." },
   ],
+  /** If a demolition is proposed near you. */
+  respondTitle: "If a demolition is proposed near you",
   steps: [
-    "Check the building’s status. Use the City’s interactive historic preservation map, or the 1991 National Register list, to see whether the building is designated or contributing.",
-    "Talk to the Historic Preservation Division first: HARB@citystaug.com, 904-209-4283. Ask what review applies and which application to use.",
-    "Prepare the application. For a contributing building, a full-demolition application also needs a condition report by a Florida licensed architect or engineer and proof of undue economic hardship.",
-    "Watch the HARB agenda. Demolition requests are heard in public. Neighbors may attend and comment.",
-    "Ask about flood exemptions. A 2023 state law, F.S. 553.79(25), can exempt some single-family homes in flood zones from local demolition review, depending on floor elevation. Confirm with the City how it applies.",
+    "Check the building on the Lincolnville Home Map: choose “Demolition watch” to see the lots on the City’s 2019-2025 demolition permit list.",
+    "Watch the HARB agenda. HARB meets on the third Thursday of each month, and demolition requests are heard in public.",
+    "Speak at the hearing, or send a written comment beforehand. Neighbors may comment on any request.",
+    "Ask Historic Preservation staff what review applies: harb@citystaug.com.",
   ] as Step[],
 };
 
@@ -64,24 +84,26 @@ export const recognition = {
     "Find the building on the 1991 list, or on the City’s interactive historic preservation map. Street names and numbers may have changed since 1991.",
     "Request the Florida Master Site File record for the building, if one exists, including survey photographs.",
     "For the National Register, complete the State’s Preliminary Site Information Questionnaire and send it to the Bureau of Historic Preservation, R.A. Gray Building, 500 South Bronough Street, Tallahassee, FL 32399-0250 (850-245-6333). It asks for current and historic photos, a location map and proof of ownership.",
-    "For Local Historic Landmark status, contact the City’s Historic Preservation Division (HARB@citystaug.com, 904-209-4283). The owner must consent.",
+    "For Local Historic Landmark status, contact the City’s Historic Preservation staff (harb@citystaug.com). The owner must consent.",
     "Gather the home’s history. Deeds, permits, maps and family memories strengthen any nomination.",
   ] as Step[],
   tax: {
     title: "Tax relief for restoration",
-    body: "For a designated or contributing building, the City and County Ad Valorem Tax Exemption can exempt 100% of the added value of qualifying restoration for 10 years. The work must meet the Secretary of the Interior’s Standards, be worth at least $20,000 or 50% of the structure’s assessed value, put at least 25% into the exterior or foundation, and be approved before work starts. The owner signs a covenant recorded with the deed.",
+    body: "For a designated or contributing building, the City and County Ad Valorem Tax Exemption can exempt 100% of the added value of qualifying restoration for 10 years. The work must meet the Secretary of the Interior’s Standards, be worth at least $20,000 or 50% of the structure’s assessed value before improvements, whichever is less, put at least 25% into the exterior or foundation, and be approved before work starts. The owner signs a covenant recorded with the deed.",
   },
 };
 
-/** The two members' packets. The PDFs live in Documents\Root & Simmer Member Library\0 Member packets. */
+/** The three members' packets. The PDFs live in Documents\Root & Simmer Member Library\0 Member packets. */
 export const packets = [
   {
     id: "packet-1",
     number: "Packet 1",
     title: "Protecting Your Home from Demolition",
-    pages: "65 pages",
+    pages: "73 pages",
     contents: [
       "Protecting a historic home from demolition: the plain-words guide, with the City’s 2023 letter to owners of historic buildings and the HARB section of the City Code",
+      "Filing for a demolition, step by step: which application, the documents, the Permit Portal, fees, the hearing and appeals",
+      "The City’s forms gathered in one place: the HARB Application Agreement, the Undue Economic Hardship Worksheet and the Submittal Checklist",
       "Keeping Your Lincolnville Home: a homeowner’s guide to preservation, repairs and the agreements that come with help",
       "Lincolnville Demolitions at a Glance, 2019-2025",
       "Lincolnville Homes Already Demolished, two lists",
