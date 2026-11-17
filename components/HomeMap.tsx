@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { homeMapCard, homeMapLegend, homeMapPackets, homeMapSorts } from "@/content/home-map";
+import { homeMapCard, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
 import { openEmailDraft } from "@/lib/email";
 
 type Ring = [number, number][];
@@ -22,13 +22,17 @@ type Home = {
   vacant?: boolean;
   watch?: string;
 };
+/** "2075600000-2" -> "2075600000": a map lot back to its City parcel number. */
+const parcelOf = (id: string) => id.replace(/-\d+$/, "");
+const statusOf = (h: Home) => homeStatus[parcelOf(h.id)];
+const searching = (h: Home) => statusOf(h)?.status === "owners";
 type Sort = (typeof homeMapSorts)[number]["id"];
 const SORT_COLORS: Record<Exclude<Sort, "all">, string> = { historic: "#a8843f", watch: "#a32e28", vacant: "#4f7f78" };
 const inSort = (h: Home, sort: Sort) =>
   sort === "all" ||
   (sort === "historic" && !!h.historic && h.kind !== "lost") ||
   (sort === "watch" && (!!h.watch || h.kind === "lost")) ||
-  (sort === "vacant" && !!h.vacant);
+  (sort === "vacant" && (!!h.vacant || searching(h)));
 type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine?: string[] };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
@@ -43,6 +47,13 @@ const toLatLngs = (g: Ring[][]) => g.map((poly) => poly.map(flip));
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 
 function lotStyle(kind: Kind, selected = false, sort: Sort = "all", home?: Home): L.PathOptions {
+  // Homes Root & Simmer is working with stand out in their own solid color: abandoned homes (teal) in
+  // "All lots" and "Vacant and abandoned"; homes that welcome guests (dark green) in "All lots".
+  const st = home && statusOf(home);
+  if (st && (sort === "all" || (sort === "vacant" && st.status === "owners"))) {
+    const color = homeStatusCards[st.status].color;
+    return { color: selected ? "#a32e28" : color, weight: selected ? 3 : 2, opacity: 1, fillColor: color, fillOpacity: 0.85, dashArray: undefined };
+  }
   if (sort !== "all" && home && !selected) {
     const on = inSort(home, sort);
     return {
@@ -68,7 +79,7 @@ function Packets({ home }: { home: Home }) {
   const list: { label: string; href: string }[] = [];
   if (home.historic && home.kind !== "lost") list.push(homeMapPackets.recognize, homeMapPackets.protect);
   else if (home.watch || home.kind === "lost") list.push(homeMapPackets.protect);
-  if (home.vacant) list.push(homeMapPackets.owners);
+  if (home.vacant || searching(home)) list.push(homeMapPackets.owners);
   if (!list.length) return null;
   return (
     <section className="home-packets" aria-label={homeMapPackets.title}>
@@ -101,9 +112,16 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
           ? "City building age map"
           : null;
 
+  const st = statusOf(home);
+  const card = st && homeStatusCards[st.status];
+
   return (
     <article className="home-card" aria-live="polite">
-      <p className={`home-kind home-kind-${home.kind}`}>{homeMapLegend.find((l) => l.kind === home.kind)?.label}</p>
+      {card ? (
+        <p className={`home-kind home-kind-${st.status}`}>{card.label}</p>
+      ) : (
+        <p className={`home-kind home-kind-${home.kind}`}>{homeMapLegend.find((l) => l.kind === home.kind)?.label}</p>
+      )}
       <h2 className="home-address">{home.address || "Lot without a street number"}</h2>
 
       <dl className="home-facts">
@@ -143,6 +161,18 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
           </div>
         ))}
       </dl>
+
+      {st && card && (
+        <section className={`home-status home-status-${st.status}`} aria-label={card.title}>
+          <h3>{card.title}</h3>
+          <p>{st.note}</p>
+          {card.button && card.emailSubject && card.emailBody && (
+            <button type="button" className="button" onClick={() => openEmailDraft(card.emailSubject!, card.emailBody!(home.address))}>
+              {card.button}
+            </button>
+          )}
+        </section>
+      )}
 
       {home.watch && (
         <p className="home-watch">
@@ -241,7 +271,7 @@ export default function HomeMap() {
     const prevHome = prev && data?.homes.find((h) => h.id === selectedId.current);
     if (prev && prevHome) prev.setStyle(lotStyle(prevHome.kind, false, sortRef.current, prevHome));
     const layer = layers.current.get(home.id);
-    layer?.setStyle(lotStyle(home.kind, true)).bringToFront();
+    layer?.setStyle(lotStyle(home.kind, true, sortRef.current, home)).bringToFront();
     selectedId.current = home.id;
     setSelected(home);
     if (fly && layer && mapRef.current) mapRef.current.flyToBounds(layer.getBounds(), { maxZoom: 19, duration: 0.6 });
@@ -264,7 +294,7 @@ export default function HomeMap() {
 
     const boundary = L.polygon(flip(data.boundary), { color: "#1f3a2c", weight: 2.5, dashArray: "8 6", fill: false, interactive: false }).addTo(map);
     for (const home of data.homes) {
-      const poly = L.polygon(toLatLngs(home.g), lotStyle(home.kind)).addTo(map);
+      const poly = L.polygon(toLatLngs(home.g), lotStyle(home.kind, false, "all", home)).addTo(map);
       poly.on("click", () => selectRef.current(home));
       if (data.mine?.includes(home.id)) poly.setStyle({ color: "#a32e28", weight: 2.5, opacity: 1 });
       layers.current.set(home.id, poly);
@@ -365,6 +395,13 @@ export default function HomeMap() {
                 <span className={`swatch swatch-${l.kind}`} aria-hidden="true" />
                 {l.label}
                 {data && <span className="legend-count">{data.homes.filter((h) => h.kind === l.kind).length}</span>}
+              </li>
+            ))}
+            {(Object.keys(homeStatusCards) as HomeStatus[]).map((k) => (
+              <li key={k}>
+                <span className={`swatch swatch-${k}`} aria-hidden="true" />
+                {homeStatusCards[k].legend}
+                {data && <span className="legend-count">{new Set(data.homes.filter((h) => statusOf(h)?.status === k).map((h) => parcelOf(h.id))).size}</span>}
               </li>
             ))}
           </ul>

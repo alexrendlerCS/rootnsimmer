@@ -19,6 +19,45 @@ export const homeMapLegend = [
   { kind: "other", label: "Other lots" },
 ] as const;
 
+/**
+ * Homes Root & Simmer is working with, by City parcel number, each in its own color on the map:
+ *   owners = an abandoned home we are trying to reach the owners of (teal, the "Vacant and abandoned" color)
+ *   guests = a family home that welcomes guests for vacation and long-term stays (dark green)
+ * Public words only: never owners' names, trust names, mailing addresses, prices, bedrooms or booking details.
+ * Each home's papers stay private: in the members' area for members, or in the back office.
+ * To add a home, copy a line and change the parcel number (shown in the County's records) and the note.
+ */
+export type HomeStatus = "owners" | "guests";
+export const homeStatus: Record<string, { status: HomeStatus; note: string }> = {
+  "2105700000": {
+    status: "owners",
+    note: "This house is standing but empty, and its 2019 demolition approval has lapsed. It was listed as contributing to the Lincolnville Historic District in 1991, and it faces Twine Park across Lovett Street. We are trying to reach the owners about its history and its future.",
+  },
+  "2104200000": {
+    status: "guests",
+    note: "A family home that welcomes guests for vacation and long-term stays. Its history, on the street once called Palmo, now Twine Street, goes with every stay.",
+  },
+};
+
+export const homeStatusCards: Record<HomeStatus, { color: string; label: string; legend: string; title: string; button?: string; emailSubject?: string; emailBody?: (address: string) => string }> = {
+  owners: {
+    color: "#4f7f78",
+    label: "Abandoned: we are looking for the owners",
+    legend: "Abandoned home: we are looking for the owners",
+    title: "Help us reach the owners",
+    button: "I know this family",
+    emailSubject: "Lincolnville home map: reaching the owners",
+    emailBody: (address: string) =>
+      `Hello Kimberly,\n\nI may be able to help you reach the owners of ${address}.\n\nWhat I know:\n\nBest way to reach me:`,
+  },
+  guests: {
+    color: "#1f3a2c",
+    label: "A family home that welcomes guests",
+    legend: "Family home welcoming guests: vacation and long-term stays",
+    title: "A home that welcomes guests",
+  },
+};
+
 export const homeMapCard = {
   empty: "Search for an address, or click any lot on the map.",
   historyComingSoon: "History coming soon.",
@@ -42,7 +81,7 @@ export const homeMapSorts = [
   { id: "all", label: "All lots", hint: "" },
   { id: "historic", label: "Historic homes", hint: "Standing homes that were contributing in 1991 or are potential contributors in the State site file. Get them recognized and protected." },
   { id: "watch", label: "Demolition watch", hint: "Lots on the City’s 2019-2025 demolition permit list, and historic buildings no longer standing. Some permits may have lapsed: confirm with Planning & Building, 904-825-1065." },
-  { id: "vacant", label: "Vacant and abandoned", hint: "Lots the County lists as vacant. Know of an abandoned house? Tell us, and we will help reach the owner." },
+  { id: "vacant", label: "Vacant and abandoned", hint: "Lots the County lists as vacant, and abandoned homes we are looking for the owners of (solid teal). Know of an abandoned house? Tell us, and we will help reach the owner." },
 ] as const;
 
 /** The member packets, by what each one is for. All three are on the Preserve Historic Homes page. */
