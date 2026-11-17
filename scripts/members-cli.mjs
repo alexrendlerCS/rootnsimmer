@@ -7,6 +7,11 @@
  *   Move a whole home file from one member to another (e.g. from Kimberly's test account to the owner), no re-upload:
  *     node --env-file=.env.local scripts/members-cli.mjs move-file --from rootnsimmer@gmail.com --to owner@example.com
  *
+ *   Load the shared members' library from the back office folders (every member can open these):
+ *     node --env-file=.env.local scripts/members-cli.mjs upload-shared --folder "C:\...\Root & Simmer Member Library"
+ *     Only the numbered library folders are read (see SHARED_FOLDERS); "_Never share", "_Hold", "Members (private)",
+ *     "7 Partnerships" and "(editable)" copies are always skipped.
+ *
  *   Preview what would be loaded, without uploading: add --dry-run
  *
  *   Load a member's whole home file from a folder, in reading order (private to that member):
@@ -145,7 +150,58 @@ async function moveFile() {
   console.log(`Moved ${data.length} private files from ${from} to ${to}.`);
 }
 
-const commands = { "add-member": addMember, "upload-folder": uploadFolder, "move-file": moveFile };
+/** Back office folder -> library category. Anything not listed here is never uploaded. */
+const SHARED_FOLDERS = {
+  "0 Member packets": "Home protection packets",
+  "1 Meetings and minutes": "Meetings and minutes",
+  "2 The money, researched": "The money, researched",
+  "3 Protecting homes and history": "Protecting homes and history",
+  "4 Voices from City Hall": "Voices from City Hall",
+  "5 Projects and landmarks": "Projects and landmarks",
+  "6 Guides": "Guides",
+};
+const tidyTitle = (name) =>
+  stripNumber(name)
+    .replace(/^(\d{4})-(\d{2})-(\d{2}) /, (_, y, m, d) => `${new Date(`${y}-${m}-${d}T12:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}: `)
+    .replace(/ - summary and (plain |timestamped )?(transcript|original)$/i, (_, kind, what) => `: summary and ${(kind ?? "").trim() ? kind.trim() + " " : ""}${what}`)
+    .replace(/^Packet (\d) - /, "Packet $1: ");
+
+async function uploadShared() {
+  const folder = String(args.folder ?? "");
+  if (!fs.existsSync(folder)) throw new Error("an existing --folder is required");
+  const plan = [];
+  for (const [dir, category] of Object.entries(SHARED_FOLDERS)) {
+    const full = path.join(folder, dir);
+    if (!fs.existsSync(full)) continue;
+    for (const entry of fs.readdirSync(full, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, "en", { numeric: true }))) {
+      const ext = path.extname(entry.name).toLowerCase();
+      if (!entry.isFile() || !TYPES[ext] || /\(editable\)/i.test(entry.name)) continue;
+      plan.push({ full: path.join(full, entry.name), name: entry.name, ext, category, title: tidyTitle(path.basename(entry.name, ext)) });
+    }
+  }
+  if (dryRun) {
+    for (const p of plan) console.log(`  ${p.category}  |  ${p.title}`);
+    return console.log(`(dry run: ${plan.length} files, nothing uploaded)`);
+  }
+  const { data: existing } = await db.from("documents").select("file_name").eq("visibility", "shared");
+  const have = new Set((existing ?? []).map((d) => d.file_name));
+  for (const p of plan) {
+    if (have.has(p.name)) {
+      console.log(`  skip (already there): ${p.name}`);
+      continue;
+    }
+    const storagePath = `library/${randomUUID()}${p.ext}`;
+    const body = fs.readFileSync(p.full);
+    const up = await db.storage.from(BUCKET).upload(storagePath, body, { contentType: TYPES[p.ext], upsert: false });
+    if (up.error) throw up.error;
+    const { error } = await db.from("documents").insert({ title: p.title, category: p.category, storage_path: storagePath, file_name: p.name, size_bytes: body.length, visibility: "shared" });
+    if (error) throw error;
+    console.log(`  added: ${p.category} / ${p.title}`);
+  }
+  console.log("Done: the shared library is up to date.");
+}
+
+const commands = { "add-member": addMember, "upload-folder": uploadFolder, "move-file": moveFile, "upload-shared": uploadShared };
 if (!commands[command]) {
   console.error("Commands: add-member, upload-folder (see the top of this file)");
   process.exit(1);

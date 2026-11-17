@@ -42,7 +42,7 @@ export default async function MembersPage() {
   const welcome = mine.find((d) => d.category === "Start here");
   const mineRest = mine.filter((d) => d !== welcome);
   const mineSections = [...new Set(mineRest.map((d) => d.category))];
-  const shared = docs.filter((d) => d.visibility === "shared").reverse();
+  const shared = docs.filter((d) => d.visibility === "shared");
   const order = (c: string) => {
     const i = (DOCUMENT_CATEGORIES as readonly string[]).indexOf(c);
     return i === -1 ? 99 : i;
