@@ -1,5 +1,5 @@
 /**
- * Builds public/data/lincolnville-homes.json for the Lincolnville Home Map (/preserve-historic-homes/map).
+ * Builds data/lincolnville-homes.json for the Lincolnville Home Map (/preserve-historic-homes/map).
  *
  * Inputs (downloaded from the City of St. Augustine ArcGIS services, see README in this folder):
  *   boundary.geojson   Neighborhoods layer, Neigh = LINCOLNVILLE

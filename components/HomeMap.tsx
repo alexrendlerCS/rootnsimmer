@@ -19,7 +19,7 @@ type Home = {
   research?: { address: string; built: string | null; builtSource: string | null; sources: { label: string; url?: string }[] }[];
   kind: Kind;
 };
-type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine?: string[] };
+type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[] };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
   researched: { fill: "#a32e28", opacity: 0.6 },
@@ -173,7 +173,7 @@ export default function HomeMap() {
   const selectedId = useRef<string | null>(null);
 
   useEffect(() => {
-    fetch("/data/lincolnville-homes.json")
+    fetch("/api/map-data", { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then(setData)
       .catch(() => setError(true));
@@ -209,7 +209,7 @@ export default function HomeMap() {
     for (const home of data.homes) {
       const poly = L.polygon(toLatLngs(home.g), lotStyle(home.kind)).addTo(map);
       poly.on("click", () => selectRef.current(home));
-      if (data.mine?.includes(home.id)) poly.setStyle({ color: "#a32e28", weight: 2.5, opacity: 1 });
+      if (data.mine.includes(home.id)) poly.setStyle({ color: "#a32e28", weight: 2.5, opacity: 1 });
       layers.current.set(home.id, poly);
     }
     const buildings = L.layerGroup(
@@ -282,7 +282,7 @@ export default function HomeMap() {
             ))}
           </ul>
         </div>
-        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine?.includes(selected.id)} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
+        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
       </div>
     </div>
   );
