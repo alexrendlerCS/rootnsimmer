@@ -39,9 +39,15 @@ export const homeMapKey = {
  * (it was not on the 1991 contributing list), or that need a note on what happened. Shown in the demolished color.
  * Public facts from City records only: no owner names.
  */
-export const demolishedLots: Record<string, { note: string }> = {
+export const demolishedLots: Record<string, { note: string; photo?: { src: string; alt: string; caption: string }; link?: { label: string; href: string } }> = {
   "2120400000": {
-    note: "A frame house built about 1904-1910 stood here, a contributing building in the 1991 Lincolnville Historic District. In December 2019 the Historic Architectural Review Board approved a partial demolition with conditions (case 2019-0109), and a demolition permit (PR2020-1652) was filed in December 2020. No building stands today; the lot is empty.",
+    note: "A frame house built about 1904-1910 stood here, a contributing building in the 1991 Lincolnville Historic District. In December 2019 the Historic Architectural Review Board approved a partial demolition with conditions (case 2019-0109), and a demolition permit (PR2020-1652) was filed in December 2020. No building stands today; the lot is empty. A masonry wall along the back of the lot still stands.",
+    photo: {
+      src: "/photos/103-south-st-lot-2026-10.jpg",
+      alt: "An empty grassy lot with rainwater pooled across it, with a low masonry wall at the back.",
+      caption: "The lot on October 13, 2026. Photo: Root & Simmer.",
+    },
+    link: { label: "Before and after", href: "/preserve-historic-homes/demolition#103-south" },
   },
   "2120700000": {
     note: "A 1954 concrete block house at 101 South St was demolished in 2019, after the Historic Architectural Review Board approved it in November 2018 (City permit PR2019-0244). Steps and a slab remain on the lot.",
