@@ -17,6 +17,9 @@
  *   Load a member's whole home file from a folder, in reading order (private to that member):
  *     node --env-file=.env.local scripts/members-cli.mjs upload-folder --email owner@example.com --folder "C:\...\Members (private)\74 South St"
  *
+ *   Add one file to a member's home file (e.g. the whole digital packet as a ZIP; files in "Start here" also show on the map):
+ *     node --env-file=.env.local scripts/members-cli.mjs add-file --email owner@example.com --file "C:\...\E-Packet.zip" --section "Start here" --title "Your digital packet, every file"
+ *
  * Folder layout (numbers set the order and are dropped from what the member sees):
  *   1 Start here/01 Welcome letter.pdf        <- the first file in "Start here" is shown first, as the welcome letter
  *   2 Your home's history/03 Home History Packet.pdf
@@ -52,7 +55,7 @@ const SECTION_NAMES = {
   "next steps": "Next steps",
 };
 const stripNumber = (s) => s.replace(/^\d+\s+/, "").trim();
-const TYPES = { ".pdf": "application/pdf", ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png" };
+const TYPES = { ".pdf": "application/pdf", ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".zip": "application/zip" };
 
 async function findUserId(email) {
   for (let page = 1; page < 50; page++) {
@@ -134,6 +137,29 @@ async function uploadFolder() {
   console.log(`Done: ${member.full_name ?? email}'s home file is up to date.`);
 }
 
+async function addFile() {
+  const email = String(args.email ?? "").toLowerCase();
+  const file = String(args.file ?? "");
+  const section = String(args.section ?? "Start here");
+  if (!fs.existsSync(file)) throw new Error("an existing --file is required");
+  const ext = path.extname(file).toLowerCase();
+  if (!TYPES[ext]) throw new Error(`files of type ${ext} are not allowed`);
+  const name = path.basename(file);
+  const title = typeof args.title === "string" ? args.title : stripNumber(path.basename(file, ext));
+  if (dryRun) return console.log(`  ${section}  |  ${title}  (${name})\n(dry run: nothing uploaded)`);
+  const { data: member } = await db.from("members").select("id, full_name").eq("email", email).maybeSingle();
+  if (!member) throw new Error(`${email} is not a member yet. Run add-member first.`);
+  const { data: existing } = await db.from("documents").select("id").eq("member_id", member.id).eq("file_name", name);
+  if (existing?.length) return console.log(`  skip (already there): ${name}`);
+  const storagePath = `members/${member.id}/${randomUUID()}${ext}`;
+  const body = fs.readFileSync(file);
+  const up = await db.storage.from(BUCKET).upload(storagePath, body, { contentType: TYPES[ext], upsert: false });
+  if (up.error) throw up.error;
+  const { error } = await db.from("documents").insert({ title, category: section, storage_path: storagePath, file_name: name, size_bytes: body.length, visibility: "private", member_id: member.id });
+  if (error) throw error;
+  console.log(`  added: ${section} / ${title}`);
+}
+
 async function moveFile() {
   const from = String(args.from ?? "").toLowerCase();
   const to = String(args.to ?? "").toLowerCase();
@@ -201,7 +227,7 @@ async function uploadShared() {
   console.log("Done: the shared library is up to date.");
 }
 
-const commands = { "add-member": addMember, "upload-folder": uploadFolder, "move-file": moveFile, "upload-shared": uploadShared };
+const commands = { "add-member": addMember, "upload-folder": uploadFolder, "add-file": addFile, "move-file": moveFile, "upload-shared": uploadShared };
 if (!commands[command]) {
   console.error("Commands: add-member, upload-folder (see the top of this file)");
   process.exit(1);

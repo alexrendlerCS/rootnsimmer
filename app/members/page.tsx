@@ -149,7 +149,7 @@ function DocRow({ doc }: { doc: Doc }) {
         {doc.description && <p className="doc-about">{doc.description}</p>}
       </div>
       <div className="doc-action">
-        <a className="doc-link" href={`/members/document/${doc.id}`} target="_blank" rel="noopener">
+        <a className="doc-link" href={`/members/document/${doc.id}${/\.pdf$/i.test(doc.file_name ?? "") ? "" : "?download"}`} target="_blank" rel="noopener">
           Open document<span className="sr-only">: {doc.title} (opens in a new tab)</span>
         </a>
         {doc.size_bytes ? (

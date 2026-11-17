@@ -1360,3 +1360,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .filing-members { margin-top: 1rem; padding: 14px 16px; background: var(--haint-soft); border-left: 4px solid var(--haint-deep); border-radius: 0 var(--radius) var(--radius) 0; }
 .packets-one { grid-template-columns: minmax(0, 32rem); }
 @media (max-width: 720px) { .paths { grid-template-columns: 1fr; } }
+.mine-files { list-style: none; margin: 0.25rem 0 1rem; padding: 0; display: grid; gap: 8px; }
+.mine-files a {
+  display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; text-decoration: none; font-weight: 600; color: var(--oak);
+  background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--rail); border-radius: var(--radius);
+}
+.mine-files a:hover { border-color: var(--rail); }
+.mine-file-kind { font-size: 0.8125rem; font-weight: 400; color: var(--muted); }

@@ -29,7 +29,8 @@ const inSort = (h: Home, sort: Sort) =>
   (sort === "historic" && !!h.historic && h.kind !== "lost") ||
   (sort === "watch" && (!!h.watch || h.kind === "lost")) ||
   (sort === "vacant" && !!h.vacant);
-type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[] };
+type MyFile = { id: string; title: string; download: boolean; size: number | null };
+type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[]; myFile?: MyFile[] };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
   researched: { fill: "#a32e28", opacity: 0.6 },
@@ -85,7 +86,7 @@ function Packets({ home }: { home: Home }) {
   );
 }
 
-function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
+function HomeCard({ home, isMine, myFile = [] }: { home: Home; isMine: boolean; myFile?: MyFile[] }) {
   const built =
     home.research?.find((r) => r.built)?.built ??
     home.site.find((s) => s.year)?.year ??
@@ -191,6 +192,22 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
       {isMine ? (
         <div className="home-join home-mine">
           <h3>{homeMapCard.mineTitle}</h3>
+          {myFile.length > 0 && (
+            <ul className="mine-files">
+              {myFile.map((f) => (
+                <li key={f.id}>
+                  <a href={`/members/document/${f.id}${f.download ? "?download" : ""}`} target={f.download ? undefined : "_blank"} rel="noopener">
+                    {f.title}
+                    <span className="mine-file-kind">
+                      {f.download ? homeMapCard.downloadLabel : homeMapCard.openLabel}
+                      {f.size ? `, ${f.size > 1_000_000 ? `${Math.round(f.size / 1_000_000)} MB` : `${Math.max(1, Math.round(f.size / 1000))} KB`}` : ""}
+                    </span>
+                    {!f.download && <span className="sr-only"> (opens in a new tab)</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
           <a className="button button-red" href="/members#my-home">
             {homeMapCard.mineButton}
           </a>
@@ -369,7 +386,7 @@ export default function HomeMap() {
             ))}
           </ul>
         </div>
-        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
+        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFile} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
       </div>
     </div>
   );
