@@ -18,18 +18,18 @@ export const site = {
 };
 
 /**
- * Top menu. Links starting with "/#" jump to a section of the home page;
- * "/cra-lincolnville" and "/digital-records" are their own pages.
+ * Top menu. Links starting with "/#" jump to a section of the home page
+ * ("About" opens the home page at Mission; Values, Our work and About Kimberly follow it there).
+ * Everything else is its own page. "Membership" is the Digital Records page, where the Lincolnville Connection is.
  */
 export const nav = [
-  { href: "/#mission", label: "Mission" },
-  { href: "/#values", label: "Values" },
-  { href: "/#work", label: "Our work" },
-  { href: "/#kimberly", label: "About Kimberly" },
+  { href: "/#mission", label: "About" },
+  { href: "/root", label: "ROOT" },
   { href: "/cra-lincolnville", label: "CRA – Lincolnville" },
-  { href: "/digital-records", label: "Digital Records" },
   { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
   { href: "/library", label: "Library" },
+  { href: "/newsletter", label: "Newsletter" },
+  { href: "/digital-records", label: "Membership" },
   { href: "/#records", label: "Contact" },
 ];
 

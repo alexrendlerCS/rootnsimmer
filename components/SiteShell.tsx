@@ -23,10 +23,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <p className="footer-name">{site.fullName} · Lincolnville, St. Augustine</p>
             <p>Independent community education. Not an official City of St. Augustine or CRA publication.</p>
             <p className="footer-links">
+              <Link href="/root">ROOT: Lincolnville Community Committee</Link>
               <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link>
               <Link href="/digital-records">Digital Records</Link>
               <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
               <Link href="/library">Library</Link>
+              <Link href="/newsletter">Newsletter</Link>
             </p>
           </div>
           <div>

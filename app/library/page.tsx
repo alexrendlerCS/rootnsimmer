@@ -124,7 +124,7 @@ export default function LibraryPage() {
             <div>
               <h2 id="feature-protect-title">Preserve historic homes</h2>
               <p>
-                How demolition review works, how to get a home recognized as historic, and the two member packets
+                How demolition review works, how to get a home recognized as historic, how to reach the owner of an abandoned home, and the three member packets
                 that walk you through both.
               </p>
             </div>

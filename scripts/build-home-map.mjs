@@ -21,6 +21,9 @@ import fs from "node:fs";
 import ExcelJS from "exceljs";
 
 const [inDir, workbookPath, outJson, unmatchedCsv] = process.argv.slice(2);
+
+// Demolition watch: addresses from the City's 2019-2025 demolition permit list (see demolition-watch.json).
+const watchFile = JSON.parse(fs.readFileSync(new URL("./demolition-watch.json", import.meta.url), "utf8"));
 const read = (n) => JSON.parse(fs.readFileSync(`${inDir}/${n}.geojson`, "utf8"));
 const round = (n) => Math.round(n * 1e6) / 1e6;
 
@@ -125,6 +128,8 @@ const homes = parcels.map((f) => {
     g: simplify(f.geometry),
     decade: decade && /^\d{4} - \d{4}$/.test(decade) ? `${decade.slice(0, 4)}s` : null,
     site: site.map((s) => ({ id: s.SITEID, year: (s.YEARBUILT || "").trim() || null, style: (s.STYLE || "").trim() || null, eval: String(s.SURVDIST || "").replace(/\bNR\b/g, "National Register"), destroyed: s.DESTROYED === "YES" })),
+    // County land-use code says vacant (the code itself is never shown).
+    vacant: /^vacant/i.test(String(p.dscr || "").trim()),
   };
 });
 
@@ -139,6 +144,7 @@ for (const h of homes) {
 const byStrap = new Map();
 homes.forEach((h) => !byStrap.has(h.strap) && byStrap.set(h.strap, h));
 const byKey = new Map(); homes.forEach((h) => h.key && !byKey.has(h.key) && byKey.set(h.key, h));
+const demolitionWatch = new Map(watchFile.addresses.map((w) => [addrKey(w.address), w.work]));
 const unmatched = [];
 for (const r of research) {
   const strap = (r["Parcel ID"] || "").replace(/\(.*?\)/g, "").replace(/\D/g, "").slice(0, 10);
@@ -159,8 +165,11 @@ for (const h of homes) {
   const historic = (h.nr1991 && /^contributing/i.test(h.nr1991.status || "")) || h.site.some((s) => /potential contributor/i.test(s.eval || ""));
   const lost = (h.nr1991 && h.nr1991.lost) || (h.site.length > 0 && h.site.every((s) => s.destroyed));
   h.kind = h.research ? "researched" : lost ? "lost" : historic ? "historic" : "other";
+  h.historic = historic;
+  const watch = h.key && demolitionWatch.get(h.key);
+  if (watch) h.watch = watch;
+  if (!h.vacant) delete h.vacant;
   delete h.key;
-  delete h.strap;
   delete h.strap;
 }
 
@@ -173,5 +182,7 @@ const out = {
 fs.writeFileSync(outJson, JSON.stringify(out));
 const esc = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
 fs.writeFileSync(unmatchedCsv, "\ufeffTab,Row,Address,Parcel ID,Status\n" + unmatched.map((r) => [r._sheet, r._row, r.Address, r["Parcel ID"], r.Status].map(esc).join(",")).join("\n"));
+const watchMissed = watchFile.addresses.filter((w) => !homes.some((h) => h.watch === w.work && h.address));
+if (watchMissed.length) console.log("demolition-watch addresses not on the Lincolnville map:", watchMissed.map((w) => w.address).join("; "));
 const counts = homes.reduce((a, h) => ((a[h.kind] = (a[h.kind] || 0) + 1), a), {});
 console.log({ homes: homes.length, buildings: footprints.length, ...counts, research: research.length, unmatched: unmatched.length, kb: Math.round(fs.statSync(outJson).size / 1024) });
