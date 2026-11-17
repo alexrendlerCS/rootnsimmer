@@ -12,6 +12,28 @@ export const homeMapHero = {
   lede: "Every lot in Lincolnville, inside the City’s official neighborhood boundary. Search for an address or click a lot to see what the public records say about it, then join the Lincolnville Connection to keep your home’s story.",
 };
 
+/**
+ * THE MAP'S COLORS, in one place (the key under the map is built from this).
+ *   Our work (Root & Simmer):
+ *     red          History researched by Root & Simmer               (kind "researched")
+ *     teal         Abandoned home: we are looking for the owners      (homeStatus "owners")
+ *     dark green   Family home welcoming guests: vacation and long-term stays (homeStatus "guests")
+ *     red outline  Your own home (members only, after signing in)
+ *   From the public records:
+ *     gold         Historic: contributing in 1991, or a potential contributor (kind "historic")
+ *     grey dashed  Historic building no longer standing              (kind "lost")
+ *     pale green   Other lots                                         (kind "other")
+ *   Sort buttons light up one group: Historic homes = gold, Demolition watch = red, Vacant and abandoned = teal.
+ *   A lot you click gets a thick red outline.
+ */
+export const homeMapKey = {
+  title: "Map key",
+  ourWork: "Our work",
+  records: "From the public records",
+  yourHome: "Your home (outlined in red)",
+  sorts: "The buttons above the map light up one group at a time: Historic homes in gold, Demolition watch in red, Vacant and abandoned in teal. The lot you click is outlined in red.",
+};
+
 export const homeMapLegend = [
   { kind: "researched", label: "History researched by Root & Simmer" },
   { kind: "historic", label: "Historic: contributing in 1991, or a potential contributor in the State site file" },
