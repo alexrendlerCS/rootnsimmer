@@ -61,6 +61,7 @@ export const HOME_FILE_SECTIONS = [
   "The records: Repairs and permits",
   "The records: Historic status",
   "The records: Historic maps",
+  "The records: Demolition",
   "The records: Plan and protections",
   "The records: Research",
 ] as const;
