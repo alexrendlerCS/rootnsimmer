@@ -12,8 +12,8 @@ The two extra pages have their own content files, edited the same way:
 
 | Page | Words live in |
 | --- | --- |
-| `/cra-lincolnville` (CRA – Lincolnville) | `content/cra.ts` (also the CRA teaser on the home page) |
-| `/digital-records` (Digital Records & Lincolnville Love Membership) | `content/digital-records.ts` (record guides, membership, order form) |
+| `/cra-lincolnville` and its 8 sub-pages (Understanding the Lincolnville CRA guide) | `content/cra.ts` (also the CRA teaser on the home page). Text in [SQUARE BRACKETS] shows as a red placeholder box. |
+| `/digital-records` (Digital Records, included with the Home Story Package) | `content/digital-records.ts` (the three member documents, what is included) |
 
 The top menu is the `nav` list in `content/site.ts`.
 

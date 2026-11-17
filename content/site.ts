@@ -319,9 +319,9 @@ export const connection = {
   fine: "Participation is voluntary. Root & Simmer is independent; community conversations are not official City or CRA processes.",
   form: {
     title: "Join the conversation",
-    intro: "Let Kimberly know you’d like to hear about Lincolnville Connection.",
+    intro: "Let Kimberly know you’d like to hear about the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection.",
     connections: ["Resident", "Descendant", "Former resident", "Friend of Lincolnville", "Community partner"],
-    consent: "I’d like to be contacted about Lincolnville Connection.",
+    consent: "I’d like to be contacted about the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection.",
     submit: "Write my introduction",
     fine: "This opens a draft in your email app. Nothing is sent until you press send there.",
   },

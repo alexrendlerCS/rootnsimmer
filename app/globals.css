@@ -604,6 +604,197 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .cra-teaser { background: var(--paper); border-block: 1px solid var(--line); padding-block: clamp(56px, 7vw, 96px); }
 .cra-teaser .split { align-items: center; }
 
+/* ==========================================================================
+   Understanding the Lincolnville CRA — guide pages
+   A wayfinding route down the side: numbered stops on a gold line,
+   the current stop marked in the red of the handrail.
+   ========================================================================== */
+:root { --gold: #a8843f; --gold-soft: #e9dcc0; --cream: #f6f0e1; }
+
+.guide {
+  display: grid; grid-template-columns: 250px minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px); align-items: start;
+  padding-block: clamp(40px, 6vw, 72px) clamp(56px, 7vw, 96px);
+}
+.guide-aside { position: sticky; top: 100px; }
+.route-title { font-size: 0.8125rem; font-weight: 600; color: var(--muted); margin: 0 0 0.75rem; }
+.route { list-style: none; margin: 0; padding: 0; position: relative; }
+.route::before {
+  content: ""; position: absolute; left: 13px; top: 14px; bottom: 14px; width: 2px; background: var(--gold-soft);
+}
+.route a {
+  position: relative; display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start;
+  padding: 7px 0; text-decoration: none; font-size: 0.9375rem; line-height: 1.35; color: var(--bark);
+}
+.route a:hover span:last-child { color: var(--rail); }
+.route-num {
+  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--porch); border: 1.5px solid var(--gold); color: var(--oak);
+  font: 0.8125rem/1 var(--font-display); font-variant-numeric: tabular-nums;
+}
+.route [aria-current="page"] a { color: var(--oak); font-weight: 600; }
+.route [aria-current="page"] .route-num { background: var(--rail); border-color: var(--rail); color: #fff; }
+.route-mobile { display: none; }
+
+.guide-main { min-width: 0; max-width: 46rem; }
+.guide-head { padding-bottom: 1.75rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--gold); }
+.guide-head .page-title { max-width: 18ch; margin-bottom: 1.25rem; }
+.guide-head .page-lede { margin-bottom: 0; }
+.guide-section { padding-block: 2.25rem 0.5rem; }
+.guide-section + .guide-section { border-top: 1px solid var(--line); }
+.guide-h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 1rem; }
+.guide-section h3 { font-size: 1.25rem; margin: 0 0 0.375rem; }
+.guide-sources { margin-top: 1rem !important; }
+.guide-split { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 32px; align-items: start; }
+.guide-split > .guide-section { padding-top: 2.25rem; }
+.guide-photo { margin-top: 2.25rem; }
+.guide-photo.photo-arch .photo-img { border-width: 10px; }
+
+/* at a glance */
+.glance { margin: 0; border-top: 1px solid var(--gold); }
+.glance > div { display: grid; grid-template-columns: 11rem 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.glance dt { font-weight: 600; color: var(--rail); font-size: 0.9375rem; }
+.glance dd { margin: 0; }
+
+.guide-goals { list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.guide-goals .goal h3 { margin-bottom: 0.5rem; }
+
+/* what the CRA has done: links to the guide's pages */
+.done-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.done-list a {
+  display: flex; flex-direction: column; gap: 6px; height: 100%;
+  padding: 18px 20px; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0; text-decoration: none;
+}
+.done-list a:hover { border-left-color: var(--rail); }
+.done-list a:hover .done-title { text-decoration: underline; text-decoration-color: var(--rail); }
+.done-goal { font-size: 0.8125rem; font-weight: 600; color: var(--rail); }
+.done-title { font: 1.1875rem/1.3 var(--font-display); color: var(--oak); }
+.done-body { font-size: 0.9375rem; color: var(--muted); }
+
+/* following the work: the six stages are a real sequence */
+.stages {
+  list-style: none; margin: 0.5rem 0 1.75rem; padding: 0; counter-reset: stage;
+  display: grid; grid-template-columns: repeat(6, 1fr); position: relative;
+}
+.stages::before { content: ""; position: absolute; left: 14px; right: 14px; top: 13px; height: 2px; background: var(--gold-soft); }
+.stages li { counter-increment: stage; position: relative; padding-top: 38px; font-size: 0.875rem; font-weight: 600; color: var(--oak); }
+.stages li::before {
+  content: counter(stage); position: absolute; top: 0; left: 0;
+  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--porch); border: 1.5px solid var(--gold); font: 0.8125rem/1 var(--font-display);
+}
+.stages li:last-child::before { background: var(--oak); border-color: var(--oak); color: #fff; }
+.questions { margin: 0 0 1rem; padding-left: 1.25rem; font: 1.125rem/1.5 var(--font-display); color: var(--oak); }
+.questions li::marker { color: var(--gold); }
+
+/* entries: landmarks, parks, ways to take part */
+.entries { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+.entries li { padding: 1.25rem 0 1.25rem 20px; border-top: 1px solid var(--line); position: relative; }
+.entries li::before { content: ""; position: absolute; left: 0; top: 1.6rem; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.entries li:last-child { border-bottom: 1px solid var(--line); }
+.entries p { margin: 0; }
+.entry-where { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.375rem !important; }
+.ways { margin: 0; padding-left: 1.25rem; }
+.ways li { margin-bottom: 0.875rem; }
+.ways li::marker { color: var(--gold); }
+.ways strong { color: var(--oak); }
+.aside-note { padding-left: 14px; border-left: 3px solid var(--gold); color: var(--muted); font-size: 0.9375rem; }
+
+/* Homes, Not Hotels tables */
+.stat-lead { font: 1.25rem/1.45 var(--font-display); color: var(--oak); }
+.record-table tbody th { text-align: left; font-weight: 400; font-size: 0.9375rem; color: var(--bark); padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.numbers-table td { text-align: right; color: var(--oak) !important; }
+.numbers-table td:nth-child(2) { white-space: nowrap; }
+.numbers-table th:not(:first-child) { text-align: right; }
+.rule-table td:last-child { color: var(--muted); }
+.table-after { margin-top: 1.25rem; }
+
+/* single highlighted figure */
+.figure { margin: 0; padding: 20px 22px; background: var(--cream); border-top: 3px solid var(--gold); border-radius: var(--radius); font-size: 0.9375rem; color: var(--muted); }
+.figure strong { display: block; font: 2rem/1.1 var(--font-display); font-weight: 400; color: var(--oak); margin-bottom: 0.5rem; }
+
+/* Join. Show up. Be heard. Vote. — a cream panel with a green outline, never a solid green block */
+.join {
+  margin: 3rem 0 0; padding: clamp(28px, 4vw, 44px);
+  background: var(--cream); border: 2px solid var(--oak); border-radius: 10px;
+  box-shadow: inset 0 0 0 6px var(--cream), inset 0 0 0 7px var(--gold);
+}
+.join-words {
+  margin: 0; display: flex; flex-wrap: wrap; gap: 0.15em 0.45em;
+  font: clamp(2rem, 4.6vw, 3.25rem)/1.1 var(--font-display); color: var(--oak); letter-spacing: -0.01em;
+}
+.join-words span:last-child { color: var(--rail); }
+.join-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 1.75rem; }
+
+/* contact + previous/next */
+.guide-contact { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--gold); }
+.guide-contact-title { font-size: 1.25rem; margin: 0 0 0.5rem; }
+.guide-contact p { margin: 0 0 0.25rem; }
+.guide-contact-links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.guide-contact-links a { font-weight: 600; color: var(--oak); text-decoration-color: var(--rail); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 2rem; }
+.pager-link {
+  display: flex; flex-direction: column; gap: 4px; padding: 14px 18px; border: 1px solid var(--line);
+  border-radius: var(--radius); text-decoration: none; font: 1.0625rem/1.3 var(--font-display); color: var(--oak); background: var(--paper);
+}
+.pager-link small { font: 600 0.8125rem/1 var(--font-body); color: var(--rail); }
+.pager-link:hover { border-color: var(--oak); }
+.pager-next { text-align: right; grid-column: 2; }
+
+/* placeholders: impossible to miss until the real words are in */
+.placeholder, .placeholder-inline {
+  font: 600 0.9375rem/1.4 var(--font-body); color: var(--rail-dark);
+  background: #fbefec; border: 2px dashed var(--rail); border-radius: var(--radius);
+}
+.placeholder { padding: 18px 20px; margin: 0 0 1.25rem; }
+.placeholder-inline { display: inline-block; padding: 4px 10px; }
+
+/* Then / Now */
+.then-now { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 2.25rem; }
+.then-now figure { margin: 0; }
+.then-now-label { margin: 0 0 0.5rem; font: 1.375rem/1 var(--font-display); color: var(--oak); padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
+.then-now-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--cream); }
+.then-now-empty { display: grid; place-items: center; padding: 12px; text-align: center; }
+.then-now figcaption { margin-top: 10px; font-size: 0.875rem; line-height: 1.45; color: var(--muted); }
+
+/* price */
+.price-card { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 28px; padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: var(--radius); background: var(--paper); }
+.price-amount { font: clamp(2.5rem, 5vw, 3.25rem)/1 var(--font-display); color: var(--oak); margin: 0 0 0.75rem; font-variant-numeric: tabular-nums; }
+.price-split { list-style: none; margin: 0 0 1.5rem; padding: 0; font-size: 0.9375rem; }
+.price-split li { padding: 6px 0; border-top: 1px solid var(--line); }
+.price-split li:last-child { border-bottom: 1px solid var(--line); }
+.price-included h3 { margin: 0 0 0.5rem; }
+
+@media (max-width: 1000px) {
+  .guide { grid-template-columns: 1fr; padding-top: 32px; }
+  .guide-aside { display: none; }
+  .guide-main { max-width: none; }
+  .route-mobile { display: block; margin-top: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  .route-mobile summary {
+    list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    min-height: 48px; padding: 0 16px; font-weight: 600; color: var(--oak);
+  }
+  .route-mobile summary::-webkit-details-marker { display: none; }
+  .route-mobile summary::after { content: "+"; font: 1.375rem/1 var(--font-display); color: var(--rail); }
+  .route-mobile[open] summary::after { content: "–"; }
+  .route-count { margin-left: auto; font-weight: 400; font-size: 0.875rem; color: var(--muted); }
+  .route-mobile .route { padding: 4px 16px 12px; }
+  .route-mobile .route::before { left: 29px; }
+}
+@media (max-width: 720px) {
+  .guide-split, .price-card { grid-template-columns: 1fr; }
+  .guide-split .guide-photo { max-width: 300px; margin-top: 0.5rem; }
+  .done-list { grid-template-columns: 1fr; }
+  .glance > div { grid-template-columns: 1fr; gap: 2px; }
+  .stages { grid-template-columns: 1fr; gap: 0; }
+  .stages::before { left: 13px; right: auto; top: 14px; bottom: 14px; width: 2px; height: auto; }
+  .stages li { padding: 4px 0 14px 42px; }
+  .then-now { grid-template-columns: 1fr; }
+  .pager { grid-template-columns: 1fr; }
+  .pager-next { grid-column: 1; }
+}
+
 /* footer page links */
 .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 1rem !important; }
 
@@ -698,3 +889,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Digital Records: three member documents */
+.offerings-three { grid-template-columns: repeat(3, 1fr); }
+.membership-votes { margin-top: 1.5rem; max-width: 52rem; }
+@media (max-width: 1080px) { .offerings-three { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .offerings-three { grid-template-columns: 1fr; } }
+.included-table td:last-child { color: var(--bark); }

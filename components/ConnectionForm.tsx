@@ -12,8 +12,8 @@ export function ConnectionForm() {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
     openEmailDraft(
-      "Lincolnville Connection: introduction",
-      `Hello Kimberly,\n\nI would like to hear about Lincolnville Connection.\n\nName: ${d.get("name")}\nEmail: ${d.get("email")}\nMy connection: ${d.get("connection")}\n\nPlease contact me about the community.`,
+      "Root & Simmer Hospitality Exclusively for Lincolnville Community Connection: introduction",
+      `Hello Kimberly,\n\nI would like to hear about the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection.\n\nName: ${d.get("name")}\nEmail: ${d.get("email")}\nMy connection: ${d.get("connection")}\n\nPlease contact me about the community.`,
     );
     setStatus("Your email draft is open. Review it and press send in your email app.");
   }

@@ -20,11 +20,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <footer className="site-footer">
         <div className="wrap footer-grid">
           <div>
-            <p className="footer-name">{site.fullName}</p>
-            <p>Independent preservation and community storytelling rooted in Lincolnville.</p>
+            <p className="footer-name">{site.fullName} · Lincolnville, St. Augustine</p>
+            <p>Independent community education. Not an official City of St. Augustine or CRA publication.</p>
             <p className="footer-links">
-              <Link href="/cra-lincolnville">CRA – Lincolnville</Link>
-              <Link href="/digital-records">Digital Records &amp; Lincolnville Love Membership</Link>
+              <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link>
+              <Link href="/digital-records">Digital Records</Link>
             </p>
           </div>
           <div>
@@ -32,7 +32,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <p>{site.place}</p>
           </div>
           <p className="footer-fine">
-            © {new Date().getFullYear()} {site.fullName} Not affiliated with the City of St. Augustine or the Lincolnville CRA.
+            © {new Date().getFullYear()} {site.fullName}
           </p>
         </div>
       </footer>

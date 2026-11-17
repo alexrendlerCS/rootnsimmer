@@ -217,11 +217,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Lincolnville Connection */}
+        {/* Community Connection sign-up */}
         <section id="connection" className="section connection">
           <div className="wrap split">
             <div className="prose">
-              <p className="section-label">Lincolnville Connection</p>
+              <p className="section-label">Root & Simmer Hospitality Exclusively for Lincolnville Community Connection</p>
               <h2>{connection.title}</h2>
               {connection.body.map((p) => (
                 <p key={p}>{p}</p>
