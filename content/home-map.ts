@@ -36,9 +36,13 @@ export const homeMapKey = {
 
 /**
  * Lots where the City's records show a building was demolished but the map data does not already mark it
- * (it was not on the 1991 contributing list). Shown in the demolished color. Public facts from City records only.
+ * (it was not on the 1991 contributing list), or that need a note on what happened. Shown in the demolished color.
+ * Public facts from City records only: no owner names.
  */
 export const demolishedLots: Record<string, { note: string }> = {
+  "2120400000": {
+    note: "A frame house built about 1904-1910 stood here, a contributing building in the 1991 Lincolnville Historic District. In December 2019 the Historic Architectural Review Board approved a partial demolition with conditions (case 2019-0109), and a demolition permit (PR2020-1652) was filed in December 2020. No building stands today; the lot is empty.",
+  },
   "2120700000": {
     note: "A 1954 concrete block house at 101 South St was demolished in 2019, after the Historic Architectural Review Board approved it in November 2018 (City permit PR2019-0244). Steps and a slab remain on the lot.",
   },
