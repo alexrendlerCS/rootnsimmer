@@ -193,6 +193,24 @@ button { cursor: pointer; }
   font: 1.125rem/1.4 var(--font-display); color: var(--oak);
 }
 
+/* Then: the same house about 1979, a survey print laid against the doorway */
+.then-print {
+  position: absolute; z-index: 1; left: -128px; bottom: 96px; width: 236px; margin: 0;
+  padding: 8px 8px 10px; background: var(--paper);
+  border: 1px solid var(--line); border-radius: 3px;
+  box-shadow: 0 10px 24px -12px rgba(42, 32, 25, 0.45);
+  rotate: -3deg;
+}
+.then-print-photo { display: block; width: 100%; height: auto; border-radius: 1px; }
+.doorway .then-print figcaption {
+  margin-top: 8px; text-align: left;
+  font: 0.875rem/1.3 var(--font-display); color: var(--bark);
+}
+.then-print figcaption span {
+  display: block; margin-top: 2px;
+  font: 0.6875rem/1.35 var(--font-body); color: var(--muted);
+}
+
 /* Single orchestrated load moment: the door opens onto the photo */
 @media (prefers-reduced-motion: no-preference) {
   .doorway-photo { animation: door-open 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both; }
@@ -849,6 +867,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 @media (max-width: 900px) {
   .hero-grid, .mission-grid, .why-grid, .values-grid, .kimberly-grid, .split { grid-template-columns: 1fr; }
   .doorway { justify-self: center; }
+  .then-print { left: -64px; }
   .note-card, .values-head, .kimberly-side { position: static; }
   .why-grid { gap: 8px; }
   .kimberly-side { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; order: 2; }
@@ -865,6 +884,8 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .selections-button { padding: 0 8px; }
   .hero-subtitle { font-size: 1.375rem; }
   .doorway { width: min(100%, 360px); }
+  .then-print { left: -10px; bottom: 76px; width: 150px; padding: 6px 6px 8px; }
+  .doorway .then-print figcaption { font-size: 0.8125rem; }
   .threshold-list { grid-template-columns: 1fr; gap: 0; }
   .threshold-list li { padding: 0 0 22px 32px; }
   .threshold-list li:last-child { padding-bottom: 0; }

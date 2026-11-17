@@ -21,6 +21,7 @@ import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
 import { SiteShell } from "@/components/SiteShell";
 import homePhoto from "@/public/lincolnville-home.jpeg";
+import homeThenPhoto from "@/public/photos/home-story-then.jpg";
 import logo from "@/public/logo.jpeg";
 
 const LETTER_PREVIEW = 3;
@@ -55,6 +56,18 @@ export default function Home() {
                   className="doorway-photo"
                 />
               </div>
+              <figure className="then-print">
+                <Image
+                  src={homeThenPhoto}
+                  alt={hero.then.alt}
+                  sizes="(max-width: 640px) 150px, 220px"
+                  className="then-print-photo"
+                />
+                <figcaption>
+                  {hero.then.label}
+                  <span>{hero.then.credit}</span>
+                </figcaption>
+              </figure>
               <figcaption>{hero.caption}</figcaption>
             </figure>
           </div>

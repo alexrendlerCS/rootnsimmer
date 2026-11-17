@@ -40,6 +40,12 @@ export const hero = {
   secondary: { href: "#kimberly", label: "Meet Kimberly" },
   photoAlt: "A Lincolnville cottage with a screened front porch and a red iron handrail",
   caption: "A home is a doorway into history.",
+  /** The same house about 1979, set beside today's photo. */
+  then: {
+    alt: "The same house about 1979: a black-and-white photograph of the frame cottage with its screened porch behind a row of hedges",
+    label: "Same home, about 1979",
+    credit: "Courtesy Florida Master Site File",
+  },
 };
 
 /** The three-line promise shown on the haint-blue band under the hero. */
