@@ -1434,7 +1434,8 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 @media (max-width: 900px) { .what-if-card, .bodega-head, .bodega-split, .bodega-vendors { grid-template-columns: 1fr; } .bodega-walk { grid-template-columns: 1fr; } }
 
 /* Project pages: records, concerns, how Root & Simmer helps; two What if…? boxes on the home page */
-.what-if-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 32px); }
+.what-if-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(16px, 3vw, 32px); }
+.bodega-head-solo { grid-template-columns: minmax(0, 52rem); }
 .what-if-grid .what-if-card { display: flex; flex-direction: column; gap: 16px; padding: 0 0 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .what-if-grid .what-if-card > div { padding: 0 20px; }
 .what-if-grid .what-if-img { border: 0; border-radius: 0; aspect-ratio: 12 / 7; object-fit: cover; }

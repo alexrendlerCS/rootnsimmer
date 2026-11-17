@@ -185,6 +185,14 @@ export const whatIfTeasers = [
   },
   {
     label: "What if…?",
+    title: "What if Lincolnville had a front door?",
+    body: "A Lincolnville visitor welcome at Ragga Surf Cafe on the Riberia waterfront: a free map of the whole neighborhood, the Welcoming Walk, and the way to Lincolnville’s own businesses.",
+    link: "See the idea, vote and add yours",
+    href: "/what-if/visitor-welcome",
+    image: "/photos/lincolnville-historic-district-marker.jpg",
+  },
+  {
+    label: "What if…?",
     title: "What if Twine Park honored the Twines the way they deserve?",
     body: "A Twine Grove around the memorial trees, a new history panel, dry benches and a history walk at the corner of Riberia and Lovett. The design is under way: add your voice.",
     link: "See the idea, vote and add yours",
