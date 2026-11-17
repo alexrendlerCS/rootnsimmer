@@ -4,6 +4,9 @@
  *   Add a member (or an admin):
  *     node --env-file=.env.local scripts/members-cli.mjs add-member --email you@example.com --name "Full Name" [--role admin] [--parcel 2115600000]
  *
+ *   Move a whole home file from one member to another (e.g. from Kimberly's test account to the owner), no re-upload:
+ *     node --env-file=.env.local scripts/members-cli.mjs move-file --from rootnsimmer@gmail.com --to owner@example.com
+ *
  *   Preview what would be loaded, without uploading: add --dry-run
  *
  *   Load a member's whole home file from a folder, in reading order (private to that member):
@@ -126,7 +129,23 @@ async function uploadFolder() {
   console.log(`Done: ${member.full_name ?? email}'s home file is up to date.`);
 }
 
-const commands = { "add-member": addMember, "upload-folder": uploadFolder };
+async function moveFile() {
+  const from = String(args.from ?? "").toLowerCase();
+  const to = String(args.to ?? "").toLowerCase();
+  const { data: a } = await db.from("members").select("id, home_parcels").eq("email", from).maybeSingle();
+  const { data: b } = await db.from("members").select("id, home_parcels").eq("email", to).maybeSingle();
+  if (!a || !b) throw new Error("Both --from and --to must already be members (run add-member for the owner first).");
+  const { data, error } = await db.from("documents").update({ member_id: b.id }).eq("member_id", a.id).eq("visibility", "private").select("id");
+  if (error) throw error;
+  // The home on the map goes with the file.
+  if (!b.home_parcels?.length && a.home_parcels?.length) {
+    await db.from("members").update({ home_parcels: a.home_parcels }).eq("id", b.id);
+    await db.from("members").update({ home_parcels: [] }).eq("id", a.id);
+  }
+  console.log(`Moved ${data.length} private files from ${from} to ${to}.`);
+}
+
+const commands = { "add-member": addMember, "upload-folder": uploadFolder, "move-file": moveFile };
 if (!commands[command]) {
   console.error("Commands: add-member, upload-folder (see the top of this file)");
   process.exit(1);

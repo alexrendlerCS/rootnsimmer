@@ -10,7 +10,16 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-type Doc = { id: string; title: string; category: string; description: string | null; visibility: string; size_bytes: number | null; file_name: string | null };
+type Doc = {
+  id: string;
+  title: string;
+  category: string;
+  description: string | null;
+  visibility: string;
+  size_bytes: number | null;
+  file_name: string | null;
+  member_id: string | null;
+};
 
 const size = (b: number | null) => (b ? (b > 1_000_000 ? `${Math.round(b / 1_000_000)} MB` : `${Math.max(1, Math.round(b / 1000))} KB`) : "");
 
@@ -19,7 +28,7 @@ export default async function MembersPage() {
   const supabase = await createClient();
   const { data } = await supabase
     .from("documents")
-    .select("id, title, category, description, visibility, size_bytes, file_name")
+    .select("id, title, category, description, visibility, size_bytes, file_name, member_id")
     .eq("archived", false)
     .order("created_at", { ascending: true });
   const docs = (data ?? []) as Doc[];
@@ -28,7 +37,8 @@ export default async function MembersPage() {
     return i === -1 ? 99 : i;
   };
   // Oldest first inside a section (uploaded in reading order); sections in HOME_FILE_SECTIONS order.
-  const mine = docs.filter((d) => d.visibility === "private").sort((a, b) => sectionIndex(a.category) - sectionIndex(b.category));
+  // Only this member's own file. (An admin can read every private file, but sees just their own here.)
+  const mine = docs.filter((d) => d.visibility === "private" && d.member_id === member.id).sort((a, b) => sectionIndex(a.category) - sectionIndex(b.category));
   const welcome = mine.find((d) => d.category === "Start here");
   const mineRest = mine.filter((d) => d !== welcome);
   const mineSections = [...new Set(mineRest.map((d) => d.category))];
