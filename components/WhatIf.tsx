@@ -1,28 +1,54 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { stableBodega as s } from "@/content/stable-bodega";
 import { openEmailDraft } from "@/lib/email";
 
-const KEY = "stable-bodega-picks";
+/** One choice people can vote for on a "What if…?" page. */
+export type WhatIfChoice = { id: string; name: string; where: string; body: string };
 
-/** "What would you come for?" cards plus the "Add your voice" form. Picks are remembered in this browser only. */
-export function StableBodegaVote() {
+export type WhatIfVoice = {
+  title: string;
+  intro: string;
+  ideaLabel: string;
+  ideaPlaceholder: string;
+  worryLabel: string;
+  rememberLabel: string;
+  connections: string[];
+  submit: string;
+  fine: string;
+};
+
+const SENT = "Your email draft is open. Review it and press send in your email app.";
+
+/** Vote cards plus the "Add your voice" form. Picks are remembered in this browser only. */
+export function WhatIfVote({
+  project,
+  storageKey,
+  choices,
+  voice,
+  voteLabel = "I’d come for this",
+}: {
+  project: string;
+  storageKey: string;
+  choices: WhatIfChoice[];
+  voice: WhatIfVoice;
+  voteLabel?: string;
+}) {
   const [picks, setPicks] = useState<string[]>([]);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
     try {
-      const saved = JSON.parse(localStorage.getItem(KEY) ?? "[]");
-      if (Array.isArray(saved)) setPicks(saved.filter((id) => s.spaces.some((sp) => sp.id === id)));
+      const saved = JSON.parse(localStorage.getItem(storageKey) ?? "[]");
+      if (Array.isArray(saved)) setPicks(saved.filter((id) => choices.some((c) => c.id === id)));
     } catch {}
-  }, []);
+  }, [storageKey, choices]);
 
   function toggle(id: string) {
     setPicks((prev) => {
       const next = prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id];
       try {
-        localStorage.setItem(KEY, JSON.stringify(next));
+        localStorage.setItem(storageKey, JSON.stringify(next));
       } catch {}
       return next;
     });
@@ -31,20 +57,20 @@ export function StableBodegaVote() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
-    const chosen = s.spaces.filter((sp) => picks.includes(sp.id)).map((sp) => `- ${sp.name}`);
+    const chosen = choices.filter((c) => picks.includes(c.id)).map((c) => `- ${c.name}`);
     openEmailDraft(
-      "The Stable Bodega: my picks and ideas",
+      `${project}: my picks and ideas`,
       [
         "Hello Kimberly,",
         "",
-        "What I would come for at the Stable Bodega:",
+        `My picks for ${project}:`,
         chosen.length ? chosen.join("\n") : "(no picks)",
         "",
         `What if…? My idea:\n${d.get("idea") || "(none)"}`,
         "",
         `What worries me:\n${d.get("worry") || "(nothing)"}`,
         "",
-        `What I remember about the stables or the south end of Riberia:\n${d.get("remember") || "(nothing)"}`,
+        `What I remember:\n${d.get("remember") || "(nothing)"}`,
         "",
         `Me: ${d.get("connection")}`,
         `Name: ${d.get("name") || "(not given)"}`,
@@ -52,22 +78,22 @@ export function StableBodegaVote() {
         d.get("quote") ? "You may quote my idea, with my first name." : "Please do not quote me.",
       ].join("\n"),
     );
-    setStatus(s.voice.sent);
+    setStatus(SENT);
   }
 
   return (
     <>
       <ul className="bodega-spaces">
-        {s.spaces.map((sp) => {
-          const on = picks.includes(sp.id);
+        {choices.map((c) => {
+          const on = picks.includes(c.id);
           return (
-            <li key={sp.id}>
-              <button type="button" className={`bodega-space${on ? " is-on" : ""}`} aria-pressed={on} onClick={() => toggle(sp.id)}>
-                <span className="bodega-space-where">{sp.where}</span>
-                <span className="bodega-space-name">{sp.name}</span>
-                <span className="bodega-space-body">{sp.body}</span>
+            <li key={c.id}>
+              <button type="button" className={`bodega-space${on ? " is-on" : ""}`} aria-pressed={on} onClick={() => toggle(c.id)}>
+                <span className="bodega-space-where">{c.where}</span>
+                <span className="bodega-space-name">{c.name}</span>
+                <span className="bodega-space-body">{c.body}</span>
                 <span className="bodega-space-vote" aria-hidden="true">
-                  {on ? "✓ I’d come for this" : "+ I’d come for this"}
+                  {on ? `✓ ${voteLabel}` : `+ ${voteLabel}`}
                 </span>
               </button>
             </li>
@@ -78,24 +104,24 @@ export function StableBodegaVote() {
       <section id="voice" className="bodega-voice" aria-labelledby="voice-title">
         <div className="bodega-voice-head">
           <h2 id="voice-title" className="guide-h2">
-            {s.voice.title}
+            {voice.title}
           </h2>
           <p className="bodega-picked" role="status">
-            {s.vote.picked(picks.length)}
+            {picks.length === 1 ? "1 pick" : `${picks.length} picks`}
           </p>
         </div>
-        <p>{s.voice.intro}</p>
-        <form className="form-card stack" onSubmit={onSubmit} aria-label={s.voice.title}>
+        <p>{voice.intro}</p>
+        <form className="form-card stack" onSubmit={onSubmit} aria-label={voice.title}>
           <label>
-            {s.voice.ideaLabel}
-            <textarea name="idea" rows={3} placeholder={s.voice.ideaPlaceholder} />
+            {voice.ideaLabel}
+            <textarea name="idea" rows={3} placeholder={voice.ideaPlaceholder} />
           </label>
           <label>
-            {s.voice.worryLabel} <span className="optional">(optional)</span>
+            {voice.worryLabel} <span className="optional">(optional)</span>
             <textarea name="worry" rows={2} />
           </label>
           <label>
-            {s.voice.rememberLabel} <span className="optional">(optional)</span>
+            {voice.rememberLabel} <span className="optional">(optional)</span>
             <textarea name="remember" rows={2} />
           </label>
           <div className="two">
@@ -106,7 +132,7 @@ export function StableBodegaVote() {
             <label>
               Me
               <select name="connection">
-                {s.voice.connections.map((c) => (
+                {voice.connections.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
               </select>
@@ -117,9 +143,9 @@ export function StableBodegaVote() {
             <span>You may quote my idea with my first name.</span>
           </label>
           <button className="button button-red" type="submit">
-            {s.voice.submit}
+            {voice.submit}
           </button>
-          <p className="fine">{s.voice.fine}</p>
+          <p className="fine">{voice.fine}</p>
           <p className="form-status" role="status">
             {status}
           </p>
@@ -129,26 +155,38 @@ export function StableBodegaVote() {
   );
 }
 
-/** Vendor interest: opens an email draft to Kimberly. */
-export function StableBodegaVendorForm() {
+export type WhatIfSignupConfig = {
+  subject: string;
+  opening: string;
+  orgLabel: string;
+  whatLabel: string;
+  roleLabel: string;
+  roles: string[];
+  whenLabel: string;
+  whens: string[];
+  submit: string;
+  fine: string;
+};
+
+/** Sign-up form (vendors, volunteers…): opens an email draft to Kimberly. */
+export function WhatIfSignup({ c }: { c: WhatIfSignupConfig }) {
   const [status, setStatus] = useState("");
-  const v = s.vendors;
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
     openEmailDraft(
-      "The Stable Bodega: vendor interest",
+      c.subject,
       [
         "Hello Kimberly,",
         "",
-        "I would like a place at the Stable Bodega.",
+        c.opening,
         "",
-        `Business or craft: ${d.get("business")}`,
-        `What I make or do: ${d.get("what")}`,
-        `Space I'd want: ${d.get("space")}`,
+        `${c.orgLabel}: ${d.get("org") || "(none)"}`,
+        `${c.whatLabel}: ${d.get("what")}`,
+        `${c.roleLabel}: ${d.get("role")}`,
         `Lincolnville business or resident: ${d.get("local")}`,
-        `When: ${d.get("start")}`,
+        `${c.whenLabel}: ${d.get("when")}`,
         "",
         `Name: ${d.get("name")}`,
         `Email: ${d.get("email")}`,
@@ -157,19 +195,19 @@ export function StableBodegaVendorForm() {
         `Anything else:\n${d.get("notes") || "(nothing)"}`,
       ].join("\n"),
     );
-    setStatus(s.voice.sent);
+    setStatus(SENT);
   }
 
   return (
-    <form className="form-card stack" onSubmit={onSubmit} aria-label="Vendor interest">
+    <form className="form-card stack" onSubmit={onSubmit} aria-label={c.subject}>
       <div className="two">
         <label>
           Your name
           <input name="name" autoComplete="name" required />
         </label>
         <label>
-          Business or craft name
-          <input name="business" autoComplete="organization" required />
+          {c.orgLabel} <span className="optional">(optional)</span>
+          <input name="org" autoComplete="organization" />
         </label>
       </div>
       <div className="two">
@@ -183,22 +221,22 @@ export function StableBodegaVendorForm() {
         </label>
       </div>
       <label>
-        What do you make, grow, sell or teach?
+        {c.whatLabel}
         <textarea name="what" rows={2} required />
       </label>
       <div className="two">
         <label>
-          The space you’d want
-          <select name="space">
-            {v.spaceTypes.map((t) => (
+          {c.roleLabel}
+          <select name="role">
+            {c.roles.map((t) => (
               <option key={t}>{t}</option>
             ))}
           </select>
         </label>
         <label>
-          When
-          <select name="start">
-            {v.starts.map((t) => (
+          {c.whenLabel}
+          <select name="when">
+            {c.whens.map((t) => (
               <option key={t}>{t}</option>
             ))}
           </select>
@@ -217,9 +255,9 @@ export function StableBodegaVendorForm() {
         <textarea name="notes" rows={2} />
       </label>
       <button className="button" type="submit">
-        {v.submit}
+        {c.submit}
       </button>
-      <p className="fine">{v.fine}</p>
+      <p className="fine">{c.fine}</p>
       <p className="form-status" role="status">
         {status}
       </p>

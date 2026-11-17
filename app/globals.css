@@ -1432,3 +1432,21 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .bodega-walk p { margin: 0; font-size: 0.9375rem; }
 .bodega-vendors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
 @media (max-width: 900px) { .what-if-card, .bodega-head, .bodega-split, .bodega-vendors { grid-template-columns: 1fr; } .bodega-walk { grid-template-columns: 1fr; } }
+
+/* Project pages: records, concerns, how Root & Simmer helps; two What if…? boxes on the home page */
+.what-if-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 32px); }
+.what-if-grid .what-if-card { display: flex; flex-direction: column; gap: 16px; padding: 0 0 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.what-if-grid .what-if-card > div { padding: 0 20px; }
+.what-if-grid .what-if-img { border: 0; border-radius: 0; aspect-ratio: 12 / 7; object-fit: cover; }
+.project-records { list-style: none; margin: 1rem 0 0; padding: 0; border-top: 1px solid var(--gold); }
+.project-records li { display: flex; gap: 20px; justify-content: space-between; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.project-records h3 { margin: 0 0 0.125rem; font-size: 1.125rem; }
+.project-records p { margin: 0 0 0.25rem; font-size: 0.9375rem; }
+.project-record-source { font-size: 0.8125rem !important; font-weight: 600; color: var(--rail); }
+.project-records .doc-link { flex: none; white-space: nowrap; }
+.project-help { margin-top: 1rem; }
+.project-help-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.project-help-list li { display: flex; gap: 12px; padding: 14px 16px; background: var(--haint-soft); border-radius: var(--radius); }
+.project-help-list h3 { margin: 0 0 0.25rem; font-size: 1.0625rem; }
+.project-help-list p { margin: 0; font-size: 0.9375rem; }
+@media (max-width: 760px) { .what-if-grid, .project-help-list { grid-template-columns: 1fr; } .project-records li { flex-direction: column; gap: 6px; } }

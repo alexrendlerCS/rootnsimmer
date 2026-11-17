@@ -11,6 +11,9 @@
  * Votes, ideas and vendor interest open an email draft to Kimberly (like the site's other forms).
  */
 
+import type { ProjectConcern, ProjectRecord } from "./projects";
+import type { WhatIfSignupConfig } from "@/components/WhatIf";
+
 export const whatIfTeaser = {
   label: "What if…?",
   title: "What if the old stables on Riberia opened their gate again?",
@@ -135,3 +138,56 @@ export const stableBodega = {
   notice:
     "Root & Simmer Hospitality Co. is an independent private business. The Stable Bodega is a community idea for discussion. It is not a City of St. Augustine or Lincolnville Community Redevelopment Agency (CRA) plan, and it implies no City endorsement. Any use of the site depends on the City’s decision and its review. Photos were taken from public ground; the site is posted No Trespassing.",
 };
+
+/** The public records behind the Stable Bodega idea. */
+export const stableBodegaRecords: ProjectRecord[] = [
+  { title: "Lincolnville Redevelopment Plan, 2013", source: "City of St. Augustine, pages 27-28", href: "/documents/cra/lincolnville-redevelopment-plan-2013.pdf#page=27", kind: "PDF", note: "The plan already looked at this acre: “The City of St. Augustine is considering plans to relocate (and improve) the Riberia Stables facility to City-owned property near the Farmers Market where it may have the potential to become more of a visitor attraction for families and children.”" },
+  { title: "Lincolnville Redevelopment Plan, 2013: the waterfront and a community gathering place", source: "City of St. Augustine, page 37", href: "/documents/cra/lincolnville-redevelopment-plan-2013.pdf#page=37", kind: "PDF", note: "The plan pictures “a new signature community gathering place” on City-owned land in the southeast of the CRA, with “the potential relocation of horse stables to pasture area at Riberia Street and Pougeaud Point.”" },
+  { title: "Lincolnville Redevelopment Plan Amendment, 2017", source: "City of St. Augustine", href: "/documents/cra/lincolnville-redevelopment-plan-amendment-2017.pdf", kind: "PDF", note: "The CRA’s three goals today: preserve African American heritage and retain long-term residents, preserve Lincolnville’s historic character, and make neighborhood improvements. The Stable Bodega is built around all three." },
+  { title: "Property record, parcel 1495900010 (650 Riberia Street)", source: "St. Johns County Property Appraiser", href: "https://www.sjcpa.gov/", kind: "Web page", note: "Owner: the City of St. Augustine. About 1.01 acres, zoned Government Use. The barns are listed only as “extra features,” and their age is not recorded." },
+  { title: "Historic Architectural Review Board (HARB) applications", source: "City of St. Augustine", href: "https://www.citystaug.com/195/Historic-Architectural-Review-Board-Appl", kind: "Web page", note: "The site is inside the Lincolnville National Register Historic District. Before any change, HARB staff can say whether the barns are historic and what review applies to reversible changes like lights, tents and signs." },
+  { title: "Lincolnville CRA Meeting Booklet, October 2026", source: "Root & Simmer, from the City’s meeting records", href: "/documents/cra/lincolnville-cra-meeting-booklet-october-2026.pdf", kind: "PDF", note: "How the CRA meets, what is on its agenda, and how to speak in public comment." },
+];
+
+/** The City's and the CRA's concerns about the acre, and how Root & Simmer can help answer each one. */
+export const stableBodegaConcerns: ProjectConcern[] = [
+  { concern: "The lot floods", help: "A commissioner said in 2026 that the City’s Riberia property floods. We pull the flood zone, elevation and drainage records, and the idea uses only reversible, take-down setups with no new building." },
+  { concern: "Are the barns historic?", help: "We ask HARB staff and the Florida Master Site File, read the Sanborn fire maps for the south end, and write the barns’ history down with every source." },
+  { concern: "What the City already planned", help: "The 2013 plan looked at moving the stables and making a family attraction and a community gathering place here. We request the City’s current plans and bring neighbors’ answers from this page." },
+  { concern: "Will it serve Lincolnville?", help: "Local first: the vendor list on this page tells the City who in Lincolnville is ready, and a resident listening session comes before any public proposal." },
+  { concern: "Telling the history right", help: "Every heritage walk panel is checked with the Lincolnville Museum and Cultural Center and ACCORD before it goes up." },
+];
+
+/** Vendor sign-up, in the shared "What if…?" form. */
+export const stableBodegaSignup: WhatIfSignupConfig = {
+  subject: "The Stable Bodega: vendor interest",
+  opening: "I would like a place at the Stable Bodega.",
+  orgLabel: "Business or craft name",
+  whatLabel: "What do you make, grow, sell or teach?",
+  roleLabel: "The space you’d want",
+  roles: stableBodega.vendors.spaceTypes,
+  whenLabel: "When",
+  whens: stableBodega.vendors.starts,
+  submit: stableBodega.vendors.submit,
+  fine: stableBodega.vendors.fine,
+};
+
+/** The "What if…?" ideas, shown as boxes on the home page (newest first). */
+export const whatIfTeasers = [
+  {
+    label: "What if…?",
+    title: "What if Twine Park honored the Twines the way they deserve?",
+    body: "A Twine Grove around the memorial trees, a new history panel, dry benches and a history walk at the corner of Riberia and Lovett. The design is under way: add your voice.",
+    link: "See the idea, vote and add yours",
+    href: "/what-if/twine-park",
+    image: "/photos/twine-park-corner-2026-10.jpg",
+  },
+  {
+    label: whatIfTeaser.label,
+    title: whatIfTeaser.title,
+    body: whatIfTeaser.body,
+    link: whatIfTeaser.link,
+    href: whatIfTeaser.href,
+    image: "/photos/stable-bodega-market-day.jpg",
+  },
+];

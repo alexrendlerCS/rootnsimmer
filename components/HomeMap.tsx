@@ -164,7 +164,7 @@ function HomeCard({ home, isMine }: { home: Home; isMine: boolean }) {
 
       {st && card && (
         <section className={`home-status home-status-${st.status}`} aria-label={card.title}>
-          <h3>{card.title}</h3>
+          <h3>{st.title ?? card.title}</h3>
           {st.photo && (
             <figure className="home-status-photo">
               {/* eslint-disable-next-line @next/next/no-img-element */}

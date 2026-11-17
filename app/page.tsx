@@ -16,8 +16,7 @@ import {
   work,
 } from "@/content/site";
 import { craTeaser } from "@/content/cra";
-import { whatIfTeaser } from "@/content/stable-bodega";
-import whatIfPhoto from "@/public/photos/stable-bodega-market-day.jpg";
+import { whatIfTeasers } from "@/content/stable-bodega";
 import { ConnectionForm } from "@/components/ConnectionForm";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
@@ -179,18 +178,20 @@ export default function Home() {
         </section>
 
         {/* What if…? The Stable Bodega */}
-        <section id="what-if" className="what-if" aria-labelledby="what-if-title">
-          <Link href={whatIfTeaser.href} className="wrap what-if-card">
-            <div>
-              <p className="section-label">{whatIfTeaser.label}</p>
-              <h2 id="what-if-title" className="h-medium">
-                {whatIfTeaser.title}
-              </h2>
-              <p>{whatIfTeaser.body}</p>
-              <span className="button button-red">{whatIfTeaser.link}</span>
-            </div>
-            <Image src={whatIfPhoto} alt="" sizes="(max-width: 900px) 90vw, 520px" className="what-if-img" />
-          </Link>
+        <section id="what-if" className="what-if" aria-label="What if…? Root & Simmer visions">
+          <div className="wrap what-if-grid">
+            {whatIfTeasers.map((w) => (
+              <Link key={w.href} href={w.href} className="what-if-card">
+                <Image src={w.image} alt="" width={1200} height={700} sizes="(max-width: 900px) 90vw, 560px" className="what-if-img" />
+                <div>
+                  <p className="section-label">{w.label}</p>
+                  <h2 className="h-medium">{w.title}</h2>
+                  <p>{w.body}</p>
+                  <span className="button button-red">{w.link}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Offerings */}

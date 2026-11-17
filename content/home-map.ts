@@ -72,9 +72,21 @@ export const homeMapLegend = [
  * To add a home, copy a line and change the parcel number (shown in the County's records) and the note.
  */
 export type HomeStatus = "owners" | "guests" | "vision";
-export const homeStatus: Record<string, { status: HomeStatus; note: string; photo?: { src: string; alt: string; caption: string }; link?: { label: string; href: string } }> = {
+export const homeStatus: Record<string, { status: HomeStatus; note: string; title?: string; photo?: { src: string; alt: string; caption: string }; link?: { label: string; href: string } }> = {
+  "2102200000": {
+    status: "vision",
+    title: "What if…? Twine Park",
+    note: "Twine Park, 57 Lovett Street, named for Henry L. Twine and Katherine “Kat” Twine, Lincolnville civil rights leaders. The City owns the park and the CRA funds its improvement, with a design under way. What if the whole corner honored the Twines the way they deserve?",
+    photo: {
+      src: "/photos/twine-park-marker-2026-10.jpg",
+      alt: "The weathered Twine Park marker with portraits of Henry Twine and Kat Twine.",
+      caption: "The Twine Park marker, October 2026. Photo: Root & Simmer.",
+    },
+    link: { label: "See the idea, vote and add yours", href: "/what-if/twine-park" },
+  },
   "1495900010": {
     status: "vision",
+    title: "What if…? The Stable Bodega",
     note: "The City’s former carriage stables: about one acre of painted concrete-block barns with tin roofs and red barn doors around a grass yard. The buildings are vacant, and the acre has sat behind a locked fence since the stable lease ended on September 30, 2026. What if the gate opened again as the Stable Bodega?",
     photo: {
       src: "/photos/stable-bodega-barn.jpg",
@@ -111,7 +123,7 @@ export const homeStatusCards: Record<HomeStatus, { color: string; label: string;
   },
   vision: {
     color: "#e8a33d",
-    label: "Vacant building · What if…?",
+    label: "What if…?",
     legend: "What if…? A vacant place we picture a new life for",
     title: "What if…? The Stable Bodega",
   },
