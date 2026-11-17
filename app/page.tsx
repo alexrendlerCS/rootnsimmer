@@ -16,6 +16,8 @@ import {
   work,
 } from "@/content/site";
 import { craTeaser } from "@/content/cra";
+import { whatIfTeaser } from "@/content/stable-bodega";
+import whatIfPhoto from "@/public/photos/stable-bodega-market-day.jpg";
 import { ConnectionForm } from "@/components/ConnectionForm";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
@@ -174,6 +176,21 @@ export default function Home() {
               <p className="fine">{craTeaser.source}</p>
             </div>
           </div>
+        </section>
+
+        {/* What if…? The Stable Bodega */}
+        <section id="what-if" className="what-if" aria-labelledby="what-if-title">
+          <Link href={whatIfTeaser.href} className="wrap what-if-card">
+            <div>
+              <p className="section-label">{whatIfTeaser.label}</p>
+              <h2 id="what-if-title" className="h-medium">
+                {whatIfTeaser.title}
+              </h2>
+              <p>{whatIfTeaser.body}</p>
+              <span className="button button-red">{whatIfTeaser.link}</span>
+            </div>
+            <Image src={whatIfPhoto} alt="" sizes="(max-width: 900px) 90vw, 520px" className="what-if-img" />
+          </Link>
         </section>
 
         {/* Offerings */}

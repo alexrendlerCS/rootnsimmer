@@ -1382,6 +1382,9 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .swatch-guests { background: rgb(31 58 44 / 0.85); border-color: #1f3a2c; }
 .home-kind-owners { color: var(--haint-deep); }
 .home-kind-guests { color: var(--oak); }
+.swatch-vision { background: rgb(232 163 61 / 0.85); border-color: #b97d22; }
+.home-kind-vision { color: #8a5a12; }
+.home-status-vision { background: #fdf4e6; border-color: #e8a33d; }
 .home-status { margin: 0 0 1rem; padding: 12px 14px; border-left: 4px solid; border-radius: 0 var(--radius) var(--radius) 0; }
 .home-status-owners { background: var(--haint-soft); border-color: var(--haint-deep); }
 .home-status-guests { background: #eef2ee; border-color: var(--oak); }
@@ -1427,3 +1430,42 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .home-demolished p { margin: 0; }
 .home-demolished a { display: inline-block; margin-top: 6px; color: #6e4466; font-weight: 600; }
 @media (max-width: 560px) { .ba-after { grid-template-columns: 1fr; } }
+
+/* What if…? The Stable Bodega (/what-if/stable-bodega) and its home-page teaser */
+.what-if { padding-block: clamp(32px, 5vw, 56px); }
+.what-if-card { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: clamp(20px, 4vw, 48px); align-items: center; text-decoration: none; color: inherit; }
+.what-if-card .section-label { color: var(--rail); }
+.what-if-card:hover .h-medium { text-decoration: underline; text-decoration-color: var(--rail); }
+.what-if-img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.bodega { padding-block: clamp(32px, 5vw, 56px) var(--section); }
+.bodega-head { display: grid; grid-template-columns: 1fr minmax(0, 480px); gap: clamp(24px, 4vw, 48px); align-items: start; padding-bottom: 1.75rem; border-bottom: 1px solid var(--gold); }
+.bodega-tagline { font: 1.125rem/1.4 var(--font-display); color: var(--rail); margin: 0 0 1rem; }
+.bodega-idea { font-size: 0.9375rem; font-weight: 600; color: var(--oak); padding: 10px 14px; background: var(--haint-soft); border-left: 4px solid var(--haint-deep); border-radius: 0 var(--radius) var(--radius) 0; }
+.bodega-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.25rem; }
+.bodega-figure { margin: 0; }
+.bodega-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+.bodega-figure figcaption { margin-top: 6px; font-size: 0.8125rem; color: var(--muted); }
+.bodega-wide { margin: 1.25rem 0; padding: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.bodega-section { max-width: 64rem; padding-top: 2.5rem; }
+.bodega-feel { font-size: 1.0625rem; max-width: 46rem; }
+.bodega-spaces { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.bodega-space { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 6px; width: 100%; height: 100%; padding: 16px; background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--oak-tint); border-radius: var(--radius); }
+.bodega-space:hover { border-top-color: var(--rail); }
+.bodega-space:focus-visible { outline: 3px solid var(--rail); outline-offset: 2px; }
+.bodega-space.is-on { border-color: var(--rail); border-top-color: var(--rail); background: #fbefee; }
+.bodega-space-where { font-size: 0.8125rem; font-weight: 600; color: var(--rail); }
+.bodega-space-name { font: 1.1875rem/1.25 var(--font-display); color: var(--oak); }
+.bodega-space-body { font-size: 0.875rem; color: var(--muted); flex: 1; }
+.bodega-space-vote { font-size: 0.875rem; font-weight: 700; color: var(--oak); }
+.bodega-space.is-on .bodega-space-vote { color: var(--rail); }
+.bodega-voice { margin-top: 2rem; }
+.bodega-voice-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.bodega-picked { margin: 0; font-weight: 700; color: var(--rail); }
+.bodega-voice .form-card, .bodega-vendors .form-card { max-width: 44rem; }
+.bodega-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
+.bodega-walk { list-style: none; margin: 1rem 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bodega-walk li { display: flex; gap: 12px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.bodega-walk h3 { margin: 0 0 0.25rem; font-size: 1.0625rem; }
+.bodega-walk p { margin: 0; font-size: 0.9375rem; }
+.bodega-vendors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
+@media (max-width: 900px) { .what-if-card, .bodega-head, .bodega-split, .bodega-vendors { grid-template-columns: 1fr; } .bodega-walk { grid-template-columns: 1fr; } }

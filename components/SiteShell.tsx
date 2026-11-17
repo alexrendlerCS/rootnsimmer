@@ -29,6 +29,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
               <Link href="/library">Library</Link>
               <Link href="/newsletter">Newsletter</Link>
+              <Link href="/what-if/stable-bodega">What if…? The Stable Bodega</Link>
             </p>
           </div>
           <div>
