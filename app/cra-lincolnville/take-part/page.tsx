@@ -13,6 +13,23 @@ export default function TakePartPage() {
   const c = craTakePart;
   return (
     <CraGuide slug="take-part">
+      <GuideSection id="checklist" title={c.checklist.title}>
+        <p>{c.checklist.intro}</p>
+        <ol className="steps">
+          {c.checklist.steps.map((s) => (
+            <li key={s.title}>
+              <strong>{s.title}</strong> {s.body}
+            </li>
+          ))}
+        </ol>
+        <h3 className="steps-title">{c.checklist.questionsTitle}</h3>
+        <ul className="questions">
+          {c.checklist.questions.map((q) => (
+            <li key={q}>{q}</li>
+          ))}
+        </ul>
+      </GuideSection>
+
       <GuideSection id="ways" title="Ways to take part">
         <ul className="entries">
           {c.ways.map((w) => (
