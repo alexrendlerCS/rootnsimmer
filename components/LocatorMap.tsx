@@ -54,6 +54,9 @@ const SHOWN: Record<string, string> = {
   "Cerro Street": "Cerro St.",
 };
 
+/** On phones, only these street names show until the map is zoomed in. */
+const KEY_STREETS = new Set(["King St.", "Bridge St.", "Riberia St.", "Martin Luther King Jr. Ave.", "Washington St.", "Cerro St."]);
+
 const gridRef = (x: number, y: number, w: number, h: number) =>
   `${ROWS[Math.min(5, Math.floor((y / h) * 6))]}${COLS[Math.min(2, Math.floor((x / w) * 3))]}`;
 
@@ -265,7 +268,7 @@ export function LocatorMap() {
                     .map((l) => (
                       <span
                         key={l.name}
-                        className="locator-street-label"
+                        className={`locator-street-label${KEY_STREETS.has(SHOWN[l.name]) ? " is-key" : ""}`}
                         style={{ left: pct(Math.min(Math.max(l.x, 90), data.width - 90), data.width), top: pct(Math.min(Math.max(l.y, 40), data.height - 40), data.height), transform: `translate(-50%, -50%) rotate(${l.angle}deg) scale(${1 / view.s})` }}
                       >
                         {SHOWN[l.name]}

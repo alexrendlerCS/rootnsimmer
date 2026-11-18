@@ -1552,21 +1552,23 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .locator-mapcol { order: -1; }
 }
 @media print {
-  @page { size: letter; margin: 0.35in; }
+  @page { size: letter; margin: 0.3in; }
   .site-header, .site-footer, .skip-link, .locator-print, .locator-zoom-buttons, .locator-card { display: none !important; }
   body { background: #fff !important; }
   .locator-page { padding: 0 !important; max-width: none !important; }
   .locator { font-size: 10pt; }
   .locator-head { grid-template-columns: auto 1fr; padding-bottom: 6pt; }
-  .locator-logo img { width: 54px; }
+  .locator-logo img { width: 44px; }
   .locator-title { font-size: 22pt; }
   .locator-sub { font-size: 10pt; }
-  .locator-body { grid-template-columns: 4.05in 3.6in; gap: 0.15in; margin-top: 6pt; }
+  .locator-body { grid-template-columns: 4.3in 3.45in; gap: 0.12in; margin-top: 4pt; }
   .locator-list { column-count: 2; column-gap: 0.14in; }
   .locator-cat { break-inside: auto !important; }
   .locator-cat h2 { break-after: avoid; }
   .locator-cat li { break-inside: avoid; }
-  .locator-mapcol { width: 3.6in; }
+  .locator-mapcol { width: 3.45in; }
+  main, #main { padding: 0 !important; margin: 0 !important; }
+  .locator-foot p { display: inline; margin-right: 6pt; }
   .locator-item-name { line-height: 1.15; }
   .locator-item-addr { line-height: 1.15; }
   .locator-mapcol { order: 0; }
@@ -1589,4 +1591,16 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 /* Phones: landmark names appear once the map is zoomed in, so they don't crowd the pins. */
 @media (max-width: 600px) {
   .locator-zoom:not(.is-zoomed) .locator-landmark b { display: none; }
+}
+@media print {
+  .locator-head { padding-bottom: 3pt; gap: 8pt; }
+  .locator-title { font-size: 20pt; }
+  .locator-badge { margin-bottom: 2pt; }
+  .locator-cat { margin-bottom: 2pt; }
+  .locator-item { padding: 0.5pt 0; }
+  .locator-num { width: 13pt; height: 13pt; }
+  .locator-key ul { gap: 1pt 8pt; }
+}
+@media (max-width: 600px) {
+  .locator-zoom:not(.is-zoomed) .locator-street-label:not(.is-key) { display: none; }
 }

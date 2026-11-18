@@ -3,7 +3,7 @@
  * Same format as Twine Park and the Stable Bodega.
  *
  * Ragga Surf Cafe is an open, growing business at 134 Riberia Street. The idea is a welcome spot WITH the café, as
- * partners: it goes public only with the owners' agreement. Words from Kimberly's Raggamuffin partnership proposal,
+ * partners. The owners agreed (Kimberly, Nov 18, 2026). Words from Kimberly's Raggamuffin partnership proposal,
  * her City proposal "Bringing Lincolnville Forward" and public City records. Edit the words between the quotes.
  */
 import type { ProjectConcern, ProjectRecord } from "./projects";
@@ -14,7 +14,7 @@ export const visitorWelcome = {
   title: "A Lincolnville Visitor Welcome",
   tagline: "At Ragga Surf Cafe, 134 Riberia Street. The home brings you to Lincolnville. Root & Simmer welcomes you into the community.",
   lede: "St. Augustine welcomes millions of visitors a year, and the City runs its Visitor Information Center downtown. Lincolnville has no front door of its own. What if visitors arriving on the Riberia Street waterfront found one, right beside their coffee: a small Root & Simmer welcome corner at Ragga Surf Cafe, with a Lincolnville map, the stories, and the way to the neighborhood’s own businesses?",
-  idea: "An idea in partnership with Ragga Surf Cafe, offered only with the owners’ agreement. The café stays the café: Root & Simmer adds a welcome, not a counter.",
+  idea: "An idea in partnership with Ragga Surf Cafe, shared with the owners’ agreement. The café stays the café: Root & Simmer adds a welcome, not a counter.",
 
   feel: {
     title: "This is how it should feel",
@@ -56,7 +56,7 @@ export const visitorWelcome = {
       { label: "The place", body: "Ragga Surf Cafe, an open café at 134 Riberia Street on the Lincolnville waterfront, beside Raggamuffin and Peace & Cream." },
       { label: "Today", body: "Visitors who stop on the waterfront have no Lincolnville welcome: the City’s Visitor Information Center is downtown." },
       { label: "The idea", body: "A small welcome corner run by Root & Simmer with the café’s agreement, adding referrals to the café and its neighbors, not taking from them." },
-      { label: "Next step", body: "A conversation with the café’s owners about what meaningful support from a Lincolnville hospitality partner would look like for them." },
+      { label: "Next step", body: "Planning the welcome corner together with the café’s owners, and hearing from neighbors on this page about what it should offer." },
     ],
     mapLink: { label: "See 134 Riberia Street on the home map", href: "/preserve-historic-homes/map" },
   },
@@ -93,5 +93,5 @@ export const visitorWelcome = {
   },
 
   notice:
-    "Root & Simmer Hospitality Co. is an independent private business. This is a community vision for discussion, offered in partnership with Ragga Surf Cafe only with its owners’ agreement. It is not a City of St. Augustine or Lincolnville Community Redevelopment Agency (CRA) plan and implies no City endorsement.",
+    "Root & Simmer Hospitality Co. is an independent private business. This is a community vision for discussion, shared in partnership with Ragga Surf Cafe, with its owners’ agreement. It is not a City of St. Augustine or Lincolnville Community Redevelopment Agency (CRA) plan and implies no City endorsement.",
 };

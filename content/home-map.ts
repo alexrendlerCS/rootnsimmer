@@ -76,7 +76,7 @@ export const homeStatus: Record<string, { status: HomeStatus; note: string; titl
   "2034400000": {
     status: "vision",
     title: "What if…? A Lincolnville Visitor Welcome",
-    note: "Ragga Surf Cafe, an open café on the Riberia Street waterfront. What if visitors stopping here found a Lincolnville welcome beside their coffee: a map of the whole neighborhood, the Welcoming Walk, and the way to Lincolnville’s own businesses? An idea offered in partnership, only with the café owners’ agreement.",
+    note: "Ragga Surf Cafe, an open café on the Riberia Street waterfront. What if visitors stopping here found a Lincolnville welcome beside their coffee: a map of the whole neighborhood, the Welcoming Walk, and the way to Lincolnville’s own businesses? An idea shared in partnership, with the café owners’ agreement.",
     link: { label: "See the idea, vote and add yours", href: "/what-if/visitor-welcome" },
   },
   "2102200000": {
