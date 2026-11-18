@@ -125,7 +125,7 @@ export default function VisitorMapPage() {
 
         <p className="notice">{v.notice}</p>
         <p className="fine">
-          Our visions: <Link href="/what-if/twine-park">What if…? Twine Park</Link> ·{" "}
+          <Link href="/locator-map">The Lincolnville Locator Map</Link> · Our visions: <Link href="/what-if/twine-park">What if…? Twine Park</Link> ·{" "}
           <Link href="/what-if/stable-bodega">What if…? The Stable Bodega</Link> ·{" "}
           <Link href="/preserve-historic-homes/map">The Lincolnville Home Map</Link>
         </p>
