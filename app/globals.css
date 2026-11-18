@@ -1659,3 +1659,25 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .budget-table td { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .budget-table td:last-child { font-weight: 700; color: var(--oak); }
 @media (max-width: 560px) { .budget-table thead th:nth-child(2), .budget-table thead th:nth-child(3), .budget-table td:nth-child(2), .budget-table td:nth-child(3) { display: none; } }
+
+/* Records on file (content/property-records.ts) */
+.records-on-file { margin: 1.25rem 0; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-top: 4px solid #6e4466; border-radius: var(--radius); }
+.records-on-file.is-compact { margin: 10px 0 6px; padding: 10px 12px; font-size: 0.875rem; }
+.records-head { margin: 0 0 4px; color: var(--oak); }
+.records-intro { margin: 0 0 8px; font-size: 0.9375rem; }
+.records-on-file ul { list-style: none; margin: 0; padding: 0; }
+.records-on-file li { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start; padding: 7px 0; border-top: 1px solid var(--line); }
+.records-status { font-size: 0.8125rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.is-in-hand .records-status { background: #e5efe5; color: #2f5d3a; }
+.is-requested .records-status { background: #fdf1dc; color: #8a5a12; }
+.is-missing .records-status { background: #f3ecf2; color: #6e4466; }
+.records-text { display: flex; flex-direction: column; }
+.records-title { font-weight: 600; color: var(--oak); }
+.records-meta, .records-why { font-size: 0.8125rem; color: var(--muted); }
+.records-open, .records-lock { font-size: 0.8125rem; font-weight: 700; white-space: nowrap; }
+.records-open { color: var(--rail); }
+.records-lock { color: var(--muted); }
+.records-lock::before { content: "🔒 "; }
+.records-note { margin: 8px 0 0; font-size: 0.8125rem; color: var(--muted); }
+.is-compact .records-on-file li, .records-on-file.is-compact li { gap: 6px; }
+@media (max-width: 560px) { .records-on-file li { grid-template-columns: 1fr auto; } .records-status { grid-column: 1 / -1; justify-self: start; } }

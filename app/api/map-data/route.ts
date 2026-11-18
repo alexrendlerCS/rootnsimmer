@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getMember } from "@/lib/members";
 import { createClient } from "@/lib/supabase/server";
 import { homeOfDoc, loadHomeMapData, parcelOf } from "@/lib/home-map-data";
+import { recordLinks } from "@/lib/record-links";
 
 type MyFile = { id: string; title: string; download: boolean; size: number | null };
 
@@ -33,5 +34,5 @@ export async function GET() {
       (myFiles[parcel] ??= []).push({ id: d.id, title: d.title, download: !/\.pdf$/i.test(d.file_name ?? ""), size: d.size_bytes });
     }
   }
-  return NextResponse.json({ ...data, mine, myFiles }, { headers: { "Cache-Control": "private, no-store" } });
+  return NextResponse.json({ ...data, mine, myFiles, recordLinks: await recordLinks() }, { headers: { "Cache-Control": "private, no-store" } });
 }

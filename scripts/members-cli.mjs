@@ -237,6 +237,7 @@ const SHARED_FOLDERS = {
   "4 Voices from City Hall": "Voices from City Hall",
   "5 Projects and landmarks": "Projects and landmarks",
   "6 Guides": "Guides",
+  "8 Demolition records": "Demolition records",
 };
 const tidyTitle = (name) =>
   stripNumber(name)

@@ -5,6 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { demolishedLots, homeMapCard, homeMapKey, homeMapLegend, homeMapPackets, homeMapSorts, homeStatus, homeStatusCards, type HomeStatus } from "@/content/home-map";
 import { openEmailDraft } from "@/lib/email";
+import { RecordsOnFile } from "@/components/RecordsOnFile";
 
 type Ring = [number, number][];
 type Kind = "researched" | "historic" | "lost" | "other";
@@ -34,7 +35,7 @@ const inSort = (h: Home, sort: Sort) =>
   (sort === "watch" && (!!h.watch || h.kind === "lost")) ||
   (sort === "vacant" && (!!h.vacant || searching(h)));
 type MyFile = { id: string; title: string; download: boolean; size: number | null };
-type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[]; myFiles?: Record<string, MyFile[]> };
+type MapData = { built: string; boundary: Ring; homes: Home[]; buildings: Ring[][][]; mine: string[]; myFiles?: Record<string, MyFile[]>; recordLinks?: Record<string, string> };
 
 const COLORS: Record<Kind, { fill: string; opacity: number }> = {
   researched: { fill: "#a32e28", opacity: 0.6 },
@@ -97,7 +98,7 @@ function Packets({ home }: { home: Home }) {
   );
 }
 
-function HomeCard({ home, isMine, myFile = [] }: { home: Home; isMine: boolean; myFile?: MyFile[] }) {
+function HomeCard({ home, isMine, myFile = [], recordLinks = {} }: { home: Home; isMine: boolean; myFile?: MyFile[]; recordLinks?: Record<string, string> }) {
   const built =
     home.research?.find((r) => r.built)?.built ??
     home.site.find((s) => s.year)?.year ??
@@ -200,6 +201,7 @@ function HomeCard({ home, isMine, myFile = [] }: { home: Home; isMine: boolean; 
             <strong>Demolished:</strong> {demolishedLots[parcelOf(home.id)].note}
             <span className="home-source">From the City’s HARB and permit records.</span>
           </p>
+          <RecordsOnFile parcel={parcelOf(home.id)} links={recordLinks} compact />
           {demolishedLots[parcelOf(home.id)].link && (
             <a href={demolishedLots[parcelOf(home.id)].link!.href}>{demolishedLots[parcelOf(home.id)].link!.label}</a>
           )}
@@ -489,7 +491,7 @@ export default function HomeMap() {
             <p className="home-key-sorts">{homeMapKey.sorts}</p>
           </section>
         </div>
-        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFiles?.[selected.id.replace(/-\d+$/, "")]} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
+        <div className="home-card-wrap">{selected ? <HomeCard home={selected} isMine={!!data?.mine.includes(selected.id)} myFile={data?.myFiles?.[selected.id.replace(/-\d+$/, "")]} recordLinks={data?.recordLinks} /> : <p className="home-card-empty">{homeMapCard.empty}</p>}</div>
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import { demolition, preserveIntro, south103, stairs } from "@/content/protect";
 import { filingIntro, filingSteps, floodExemption, needsReview } from "@/content/demolition-filing";
 import { GuideSection } from "@/components/CraGuide";
 import { ProjectHelp } from "@/components/ProjectSupport";
+import { RecordsOnFile } from "@/components/RecordsOnFile";
+import { recordLinks } from "@/lib/record-links";
 import { PacketCards, PreserveGuide } from "@/components/PreserveGuide";
 
 export const metadata: Metadata = {
@@ -15,7 +17,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/preserve-historic-homes/demolition" },
 };
 
-export default function DemolitionPage() {
+export default async function DemolitionPage() {
+  const links = await recordLinks();
   return (
     <PreserveGuide
       slug="demolition"
@@ -51,6 +54,7 @@ export default function DemolitionPage() {
           ))}
         </dl>
         <p>{south103.lesson}</p>
+        <RecordsOnFile parcel="2120400000" links={links} />
         <p>
           <Link className="button" href={south103.mapLink.href}>
             {south103.mapLink.label}

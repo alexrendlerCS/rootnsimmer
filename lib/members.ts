@@ -47,6 +47,7 @@ export const DOCUMENT_CATEGORIES = [
   "Voices from City Hall",
   "Projects and landmarks",
   "Guides",
+  "Demolition records",
 ] as const;
 
 /**

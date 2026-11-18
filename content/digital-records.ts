@@ -71,6 +71,7 @@ export const drMembership = {
     { title: "Digital welcome packet", body: "A sourced history of your home: records gathered in one place, historical context, and your family’s memories in your own words. Scope agreed together." },
     { title: "Electronic documents", body: "The three member documents above: Homes, Not Hotels, Why Lincolnville Homes Are Lost, and the Lincolnville Places and People Guide." },
     { title: "Membership", body: "One year in the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection. Updates on events and CRA votes, a voice, and knowing what is happening in Lincolnville." },
+    { title: "Your home’s records, requested and kept", body: "Root & Simmer requests the City, County and State records behind your home: deeds, permits, Historic Architectural Review Board files, site files and more. We track each one until it arrives, then add it to your home file with a plain-words note on what it means. Members can also open the records behind demolished and threatened Lincolnville homes, such as 103 South Street.", href: "/preserve-historic-homes/demolition#103-south", linkLabel: "See a records trail" },
     { title: "The full Library", body: "Every plan, budget, meeting record and City interview in the Library, including the members-only documents, with new ones added as they come in.", href: "/library", linkLabel: "See what is in the Library" },
   ],
   votes: {
