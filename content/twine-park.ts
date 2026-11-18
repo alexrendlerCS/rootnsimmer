@@ -5,7 +5,7 @@
  * the Lincolnville Community Redevelopment Agency (CRA) on Twine Park. Same rules as content/site.ts:
  * edit the words between the quotes and save.
  *
- * Kept off this page on purpose: dollar amounts (the site shows no CRA budget figures), private people's names,
+ * CRA dollar figures are shown (Kimberly, Nov 18, 2026). Kept off on purpose: private people's names,
  * and the owners of any home. The full proposal PDF is in the members' library (Projects and landmarks).
  * Back office: Documents\Root & Simmer Member Library\7 Partnerships\Twine Park.
  */
@@ -68,7 +68,7 @@ export const twinePark = {
 
   park: {
     title: "Project 1: Support the Twine Park design",
-    intro: "The City owns the park, the CRA funds it, and its consultant, Castle Bay Design Studio, holds the design. A Twine Park line appears in the CRA’s FY2026-27 budget. Whether the project is on hold is not confirmed, and the January 5, 2027 meeting packet is the place to check.",
+    intro: "The City owns the park, the CRA funds it, and its consultant, Castle Bay Design Studio, holds the design. The CRA budget lists “Twine Park Improvements Design & Construction”: $232,520 in 2025-26 ($200,000 new and $32,520 already committed), and $200,000 committed in the adopted 2026-27 budget. Whether the project is on hold is not confirmed, and the January 5, 2027 meeting packet is the place to check.",
     ask: "We would ask for a working role in the design’s public input, a chance to review the Castle Bay renderings with CRA staff, and a volunteer or adopt-a-park agreement once the park is built. City staff have said they are “happy to explore” that.",
     contributeTitle: "What we would contribute, in priority order",
     contribute: [
@@ -136,7 +136,7 @@ export const twinePark = {
       id: "bethel",
       title: "Project 6: Bethel Baptist Church and the CRA rehabilitation",
       paragraphs: [
-        "Bethel Baptist Church at 222 Riberia, within sight of the park, was founded in 1939 by Rev. William Banks and built in 1943, with a coquina shell-dash stucco finish painted by many artists. It hosted the NAACP Youth Council in 1963, Dr. King’s SCLC mass meetings in 1964, and Rev. Andrew Young’s Freedom School. On January 5, 2026 the Lincolnville CRA Steering Committee recommended an award for sanctuary repairs, and the CRA Board then preliminarily approved the church’s institutional rehabilitation application and placed it on the wait list for phased funding.",
+        "Bethel Baptist Church at 222 Riberia, within sight of the park, was founded in 1939 by Rev. William Banks and built in 1943, with a coquina shell-dash stucco finish painted by many artists. It hosted the NAACP Youth Council in 1963, Dr. King’s SCLC mass meetings in 1964, and Rev. Andrew Young’s Freedom School. On January 5, 2026 the Lincolnville CRA Steering Committee recommended a $1,000,000 award for sanctuary repairs, and the CRA Board then preliminarily approved the church’s institutional rehabilitation application and placed it on the wait list for phased funding. The adopted 2026-27 CRA budget includes $600,000 for Bethel Baptist Church.",
         "Our part is support, not management. The church and the CRA run the rehabilitation. We can link the church’s Freedom Trail story to the park walk, speak in public comment for keeping the rehabilitation funded, and offer volunteer help for church grounds days if the congregation wants it.",
       ],
     },
