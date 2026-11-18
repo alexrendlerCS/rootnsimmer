@@ -1604,3 +1604,21 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 @media (max-width: 600px) {
   .locator-zoom:not(.is-zoomed) .locator-street-label:not(.is-key) { display: none; }
 }
+
+/* CRA guide: the 2026-27 budget, line by line */
+.budget-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 16px; margin: 0.75rem 0; background: var(--oak); color: #fff; border-radius: var(--radius); }
+.budget-total strong { font: 1.75rem/1 var(--font-display); color: var(--sun); }
+.budget-income { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; margin: 0 0 1.25rem; }
+.budget-income > div { padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.budget-income dt { font-size: 0.875rem; color: var(--muted); }
+.budget-income dd { margin: 2px 0 0; font-weight: 700; color: var(--oak); }
+.budget-group { margin: 0 0 1.25rem; }
+.budget-group h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0 0 0.5rem; font-size: 1.125rem; }
+.budget-group-total { margin-left: auto; color: var(--rail); }
+.budget-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.budget-table th, .budget-table td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+.budget-table th[scope="row"], .budget-table thead th:first-child { text-align: left; font-weight: 500; }
+.budget-table thead th { font-size: 0.8125rem; font-weight: 700; color: var(--muted); border-bottom: 2px solid var(--gold); }
+.budget-table td { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.budget-table td:last-child { font-weight: 700; color: var(--oak); }
+@media (max-width: 560px) { .budget-table thead th:nth-child(2), .budget-table thead th:nth-child(3), .budget-table td:nth-child(2), .budget-table td:nth-child(3) { display: none; } }

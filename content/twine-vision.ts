@@ -85,7 +85,7 @@ export const twineVision = {
     title: "Where things stand",
     facts: [
       { label: "The park", body: "Twine Park, 57 Lovett Street, at Riberia and Lovett. City owned, with the Twine marker, a memorial evergreen and oak, four benches and a picnic table." },
-      { label: "The money", body: "The Lincolnville CRA’s FY2025-26 budget lists “Twine Park Improvements Design & Construction” at $200,000, with $32,520 in the next column. A Twine Park line also appears in the FY2026-27 budget’s carryforward column." },
+      { label: "The money", body: "“Twine Park Improvements Design & Construction” in the Lincolnville CRA budget: $232,520 in 2025-26 ($200,000 new and $32,520 already committed), and $200,000 committed in the adopted 2026-27 budget." },
       { label: "The design", body: "The City’s design consultant, Castle Bay Design Studio, holds the design. Whether the project is on hold is not confirmed." },
       { label: "Next public meeting", body: "Lincolnville CRA, January 5, 2027, 5 p.m., Alcazar Room, City Hall. Anyone may speak in public comment." },
     ],
@@ -94,7 +94,8 @@ export const twineVision = {
   },
 
   records: [
-    { title: "Lincolnville CRA Budget, Fiscal Year 2025-2026", source: "City of St. Augustine, page 2", href: "/documents/cra/lincolnville-cra-budget-fy2025-26.pdf#page=2", kind: "PDF", note: "The line “Twine Park Improvements Design & Construction”: $200,000, with $32,520 in the next column, under the CRA’s improvements, beautification and infrastructure projects." },
+    { title: "Lincolnville CRA adopted budget, Fiscal Year 2026-2027", source: "City of St. Augustine, October 5, 2026 agenda packet, pages 9-10", href: "/documents/cra/lincolnville-cra-agenda-packet-2026-10-05-adopted-budget.pdf#page=9", kind: "PDF", note: "“Twine Park Improvements Design & Construction”: $200,000 committed, under the CRA’s improvements, beautification and infrastructure projects." },
+    { title: "Lincolnville CRA Budget, Fiscal Year 2025-2026", source: "City of St. Augustine, page 2", href: "/documents/cra/lincolnville-cra-budget-fy2025-26.pdf#page=2", kind: "PDF", note: "The same line the year before: $200,000 new and $32,520 already committed, $232,520 in all." },
     { title: "Lincolnville Redevelopment Plan Amendment, 2017", source: "City of St. Augustine, page 27", href: "/documents/cra/lincolnville-redevelopment-plan-amendment-2017.pdf#page=27", kind: "PDF", note: "The plan the CRA works from: “Other improvements recommended by the LCRA include improving and expanding Twine Park.”" },
     { title: "Lincolnville Pedestrian Connectivity Study, 2020", source: "City of St. Augustine", href: "/documents/cra/lincolnville-pedestrian-connectivity-study-2020.pdf#page=3", kind: "PDF", note: "The City’s sidewalk study for the neighborhood, including new sidewalk along Twine Street, which borders the park’s block." },
     { title: "Twine Park historical marker", source: "City of St. Augustine marker, Historical Marker Database no. 77261", href: "https://www.hmdb.org/m.asp?m=77261", kind: "Web page", note: "The marker’s full text: the Twines’ lives, the naming of the park, and the trees planted in their memory." },

@@ -93,6 +93,71 @@ export const craLanding = {
       { goal: "Place", slug: "parks-and-named-places", title: "Parks, public spaces and streets", body: "Eddie Vickers Park, Lincolnville Park and Robert B. Hayling Park, plus the MLK Avenue streetscape, a current CRA project covering street, utility and safety work." },
     ],
   },
+  /**
+   * The adopted FY2026-27 budget, line by line (Resolution 2026-30, adopted September 9, 2026). Figures read from the
+   * budget table in the October 5, 2026 Steering Committee agenda packet, pages 9-10; each row's new money plus
+   * committed money equals its total, and the sections add up to $8,086,626.
+   */
+  budget: {
+    title: "Where the money goes: the 2026-27 budget",
+    intro: "The CRA Agency Board adopted the Lincolnville CRA budget for fiscal year 2026-27 on September 9, 2026 (Resolution 2026-30). Here is every line, in the plan’s three goals. “New” is money added this year; “committed” is money carried forward or already set aside for that project.",
+    total: { label: "Total budget, 2026-27", amount: "$8,086,626" },
+    income: [
+      { label: "Tax increment from the City", amount: "$1,732,560" },
+      { label: "Tax increment from St. Johns County", amount: "$1,039,308" },
+      { label: "FIND grant (kayak launch)", amount: "$175,000" },
+      { label: "Interest earned", amount: "$78,000" },
+      { label: "Carried forward from 2025-26", amount: "$5,061,758" },
+    ],
+    groups: [
+      {
+        goal: "People",
+        title: "Retain long-term residents",
+        total: "$1,279,457",
+        lines: [
+          { name: "Fix-It-Up housing repair program", added: "", committed: "$440,347", total: "$440,347" },
+          { name: "Property acquisition, affordable housing", added: "", committed: "$839,110", total: "$839,110" },
+        ],
+      },
+      {
+        goal: "History",
+        title: "Preserve historic character",
+        total: "$2,806,790",
+        lines: [
+          { name: "Trinity Independent, institutional rehabilitation", added: "$400,000", committed: "$872,041", total: "$1,272,041" },
+          { name: "St. Paul parsonage, institutional rehabilitation", added: "$250,000", committed: "$485,300", total: "$735,300" },
+          { name: "Bethel Baptist Church", added: "$600,000", committed: "", total: "$600,000" },
+          { name: "First Baptist parsonage, design and construction", added: "", committed: "$99,449", total: "$99,449" },
+          { name: "Professional services, future institutional projects", added: "", committed: "$100,000", total: "$100,000" },
+        ],
+      },
+      {
+        goal: "Place",
+        title: "Improvements, beautification, infrastructure",
+        total: "$3,709,378",
+        lines: [
+          { name: "Hayling and Vickers Parks: Hayling Plaza, kayak launch, dog park, court covering, playground", added: "$1,250,605", committed: "$517,223", total: "$1,767,828" },
+          { name: "Galimore Center awning", added: "$30,000", committed: "$4,775", total: "$34,775" },
+          { name: "MLK Avenue streetscape, design and construction", added: "", committed: "$1,118,205", total: "$1,118,205" },
+          { name: "Twine Park improvements, design and construction", added: "", committed: "$200,000", total: "$200,000" },
+          { name: "Sidewalks and future infrastructure projects", added: "$229,263", committed: "$359,307", total: "$588,570" },
+        ],
+      },
+      {
+        goal: "Running the CRA",
+        title: "Administration",
+        total: "$291,001",
+        lines: [
+          { name: "Transfer for staff salaries, benefits and shared CRA costs", added: "$265,000", committed: "", total: "$265,000" },
+          { name: "Miscellaneous expenses and printing", added: "", committed: "$26,001", total: "$26,001" },
+        ],
+      },
+    ],
+    landmarks: "Earlier landmark work: the Fountain of Youth Elks Lodge rehabilitation, about $1.1 million ($891,000 from the State’s African American Cultural and Historical Grants and $250,000 in Lincolnville CRA funds), completed in 2025; and First Baptist Church, about $1.1 million.",
+    note: "A budget figure is not the same as a finished project. Use the questions below to follow each line from planned to finished.",
+    source: { label: "Read the adopted budget table (City of St. Augustine, October 5, 2026 agenda packet, pages 9-10)", href: "/documents/cra/lincolnville-cra-agenda-packet-2026-10-05-adopted-budget.pdf#page=9" },
+    lastYear: { label: "2025-26 budget, for comparison", href: "/documents/cra/lincolnville-cra-budget-fy2025-26.pdf" },
+  },
   library: {
     title: "Read the documents yourself",
     body: "The 2013 Redevelopment Plan, the 2017 amendment, the budgets and our latest meeting guide are gathered in one place, each with a plain-words note on what it is.",
