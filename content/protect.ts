@@ -157,7 +157,7 @@ export const demolition = {
 export const recognition = {
   id: "recognition",
   title: "Getting your home recognized as historic",
-  intro: "Lincolnville has been a National Register historic district since 1991, when about 540 of its buildings were listed as contributing. Designation honors a building’s history, and some forms of it also protect the building and open the door to preservation help.",
+  intro: "Lincolnville has been a National Register historic district since 1991, when 548 of its buildings were listed as contributing. Designation honors a building’s history, and some forms of it also protect the building and open the door to preservation help.",
   kinds: [
     { label: "National Register district (1991)", body: "Lists contributing buildings street by street. Status can be lost if a building is heavily altered or demolished." },
     { label: "Florida Master Site File", body: "The State’s official inventory of historic resources. Contact: SiteFile@dos.myflorida.com, 850-245-6440." },

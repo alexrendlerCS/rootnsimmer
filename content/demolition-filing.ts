@@ -39,7 +39,7 @@ export const filingSteps = [
   },
   {
     title: "Gather the documents",
-    body: "Every application needs the signed HARB Application Agreement. A full demolition of a building that is individually listed on the National Register, contributing to a National Register district (as about 540 Lincolnville buildings were in 1991), or a local landmark also needs a Condition Assessment Report by a Florida-licensed architect or engineer, and proof of undue economic hardship. A partial demolition needs photographs, scaled drawings and a written justification (see the Submittal Checklist).",
+    body: "Every application needs the signed HARB Application Agreement. A full demolition of a building that is individually listed on the National Register, contributing to a National Register district (as 548 Lincolnville buildings were in 1991), or a local landmark also needs a Condition Assessment Report by a Florida-licensed architect or engineer, and proof of undue economic hardship. A partial demolition needs photographs, scaled drawings and a written justification (see the Submittal Checklist).",
   },
   {
     title: "File through the City’s Permit Portal by the deadline",

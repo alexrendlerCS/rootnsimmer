@@ -258,7 +258,7 @@ export const craDistrict = {
       id: "district",
       title: "The Lincolnville National Register Historic District",
       body: [
-        "Lincolnville is one of St. Augustine’s seven National Register historic districts. The 1991 nomination lists roughly 540 contributing buildings street by street, most of them Frame Vernacular, with Bungalows and a handful of Queen Anne, Gothic Revival, Italianate and other styles. In 2022 the City’s Historic Preservation Officer said Lincolnville’s district was being updated to reflect its civil rights history, now that buildings from that era have reached 50 years old. Designation is not permanent: a building that is heavily altered or demolished can lose its contributing status.",
+        "Lincolnville is one of St. Augustine’s seven National Register historic districts. The 1991 nomination lists 548 contributing buildings street by street, most of them Frame Vernacular, with Bungalows and a handful of Queen Anne, Gothic Revival, Italianate and other styles. In 2022 the City’s Historic Preservation Officer said Lincolnville’s district was being updated to reflect its civil rights history, now that buildings from that era have reached 50 years old. Designation is not permanent: a building that is heavily altered or demolished can lose its contributing status.",
       ],
       note: "",
       sources: "Sources: 1991 National Register nomination, Section 7; The Break Room, Julie Courtney, May 2022.",
@@ -319,6 +319,25 @@ export const craFixItUp = {
    6. How to Take Part
    -------------------------------------------------------------------------- */
 export const craTakePart = {
+  /** From Tab 1 (Nov 16, 2026): the six steps behind "Join. Show up. Be heard. Vote." */
+  checklist: {
+    title: "Join. Show up. Be heard. Vote.",
+    intro: "Lincolnville needs you in the room. Decisions about Lincolnville’s homes, landmarks, parks and streets are made by vote in public meetings. The budget, the projects and the programs that reach your street are all decided there. When few neighbors are in the room, Lincolnville’s priorities are easy to overlook and its proposals are harder to carry. Every chair filled and every comment made counts.",
+    steps: [
+      { title: "Join.", body: "Become a member of the Lincolnville Connection. One sign-up brings neighbors together and keeps you informed." },
+      { title: "Attend.", body: "Steering Committee meetings at 5:00 PM in the Alcazar Room, City Hall, 75 King Street. Check the City’s posted agenda for dates." },
+      { title: "Get up to date.", body: "Know what is on the agenda before you go: the budget, park and street projects, landmark restorations and Fix-It-Up." },
+      { title: "Get your voice heard.", body: "Speak during public comment with one focused question or request, or send a written comment if you cannot attend." },
+      { title: "Vote.", body: "Make sure you are registered with the St. Johns County Supervisor of Elections and vote in City elections. The City Commission you elect also sits as the CRA Agency Board." },
+      { title: "Serve.", body: "Apply for a Steering Committee seat when the City Clerk posts one at citystaug.com. Residents and those with an established stake in Lincolnville are preferred." },
+    ],
+    questionsTitle: "Questions to bring to any meeting",
+    questions: [
+      "What has changed since the last meeting, and what is complete?",
+      "What was actually spent, not only budgeted?",
+      "Who benefited, and what is the next milestone?",
+    ],
+  },
   ways: [
     {
       title: "Attend a Steering Committee meeting.",
