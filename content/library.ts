@@ -123,6 +123,14 @@ export const shelves: Shelf[] = [
     kind: "free",
     docs: [
       {
+        title: "Lincolnville CRA adopted budget, Fiscal Year 2026-2027, line by line",
+        source: "City of St. Augustine, October 5, 2026 Steering Committee agenda packet",
+        about: "The full budget table the CRA adopted: $8,086,626, every project line, with the April 6, 2026 meeting minutes. The budget table is on pages 9-10.",
+        access: "open",
+        file: "/documents/cra/lincolnville-cra-agenda-packet-2026-10-05-adopted-budget.pdf",
+        size: "PDF, 10 pages",
+      },
+      {
         title: "Lincolnville CRA Budget Resolution, Fiscal Year 2026-2027",
         source: "City of St. Augustine, adopted September 9, 2026",
         about: "The official resolution adopting this year’s Lincolnville CRA budget.",
@@ -209,7 +217,7 @@ export const shelves: Shelf[] = [
     question: "What was said and decided at each Steering Committee meeting?",
     kind: "members",
     docs: [
-      { title: "October 5, 2026: Agenda packet with the adopted budget", source: "Lincolnville CRA Steering Committee, with a searchable transcript", access: "members" },
+      { title: "October 5, 2026: Searchable transcript of the agenda packet", source: "Lincolnville CRA Steering Committee (the packet itself is free under The budgets)", access: "members" },
       { title: "July 14, 2026: Meeting packet with the preliminary budget", source: "Lincolnville CRA Steering Committee (meeting cancelled)", access: "members" },
       { title: "April 6, 2026: Meeting packet with the 2025 Annual Report, and draft minutes", source: "Lincolnville CRA Steering Committee, with a searchable transcript", access: "members" },
       { title: "January 5, 2026: Meeting packet and minutes", source: "Lincolnville CRA Steering Committee, with a searchable transcript", access: "members" },

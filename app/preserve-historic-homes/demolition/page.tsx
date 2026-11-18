@@ -5,6 +5,7 @@ import Image from "next/image";
 import { demolition, preserveIntro, south103, stairs } from "@/content/protect";
 import { filingIntro, filingSteps, floodExemption, needsReview } from "@/content/demolition-filing";
 import { GuideSection } from "@/components/CraGuide";
+import { ProjectHelp } from "@/components/ProjectSupport";
 import { PacketCards, PreserveGuide } from "@/components/PreserveGuide";
 
 export const metadata: Metadata = {
@@ -139,6 +140,8 @@ export default function DemolitionPage() {
         </p>
         <p className="fine">{floodExemption.title}: some single-family homes in flood zones may be exempt from HARB review. {filingIntro.source}</p>
       </GuideSection>
+
+      <ProjectHelp />
 
       <GuideSection id="packets" title="The member packet">
         <PacketCards ids={["packet-1"]} />

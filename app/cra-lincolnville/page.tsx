@@ -72,6 +72,59 @@ export default function CraLandingPage() {
         </ul>
       </GuideSection>
 
+      <GuideSection id="budget" title={l.budget.title}>
+        <p>{l.budget.intro}</p>
+        <div className="budget-total">
+          <span>{l.budget.total.label}</span>
+          <strong>{l.budget.total.amount}</strong>
+        </div>
+        <dl className="budget-income">
+          {l.budget.income.map((i) => (
+            <div key={i.label}>
+              <dt>{i.label}</dt>
+              <dd>{i.amount}</dd>
+            </div>
+          ))}
+        </dl>
+        {l.budget.groups.map((g) => (
+          <div key={g.title} className="budget-group">
+            <h3>
+              <span className="done-goal">{g.goal}</span> {g.title} <span className="budget-group-total">{g.total}</span>
+            </h3>
+            <table className="budget-table">
+              <thead>
+                <tr>
+                  <th scope="col">Project</th>
+                  <th scope="col">New</th>
+                  <th scope="col">Committed</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {g.lines.map((r) => (
+                  <tr key={r.name}>
+                    <th scope="row">{r.name}</th>
+                    <td>{r.added || "–"}</td>
+                    <td>{r.committed || "–"}</td>
+                    <td>{r.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+        <p>{l.budget.landmarks}</p>
+        <p className="fine">{l.budget.note}</p>
+        <p>
+          <a className="button" href={l.budget.source.href} target="_blank" rel="noopener">
+            {l.budget.source.label}
+          </a>{" "}
+          <a href={l.budget.lastYear.href} target="_blank" rel="noopener">
+            {l.budget.lastYear.label}
+          </a>
+        </p>
+      </GuideSection>
+
       <GuideSection id="library" title={l.library.title}>
         <p>{l.library.body}</p>
         <p>

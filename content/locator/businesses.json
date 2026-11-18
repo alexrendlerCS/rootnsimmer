@@ -1,0 +1,224 @@
+{
+  "_note": "Lincolnville Locator Map directory (/locator-map). Add or remove entries here, then run: node scripts/build-locator-map.mjs (it looks up any new address on OpenStreetMap). Use only facts the business has confirmed. Phone may be empty.",
+  "categories": [
+    {
+      "id": "history",
+      "name": "History, Culture & Community",
+      "color": "#a32e28",
+      "entries": [
+        {
+          "name": "Lincolnville Museum & Cultural Center",
+          "address": "102 M. L. King Ave.",
+          "phone": "(904) 824-1191"
+        },
+        {
+          "name": "ACCORD Civil Rights Museum & Freedom Trail",
+          "address": "79 Bridge St.",
+          "phone": "(904) 347-1382"
+        },
+        {
+          "name": "Best Richardson African Diaspora Literature & Culture Museum",
+          "address": "83 Washington St.",
+          "phone": "(904) 217-8255"
+        },
+        {
+          "name": "Fountain of Youth Elks Lodge",
+          "address": "100 Washington St.",
+          "phone": ""
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food, Coffee & Hospitality",
+      "color": "#1f3a2c",
+      "entries": [
+        {
+          "name": "St. Augustine Fish Camp",
+          "address": "142 Riberia St.",
+          "phone": "(904) 827-7000"
+        },
+        {
+          "name": "Ragga Bean Coffee Co. / Ragga Surf Cafe",
+          "address": "134 Riberia St.",
+          "phone": "(904) 274-1962"
+        },
+        {
+          "name": "Peace & Cream",
+          "address": "134 Riberia St.",
+          "phone": "(904) 274-1962"
+        },
+        {
+          "name": "Cornerstone Cafe",
+          "address": "117 M. L. King Ave.",
+          "phone": "(615) 516-2595"
+        },
+        {
+          "name": "Corner Market at Lincolnville",
+          "address": "97 M. L. King Ave.",
+          "phone": "(407) 595-5853"
+        },
+        {
+          "name": "Dog Rose Brewing Co. / Dog Rose Eats",
+          "address": "77 Bridge St.",
+          "phone": "(904) 217-3355"
+        },
+        {
+          "name": "La Nouvelle Bistro",
+          "address": "102 Bridge St.",
+          "phone": "(904) 217-8551"
+        },
+        {
+          "name": "Ice Plant Bar",
+          "address": "110 Riberia St.",
+          "phone": "(904) 829-6553"
+        },
+        {
+          "name": "St. Augustine Distillery",
+          "address": "112 Riberia St.",
+          "phone": "(904) 825-4962"
+        }
+      ]
+    },
+    {
+      "id": "art",
+      "name": "Art, Retail & Makers",
+      "color": "#a8843f",
+      "entries": [
+        {
+          "name": "H + H Blanton Art Studio & Gallery",
+          "address": "134 Riberia St.",
+          "phone": "(904) 294-5511"
+        },
+        {
+          "name": "Maria Reyes-Jones Gallery",
+          "address": "134 Riberia St.",
+          "phone": "(407) 619-1338"
+        },
+        {
+          "name": "Raggamuffin",
+          "address": "134 Riberia St.",
+          "phone": ""
+        },
+        {
+          "name": "Urban Asado",
+          "address": "150 Riberia St.",
+          "phone": "(904) 615-6769"
+        }
+      ]
+    },
+    {
+      "id": "marine",
+      "name": "Working Waterfront & Marine",
+      "color": "#2f5d8a",
+      "entries": [
+        {
+          "name": "Oasis Boatyard & Marina",
+          "address": "256 Riberia St.",
+          "phone": "(904) 824-2520"
+        },
+        {
+          "name": "St. Augustine Marine Center",
+          "address": "404 Riberia St.",
+          "phone": "(904) 824-4394"
+        }
+      ]
+    },
+    {
+      "id": "lodging",
+      "name": "Lodging & Visitor Experience",
+      "color": "#6e4466",
+      "entries": [
+        {
+          "name": "Cedar House Inn",
+          "address": "79 Cedar St.",
+          "phone": "(904) 829-0079"
+        },
+        {
+          "name": "Penny Farthing Inn",
+          "address": "83 Cedar St.",
+          "phone": "(800) 395-1890"
+        },
+        {
+          "name": "At Journey's End",
+          "address": "89 Cedar St.",
+          "phone": "(904) 829-0076"
+        },
+        {
+          "name": "Yallaha at Griffin Estate",
+          "address": "115 Bridge St.",
+          "phone": "(904) 325-6567"
+        },
+        {
+          "name": "Panda Tours",
+          "address": "97 M. L. King Ave.",
+          "phone": "(904) 687-7113"
+        }
+      ]
+    },
+    {
+      "id": "wellness",
+      "name": "Wellness & Services",
+      "color": "#5f7a68",
+      "entries": [
+        {
+          "name": "Cassage Therapy",
+          "address": "88 Riberia St., Suite 160",
+          "phone": "(904) 615-3572"
+        },
+        {
+          "name": "Saint Augustine Skin Spa",
+          "address": "88 Riberia St.",
+          "phone": "(904) 806-1855"
+        },
+        {
+          "name": "Coastal Radiance Aesthetics",
+          "address": "88 Riberia St., Suite 410",
+          "phone": "(904) 631-2218"
+        }
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "St. Paul AME Church",
+      "address": "85 M. L. King Ave.",
+      "kind": "church",
+      "labelSide": "below"
+    },
+    {
+      "name": "St. Benedict the Moor Catholic Church",
+      "address": "86 M. L. King Ave.",
+      "kind": "church",
+      "labelSide": "left"
+    },
+    {
+      "name": "First Baptist Church",
+      "address": "89 St. Francis St.",
+      "kind": "church"
+    },
+    {
+      "name": "St. Cyprian's Episcopal Church",
+      "address": "37 Lovett St.",
+      "kind": "church"
+    },
+    {
+      "name": "Bethel Baptist Church",
+      "address": "222 Riberia St.",
+      "kind": "church",
+      "labelSide": "left"
+    },
+    {
+      "name": "Twine Park",
+      "address": "57 Lovett St.",
+      "kind": "park",
+      "labelSide": "below"
+    },
+    {
+      "name": "Eddie Vickers Park",
+      "address": "Riberia St., south end",
+      "kind": "park",
+      "osmName": "Eddie Vickers Park"
+    }
+  ]
+}

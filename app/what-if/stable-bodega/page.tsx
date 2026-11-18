@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { stableBodega as s } from "@/content/stable-bodega";
+import { stableBodega as s, stableBodegaConcerns, stableBodegaRecords, stableBodegaSignup } from "@/content/stable-bodega";
 import { SiteShell } from "@/components/SiteShell";
-import { StableBodegaVendorForm, StableBodegaVote } from "@/components/StableBodega";
+import { WhatIfSignup, WhatIfVote } from "@/components/WhatIf";
+import { ProjectConcerns, ProjectHelp, ProjectRecords } from "@/components/ProjectSupport";
 
 export const metadata: Metadata = {
   title: `What if…? The Stable Bodega | ${site.fullName}`,
@@ -55,7 +56,7 @@ export default function StableBodegaPage() {
             {s.vote.title}
           </h2>
           <p>{s.vote.intro}</p>
-          <StableBodegaVote />
+          <WhatIfVote project="The Stable Bodega" storageKey="stable-bodega-picks" choices={s.spaces} voice={{ ...s.voice, connections: [...s.voice.connections] }} />
         </section>
 
         <section className="bodega-section bodega-split" aria-labelledby="yard-title">
@@ -128,12 +129,18 @@ export default function StableBodegaPage() {
             <p>{s.vendors.gets}</p>
             <p>{s.vendors.asks}</p>
           </div>
-          <StableBodegaVendorForm />
+          <WhatIfSignup c={{ ...stableBodegaSignup, roles: [...stableBodegaSignup.roles], whens: [...stableBodegaSignup.whens] }} />
         </section>
+
+        <ProjectConcerns title="The City’s concerns, and how we can help" intro="An idea is only as good as its answers. Here are the questions the City and the CRA are asking about this acre, and what Root & Simmer can do about each." concerns={stableBodegaConcerns} />
+
+        <ProjectRecords title="The records behind the idea" intro="Every fact on this page comes from a public record. Here they are, with what each one says in plain words." records={stableBodegaRecords} />
+
+        <ProjectHelp />
 
         <p className="notice">{s.notice}</p>
         <p className="fine">
-          More from Root & Simmer: <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link> ·{" "}
+          Another idea: <Link href="/what-if/twine-park">What if…? Twine Park</Link> · <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link> ·{" "}
           <Link href="/root">ROOT: Lincolnville Community Committee</Link>
         </p>
       </article>

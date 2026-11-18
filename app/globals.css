@@ -1469,3 +1469,193 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .bodega-walk p { margin: 0; font-size: 0.9375rem; }
 .bodega-vendors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
 @media (max-width: 900px) { .what-if-card, .bodega-head, .bodega-split, .bodega-vendors { grid-template-columns: 1fr; } .bodega-walk { grid-template-columns: 1fr; } }
+
+/* Project pages: records, concerns, how Root & Simmer helps; two What if…? boxes on the home page */
+.what-if-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(16px, 3vw, 32px); }
+.bodega-head-solo { grid-template-columns: minmax(0, 52rem); }
+.what-if-grid .what-if-card { display: flex; flex-direction: column; gap: 16px; padding: 0 0 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.what-if-grid .what-if-card > div { padding: 0 20px; }
+.what-if-grid .what-if-img { border: 0; border-radius: 0; aspect-ratio: 12 / 7; object-fit: cover; }
+.project-records { list-style: none; margin: 1rem 0 0; padding: 0; border-top: 1px solid var(--gold); }
+.project-records li { display: flex; gap: 20px; justify-content: space-between; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.project-records h3 { margin: 0 0 0.125rem; font-size: 1.125rem; }
+.project-records p { margin: 0 0 0.25rem; font-size: 0.9375rem; }
+.project-record-source { font-size: 0.8125rem !important; font-weight: 600; color: var(--rail); }
+.project-records .doc-link { flex: none; white-space: nowrap; }
+.project-help { margin-top: 1rem; }
+.project-help-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.project-help-list li { display: flex; gap: 12px; padding: 14px 16px; background: var(--haint-soft); border-radius: var(--radius); }
+.project-help-list h3 { margin: 0 0 0.25rem; font-size: 1.0625rem; }
+.project-help-list p { margin: 0; font-size: 0.9375rem; }
+@media (max-width: 760px) { .what-if-grid, .project-help-list { grid-template-columns: 1fr; } .project-records li { flex-direction: column; gap: 6px; } }
+
+/* Where it began: the visitor map story (/visitor-map) and its home-page opening */
+.story-open { padding-block: clamp(28px, 4vw, 48px); background: var(--oak); }
+.story-open-card { display: block; text-decoration: none; color: #fff; }
+.story-open-card > * { max-width: 52rem; }
+.story-open-card .section-label { color: var(--sun); }
+.story-open-card .h-medium { color: #fff; }
+.story-open-card p { color: var(--oak-tint); font-size: 1.0625rem; }
+.story-open-card:hover .h-medium { text-decoration: underline; text-decoration-color: var(--sun); }
+.story-marker { max-width: 360px; justify-self: end; }
+.story-quote { font-size: 1.375rem; color: var(--rail); }
+.story-asks { grid-template-columns: 1fr; }
+.story-heart { padding: 2rem clamp(18px, 3vw, 32px); margin-top: 2.5rem; background: var(--haint-soft); border-radius: var(--radius); }
+@media (max-width: 900px) { .story-marker { justify-self: start; } }
+.what-if-credit { margin: 0.75rem 0 0; font-size: 0.75rem !important; color: var(--muted); }
+
+/* ==========================================================================
+   Lincolnville Locator Map (/locator-map). No informational text under 13px.
+   ========================================================================== */
+.locator-page { padding-block: clamp(24px, 4vw, 48px) var(--section); }
+.locator {
+  --loc-land: #f7f3e8; --loc-water: #c9dfe3; --loc-marsh: #e2ead6; --loc-district: rgb(201 214 203 / 0.6);
+  --loc-district-line: #8fae96; --loc-park: #b9d5a2;
+  background: var(--porch); color: var(--bark);
+}
+.locator-head { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding-bottom: 16px; border-bottom: 2px solid var(--gold); }
+.locator-logo img { width: 84px; height: auto; display: block; border-radius: 8px; }
+.locator-badge { display: inline-block; margin: 0 0 6px; padding: 3px 10px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: var(--rail); border-radius: 3px; }
+.locator-title { margin: 0; font: 400 clamp(2rem, 4.5vw, 3.25rem)/1.05 var(--font-display); color: var(--oak); }
+.locator-sub { margin: 6px 0 0; font-size: 1rem; color: var(--muted); }
+.locator-print { align-self: start; }
+.locator-body { display: grid; grid-template-columns: minmax(260px, 360px) minmax(0, 1fr); gap: clamp(18px, 3vw, 32px); margin-top: 20px; align-items: start; }
+.locator-list { font-size: 0.875rem; }
+.locator-cat { margin-bottom: 14px; }
+.locator-cat h2 { margin: 0 0 6px; font: 700 0.875rem/1.3 var(--font-body); text-transform: uppercase; letter-spacing: 0.06em; }
+.locator-cat ol { list-style: none; margin: 0; padding: 0; }
+.locator-item { all: unset; box-sizing: border-box; cursor: pointer; display: flex; gap: 9px; width: 100%; padding: 5px 6px; border-radius: 6px; }
+.locator-item:hover, .locator-item.is-on { background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.locator-item:focus-visible { outline: 3px solid var(--rail); outline-offset: 1px; }
+.locator-num { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; font-size: 0.8125rem; font-weight: 700; }
+.locator-item-text { display: flex; flex-direction: column; }
+.locator-item-name { font-weight: 600; color: var(--oak); line-height: 1.25; }
+.locator-item-addr { font-size: 0.8125rem; color: var(--muted); }
+.locator-mapcol { min-width: 0; }
+.locator-frame { display: grid; grid-template-columns: 22px minmax(0, 1fr) 22px; grid-template-rows: 22px auto 22px; border: 3px double var(--oak); background: #fff; padding: 2px; }
+.locator-cols { grid-column: 2; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font-size: 0.8125rem; font-weight: 700; color: var(--oak); align-items: center; }
+.locator-cols-bottom { grid-row: 3; }
+.locator-rows { grid-row: 2; display: grid; grid-template-rows: repeat(6, 1fr); text-align: center; font-size: 0.8125rem; font-weight: 700; color: var(--oak); align-items: center; }
+.locator-rows-left { grid-column: 1; }
+.locator-rows-right { grid-column: 3; }
+.locator-stage { grid-column: 2; grid-row: 2; position: relative; overflow: hidden; touch-action: none; background: var(--loc-land); border: 1px solid var(--line); }
+.locator-zoom { position: absolute; inset: 0; transform-origin: 0 0; }
+.locator-svg { width: 100%; height: 100%; display: block; }
+.locator-gridline { stroke: rgb(31 58 44 / 0.12); stroke-width: 1.5; stroke-dasharray: 6 8; }
+.locator-street-case { fill: none; stroke: #d9cfb9; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.locator-street-case.is-main { stroke: #c9bc9d; stroke-width: 9; }
+.locator-street { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.locator-street.is-main { stroke-width: 6.5; }
+.locator-street-label { position: absolute; white-space: nowrap; font-size: 13px; font-weight: 600; color: #4f4a3f; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff; pointer-events: none; transform-origin: center; }
+.locator-water-label { position: absolute; left: 1%; top: 58%; font: italic 600 13px/1 var(--font-body); color: #3f6f7a; white-space: nowrap; pointer-events: none; transform-origin: left center; }
+.locator-landmark { position: absolute; display: flex; align-items: center; gap: 4px; pointer-events: none; transform-origin: 6px 6px; }
+.locator-landmark i { width: 12px; height: 12px; flex: none; background: var(--oak); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--oak); }
+.locator-landmark.is-park i { background: #5e8f4a; box-shadow: 0 0 0 1px #3d6b2c; }
+.locator-landmark b { font-size: 13px; font-weight: 700; color: var(--oak); white-space: nowrap; text-shadow: 0 0 3px #fff, 0 0 3px #fff; }
+.locator-pin { position: absolute; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 2px solid #fff; border-radius: 50%; color: #fff; font: 700 13px/1 var(--font-body); cursor: pointer; box-shadow: 0 1px 3px rgb(0 0 0 / 0.35); transform-origin: center; transition: transform 0.12s; z-index: 2; }
+.locator-pin.is-cluster { width: 30px; height: 30px; background: #fff; color: var(--oak); border: 3px solid var(--rail); }
+.locator-pin.is-on { z-index: 3; box-shadow: 0 0 0 3px var(--rail), 0 2px 6px rgb(0 0 0 / 0.35); }
+.locator-pin:focus-visible { outline: 3px solid var(--rail); outline-offset: 2px; }
+.locator-card { position: absolute; z-index: 4; width: 250px; max-height: 340px; overflow: auto; padding: 12px 14px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--rail); border-radius: var(--radius); box-shadow: 0 6px 18px rgb(0 0 0 / 0.18); font-size: 0.875rem; }
+.locator-card p { margin: 0 0 2px; }
+.locator-card-group { font-weight: 700; color: var(--rail); margin-bottom: 6px !important; }
+.locator-card-item + .locator-card-item { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.locator-card-name { display: flex; gap: 8px; align-items: center; font-weight: 700; color: var(--oak); }
+.locator-card-cat { font-size: 0.8125rem; font-weight: 600; }
+.locator-card a { color: var(--rail); font-weight: 600; }
+.locator-card-close { all: unset; cursor: pointer; float: right; font-size: 1.25rem; line-height: 1; color: var(--muted); padding: 0 2px; }
+.locator-compass { position: absolute; top: 10px; right: 10px; display: grid; justify-items: center; font: 700 13px/1 var(--font-body); color: var(--oak); pointer-events: none; z-index: 2; }
+.locator-zoom-buttons { position: absolute; left: 10px; top: 10px; display: grid; gap: 4px; z-index: 2; }
+.locator-zoom-buttons button { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font-size: 1.125rem; font-weight: 700; color: var(--oak); cursor: pointer; }
+.locator-key { margin-top: 12px; padding: 12px 14px; background: #fff; border: 1px solid var(--oak); border-radius: var(--radius); }
+.locator-key-title { margin: 0 0 6px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8125rem; color: var(--oak); }
+.locator-key ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px 14px; font-size: 0.875rem; }
+.locator-key li { display: flex; gap: 8px; align-items: center; }
+.locator-key i { width: 16px; height: 16px; flex: none; display: inline-grid; place-items: center; font-style: normal; }
+.k-district { background: rgb(201 214 203 / 0.9); border: 2px dashed #8fae96; }
+.k-church { width: 12px !important; height: 12px !important; background: var(--oak); }
+.k-park { background: #b9d5a2; }
+.k-water { background: #c9dfe3; }
+.k-cluster { width: 20px !important; height: 20px !important; border-radius: 50%; border: 3px solid var(--rail); font-size: 0.8125rem; font-weight: 700; color: var(--oak); }
+.locator-credit { margin: 8px 0 0; font-size: 0.8125rem; color: var(--muted); }
+.locator-foot { margin-top: 20px; padding-top: 12px; border-top: 2px solid var(--gold); font-size: 0.875rem; color: var(--muted); }
+.locator-foot p { margin: 0 0 4px; }
+.locator-foot strong { color: var(--oak); }
+.locator-foot a { color: var(--rail); }
+@media (max-width: 860px) {
+  .locator-head { grid-template-columns: auto 1fr; }
+  .locator-print { grid-column: 1 / -1; justify-self: start; }
+  .locator-body { grid-template-columns: 1fr; }
+  .locator-mapcol { order: -1; }
+}
+@media print {
+  @page { size: letter; margin: 0.3in; }
+  .site-header, .site-footer, .skip-link, .locator-print, .locator-zoom-buttons, .locator-card { display: none !important; }
+  body { background: #fff !important; }
+  .locator-page { padding: 0 !important; max-width: none !important; }
+  .locator { font-size: 10pt; }
+  .locator-head { grid-template-columns: auto 1fr; padding-bottom: 6pt; }
+  .locator-logo img { width: 44px; }
+  .locator-title { font-size: 22pt; }
+  .locator-sub { font-size: 10pt; }
+  .locator-body { grid-template-columns: 4.3in 3.45in; gap: 0.12in; margin-top: 4pt; }
+  .locator-list { column-count: 2; column-gap: 0.14in; }
+  .locator-cat { break-inside: auto !important; }
+  .locator-cat h2 { break-after: avoid; }
+  .locator-cat li { break-inside: avoid; }
+  .locator-mapcol { width: 3.45in; }
+  main, #main { padding: 0 !important; margin: 0 !important; }
+  .locator-foot p { display: inline; margin-right: 6pt; }
+  .locator-item-name { line-height: 1.15; }
+  .locator-item-addr { line-height: 1.15; }
+  .locator-mapcol { order: 0; }
+  .locator-list { font-size: 10pt; }
+  .locator-cat { margin-bottom: 4pt; break-inside: avoid; }
+  .locator-cat h2 { font-size: 10pt; margin-bottom: 1pt; }
+  .locator-item { padding: 1pt 0; gap: 5pt; }
+  .locator-item-addr { font-size: 10pt; }
+  .locator-num { width: 15pt; height: 15pt; font-size: 10pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .locator-stage, .locator-pin, .locator-key i, .locator-badge, .locator-landmark i { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .locator-key { margin-top: 4pt; padding: 4pt 6pt; }
+  .locator-key ul { grid-template-columns: 1fr 1fr; font-size: 10pt; gap: 2pt 8pt; }
+  .locator-credit, .locator-foot { font-size: 10pt; }
+  .locator-foot { margin-top: 6pt; padding-top: 4pt; }
+  .locator { break-inside: avoid; }
+}
+.locator-landmark.side-left { flex-direction: row-reverse; transform-origin: calc(100% - 6px) 6px; }
+.locator-landmark.side-left { translate: calc(-100% + 12px) 0; }
+.locator-landmark.side-below { flex-direction: column; align-items: flex-start; }
+/* Phones: landmark names appear once the map is zoomed in, so they don't crowd the pins. */
+@media (max-width: 600px) {
+  .locator-zoom:not(.is-zoomed) .locator-landmark b { display: none; }
+}
+@media print {
+  .locator-head { padding-bottom: 3pt; gap: 8pt; }
+  .locator-title { font-size: 20pt; }
+  .locator-badge { margin-bottom: 2pt; }
+  .locator-cat { margin-bottom: 2pt; }
+  .locator-item { padding: 0.5pt 0; }
+  .locator-num { width: 13pt; height: 13pt; }
+  .locator-key ul { gap: 1pt 8pt; }
+}
+@media (max-width: 600px) {
+  .locator-zoom:not(.is-zoomed) .locator-street-label:not(.is-key) { display: none; }
+}
+
+/* CRA guide: the 2026-27 budget, line by line */
+.budget-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 16px; margin: 0.75rem 0; background: var(--oak); color: #fff; border-radius: var(--radius); }
+.budget-total strong { font: 1.75rem/1 var(--font-display); color: var(--sun); }
+.budget-income { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; margin: 0 0 1.25rem; }
+.budget-income > div { padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.budget-income dt { font-size: 0.875rem; color: var(--muted); }
+.budget-income dd { margin: 2px 0 0; font-weight: 700; color: var(--oak); }
+.budget-group { margin: 0 0 1.25rem; }
+.budget-group h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin: 0 0 0.5rem; font-size: 1.125rem; }
+.budget-group-total { margin-left: auto; color: var(--rail); }
+.budget-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.budget-table th, .budget-table td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+.budget-table th[scope="row"], .budget-table thead th:first-child { text-align: left; font-weight: 500; }
+.budget-table thead th { font-size: 0.8125rem; font-weight: 700; color: var(--muted); border-bottom: 2px solid var(--gold); }
+.budget-table td { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.budget-table td:last-child { font-weight: 700; color: var(--oak); }
+@media (max-width: 560px) { .budget-table thead th:nth-child(2), .budget-table thead th:nth-child(3), .budget-table td:nth-child(2), .budget-table td:nth-child(3) { display: none; } }
