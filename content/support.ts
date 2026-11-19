@@ -96,6 +96,14 @@ export const ways: Way[] = [
     note: "Each guide is for one guest, for the length of the visit. See the walks at rootnsimmer.vercel.app/walks. © Root & Simmer Hospitality Co. All rights reserved.",
   },
   {
+    id: "partners",
+    title: "The City and community partners",
+    body: "Root & Simmer offers research, oral history, visitor-map and walk content, marker text and community outreach to the City, the CRA, museums, churches and schools, under a written agreement.",
+    button: "Request a proposal",
+    subject: "A project with Root & Simmer",
+    emailBody: "Hello Kimberly,\n\nWe would like to talk about a project with Root & Simmer.\n\nOrganization or department:\nWhat the project is about:\nContact name:\nBest way to reach us:",
+  },
+  {
     id: "sponsors",
     title: "Sponsors",
     body: "Businesses and organizations can sponsor a stop on the self-guided walk, a newsletter issue or the Lincolnville Locator Map. Sponsors are thanked by name on what they support. Ask us for the details.",

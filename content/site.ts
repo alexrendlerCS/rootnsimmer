@@ -52,6 +52,8 @@ export const nav: NavItem[] = [
       { href: "/digital-records#dr-membership", label: "Homeowner membership: the Home Story Package" },
       { href: "/support#friend", label: "Friend of Lincolnville: three invitations with each membership" },
       { href: "/support", label: "Support Lincolnville’s History" },
+      { href: "/homeowner-help", label: "Help for homeowners: City and CRA programs" },
+      { href: "/work-with-us", label: "Work with Root & Simmer: for the City and partners" },
     ],
   },
   { href: "/#records", label: "Contact" },

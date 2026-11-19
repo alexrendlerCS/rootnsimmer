@@ -28,6 +28,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <Link href="/digital-records">Digital Records</Link>
               <Link href="/support">Support Lincolnville’s History</Link>
               <Link href="/walks">Self-guided walks</Link>
+              <Link href="/homeowner-help">Help for Lincolnville homeowners</Link>
+              <Link href="/work-with-us">Work with Root & Simmer</Link>
               <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
               <Link href="/library">Library</Link>
               <Link href="/newsletter">Newsletter</Link>

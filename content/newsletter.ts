@@ -113,7 +113,7 @@ export const thisMonth = {
   month: "November 2026",
   title: "Lincolnville: History, Culture, and Community",
   body: [
-    "Lincolnville’s story reaches from the six African American leaseholders who helped establish the community in 1866—Matilda Pappy, Aaron Dupont, Harriet Weidman, Miles Hancock, Tom Solana, and Peter Sanks—to the neighborhood’s living culture today. Gigi Onyinye Best’s From Liberation Lot to Lincolnville explores this history and the Gullah connections that shaped St. Augustine.",
+    "Lincolnville’s story reaches from the six African American leaseholders who helped establish the community in 1866—Matilda Pappy, Aaron Dupont, Harriet Weedman, Miles Hancock, Tom Solana, and Peter Sanks—to the neighborhood’s living culture today. Gigi Onyinye Best’s From Liberation Lot to Lincolnville explores this history and the Gullah connections that shaped St. Augustine.",
     "Explore local history at the Best Richardson African Diaspora Literature & Culture Museum and the ACCORD Civil Rights Museum and Freedom Trail. The Corner Market, established in 1920, is preparing for a new chapter, with a café and community gathering place announced as part of its plans. Its mural project highlights African American history in Lincolnville.",
     "This month, we’re sharing the people, places, museums, businesses, and events that keep Lincolnville’s heritage visible and its community connected. Check back for updates and ways to take part.",
   ],
