@@ -838,7 +838,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .offerings { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 1520px) {
+@media (max-width: 1680px) {
   .header-inner { gap: 18px; }
   .site-nav { gap: 10px; }
   .site-nav a { font-size: 0.875rem; }
@@ -848,8 +848,8 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .offerings { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Eight menu items no longer fit beside the logo below this width: use the menu button. */
-@media (max-width: 1319px) {
+/* Nine menu items no longer fit beside the logo below this width: use the menu button. */
+@media (max-width: 1439px) {
   .menu-button { display: grid; }
   .header-actions { margin-left: auto; }
   .site-nav {
@@ -1837,10 +1837,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .nav-group-list.is-open { display: block; }
 .site-nav .nav-group-list a { display: block; padding: 10px 16px; border-bottom: 0; white-space: normal; }
 .site-nav .nav-group-list a:hover { background: var(--haint-soft); color: var(--rail); }
-@media (max-width: 1520px) {
+@media (max-width: 1680px) {
   .nav-group-button { font-size: 0.875rem; }
 }
-@media (max-width: 1319px) {
+@media (max-width: 1439px) {
   .nav-group { display: block; border-bottom: 1px solid var(--line); }
   .nav-group-button { width: 100%; padding: 14px 0 6px; font-size: 1.0625rem; border-bottom: 0; cursor: default; pointer-events: none; }
   .nav-group-button svg { display: none; }

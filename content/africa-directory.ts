@@ -12,10 +12,10 @@ export type DirectoryStreet = { street: string; people: DirectoryPerson[] };
 export const directoryPage = {
   href: "/lincolnville-history/directory",
   label: "Lincolnville history",
-  title: "The Little Africa Directory",
+  title: "The Lil Africa Directory",
   subtitle: "Who lived and worked here, street by street, in the city directories of 1885 to 1907",
   intro:
-    "Old city directories listed residents by name, address and work. Root & Simmer Hospitality Co. gathered the Lincolnville and Little Africa entries, mainly from 1885, 1899 and 1907, and arranged them by street, so you can walk today’s map with the neighbors of more than a century ago.",
+    "Old city directories listed residents by name, address and work. Root & Simmer Hospitality Co. gathered the Lincolnville and Lil Africa entries, mainly from 1885, 1899 and 1907, and arranged them by street, so you can walk today’s map with the neighbors of more than a century ago.",
   narrativeTitle: "A neighborhood at work",
   members: "The street-by-street directory is for members of the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection: 52 people on 19 streets, with their work and addresses. Members sign in to open it.",
   note: "Entries are transcribed from a compiled directory and are still being checked against the original directory pages. Spellings and job titles are as the directory gives them. Some workplaces, such as Granada, King, St. George and Charlotte Streets, are downtown, outside Lincolnville.",
@@ -23,11 +23,11 @@ export const directoryPage = {
 };
 
 /* The street-by-street list and its narrative are members only (Kimberly, Nov 2026). They live in the private
-   members' storage, never in this public project: DocumentsRoot & Simmer Member LibraryLittle Africa Directory (private),
+   members' storage, never in this public project: DocumentsRoot & Simmer Member LibraryLil Africa Directory (private),
    uploaded with: node --env-file=.env.local scripts/walks.mjs upload-directory --file <that json>. */
 
 export const directoryTeaser = {
-  title: "Then and now: the Little Africa Directory",
+  title: "Then and now: the Lil Africa Directory",
   body: "The map shows Lincolnville today. Step back a century: the city directories of 1885 to 1907 list the neighborhood’s barbers, grocers, teachers, masons, pastors and a physician, many on the same streets you see here.",
   link: "Walk the old directory, street by street (members)",
 };

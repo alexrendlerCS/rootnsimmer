@@ -5,6 +5,7 @@ import { HomesHero } from "@/components/HomesHero";
 import { SiteShell } from "@/components/SiteShell";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
+import { HomesNotHotelsGuide } from "@/components/HomesNotHotelsGuide";
 
 export const metadata: Metadata = {
   title: { absolute: "Homes Not Hotels | Root & Simmer Hospitality Co." },
@@ -30,6 +31,7 @@ export default function HomesNotHotels() {
         </div>
       </section>
       <HistoryFact fact={facts.before1930} />
+      <HomesNotHotelsGuide />
     </SiteShell>
   );
 }

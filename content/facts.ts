@@ -7,7 +7,7 @@
 export type Fact = { mark: string; text: string; source: string };
 
 export const facts = {
-  founding: { mark: "1866", text: "Six newly freed people leased land beside Maria Sanchez Creek: Aaron Dupont, Miles Hancock, Matilda Papy, Peter Sanks, Tom Solana and Harriet Weedman. Their settlement, Little Africa, grew into Lincolnville.", source: "St. Augustine Historical Society; 1991 National Register nomination" },
+  founding: { mark: "1866", text: "Six newly freed people leased land beside Maria Sanchez Creek: Aaron Dupont, Miles Hancock, Matilda Papy, Peter Sanks, Tom Solana and Harriet Weedman. Their settlement, Lil Africa, grew into Lincolnville.", source: "St. Augustine Historical Society; 1991 National Register nomination" },
   before1930: { mark: "548", text: "In 1991 the National Register counted 548 Lincolnville buildings as contributing to its history, every one built before 1930. A City survey of 2019–2021 found 140 addresses where a recorded historic building was gone.", source: "1991 National Register nomination; City of St. Augustine survey, 2019–2021" },
   oneida: { mark: "1899", text: "One block of Oneida Street was home to a printer, a blacksmith, a grocer, a mail carrier and two barbers who walked to their chairs downtown.", source: "St. Augustine city directory, 1899" },
   washington: { mark: "1909", text: "The Odd Fellows Hall rose three stories in brick at 92 Washington Street, on what the National Register calls Lincolnville’s main Black business district. Halls like it held movie theaters, restaurants and shops.", source: "1991 National Register nomination" },

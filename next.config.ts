@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
       { source: "/lincolnville-history", destination: "/lincolnville-history/tracts", permanent: false },
       // Kimberly chose "Our Feet" (Nov 2026): the old walk link and the brief's page address both still work.
       { source: "/walks/land-beneath-your-feet", destination: "/walks/land-beneath-our-feet", permanent: true },
+      // One Homes Not Hotels page (Nov 19, 2026): the CRA guide chapter moved onto /homes-not-hotels.
+      { source: "/cra-lincolnville/homes-not-hotels", destination: "/homes-not-hotels", permanent: true },
       { source: "/the-land-beneath-our-feet", destination: "/lincolnville-history/tracts", permanent: false },
     ];
   },

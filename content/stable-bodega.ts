@@ -25,7 +25,7 @@ export const whatIfTeaser = {
 export const stableBodega = {
   label: "What if…? · A Root & Simmer vision",
   title: "The Stable Bodega",
-  tagline: "Lincolnville is the Journey. Little Africa is the Heartbeat. 160 Years of Lil Africa. Welcome In.",
+  tagline: "Lincolnville is the Journey. Lil Africa is the Heartbeat. 160 Years of Lil Africa. Welcome In.",
   lede: "At 650 Riberia Street, the south end of Riberia, sits a City-owned acre that has held stables, horses and working hands for most of a century. The carriages are gone now. What if the gate opened again, not as a stable, but as the Stable Bodega: a neighborhood corner store, a makers’ barn behind red doors, a string-lit yard, a market lawn and a free heritage walk? A place to visit. A place to thrive.",
   idea: "An idea for discussion, not a plan. The City owns this land, and only the City Commission can decide its future.",
 

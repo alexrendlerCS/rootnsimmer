@@ -8,8 +8,8 @@ export const walkSummaries: WalkSummary[] = [
   {
     slug: "land-beneath-our-feet",
     title: "The Land Beneath Our Feet",
-    subtitle: "From Little Africa to Lincolnville: how freedom became community",
-    summary: "A two-day walk in eighteen stops. Day 1 walks the land where Little Africa took shape; Day 2 follows the faith, schools, work and enterprise that made Lincolnville a community.",
+    subtitle: "From Lil Africa to Lincolnville: how freedom became community",
+    summary: "A two-day walk in eighteen stops. Day 1 walks the land where Lil Africa took shape; Day 2 follows the faith, schools, work and enterprise that made Lincolnville a community.",
     start: "Ragga Surf Cafe, 134 Riberia Street (both days)",
     stops: 18,
   },

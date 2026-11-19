@@ -14,7 +14,7 @@ import type { WhatIfChoice, WhatIfSignupConfig, WhatIfVoice } from "@/components
 export const washingtonVision = {
   label: "What if…? · A Root & Simmer vision",
   title: "Washington Street, Lil Africa’s Main Street",
-  tagline: "Washington Street is our spine. Little Africa is our heartbeat. And the people of Lincolnville are its living story.",
+  tagline: "Washington Street is our spine. Lil Africa is our heartbeat. And the people of Lincolnville are its living story.",
   lede: "A century ago, Washington Street was Lincolnville’s Main Street. Residences shared the street with shops, churches and fraternal halls, and many buildings joined home and livelihood under one roof: the business downstairs, the family upstairs. Grocers, barbers, cafés, druggists, doctors and dentists served the neighborhood that built them. What if Washington Street, and the blocks around it, did that again?",
   idea: "A vision for local businesses that serve the community first, the way Lil Africa’s did. Root & Simmer helps neighbors start and grow them: we take no part in buying, selling or leasing property.",
 

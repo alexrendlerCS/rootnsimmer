@@ -38,14 +38,14 @@ export const visitorMap = {
       "I didn’t know what I was missing because I didn’t yet know what was there to discover. I didn’t know the deeper history of Lincolnville, the generations of African American families who built and sustained this neighborhood, or their extraordinary contributions to St. Augustine.",
       "So I walked. I walked its streets, met residents, visited neighborhood businesses, attended community meetings, listened to Living Historians, studied maps, and learned about the families, homes, churches, schools and institutions that shaped this community. The visitor guide showed me where tourists go. The people of Lincolnville helped me understand where I was.",
     ],
-    quote: "The Lincolnville Corridor is the journey. Little Africa is the heartbeat.",
+    quote: "The Lincolnville Corridor is the journey. Lil Africa is the heartbeat.",
   },
 
   roots: {
     title: "Lil Africa",
     paragraphs: [
-      "Lincolnville was settled by freedpeople in 1866, near Maria Sanchez Creek, in the settlement first known as Africa, or Little Africa. On November 29, 1991, the Lincolnville Historic District joined the National Register of Historic Places with 548 contributing buildings. Dr. Martin Luther King Jr. and the 1964 St. Augustine Movement gathered in its churches.",
-      "As I researched the places I wanted visitors to discover, I found history that reached far beyond the Civil Rights movement: the African presence in Spanish St. Augustine, slavery and freedom, Fort Mose, emancipation, and the settlement of Little Africa. That walk became Root & Simmer Hospitality Co., exclusively for Lincolnville.",
+      "Lincolnville was settled by freedpeople in 1866, near Maria Sanchez Creek, in the settlement first known as Africa, or Little Africa, today Lil Africa. On November 29, 1991, the Lincolnville Historic District joined the National Register of Historic Places with 548 contributing buildings. Dr. Martin Luther King Jr. and the 1964 St. Augustine Movement gathered in its churches.",
+      "As I researched the places I wanted visitors to discover, I found history that reached far beyond the Civil Rights movement: the African presence in Spanish St. Augustine, slavery and freedom, Fort Mose, emancipation, and the settlement of Lil Africa. That walk became Root & Simmer Hospitality Co., exclusively for Lincolnville.",
     ],
   },
 
@@ -107,7 +107,7 @@ export const visitorMap = {
 
   landBeneath: {
     title: "The Land Beneath Our Feet",
-    body: "A proposed historical experience connecting the city’s familiar landmarks with people, communities and stories that are less visible: African presence, slavery, freedom, emancipation, Little Africa, Lincolnville, Reconstruction, education, faith, entrepreneurship, community life, Civil Rights and preservation. History lives not only in surviving buildings, but in the land, the former locations of homes and institutions, the streets, the records, and the memories of those who lived here. It would be developed with historians, educators, community members and Living Historians, within the City’s sightseeing rules.",
+    body: "A proposed historical experience connecting the city’s familiar landmarks with people, communities and stories that are less visible: African presence, slavery, freedom, emancipation, Lil Africa, Lincolnville, Reconstruction, education, faith, entrepreneurship, community life, Civil Rights and preservation. History lives not only in surviving buildings, but in the land, the former locations of homes and institutions, the streets, the records, and the memories of those who lived here. It would be developed with historians, educators, community members and Living Historians, within the City’s sightseeing rules.",
   },
 
   records: [

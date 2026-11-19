@@ -104,7 +104,7 @@ export default function VisitorMapPage() {
           <p>{v.landBeneath.body}</p>
           <p>
             <Link className="text-link" href="/lincolnville-history/tracts">
-              Read the history: The Land Beneath Our Feet, from Little Africa to Lincolnville
+              Read the history: The Land Beneath Our Feet, from Lil Africa to Lincolnville
             </Link>
           </p>
         </section>

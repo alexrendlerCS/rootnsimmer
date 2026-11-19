@@ -28,6 +28,7 @@ import logo from "@/public/logo.jpeg";
 import { SiteShell } from "@/components/SiteShell";
 import { GapsSection } from "@/components/Gaps";
 import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
+import { LetterMore } from "@/components/LetterMore";
 import { ProspectusLink } from "@/components/ProspectusLink";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
@@ -328,15 +329,11 @@ export default function Home() {
               {kimberly.letter.slice(0, LETTER_PREVIEW).map((p) => (
                 <p key={p}>{p}</p>
               ))}
-              <details className="letter-more">
-                <summary>
-                  <span className="when-closed">Keep reading Kimberly’s story</span>
-                  <span className="when-open">Show less</span>
-                </summary>
+              <LetterMore>
                 {kimberly.letter.slice(LETTER_PREVIEW).map((p) => (
                   <p key={p}>{p}</p>
                 ))}
-              </details>
+              </LetterMore>
               <p>
                 <Link href={visitorMapTeaser.href}>How it began: bringing Lincolnville onto the visitor map</Link>
               </p>

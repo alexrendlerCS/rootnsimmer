@@ -29,7 +29,7 @@ export function GapCards() {
           <p className="gap-lines">
             {g.lines.map((id) => (
               <span key={id} className="gap-line">
-                Line {lineName(id).number}: {lineName(id).title}
+                {lineName(id).title}
               </span>
             ))}
           </p>
@@ -66,7 +66,7 @@ export function GapNote({ line }: { line: LineId }) {
       <div className="wrap">
         <p>
           <span className="gap-note-label">
-            Line {l.number} · {l.title}.
+            {l.title}.
           </span>{" "}
           Answers what the City’s plans say is missing:{" "}
           {mine.map((g, i) => (

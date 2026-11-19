@@ -90,6 +90,25 @@ export const partnersSection = {
   ] satisfies LocalPlace[],
 };
 
+/** The Lincolnville Partners page (/partners), from Kimberly's website update brief (Nov 19, 2026). Partner rates are still to set. */
+export const partnersPage = {
+  label: "Lincolnville Partners",
+  title: "Lincolnville Partners",
+  lede: "Lincolnville museums and businesses that carry the neighborhood’s story forward, and the neighbors who help visitors find them.",
+  benefitsTitle: "What a Lincolnville Partner receives",
+  benefits: [
+    "A listing on the Root & Simmer website",
+    "A place on the Neighborhood Story Map",
+    "A monthly newsletter ad slot",
+    "A Lincolnville page in the St. Augustine Sightseeing Map & Guide",
+  ],
+  rate: "Founding partner rates are available. Ask us for the details.",
+  button: "Become a Lincolnville Partner",
+  subject: "Becoming a Lincolnville Partner",
+  body: "Hello Kimberly,\n\nWe would like to become a Lincolnville Partner.\n\nBusiness or organization:\nAddress:\nWhat we do, in one line:\nContact name:\nBest way to reach us:",
+  note: "Every partnership is agreed in writing. Root & Simmer Hospitality Co. is independent and not affiliated with or endorsed by the City of St. Augustine or the Community Redevelopment Agency (CRA).",
+};
+
 export const supportLocally = {
   title: "Support Locally",
   intro: "Free community listings in our newsletter. Each one carries part of Lincolnville’s story forward. Visit them, buy from them, and tell them Root & Simmer sent you.",

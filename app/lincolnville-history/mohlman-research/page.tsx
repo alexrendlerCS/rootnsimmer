@@ -83,7 +83,7 @@ export default async function MohlmanResearchPage() {
             </Link>
             {"  ·  "}
             <Link className="text-link" href="/lincolnville-history/directory">
-              The Little Africa Directory
+              The Lil Africa Directory
             </Link>
           </p>
         </div>

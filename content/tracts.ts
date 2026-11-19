@@ -13,10 +13,10 @@ export type Evidence = "St. Augustine Historical Society" | "National Register (
 export const tractsPage = {
   href: "/lincolnville-history/tracts",
   title: "The Land Beneath Our Feet",
-  subtitle: "From Little Africa to Lincolnville — How a Community Took Root",
+  subtitle: "From Lil Africa to Lincolnville — How a Community Took Root",
   intro:
-    "Before Lincolnville became the neighborhood we know today, its land held centuries of history. Following emancipation, newly freed African Americans established a community known as Africa or Little Africa. From this settlement grew a neighborhood of homeowners, churches, schools, businesses, and families whose contributions helped shape St. Augustine.",
-  feature: "Little Africa was the root from which Lincolnville grew.",
+    "Before Lincolnville became the neighborhood we know today, its land held centuries of history. Following emancipation, newly freed African Americans established a community known as Africa or Little Africa, today remembered as Lil Africa. From this settlement grew a neighborhood of homeowners, churches, schools, businesses, and families whose contributions helped shape St. Augustine.",
+  feature: "Lil Africa was the root from which Lincolnville grew.",
   independence:
     "Root & Simmer Hospitality Co. is independent. This page is community history research, not an official City of St. Augustine or Community Redevelopment Agency (CRA) publication.",
 };
@@ -25,7 +25,7 @@ export const tractsPage = {
 export const tractsTeaser = {
   label: "Lincolnville history",
   title: "The Land Beneath Our Feet",
-  body: "From Little Africa to Lincolnville: how a community took root, from the land grants of 1838 to the six freed people who leased land by Maria Sanchez Creek in 1866, and the streets and additions that grew from there.",
+  body: "From Lil Africa to Lincolnville: how a community took root, from the land grants of 1838 to the six freed people who leased land by Maria Sanchez Creek in 1866, and the streets and additions that grew from there.",
   link: "Explore the history",
 };
 
@@ -40,7 +40,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "1866",
-    title: "Africa / Little Africa",
+    title: "Africa / Little Africa (Lil Africa)",
     body: "By October 1866, six newly freed African Americans leased land along the western edge of Maria Sanchez Creek: Aaron Dupont, Miles Hancock, Matilda Papy, Peter Sanks, Tom Solana and Harriet Weedman.",
     evidence: "St. Augustine Historical Society",
     source: "St. Augustine Historical Society, “Lincolnville: The Beginning”",
@@ -131,7 +131,7 @@ export const archive = {
   ],
   categories: [
     "Original land grants and subdivision plats",
-    "Little Africa’s earliest residents",
+    "Lil Africa’s earliest residents",
     "Historic homes and property histories",
     "Washington Street businesses",
     "Churches, schools, and community institutions",

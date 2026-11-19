@@ -2,7 +2,8 @@ import Link from "next/link";
 import { craContact, craKicker, craMembersOnly, craPages, joinCta, type CraSlug } from "@/content/cra";
 import { SiteShell } from "./SiteShell";
 
-export const craHref = (slug: CraSlug) => (slug ? `/cra-lincolnville/${slug}` : "/cra-lincolnville");
+export const craHref = (slug: CraSlug) =>
+  slug === "homes-not-hotels" ? "/homes-not-hotels" : slug ? `/cra-lincolnville/${slug}` : "/cra-lincolnville";
 
 /** Text in [SQUARE BRACKETS] is a placeholder: show it as one until the real words arrive. */
 export const isPlaceholder = (text: string) => /^\[.*\]$/.test(text.trim());

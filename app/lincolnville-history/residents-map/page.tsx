@@ -136,7 +136,7 @@ export default async function ResidentsMapPage() {
             </Link>
             {"  ·  "}
             <Link className="text-link" href="/lincolnville-history/directory">
-              The Little Africa Directory
+              The Lil Africa Directory
             </Link>
             {"  ·  "}
             <Link className="text-link" href="/locator-map">
