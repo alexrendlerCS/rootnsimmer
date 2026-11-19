@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { site } from "@/content/site";
 import { getMember } from "@/lib/members";
 import { supabaseConfigured } from "@/lib/supabase/env";
+import { portalOpen, portalSoon, safeNextPath } from "@/lib/portal";
 import { SignInForm } from "@/components/SignInForm";
 import { SiteShell } from "@/components/SiteShell";
 
@@ -14,7 +15,23 @@ export const metadata: Metadata = {
 
 export default async function SignInPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
-  const next = params.next && params.next.startsWith("/") && !params.next.startsWith("//") ? params.next : "/members";
+  const next = safeNextPath(params.next);
+  if (!portalOpen) {
+    return (
+      <SiteShell>
+        <section className="wrap members-narrow" aria-labelledby="signin-title">
+          <p className="section-label">Lincolnville Connection</p>
+          <h1 id="signin-title" className="page-title members-title">
+            {portalSoon.title}
+          </h1>
+          <p className="page-lede">{portalSoon.body}</p>
+          <p className="signin-help">
+            Membership comes with the Home Story Package. <Link href="/digital-records#dr-membership">See the Lincolnville Connection</Link>.
+          </p>
+        </section>
+      </SiteShell>
+    );
+  }
   if (await getMember()) redirect(next);
 
   return (

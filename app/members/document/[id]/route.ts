@@ -18,9 +18,15 @@ export async function GET(request: NextRequest, ctx: { params: Promise<{ id: str
   const { data: doc } = await supabase.from("documents").select("storage_path, file_name").eq("id", id).maybeSingle();
   if (!doc) return new NextResponse("This document is not available.", { status: 404 });
 
-  const { data, error } = await createAdminClient()
-    .storage.from(MEMBER_BUCKET)
-    .createSignedUrl(doc.storage_path, 120, { download: request.nextUrl.searchParams.has("download") ? (doc.file_name ?? true) : undefined });
+  let signed: { data: { signedUrl: string } | null; error: unknown };
+  try {
+    signed = await createAdminClient()
+      .storage.from(MEMBER_BUCKET)
+      .createSignedUrl(doc.storage_path, 120, { download: request.nextUrl.searchParams.has("download") ? (doc.file_name ?? true) : undefined });
+  } catch {
+    return new NextResponse("Member documents are not available right now. Please try again later.", { status: 503 });
+  }
+  const { data, error } = signed;
   if (error || !data) return new NextResponse("The document could not be opened. Please try again.", { status: 502 });
   return NextResponse.redirect(data.signedUrl);
 }

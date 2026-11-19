@@ -1,6 +1,8 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { getMember } from "./members";
+import { portalOpen } from "./portal";
+import { connection } from "next/server";
 import { createAdminClient } from "./supabase/admin";
 import { MEMBER_BUCKET, supabaseConfigured } from "./supabase/env";
 
@@ -45,6 +47,7 @@ function codeIsGood(c: Code, now = Date.now()) {
  * Returns the guest's name if the code is good, or null.
  */
 export async function redeemWalkCode(raw: string): Promise<{ name: string; until: number } | null> {
+  if (!portalOpen) return null;
   const code = raw.trim().toUpperCase();
   const store = await readJson<{ codes: Code[] }>("data/walk-codes.json");
   const c = store?.codes.find((x) => x.code === code);
@@ -58,6 +61,8 @@ export async function redeemWalkCode(raw: string): Promise<{ name: string; until
 
 /** Who may open the walk guides right now: a signed-in member, or a guest with a good walk code. */
 export async function walkAccess(): Promise<{ name: string; kind: "member" | "code" } | null> {
+  await connection(); // decided per visitor, never baked into a built page
+  if (!portalOpen) return null;
   const member = await getMember();
   if (member) return { name: member.full_name ?? "Member", kind: "member" };
   const code = (await cookies()).get(WALK_COOKIE)?.value;

@@ -1,8 +1,10 @@
 import "server-only";
 import { cache } from "react";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { createClient } from "./supabase/server";
 import { supabaseConfigured } from "./supabase/env";
+import { portalOpen } from "./portal";
 
 export type Member = {
   id: string;
@@ -16,7 +18,9 @@ export type Member = {
 
 /** The signed-in member, or null (not signed in, not a member, or deactivated). Checked once per request. */
 export const getMember = cache(async (): Promise<Member | null> => {
-  if (!supabaseConfigured) return null;
+  // Always decided per visitor at request time, so pausing or reopening the portal never gets baked into a built page.
+  await connection();
+  if (!supabaseConfigured || !portalOpen) return null;
   const supabase = await createClient();
   const { data: claims } = await supabase.auth.getClaims();
   const userId = claims?.claims?.sub;

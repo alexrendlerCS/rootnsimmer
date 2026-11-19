@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { walkAccess } from "@/lib/walks";
+import { portalOpen, portalSoon } from "@/lib/portal";
 import { walkSummaries as walks } from "@/content/walks";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
@@ -29,7 +30,12 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
             Three self-guided walks on your phone, at your own pace, from the public sidewalk. Each one brings the streets, homes and
             people of Lincolnville to life, stop by stop.
           </p>
-          {access ? (
+          {!portalOpen ? (
+            <div className="panel research-join walk-access">
+              <h2 className="newsletter-panel-title">{portalSoon.title}</h2>
+              <p>{portalSoon.body}</p>
+            </div>
+          ) : access ? (
             <p className="walk-welcome">Welcome, {access.name}. Your walks are open below.</p>
           ) : (
             <div className="panel research-join walk-access">
