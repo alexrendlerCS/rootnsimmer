@@ -181,6 +181,7 @@ export const whatIfTeasers = [
     link: "See the idea, vote and add yours",
     href: "/what-if/washington-street",
     image: "/photos/washington-street-home.jpg",
+    alt: "A historic home on Washington Street, Lil Africa’s Main Street, in Lincolnville, St. Augustine",
     credit: "Photo: w_lemay, Wikimedia Commons, CC BY-SA 2.0",
   },
   {
@@ -190,6 +191,7 @@ export const whatIfTeasers = [
     link: "See the idea, vote and add yours",
     href: "/what-if/visitor-welcome",
     image: "/photos/lincolnville-historic-district-marker.jpg",
+    alt: "The green Lincolnville Historic District state marker, St. Augustine",
   },
   {
     label: "What if…?",
@@ -198,6 +200,7 @@ export const whatIfTeasers = [
     link: "See the idea, vote and add yours",
     href: "/what-if/twine-park",
     image: "/photos/twine-park-corner-2026-10.jpg",
+    alt: "Twine Park at Riberia and Lovett Streets in Lincolnville, St. Augustine",
   },
   {
     label: whatIfTeaser.label,
@@ -206,5 +209,6 @@ export const whatIfTeasers = [
     link: whatIfTeaser.link,
     href: whatIfTeaser.href,
     image: "/photos/stable-bodega-market-day.jpg",
+    alt: "Illustration of market day at the Stable Bodega in Lincolnville, St. Augustine",
   },
 ];

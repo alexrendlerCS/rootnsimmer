@@ -8,12 +8,13 @@ import { SiteShell } from "@/components/SiteShell";
 import { GapNote } from "@/components/Gaps";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Self-Guided Walks | ${site.fullName}`,
-  description: "Self-guided walks through Lincolnville’s history on your phone: The Land Beneath Our Feet, the Civil Rights Walk and Washington Street.",
-  alternates: { canonical: "/walks" },
-};
+export const metadata: Metadata = seo(
+  "Lincolnville History - Little Africa, St. Augustine",
+  "Self-guided discovery of Lincolnville: Little Africa, Black history, civil rights sites, museums and historic churches in St. Augustine, FL.",
+  "/walks",
+);
 
 export default async function WalksPage({ searchParams }: { searchParams: Promise<{ code?: string }> }) {
   const [access, sp] = await Promise.all([walkAccess(), searchParams]);

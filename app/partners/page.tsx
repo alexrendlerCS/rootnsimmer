@@ -4,12 +4,13 @@ import { partnersPage as pp, partnersSection } from "@/content/newsletter";
 import { SiteShell } from "@/components/SiteShell";
 import { PlaceCard } from "@/components/PlaceCard";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Lincolnville Partners | ${site.fullName}`,
-  description: pp.lede,
-  alternates: { canonical: "/partners" },
-};
+export const metadata: Metadata = seo(
+  "Partner With Us - Lincolnville Businesses",
+  "Partnerships with Lincolnville businesses, restaurants and museums that share our commitment to the neighborhood's history.",
+  "/partners",
+);
 
 export default function PartnersPage() {
   return (

@@ -6,12 +6,13 @@ import { SiteShell } from "@/components/SiteShell";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
 import { HomesNotHotelsGuide } from "@/components/HomesNotHotelsGuide";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: { absolute: "Homes Not Hotels | Root & Simmer Hospitality Co." },
-  description: hero.lede,
-  alternates: { canonical: "/homes-not-hotels" },
-};
+export const metadata: Metadata = seo(
+  "Homes Not Hotels - Historic Preservation in Lincolnville",
+  "Keeping Lincolnville's historic homes as homes. Preservation, home history and community voice in St. Augustine's Lincolnville Historic District.",
+  "/homes-not-hotels",
+);
 
 export default function HomesNotHotels() {
   const h = hero.hope;

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: `${d.title} | ${site.fullName}`,
   description: d.intro,
   alternates: { canonical: d.href },
+  robots: { index: false }, // members only: kept out of Google
 };
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");

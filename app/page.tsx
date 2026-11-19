@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -35,9 +37,30 @@ import { facts } from "@/content/facts";
 
 const LETTER_PREVIEW = 3;
 
+export const metadata: Metadata = seo(
+  "Root & Simmer - Lincolnville History, St. Augustine FL",
+  "Preserving Lincolnville's home and family histories in St. Augustine, FL. Founded in 1866 as Little Africa. Every home known. Every voice kept.",
+  "/",
+);
+
+/** Business listing code for Google (from Kimberly's keywords file, Nov 19, 2026). Visitors never see it. */
+const businessListing = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Root & Simmer Hospitality Co.",
+  url: "https://www.rootnsimmer.com/",
+  email: "rootnsimmer@gmail.com",
+  telephone: "+1-760-481-4961",
+  founder: { "@type": "Person", name: "Kimberly Joyce" },
+  description: "Documenting Lincolnville home and family histories and supporting historic preservation in St. Augustine, Florida.",
+  areaServed: { "@type": "Place", name: "Lincolnville Historic District, St. Augustine, Florida" },
+  knowsAbout: ["Lincolnville history", "Little Africa", "Historic preservation", "Home history research", "Gullah Geechee heritage"],
+};
+
 export default function Home() {
   return (
     <SiteShell>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessListing) }} />
         {/* Hero: Kimberly's brand promise, with the approved live-oak logo as the centerpiece (Nov 19, 2026).
             The then-and-now house photos stay on the Homes Not Hotels page. */}
         <section id="top" className="home-hero" aria-labelledby="home-hero-title">
@@ -267,7 +290,7 @@ export default function Home() {
           <div className="wrap what-if-grid">
             {whatIfTeasers.map((w) => (
               <Link key={w.href} href={w.href} className="what-if-card">
-                <Image src={w.image} alt="" width={1200} height={700} sizes="(max-width: 900px) 90vw, 560px" className="what-if-img" />
+                <Image src={w.image} alt={w.alt} width={1200} height={700} sizes="(max-width: 900px) 90vw, 560px" className="what-if-img" />
                 <div>
                   <p className="section-label">{w.label}</p>
                   <h2 className="h-medium">{w.title}</h2>

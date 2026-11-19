@@ -23,7 +23,7 @@ export function Header() {
     <header className="site-header">
       <div className="header-inner">
         <Link className="identity" href="/#top" aria-label={`${site.fullName}, home`}>
-          <Image src="/oak-mark.jpg" alt="" width={52} height={52} className="identity-mark" priority />
+          <Image src="/oak-mark.jpg" alt="Root & Simmer Hospitality Co. live-oak logo, Lincolnville" width={52} height={52} className="identity-mark" priority />
           <span className="identity-name">
             Root <span className="amp">&amp;</span> Simmer
             <small>Hospitality Co.</small>

@@ -7,12 +7,13 @@ import { CraGuide, GuideSection } from "@/components/CraGuide";
 import { EvidenceLegend } from "@/components/EvidenceLegend";
 import thenPhoto from "@/public/photos/home-story-then.jpg";
 import nowPhoto from "@/public/photos/home-story-now.jpg";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Every Home Known: The Home Story Package | ${site.fullName}`,
-  description: "The Home Story Package: $1,200, paid $600 when the work begins and $600 on delivery.",
-  alternates: { canonical: "/cra-lincolnville/home-story-package" },
-};
+export const metadata: Metadata = seo(
+  "Lincolnville Home History - The Home Story Package",
+  "Learn your Lincolnville home's history. The Home Story Package documents your house, its families and its place in St. Augustine history.",
+  "/cra-lincolnville/home-story-package",
+);
 
 export default function HomeStoryPage() {
   const c = craHomeStory;

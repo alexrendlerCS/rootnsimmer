@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: `${m.title} | ${site.fullName}`,
   description: m.intro,
   alternates: { canonical: m.href },
+  robots: { index: false }, // members only: kept out of Google
 };
 
 export default async function MohlmanResearchPage() {

@@ -5,13 +5,13 @@ import { site } from "@/content/site";
 import { CraGuide, craHref, GuideSection, JoinCta } from "@/components/CraGuide";
 import { Photo } from "@/components/Photo";
 import markerPhoto from "@/public/photos/lincolnville-historic-district-marker.jpg";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Understanding the Lincolnville CRA | ${site.fullName}`,
-  description:
-    "A plain-language welcome to how the Lincolnville Community Redevelopment Agency (CRA) works, what it was created to do, and how to follow its work.",
-  alternates: { canonical: "/cra-lincolnville" },
-};
+export const metadata: Metadata = seo(
+  "Lincolnville Community & CRA - St. Augustine",
+  "Lincolnville Community Redevelopment Agency (CRA) updates, community requests, newsletter and local Lincolnville businesses and restaurants.",
+  "/cra-lincolnville",
+);
 
 export default function CraLandingPage() {
   const l = craLanding;

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: `Historic Residents Map | ${site.fullName}`,
   description: "Members of the Lincolnville Connection: the people who lived and worked in Lincolnville in the city directories of 1885 to about 1912, placed on today’s map.",
   alternates: { canonical: href },
+  robots: { index: false }, // members only: kept out of Google
 };
 
 function Person({ p }: { p: ResidentEntry & { address?: string } }) {

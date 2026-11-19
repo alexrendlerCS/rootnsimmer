@@ -11,12 +11,13 @@ import { SiteShell } from "@/components/SiteShell";
 import { EvidenceLegend } from "@/components/EvidenceLegend";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
+import { seo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Digital Records | ${site.fullName}`,
-  description: drHero.lede,
-  alternates: { canonical: "/digital-records" },
-};
+export const metadata: Metadata = seo(
+  "Lincolnville Membership - Root & Simmer",
+  "Become a Friend of Lincolnville and support the preservation of Lincolnville's history in St. Augustine, FL.",
+  "/digital-records",
+);
 
 export default function DigitalRecordsPage() {
   return (
