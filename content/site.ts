@@ -446,6 +446,5 @@ export const records = {
 };
 
 export const closing = {
-  quote: "Know your home’s story. Add yours before you go.",
   link: "Start a conversation",
 };

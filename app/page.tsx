@@ -389,7 +389,6 @@ export default function Home() {
 
         <section className="closing">
           <div className="wrap">
-            <p className="closing-quote">“{closing.quote}”</p>
             <a className="button button-red" href={`mailto:${contactEmail}`}>
               {closing.link}
             </a>

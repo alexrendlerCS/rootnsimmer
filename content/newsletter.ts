@@ -186,6 +186,17 @@ export const thisMonth = {
       link: { href: "/cra-lincolnville/parks-and-named-places", label: "Lincolnville’s parks and named places" },
     },
     {
+      date: "Anytime · Dr. Robert B. Hayling Freedom Park",
+      title: "The Generational Healing Box: share your Lincolnville story",
+      body: "Along the walking path at Dr. Robert B. Hayling Freedom Park, beside the bird observation area, stands a love mailbox: the Generational Healing Box. Leave a note of gratitude, a memory of your Lincolnville experience, your family’s history here, or what you want the world to know about this neighborhood. Can’t get to the park? Send your story to rootnsimmer@gmail.com.",
+      link: { href: "mailto:rootnsimmer@gmail.com?subject=My%20Lincolnville%20story", label: "Share your story by email" },
+    },
+    {
+      date: "The second Saturday of every month · next: Saturday, December 12",
+      title: "Drum circle at the Generational Healing Box",
+      body: "Bring a drum, or just come to listen. On the second Saturday of every month, neighbors gather for a drum circle at Dr. Robert B. Hayling Freedom Park, by the love mailbox on the walking path near the bird observation area. Come early and leave a note in the Generational Healing Box. Time to be announced.",
+    },
+    {
       date: "The first Friday of every month · next: Friday, December 4",
       title: "First Friday Art Walk at the BRADLC Museum",
       body: "Discover Lincolnville culture at the Best Richardson African Diaspora Literature & Culture Museum, 83 Washington Street: Gullah, folk and multicultural art, Gullah baskets and jazz, with refreshments served. The museum is free during the art walk, 4 to 7 p.m. Call (904) 217-8255 to confirm.",
