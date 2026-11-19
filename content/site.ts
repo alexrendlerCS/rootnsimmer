@@ -56,6 +56,7 @@ export const nav: NavItem[] = [
       { href: "/walks", label: "Self-guided walks" },
       { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet" },
       { href: "/lincolnville-history/directory", label: "The Lil Africa Directory · Members" },
+      { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map · Members" },
       { href: "/locator-map", label: "Lincolnville Locator Map" },
       { href: "/places-map", label: "Lincolnville Places Map: parks, food, churches, businesses" },
       { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },

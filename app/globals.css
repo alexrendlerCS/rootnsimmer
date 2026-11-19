@@ -2090,3 +2090,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .four-lines-num { font: 1.75rem/1 var(--font-display); color: var(--gold, #b9933f); }
 @media (max-width: 1000px) { .four-lines-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .four-lines-list { grid-template-columns: 1fr; } }
+
+/* Lil Africa Neighborhood Story Map */
+.story-summary { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 10px 24px; }
+.story-summary li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.story-summary strong { font: 1.5rem/1 var(--font-display); color: var(--oak); min-width: 1.6em; }
+.story-partner-pin span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--rail); color: #fff; font-size: 15px; box-shadow: 0 0 0 2px #fff; }
+.story-partner-key { color: var(--rail); font-size: 1rem; }

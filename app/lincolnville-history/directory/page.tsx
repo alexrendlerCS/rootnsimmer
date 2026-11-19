@@ -114,6 +114,10 @@ export default async function DirectoryPage() {
               See Lincolnville today on the Locator Map
             </Link>
             {"  ·  "}
+            <Link className="text-link" href="/lincolnville-history/story-map">
+              See it on the Lil Africa Neighborhood Story Map
+            </Link>
+            {"  ·  "}
             <Link className="text-link" href="/lincolnville-history/tracts">
               The Land Beneath Our Feet
             </Link>

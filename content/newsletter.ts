@@ -98,7 +98,7 @@ export const partnersPage = {
   benefitsTitle: "What a Lincolnville Partner receives",
   benefits: [
     "A listing on the Root & Simmer website",
-    "A place on the new Lil Africa Neighborhood Story Map (coming soon)",
+    "A place on the Lil Africa Neighborhood Story Map",
     "A monthly newsletter ad slot",
     "A Lincolnville page in the St. Augustine Sightseeing Map & Guide",
   ],
