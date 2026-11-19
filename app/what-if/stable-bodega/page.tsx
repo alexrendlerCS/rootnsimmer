@@ -141,7 +141,7 @@ export default function StableBodegaPage() {
         <p className="notice">{s.notice}</p>
         <p className="fine">
           Another idea: <Link href="/what-if/twine-park">What if…? Twine Park</Link> · <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link> ·{" "}
-          <Link href="/root">ROOT: Lincolnville Community Committee</Link>
+          <Link href="/#root">ROOT: Lincolnville Community Committee</Link>
         </p>
       </article>
     </SiteShell>

@@ -60,7 +60,7 @@ export default function DigitalRecordsPage() {
           </div>
           <ul className="offerings offerings-three">
             {recordGuides.map((g) => (
-              <li key={g.id} className="offering">
+              <li key={g.id} id={g.id} className="offering">
                 <OfferingArt offering={{ art: "paper", artTitle: g.artTitle }} />
                 <div className="offering-body">
                   <p className="offering-tagline">{g.kind}</p>

@@ -12,7 +12,7 @@ export const site = {
   name: "Root & Simmer",
   fullName: "Root & Simmer Hospitality Co.",
   place: "Lincolnville · St. Augustine, Florida",
-  title: "Root & Simmer Hospitality Co. | Preserve Lincolnville’s homes and history",
+  title: "Root & Simmer Hospitality Co. | Lincolnville, St. Augustine",
   description:
     "Root & Simmer documents Lincolnville home and family histories, supports preservation, and welcomes guests to learn and respect the community.",
 };
@@ -24,7 +24,7 @@ export const site = {
  */
 export const nav = [
   { href: "/#mission", label: "About" },
-  { href: "/root", label: "ROOT" },
+  { href: "/homes-not-hotels", label: "Homes, Not Hotels" },
   { href: "/cra-lincolnville", label: "CRA – Lincolnville" },
   { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
   { href: "/library", label: "Library" },
@@ -33,13 +33,33 @@ export const nav = [
   { href: "/#records", label: "Contact" },
 ];
 
+/** Home page hero (top of /). Wording from Kimberly's Mission, Vision and Brand Core. */
+export const homeHero = {
+  eyebrow: "Root & Simmer Hospitality Co. · Lincolnville, St. Augustine",
+  headline: ["Every home known.", "Every voice kept.", "Every generation connected."],
+  body:
+    "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and community. We research the story of each home, record the voices of the families who made it home, and carry both forward, so that 160 years of Lil Africa are known, kept and heard from generation to generation.",
+  signature: "Know your home’s story. Add yours before you go.",
+  primary: { href: "#root", label: "Meet ROOT" },
+  secondary: { href: "/homes-not-hotels", label: "Homes, Not Hotels" },
+  fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
+};
+
+/** Hero of the Homes, Not Hotels page (/homes-not-hotels), formerly the home page hero. */
 export const hero = {
   title: "Homes, Not Hotels.",
   subtitle: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
   lede:
     "Root & Simmer brings historical records and family memories together, helps homeowners document the stories behind their homes, and connects guests to Lincolnville with understanding and respect.",
-  primary: { href: "#work", label: "Explore our work" },
-  secondary: { href: "#kimberly", label: "Meet Kimberly" },
+  primary: { href: "/#work", label: "Explore our work" },
+  secondary: { href: "/#kimberly", label: "Meet Kimberly" },
+  /** Directly under the hero. */
+  hope: {
+    line: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
+    label: "What we hope to see:",
+    body: "Homes remain homes. Residents remain at the heart. Guests leave with understanding and respect.",
+    link: { href: "/digital-records#homes-not-hotels", label: "Read the proposal: Homes, Not Hotels" },
+  },
   photoAlt: "A Lincolnville cottage with a screened front porch and a red iron handrail",
   caption: "A home is a doorway into history.",
   /** The same house about 1979, set beside today's photo. */

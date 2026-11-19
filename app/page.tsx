@@ -4,7 +4,7 @@ import {
   closing,
   connection,
   contactEmail,
-  hero,
+  homeHero,
   kimberly,
   method,
   mission,
@@ -15,15 +15,16 @@ import {
   why,
   work,
 } from "@/content/site";
+import { pillars, rootIntro, rootJoin, rootMotto, rootNote, rootWork } from "@/content/root";
 import { craTeaser } from "@/content/cra";
 import { whatIfTeasers } from "@/content/stable-bodega";
 import { visitorMapTeaser } from "@/content/visitor-map";
+import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { ConnectionForm } from "@/components/ConnectionForm";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
+import { Doorway } from "@/components/HomesHero";
 import { SiteShell } from "@/components/SiteShell";
-import homePhoto from "@/public/lincolnville-home.jpeg";
-import homeThenPhoto from "@/public/photos/home-story-then.jpg";
 import logo from "@/public/logo.jpeg";
 
 const LETTER_PREVIEW = 3;
@@ -31,47 +32,85 @@ const LETTER_PREVIEW = 3;
 export default function Home() {
   return (
     <SiteShell>
-        {/* Hero: the house, framed as a doorway */}
-        <section id="top" className="hero">
-          <div className="wrap hero-grid">
-            <div className="hero-copy">
-              <h1>{hero.title}</h1>
-              <p className="hero-subtitle">{hero.subtitle}</p>
-              <p className="hero-lede">{hero.lede}</p>
+        {/* Hero: Kimberly's brand promise, with the house in its porch doorway */}
+        <section id="top" className="home-hero" aria-labelledby="home-hero-title">
+          <div className="wrap home-hero-grid">
+            <div className="home-hero-copy">
+              <p className="home-hero-eyebrow">{homeHero.eyebrow}</p>
+              <h1 id="home-hero-title" className="home-hero-title">
+                {homeHero.headline.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </h1>
+              <p className="home-hero-body">{homeHero.body}</p>
+              <p className="home-hero-signature">{homeHero.signature}</p>
               <div className="hero-actions">
-                <a className="button" href={hero.primary.href}>
-                  {hero.primary.label}
+                <a className="button" href={homeHero.primary.href}>
+                  {homeHero.primary.label}
                 </a>
-                <a className="text-link" href={hero.secondary.href}>
-                  {hero.secondary.label}
-                </a>
+                <Link className="button button-ghost" href={homeHero.secondary.href}>
+                  {homeHero.secondary.label}
+                </Link>
               </div>
+              <p className="home-hero-fine">{homeHero.fine}</p>
             </div>
-            <figure className="doorway">
-              <div className="doorway-frame">
-                <Image
-                  src={homePhoto}
-                  alt={hero.photoAlt}
-                  priority
-                  placeholder="blur"
-                  sizes="(max-width: 760px) 90vw, 44vw"
-                  className="doorway-photo"
-                />
-              </div>
-              <figure className="then-print">
-                <Image
-                  src={homeThenPhoto}
-                  alt={hero.then.alt}
-                  sizes="(max-width: 640px) 150px, 220px"
-                  className="then-print-photo"
-                />
-                <figcaption>
-                  {hero.then.label}
-                  <span>{hero.then.credit}</span>
-                </figcaption>
-              </figure>
-              <figcaption>{hero.caption}</figcaption>
-            </figure>
+            <Doorway />
+          </div>
+        </section>
+
+        {/* ROOT: Lincolnville Community Committee (old /root address forwards here) */}
+        <section id="root" className="root-home" aria-labelledby="root-title">
+          <div className="wrap">
+            <header className="root-intro">
+              <h2 id="root-title" className="root-intro-name">
+                {rootIntro.name}
+                <span className="root-intro-title">{rootIntro.title}</span>
+              </h2>
+              <div className="root-rule" aria-hidden="true" />
+              <p className="root-intro-lead">{rootIntro.lead}</p>
+              <p className="root-intro-body">{rootIntro.body}</p>
+            </header>
+
+            <h3 className="sr-only">The four pillars</h3>
+            <ol className="root-pillars">
+              {pillars.map((p) => (
+                <li key={p.name} className="root-pillar">
+                  <span className="root-letter" aria-hidden="true">
+                    {p.letter}
+                  </span>
+                  <h4 className="root-pillar-name">{p.name}</h4>
+                  <p className="root-pillar-subtitle">{p.subtitle}</p>
+                  <p className="root-pillar-line">{p.line}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="root-motto">{rootMotto}</p>
+
+            <div className="root-work">
+              <h3 className="sr-only">Preserve, educate, unite</h3>
+              <ul className="root-work-list">
+                {rootWork.map((w) => (
+                  <li key={w.word}>
+                    <p className="root-word">{w.word}</p>
+                    <p>{w.body}</p>
+                    <Link className="root-work-link" href={w.href}>
+                      {w.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <p className="root-place" aria-hidden="true">
+                Lincolnville
+              </p>
+            </div>
+
+            <div className="panel root-join">
+              <h3 className="newsletter-panel-title">{rootJoin.title}</h3>
+              <p>{rootJoin.body}</p>
+              <EmailDraftButton label={rootJoin.button} subject={rootJoin.subject} body={rootJoin.emailBody} />
+            </div>
+
+            <p className="notice root-note">{rootNote}</p>
           </div>
         </section>
 

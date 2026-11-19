@@ -1,67 +1,50 @@
 /**
- * Root & Simmer — ROOT: Lincolnville Community Committee (/root).
- * Wording from Kimberly's ROOT poster (November 2026). Same rules as content/site.ts:
+ * Root & Simmer — ROOT: Lincolnville Community Committee.
+ * Shown on the home page directly under the hero (the #root section); the old /root address forwards there.
+ * Wording from Kimberly's Mission, Vision and Brand Core (November 2026). Same rules as content/site.ts:
  * edit the text between the quotes and save.
- *
- * Each pillar links to the part of the site that does that work, so the site reads as one whole:
- * Residents -> the home map, Oral History -> the Home Story Package and City interviews,
- * Ownership -> Preserve Historic Homes, Tradition -> the CRA guide, landmarks and Support Locally.
  */
 
-export const rootHero = {
+export const rootIntro = {
   name: "ROOT",
   title: "Lincolnville Community Committee",
-  about:
-    "An independent, community-led group under Root & Simmer Hospitality Co. working to preserve Lincolnville’s culture, history, traditions and community while co-existing and collaborating with the City’s Community Redevelopment Area (CRA).",
-  promise:
-    "We bring our ancestors’ stories to be heard, advocate for long-term residents and work to ensure Lincolnville’s people, place and legacy remain at the center of the conversation.",
+  lead: "Where Lincolnville’s voice comes together.",
+  body:
+    "ROOT is an independent, community-led group under Root & Simmer Hospitality Co. We bring our ancestors’ stories to be heard, stand with long-term residents, and keep Lincolnville’s people, place and legacy at the center of every conversation about its future, working alongside the City’s Community Redevelopment Agency (CRA) without speaking for it.",
 };
 
-export type Pillar = {
-  name: string;
-  tagline: string;
-  body: string;
-  links: { href: string; label: string }[];
-};
+export type Pillar = { letter: string; name: string; subtitle: string; line: string };
 
+/** The four pillars, one card each, with R-O-O-T shown large. */
 export const pillars: Pillar[] = [
   {
+    letter: "R",
     name: "Residents",
-    tagline: "The People of Lincolnville",
-    body: "Every home in Lincolnville is on our map. Find yours, see what the public records say about it, and join the neighbors keeping its story.",
-    links: [
-      { href: "/preserve-historic-homes/map", label: "Find your home on the map" },
-      { href: "/digital-records#dr-membership", label: "Join the Lincolnville Connection" },
-    ],
+    subtitle: "The Heart of Lincolnville",
+    line: "Longtime families and new neighbors, with longtime residents at the center of the neighborhood’s identity.",
   },
   {
+    letter: "O",
     name: "Oral History",
-    tagline: "The Stories That Live Here",
-    body: "Family memories in your own words, kept with your home’s history, and City staff on the record about Lincolnville.",
-    links: [
-      { href: "/cra-lincolnville/home-story-package", label: "The Home Story Package" },
-      { href: "/library#voices", label: "Voices from City Hall" },
-    ],
+    subtitle: "Every Voice Kept",
+    line: "Family memories recorded with permission and returned to the families who shared them.",
   },
   {
+    letter: "O",
     name: "Ownership",
-    tagline: "The Knowledge We Protect",
-    body: "What owners need to know: how demolition review works, how a home is recognized as historic, and the tax relief that can follow.",
-    links: [
-      { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
-      { href: "/preserve-historic-homes/map?sort=historic", label: "Historic homes on the map" },
-    ],
+    subtitle: "Every Home Known",
+    line: "Sourced home histories, so every owner knows the story they hold and how to help protect it.",
   },
   {
+    letter: "T",
     name: "Tradition",
-    tagline: "The Legacy We Carry Forward",
-    body: "The landmarks, parks and named places that hold Lincolnville’s story, and the local places that carry it on today.",
-    links: [
-      { href: "/cra-lincolnville/institutional-landmarks", label: "Lincolnville’s landmarks" },
-      { href: "/newsletter#support-locally", label: "Support Locally" },
-    ],
+    subtitle: "Every Generation Connected",
+    line: "Faith, family and neighborhood ways carried forward from 1866 to today.",
   },
 ];
+
+/** The gold line under the pillars. */
+export const rootMotto = "Preserve • Educate • Unite";
 
 /** Preserve · Educate · Unite: what ROOT does, and where to do it. */
 export const rootWork = [
