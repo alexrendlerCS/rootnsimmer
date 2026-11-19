@@ -39,6 +39,7 @@ export default async function WalkPage({ params }: { params: Promise<{ slug: str
   );
   return (
     <SiteShell>
+      <p className="walk-print-note">This walk guide can’t be printed. © Root &amp; Simmer Hospitality Co.</p>
       <div className="walk-guide" style={{ backgroundImage: `url("data:image/svg+xml,${mark}")` }}>
         <header className="page-hero land-hero">
           <div className="wrap">

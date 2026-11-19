@@ -8,6 +8,7 @@ import { Photo } from "@/components/Photo";
 import heroPhoto from "@/public/photos/washington-street-home.jpg";
 import membershipPhoto from "@/public/photos/yellow-two-story-home.jpg";
 import { SiteShell } from "@/components/SiteShell";
+import { EvidenceLegend } from "@/components/EvidenceLegend";
 
 export const metadata: Metadata = {
   title: `Digital Records | ${site.fullName}`,
@@ -124,6 +125,11 @@ export default function DigitalRecordsPage() {
             </div>
             <p className="fine">{drMembership.fine}</p>
           </div>
+        </div>
+      </section>
+      <section className="page-section" aria-label="How we label what we know">
+        <div className="wrap">
+          <EvidenceLegend />
         </div>
       </section>
     </SiteShell>

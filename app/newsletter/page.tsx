@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { latestIssue, newsletterAdvertise, newsletterContents, newsletterHero, newsletterSignup, supportLocally, thisMonth } from "@/content/newsletter";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
+import { GapNote } from "@/components/Gaps";
 
 export const metadata: Metadata = {
   title: `Newsletter | ${site.fullName}`,
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function NewsletterPage() {
   return (
     <SiteShell>
+      <GapNote line="community" />
       <div className="wrap newsletter">
         <header className="newsletter-head">
           <p className="section-label">{newsletterHero.label}</p>

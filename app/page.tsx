@@ -26,6 +26,7 @@ import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
 import { Doorway } from "@/components/HomesHero";
 import { SiteShell } from "@/components/SiteShell";
+import { GapsSection } from "@/components/Gaps";
 import logo from "@/public/logo.jpeg";
 
 const LETTER_PREVIEW = 3;
@@ -114,6 +115,9 @@ export default function Home() {
             <p className="notice root-note">{rootNote}</p>
           </div>
         </section>
+
+        {/* What is missing in Lincolnville, and how the four lines of work fill it */}
+        <GapsSection />
 
         {/* The promise, read as a path across the threshold */}
         <section className="threshold" aria-label="Our promise">

@@ -163,6 +163,16 @@ export const recognition = {
     { label: "Florida Master Site File", body: "The State’s official inventory of historic resources. Contact: SiteFile@dos.myflorida.com, 850-245-6440." },
     { label: "Local Historic Landmark", body: "Designated by HARB, with the owner’s consent. It gives a building lasting protection from demolition." },
   ],
+  qualify: {
+    title: "Does my home qualify as historic?",
+    intro: "Four questions show where a Lincolnville home stands. The City, the State and the National Park Service decide what qualifies; we help you gather the answers.",
+    checks: [
+      { q: "Is it on the 1991 list?", a: "The 1991 National Register nomination listed 548 contributing buildings, every one built before 1930. If your home is one of them, it belongs to the Lincolnville Historic District. Street numbers may have changed since 1991." },
+      { q: "Is it 50 years old or older?", a: "The City’s Historic Architectural Review Board (HARB) must approve the full demolition of any building 50 years or older. In 2022 the City’s Historic Preservation Officer said the district was being updated now that civil-rights-era buildings have reached 50 years old, so a home built after 1930 may also be worth documenting." },
+      { q: "Has it kept its historic character?", a: "A building that is heavily altered or demolished can lose its contributing status. Keeping its historic form is part of keeping its standing." },
+      { q: "Do you want lasting protection or tax relief?", a: "Local Historic Landmark status, designated by HARB with the owner’s consent, gives lasting protection from demolition. Designated or contributing buildings can also qualify for the restoration tax exemption below." },
+    ],
+  },
   steps: [
     "Find the building on the 1991 list, or on the City’s interactive historic preservation map. Street names and numbers may have changed since 1991.",
     "Request the Florida Master Site File record for the building, if one exists, including survey photographs.",
@@ -248,3 +258,15 @@ export const protectOwn = {
 
 export const protectNote =
   "Root & Simmer Hospitality Co. offers this page as independent community education. It is not an official City of St. Augustine, CRA or Historic Architectural Review Board publication, and it is not legal or tax advice. Rules change; confirm with the office named before you act.";
+
+/** National Register background, after "What the City's own records show" (Website update brief, Phase 1, 4.5). */
+export const protectRegister = {
+  title: "What the 1991 National Register nomination recorded",
+  body: [
+    "The Lincolnville Historic District was listed on the National Register of Historic Places on November 29, 1991. Its inventory counted 548 contributing and 130 noncontributing buildings; every contributing building dates before 1930. The nomination drew on a 1979 survey, bird’s-eye views from 1885 and 1894, Sanborn fire insurance maps from 1884 to 1958, deed research and some forty city directories.",
+    "These are 1991 counts, not today’s. Lincolnville is a National Register district but not a local preservation district, so protection has to be checked parcel by parcel. Which buildings still stand, and which were altered or lost, is the question our home research answers one address at a time.",
+  ],
+  quote: "The documents preserve the record. The residents carry the memory.",
+  label: "National Register (1991)",
+  link: { href: "/library#homes-and-history", label: "The National Register nomination, in the Library" },
+};

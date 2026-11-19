@@ -4,12 +4,14 @@ import { site } from "@/content/site";
 import { workWithUs as w } from "@/content/services";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
+import { GapNote } from "@/components/Gaps";
 
 export const metadata: Metadata = { title: `${w.title} | ${site.fullName}`, description: w.lede, alternates: { canonical: "/work-with-us" } };
 
 export default function WorkWithUsPage() {
   return (
     <SiteShell>
+      <GapNote line="partners" />
       <header className="page-hero land-hero">
         <div className="wrap">
           <p className="section-label">{w.label}</p>

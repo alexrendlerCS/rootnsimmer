@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { preservePaths, protectFacts, protectHero, protectOwn, protectQuote } from "@/content/protect";
+import { preservePaths, protectFacts, protectHero, protectOwn, protectRegister, protectQuote } from "@/content/protect";
 import { GuideSection } from "@/components/CraGuide";
 import { PreserveGuide, preserveHref } from "@/components/PreserveGuide";
 
@@ -45,6 +45,23 @@ export default function PreserveOverviewPage() {
             <span>{protectQuote.source}</span>
           </figcaption>
         </figure>
+      </GuideSection>
+
+      <GuideSection id="national-register" title={protectRegister.title}>
+        {protectRegister.body.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+        <p className="evidence">
+          <span className="evidence-tag" data-verified="true">
+            {protectRegister.label}
+          </span>
+        </p>
+        <p className="walk-look">{protectRegister.quote}</p>
+        <p>
+          <Link className="text-link" href={protectRegister.link.href}>
+            {protectRegister.link.label}
+          </Link>
+        </p>
       </GuideSection>
 
       <GuideSection id="your-home" title={protectOwn.title}>

@@ -5,6 +5,7 @@ import { walkAccess } from "@/lib/walks";
 import { walkSummaries as walks } from "@/content/walks";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
+import { GapNote } from "@/components/Gaps";
 
 export const metadata: Metadata = {
   title: `Self-Guided Walks | ${site.fullName}`,
@@ -16,6 +17,7 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
   const [access, sp] = await Promise.all([walkAccess(), searchParams]);
   return (
     <SiteShell>
+      <GapNote line="history" />
       <header className="page-hero land-hero">
         <div className="wrap">
           <p className="section-label">Self-guided walks</p>
@@ -30,8 +32,8 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
             <div className="panel research-join walk-access">
               <h2 className="newsletter-panel-title">Open the walks</h2>
               <p>
-                <strong>Members</strong> walk free, and every membership includes three walk codes a year to share. <strong>Visitors and guests</strong> can
-                get a walk code for $15 per guest.
+                <strong>Members</strong> walk free, and every membership includes three walk codes a year to share. <strong>Visitors and guests:</strong> walk codes ($15 per guest)
+                open once the City confirms its licensing rules for self-guided walks. Ask us and we’ll tell you first.
               </p>
               <form action="/walks/redeem" method="post" className="walk-code-form">
                 <label htmlFor="walk-code">Have a walk code?</label>
@@ -49,9 +51,9 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
                 </Link>
               </p>
               <EmailDraftButton
-                label="Get a walk code ($15 per guest)"
-                subject="Self-guided walk code"
-                body={"Hello Kimberly,\n\nI would like a self-guided walk code.\n\nMy name:\nNumber of guests:\nDates of my visit:\nBest way to reach me:"}
+                label="Ask about visitor walk codes"
+                subject="Visitor walk codes"
+                body={"Hello Kimberly,\n\nPlease tell me when visitor walk codes are available.\n\nMy name:\nNumber of guests:\nDates of my visit:\nBest way to reach me:"}
               />
             </div>
           )}

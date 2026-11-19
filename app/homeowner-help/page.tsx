@@ -4,12 +4,14 @@ import { site } from "@/content/site";
 import { homeownerHelp as h } from "@/content/services";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
+import { GapNote } from "@/components/Gaps";
 
 export const metadata: Metadata = { title: `${h.title} | ${site.fullName}`, description: h.lede, alternates: { canonical: "/homeowner-help" } };
 
 export default function HomeownerHelpPage() {
   return (
     <SiteShell>
+      <GapNote line="homes" />
       <header className="page-hero land-hero">
         <div className="wrap">
           <p className="section-label">{h.label}</p>

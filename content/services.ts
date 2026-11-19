@@ -13,6 +13,12 @@ export const homeownerHelp = {
   lede: "The City of St. Augustine and the Lincolnville Community Redevelopment Agency (CRA) offer programs that can help long-term residents repair, protect and keep their homes. Here they are in one place, in plain words, with how Root & Simmer Hospitality Co. can help you get ready to apply.",
   programs: [
     {
+      title: "Does my home qualify as historic?",
+      body: "Four questions show where your home stands: is it on the 1991 list of 548 contributing buildings, is it 50 years old or older, has it kept its historic character, and do you want lasting protection or tax relief?",
+      href: "/preserve-historic-homes/historic-recognition#qualify",
+      link: "Check your home",
+    },
+    {
       title: "Fix-It-Up repair grant",
       body: "The CRA’s main tool for helping long-term residents stay in their homes. The City’s program page says income-qualified, single-family Lincolnville residents may apply for up to $100,000 in home repairs for serious health and safety needs, so residents can age in place. That is a maximum, not what every household receives.",
       href: "/cra-lincolnville/fix-it-up",

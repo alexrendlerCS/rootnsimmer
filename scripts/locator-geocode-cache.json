@@ -166,5 +166,11 @@
   "lon": -81.3150949,
   "source": "OpenStreetMap",
   "label": "57, Lovett Street, Lincolnville, Saint Augustine, Saint Johns County, Florida, 32084, United States"
+ },
+ "69 Washington St.": {
+  "lat": 29.8886121,
+  "lon": -81.3132886,
+  "source": "OpenStreetMap",
+  "label": "Saint Mary's Baptist Church, 69, Washington Street, Lincolnville, Saint Augustine, Saint Johns County, Florida, 32084, United States"
  }
 }

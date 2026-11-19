@@ -89,8 +89,8 @@ export const ways: Way[] = [
   {
     id: "walk",
     title: "Visitors and guests: the self-guided walk",
-    body: "Staying in Lincolnville? The self-guided walk guide brings its streets, homes and history to life on your phone, at your own pace, from the public sidewalk. $15 per guest. Every membership includes the walk guide, plus three walk codes a year to share with guests.",
-    button: "Request the walk guide",
+    body: "Staying in Lincolnville? The self-guided walk guide brings its streets, homes and history to life on your phone, at your own pace, from the public sidewalk. Every membership includes the walk guide, plus three walk codes a year to share with guests. Visitor walk codes ($15 per guest) open once the City confirms its licensing rules for self-guided walks.",
+    button: "Ask about the walk guide",
     subject: "Self-guided walk guide",
     emailBody: "Hello Kimberly,\n\nI would like the self-guided walk guide.\n\nMy name:\nNumber of guests:\nDates of my visit:\nBest way to reach me:",
     note: "Each guide is for one guest, for the length of the visit. See the walks at rootnsimmer.vercel.app/walks. © Root & Simmer Hospitality Co. All rights reserved.",

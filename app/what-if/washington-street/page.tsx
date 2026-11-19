@@ -68,6 +68,39 @@ export default function WashingtonStreetVisionPage() {
             ))}
           </dl>
           <p className="fine">{t.history.note}</p>
+          <h3 className="steps-title">{t.history.directory.title}</h3>
+          <div className="table-wrap">
+            <table className="record-table rule-table">
+              <thead>
+                <tr>
+                  {t.history.directory.columns.map((c) => (
+                    <th key={c} scope="col">
+                      {c}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {t.history.directory.rows.map((r) => (
+                  <tr key={r[0] + r[1]}>
+                    <th scope="row">{r[0]}</th>
+                    <td>{r[1]}</td>
+                    <td>{r[2]}</td>
+                    <td>
+                      <span className="evidence-tag" data-verified="true">
+                        {r[3]}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="fine">{t.history.directory.note}</p>
+          <div className="panel">
+            <h3 className="newsletter-panel-title">{t.history.help.title}</h3>
+            <p>{t.history.help.body}</p>
+          </div>
         </section>
 
         <section className="bodega-section" aria-labelledby="site-title">

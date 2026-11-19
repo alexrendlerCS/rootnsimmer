@@ -4,6 +4,7 @@ import Link from "next/link";
 import { craHomeStory } from "@/content/cra";
 import { site } from "@/content/site";
 import { CraGuide, GuideSection } from "@/components/CraGuide";
+import { EvidenceLegend } from "@/components/EvidenceLegend";
 import thenPhoto from "@/public/photos/home-story-then.jpg";
 import nowPhoto from "@/public/photos/home-story-now.jpg";
 
@@ -92,6 +93,10 @@ export default function HomeStoryPage() {
         </dl>
         <p className="sample-extras">{c.sample.extras}</p>
       </GuideSection>
+
+      <div className="guide-section">
+        <EvidenceLegend />
+      </div>
     </CraGuide>
   );
 }

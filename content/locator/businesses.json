@@ -177,6 +177,37 @@
           "phone": "(904) 631-2218"
         }
       ]
+    },
+    {
+      "id": "faith",
+      "name": "Faith communities",
+      "color": "#4f7f78",
+      "entries": [
+        {
+          "name": "St. Paul A.M.E. Church",
+          "address": "85 M. L. King Ave."
+        },
+        {
+          "name": "St. Benedict the Moor Catholic Church",
+          "address": "86 M. L. King Ave."
+        },
+        {
+          "name": "St. Cyprian’s Episcopal Church",
+          "address": "37 Lovett St."
+        },
+        {
+          "name": "St. Mary’s Missionary Baptist Church",
+          "address": "69 Washington St."
+        },
+        {
+          "name": "Bethel Baptist Church",
+          "address": "222 Riberia St."
+        },
+        {
+          "name": "First Baptist Church",
+          "address": "89 St. Francis St."
+        }
+      ]
     }
   ],
   "landmarks": [

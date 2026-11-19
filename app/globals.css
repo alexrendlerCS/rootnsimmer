@@ -838,9 +838,9 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .offerings { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 1480px) {
-  .header-inner { gap: 20px; }
-  .site-nav { gap: 11px; }
+@media (max-width: 1520px) {
+  .header-inner { gap: 18px; }
+  .site-nav { gap: 10px; }
   .site-nav a { font-size: 0.875rem; }
 }
 
@@ -849,7 +849,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 }
 
 /* Eight menu items no longer fit beside the logo below this width: use the menu button. */
-@media (max-width: 1299px) {
+@media (max-width: 1319px) {
   .menu-button { display: grid; }
   .header-actions { margin-left: auto; }
   .site-nav {
@@ -1837,10 +1837,10 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .nav-group-list.is-open { display: block; }
 .site-nav .nav-group-list a { display: block; padding: 10px 16px; border-bottom: 0; white-space: normal; }
 .site-nav .nav-group-list a:hover { background: var(--haint-soft); color: var(--rail); }
-@media (max-width: 1480px) {
+@media (max-width: 1520px) {
   .nav-group-button { font-size: 0.875rem; }
 }
-@media (max-width: 1299px) {
+@media (max-width: 1319px) {
   .nav-group { display: block; border-bottom: 1px solid var(--line); }
   .nav-group-button { width: 100%; padding: 14px 0 6px; font-size: 1.0625rem; border-bottom: 0; cursor: default; pointer-events: none; }
   .nav-group-button svg { display: none; }
@@ -1964,4 +1964,58 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .walk-theme { margin: 0 0 0.4rem; font: italic 1rem var(--font-display); color: var(--rail); }
 .walk-look { margin: 0.5rem 0 0; padding-left: 0.8rem; border-left: 2px solid var(--gold); font-style: italic; color: var(--oak); }
 .walk-copy { font-size: 0.875rem; color: var(--muted); }
-@media print { .walk-guide { display: none !important; } body::after { content: "This walk guide can’t be printed. © Root & Simmer Hospitality Co."; display: block; padding: 2rem; font: 14pt Georgia, serif; } }
+.walk-print-note { display: none; }
+@media print { .walk-guide { display: none !important; } .walk-print-note { display: block; padding: 2rem; font: 14pt Georgia, serif; } .locator-story { display: none !important; } }
+
+/* The big picture: gaps and the four lines */
+.gaps { border-top: 3px solid var(--gold); }
+.gaps-lede { max-width: 46rem; }
+.gap-cards { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; counter-reset: gap; }
+.gap-card { display: flex; flex-direction: column; gap: 0.5rem; padding: 22px; background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--rail); border-radius: 2px; counter-increment: gap; }
+.gap-card h3 { margin: 0; font-size: 1.25rem; }
+.gap-card h3::before { content: counter(gap) ". "; color: var(--rail); }
+.gap-record { margin: 0; font-size: 0.9375rem; color: var(--muted); }
+.gap-source { font-size: 0.8125rem; color: var(--oak); white-space: nowrap; }
+.gap-answer { margin: 0; font-size: 0.9375rem; }
+.gap-answer strong { color: var(--oak); }
+.gap-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; font-size: 0.9375rem; }
+.gap-lines { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 0; padding-top: 0.5rem; }
+.gap-line { padding: 2px 10px; border-radius: 999px; background: var(--haint-soft); color: var(--oak); font-size: 0.8125rem; font-weight: 600; }
+.line-cards { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; }
+.line-card { display: flex; flex-direction: column; gap: 0.4rem; padding: 22px; background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--oak); border-radius: 2px; }
+.line-number { margin: 0; font: 2.5rem/1 var(--font-display); color: var(--gold); }
+.line-card h3 { margin: 0; font-size: 1.25rem; }
+.line-who { margin: 0; font: italic 1rem var(--font-display); color: var(--rail); }
+.line-card p { font-size: 0.9375rem; }
+.line-pages { margin: 0; padding-left: 1.1rem; font-size: 0.9375rem; flex: 1; }
+.line-earns { margin: 0.5rem 0 0; padding-top: 0.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem !important; }
+.gap-matrix { width: 100%; border-collapse: collapse; background: var(--paper); font-size: 0.9375rem; }
+.gap-matrix th, .gap-matrix td { padding: 10px 12px; border: 1px solid var(--line); text-align: center; vertical-align: middle; }
+.gap-matrix thead th { color: var(--oak); font-size: 0.875rem; }
+.gap-matrix tbody th { text-align: left; font-weight: 600; }
+.gap-matrix .dot { color: var(--rail); font-size: 1.125rem; }
+.gap-note { background: var(--haint-soft); border-bottom: 1px solid var(--line); padding-block: 12px; }
+.gap-note p { margin: 0; font-size: 0.9375rem; }
+.gap-note-label { font-weight: 600; color: var(--oak); }
+
+.table-wrap { max-width: 100%; }
+@media (max-width: 640px) { .gap-matrix .mx-name { display: none; } .gap-matrix th, .gap-matrix td { padding: 8px 6px; } }
+
+/* How we label what we know */
+.evidence-legend { max-width: 46rem; padding: 22px 24px; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 2px; }
+.evidence-legend ul { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 10px; }
+.evidence-legend li { font-size: 0.9375rem; }
+
+/* Print: name and address share a line so the map with all groups fits one letter page */
+@media print { .locator-item-name, .locator-item-addr { display: inline; } .locator-item-addr::before { content: " · "; } }
+@media print { .locator-body { grid-template-columns: 5.05in 2.75in !important; } .locator-mapcol { width: 2.75in !important; } .locator-cat { margin-bottom: 2pt; } }
+@media print { .locator-title { font-size: 18pt !important; } .locator-head { padding-bottom: 2pt !important; } .locator-foot { margin-top: 3pt !important; padding-top: 2pt !important; } .locator-key { margin-top: 2pt !important; } }
+
+/* Lincolnville Places Map (/places-map) */
+.pm-list { columns: 3 260px; column-gap: 2rem; }
+.pm-group { break-inside: avoid; margin: 0 0 1.5rem; }
+.pm-group h3 { display: flex; align-items: center; gap: 8px; font-size: 1.0625rem; margin: 0 0 0.5rem; }
+.pm-group ul { list-style: none; margin: 0; padding: 0; }
+.pm-group li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+.pm-group li strong { display: block; color: var(--oak); }
+.pm-group li span { font-size: 0.875rem; color: var(--muted); }

@@ -73,6 +73,24 @@ export const washingtonVision = {
       { label: "93 Washington", body: "Built 1871-1885 by the 1991 National Register inventory: among the oldest buildings on the street." },
     ],
     note: "Addresses are today’s. Historic directories used older numbers in places, so each early business is matched to a building only when the records agree.",
+    /** Directory people on Washington Street (Website update brief, Phase 1, 4.6). Numbers are the numbers of their time. */
+    directory: {
+      title: "In the city directories",
+      columns: ["No. (number of its time)", "Who", "Year", "Label"],
+      rows: [
+        ["62", "H. W. Martin, restaurant (home 73 Lincoln)", "1899", "Directory entry"],
+        ["66", "Charles T. Evans, barber (home 88 St. Francis)", "1907", "Directory entry"],
+        ["68", "Andrew Huff, embalmer at W. F. Macon & Co., home", "1911-12 card", "Directory entry"],
+        ["84 / 86", "Domingo M. Papy, home (84); insurance and notary public (86)", "1911-12 card", "Directory entry"],
+        ["101", "Matt Higdon, barber", "1899", "Directory entry"],
+        ["142", "Rev. M. D. Certain, pastor, St. Paul A.M.E. Church", "1899", "Directory entry"],
+      ],
+      note: "Directory numbers are the numbers of their time and may not match today’s. The 1899 entry at 142 is earlier than the building the 1991 list dates there (1917-1924).",
+    },
+    help: {
+      title: "Help us rebuild 1920s Washington Street",
+      body: "We hold directories from 1885, 1899, 1907 and 1911-12, but not yet a 1920s directory. If you have one, or Sanborn map sheets, census pages or family memories of the shops, churches and gathering places on Washington Street, please write to rootnsimmer@gmail.com.",
+    },
   },
 
   site: {

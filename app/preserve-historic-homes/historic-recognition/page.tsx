@@ -14,6 +14,18 @@ export const metadata: Metadata = {
 export default function HistoricRecognitionPage() {
   return (
     <PreserveGuide slug="historic-recognition" title="Historic Recognition" lede={recognition.intro}>
+      <GuideSection id="qualify" title={recognition.qualify.title}>
+        <p>{recognition.qualify.intro}</p>
+        <dl className="glance">
+          {recognition.qualify.checks.map((c) => (
+            <div key={c.q}>
+              <dt>{c.q}</dt>
+              <dd>{c.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </GuideSection>
+
       <GuideSection id="kinds" title="Three kinds of recognition">
         <dl className="glance">
           {recognition.kinds.map((k) => (
