@@ -12,8 +12,8 @@ import { facts } from "@/content/facts";
 import { seo } from "@/lib/seo";
 
 export const metadata: Metadata = seo(
-  "Lincolnville History - Little Africa, St. Augustine",
-  "Self-guided discovery of Lincolnville: Little Africa, Black history, civil rights sites, museums and historic churches in St. Augustine, FL.",
+  "Lincolnville History - Lil Africa, St. Augustine",
+  "Self-guided discovery of Lincolnville: Lil Africa, Black history, civil rights sites, museums and historic churches in St. Augustine, FL.",
   "/walks",
 );
 

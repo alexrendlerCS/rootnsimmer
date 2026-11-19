@@ -44,7 +44,7 @@ export const visitorMap = {
   roots: {
     title: "Lil Africa",
     paragraphs: [
-      "Lincolnville was settled by freedpeople in 1866, near Maria Sanchez Creek, in the settlement first known as Africa, or Little Africa, today Lil Africa. On November 29, 1991, the Lincolnville Historic District joined the National Register of Historic Places with 548 contributing buildings. Dr. Martin Luther King Jr. and the 1964 St. Augustine Movement gathered in its churches.",
+      "Lincolnville was settled by freedpeople in 1866, near Maria Sanchez Creek, in the settlement first known as Africa, or Lil Africa. On November 29, 1991, the Lincolnville Historic District joined the National Register of Historic Places with 548 contributing buildings. Dr. Martin Luther King Jr. and the 1964 St. Augustine Movement gathered in its churches.",
       "As I researched the places I wanted visitors to discover, I found history that reached far beyond the Civil Rights movement: the African presence in Spanish St. Augustine, slavery and freedom, Fort Mose, emancipation, and the settlement of Lil Africa. That walk became Root & Simmer Hospitality Co., exclusively for Lincolnville.",
     ],
   },

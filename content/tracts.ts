@@ -15,7 +15,7 @@ export const tractsPage = {
   title: "The Land Beneath Our Feet",
   subtitle: "From Lil Africa to Lincolnville — How a Community Took Root",
   intro:
-    "Before Lincolnville became the neighborhood we know today, its land held centuries of history. Following emancipation, newly freed African Americans established a community known as Africa or Little Africa, today remembered as Lil Africa. From this settlement grew a neighborhood of homeowners, churches, schools, businesses, and families whose contributions helped shape St. Augustine.",
+    "Before Lincolnville became the neighborhood we know today, its land held centuries of history. Following emancipation, newly freed African Americans established a community known as Africa, or Lil Africa. From this settlement grew a neighborhood of homeowners, churches, schools, businesses, and families whose contributions helped shape St. Augustine.",
   feature: "Lil Africa was the root from which Lincolnville grew.",
   independence:
     "Root & Simmer Hospitality Co. is independent. This page is community history research, not an official City of St. Augustine or Community Redevelopment Agency (CRA) publication.",
@@ -40,7 +40,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "1866",
-    title: "Africa / Little Africa (Lil Africa)",
+    title: "Africa / Lil Africa",
     body: "By October 1866, six newly freed African Americans leased land along the western edge of Maria Sanchez Creek: Aaron Dupont, Miles Hancock, Matilda Papy, Peter Sanks, Tom Solana and Harriet Weedman.",
     evidence: "St. Augustine Historical Society",
     source: "St. Augustine Historical Society, “Lincolnville: The Beginning”",

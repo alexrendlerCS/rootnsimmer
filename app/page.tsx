@@ -39,7 +39,7 @@ const LETTER_PREVIEW = 3;
 
 export const metadata: Metadata = seo(
   "Root & Simmer - Lincolnville History, St. Augustine FL",
-  "Preserving Lincolnville's home and family histories in St. Augustine, FL. Founded in 1866 as Little Africa. Every home known. Every voice kept.",
+  "Preserving Lincolnville's home and family histories in St. Augustine, FL. Founded in 1866 as Lil Africa. Every home known. Every voice kept.",
   "/",
 );
 
@@ -54,7 +54,7 @@ const businessListing = {
   founder: { "@type": "Person", name: "Kimberly Joyce" },
   description: "Documenting Lincolnville home and family histories and supporting historic preservation in St. Augustine, Florida.",
   areaServed: { "@type": "Place", name: "Lincolnville Historic District, St. Augustine, Florida" },
-  knowsAbout: ["Lincolnville history", "Little Africa", "Historic preservation", "Home history research", "Gullah Geechee heritage"],
+  knowsAbout: ["Lincolnville history", "Lil Africa", "Historic preservation", "Home history research", "Gullah Geechee heritage"],
 };
 
 export default function Home() {

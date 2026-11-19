@@ -1,13 +1,14 @@
 /**
- * Member portal switch (public launch, Nov 19, 2026).
+ * Member portal switch.
  *
- * The portal is PAUSED unless the server setting MEMBER_PORTAL=open is present.
- *   - Paused: no sign-in, no private pages, no member downloads or signed links, no walk codes, and any existing
- *     sign-in is ignored. Accounts, home assignments, private files, database records and security rules are untouched.
- *   - To reopen: in Vercel → rootnsimmer → Settings → Environment Variables, add MEMBER_PORTAL = open (Production),
- *     then redeploy. On this laptop, add MEMBER_PORTAL=open to .env.local.
+ * OPEN (Kimberly, Nov 19, 2026): "member portal can open but the members can't see it until they pay."
+ * Only people Kimberly adds as members (after they pay) can sign in; nobody can create their own account.
+ *
+ * To PAUSE again without touching code: in Vercel → rootnsimmer → Settings → Environment Variables, add
+ * MEMBER_PORTAL = paused (Production) and redeploy. Paused = no sign-in, no private pages, no member downloads or
+ * signed links, no walk codes, and existing sign-ins are ignored; accounts, files and security rules are untouched.
  */
-export const portalOpen = process.env.MEMBER_PORTAL === "open";
+export const portalOpen = process.env.MEMBER_PORTAL !== "paused";
 
 export const portalSoon = {
   title: "The member portal is coming soon",

@@ -192,9 +192,9 @@ export const thisMonth = {
       link: { href: "mailto:rootnsimmer@gmail.com?subject=My%20Lincolnville%20story", label: "Share your story by email" },
     },
     {
-      date: "The second Saturday of every month · next: Saturday, December 12",
+      date: "The second and fourth Saturday of every month, at noon · next: Saturday, November 28",
       title: "Drum circle at the Generational Healing Box",
-      body: "Bring a drum, or just come to listen. On the second Saturday of every month, neighbors gather for a drum circle at Dr. Robert B. Hayling Freedom Park, by the love mailbox on the walking path near the bird observation area. Come early and leave a note in the Generational Healing Box. Time to be announced.",
+      body: "Bring a drum, or just come to listen. On the second and fourth Saturday of every month, at noon, neighbors gather for a drum circle at Dr. Robert B. Hayling Freedom Park, by the love mailbox on the walking path near the bird observation area. Come early and leave a note in the Generational Healing Box.",
     },
     {
       date: "The first Friday of every month · next: Friday, December 4",
