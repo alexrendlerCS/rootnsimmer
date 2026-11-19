@@ -21,7 +21,7 @@ export const tiers: Tier[] = [
   {
     id: "homeowner",
     name: "Homeowner",
-    price: "$1,200 a year",
+    price: "$1,200 a year · $600 deposit to start",
     who: "For Lincolnville homeowners. Comes with the Home Story Package.",
     gets: [
       "Your home’s history file, records and packets",

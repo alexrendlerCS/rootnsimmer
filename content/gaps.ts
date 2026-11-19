@@ -147,7 +147,7 @@ export const lines: Line[] = [
       { href: "/#root", label: "ROOT" },
       { href: "/what-if/washington-street", label: "What if…? Washington Street" },
     ],
-    earns: "Sponsorship inquiries for the newsletter, walk stops and Locator Map",
+    earns: "Lincolnville Partners at $1,500 a year; sponsorship inquiries for the newsletter, walk stops and Locator Map",
   },
   {
     id: "partners",

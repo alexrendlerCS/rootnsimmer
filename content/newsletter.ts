@@ -98,11 +98,11 @@ export const partnersPage = {
   benefitsTitle: "What a Lincolnville Partner receives",
   benefits: [
     "A listing on the Root & Simmer website",
-    "A place on the Neighborhood Story Map",
+    "A place on the new Lil Africa Neighborhood Story Map (coming soon)",
     "A monthly newsletter ad slot",
     "A Lincolnville page in the St. Augustine Sightseeing Map & Guide",
   ],
-  rate: "Founding partner rates are available. Ask us for the details.",
+  rate: "Founding partner rate: $1,500 a year, for all the partner benefits listed here, including your monthly newsletter ad slot.",
   button: "Become a Lincolnville Partner",
   subject: "Becoming a Lincolnville Partner",
   body: "Hello Kimberly,\n\nWe would like to become a Lincolnville Partner.\n\nBusiness or organization:\nAddress:\nWhat we do, in one line:\nContact name:\nBest way to reach us:",
