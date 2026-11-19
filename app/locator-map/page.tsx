@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { site } from "@/content/site";
+import { directoryPage, directoryTeaser, mapStory } from "@/content/africa-directory";
 import { SiteShell } from "@/components/SiteShell";
 import { LocatorMap } from "@/components/LocatorMap";
 
@@ -15,6 +17,27 @@ export default function LocatorMapPage() {
       <div className="wrap locator-page">
         <LocatorMap />
       </div>
+
+      <section className="page-section locator-story" aria-labelledby="map-story-title">
+        <div className="wrap split">
+          <div className="prose">
+            <h2 id="map-story-title" className="guide-h2">
+              {mapStory.title}
+            </h2>
+            {mapStory.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+          <Link href={directoryPage.href} className="panel dir-teaser">
+            <p className="land-teaser-year" aria-hidden="true">
+              1885
+            </p>
+            <h3>{directoryTeaser.title}</h3>
+            <p>{directoryTeaser.body}</p>
+            <span className="text-link">{directoryTeaser.link}</span>
+          </Link>
+        </div>
+      </section>
     </SiteShell>
   );
 }

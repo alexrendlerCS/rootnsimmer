@@ -98,3 +98,39 @@ export const newsletterAdvertise = {
   subject: "Support Locally: feature my business",
   emailBody: "Hello Kimberly,\n\nI would like my business or organization featured in Support Locally.\n\nName:\nWhat we do:\nAddress:\nWebsite:\nBest way to reach me:",
 };
+
+/**
+ * THIS MONTH: the short article at the top of the Newsletter page. To refresh it each month,
+ * change `month`, `title` and `body`, swap the photos in `gallery` (files go in public/photos/newsletter/),
+ * and add dated items to `updates` (newest first). Leave `updates` empty ([]) if there is nothing to add.
+ * Keep private contact details (for example City staff cards) out of this section.
+ */
+export type GalleryPhoto = { src: string; alt: string; title: string; caption: string };
+export type NewsUpdate = { date: string; title: string; body: string; link?: { href: string; label: string } };
+
+export const thisMonth = {
+  label: "This month",
+  month: "November 2026",
+  title: "Lincolnville: History, Culture, and Community",
+  body: [
+    "Lincolnville’s story reaches from the six African American leaseholders who helped establish the community in 1866—Matilda Pappy, Aaron Dupont, Harriet Weidman, Miles Hancock, Tom Solana, and Peter Sanks—to the neighborhood’s living culture today. Gigi Onyinye Best’s From Liberation Lot to Lincolnville explores this history and the Gullah connections that shaped St. Augustine.",
+    "Explore local history at the Best Richardson African Diaspora Literature & Culture Museum and the ACCORD Civil Rights Museum and Freedom Trail. The Corner Market, established in 1920, is preparing for a new chapter, with a café and community gathering place announced as part of its plans. Its mural project highlights African American history in Lincolnville.",
+    "This month, we’re sharing the people, places, museums, businesses, and events that keep Lincolnville’s heritage visible and its community connected. Check back for updates and ways to take part.",
+  ],
+  galleryTitle: "From around the neighborhood",
+  galleryNote: "Photos of materials shared by local organizations and businesses. Event dates, hours and openings change: confirm them with each place before you go. Including them does not imply City or Community Redevelopment Agency (CRA) endorsement.",
+  gallery: [
+    { src: "/photos/newsletter/liberation-lot-book.jpg", alt: "Cover of the book From Liberation Lot to Lincolnville by Gigi Onyinye Best", title: "From Liberation Lot to Lincolnville", caption: "Gigi Onyinye Best’s book on the six freedmen and women leaseholders and the Gullah heritage that helped shape Lincolnville." },
+    { src: "/photos/newsletter/leaseholders-bookmark.jpg", alt: "Bookmark listing the 1866 Lincolnville leaseholders, with historic views of Maria Sanchez Creek", title: "The six 1866 leaseholders", caption: "A bookmark from the BRADLC Museum and Books naming the six leaseholders, with a view of Maria Sanchez Creek around 1885." },
+    { src: "/photos/newsletter/corner-market-flyer.jpg", alt: "Corner Market Lincolnville flyer: Historic Corner Market, established 1920, coming soon", title: "The Corner Market’s next chapter", caption: "The historic Corner Market at 97 M.L. King Avenue, established 1920, announces a café and reopening. Check with the market for current details." },
+    { src: "/photos/newsletter/first-friday-art-walk.jpg", alt: "Flyer for the First Friday Art Walk at the BRADLC Museum, showcasing Gullah, folk, multicultural art and jazz", title: "First Friday Art Walk", caption: "Gullah, folk and multicultural art and jazz at the Best Richardson museum, 83 Washington Street. The flyer lists 4 to 7 p.m.; confirm the date with the museum." },
+    { src: "/photos/newsletter/corner-market-mural-brochure.jpg", alt: "Brochure for the Corner Market Mural Project on the African American history of Lincolnville", title: "The Corner Market Mural Project", caption: "A mural project on the African American history of Lincolnville at 97 M.L. King Avenue." },
+    { src: "/photos/newsletter/mural-history-panel-1.jpg", alt: "Brochure panel: Lincolnville history depicted on the mural, with historic photographs", title: "History on the mural, panel one", caption: "The brochure’s background on the people, places and businesses the mural remembers." },
+    { src: "/photos/newsletter/mural-history-panel-2.jpg", alt: "Brochure panel continuing the history depicted on the Corner Market mural", title: "History on the mural, panel two", caption: "The story continues through family life, community institutions and local history." },
+    { src: "/photos/newsletter/accord-brochure.jpg", alt: "ACCORD Civil Rights Museum and Freedom Trail brochure", title: "ACCORD Civil Rights Museum and Freedom Trail", caption: "The museum at 79 Bridge Street and the Freedom Trail, a self-guided audio walk past markers of St. Augustine’s 1960s Civil Rights Movement." },
+    { src: "/photos/newsletter/accord-brochure-inside.jpg", alt: "Inside of the ACCORD brochure describing the museum, the restored cabin and the Freedom Trail", title: "ACCORD’s museum, cabin and trail", caption: "ACCORD’s museum, the restored cabin at 94 South Street, and the Freedom Trail. Check ACCORD’s own site for current hours." },
+  ] as GalleryPhoto[],
+  updatesTitle: "Updates and events",
+  updatesEmpty: "New dates and ways to take part will be posted here. Check back soon.",
+  updates: [] as NewsUpdate[],
+};

@@ -17,6 +17,7 @@ import {
 } from "@/content/site";
 import { pillars, rootIntro, rootJoin, rootMotto, rootNote, rootWork } from "@/content/root";
 import { craTeaser } from "@/content/cra";
+import { tractsPage, tractsTeaser } from "@/content/tracts";
 import { whatIfTeasers } from "@/content/stable-bodega";
 import { visitorMapTeaser } from "@/content/visitor-map";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
@@ -132,6 +133,23 @@ export default function Home() {
             </h2>
             <p>{visitorMapTeaser.body}</p>
             <span className="button button-red">{visitorMapTeaser.link}</span>
+          </Link>
+        </section>
+
+        {/* Lincolnville history: The Land Beneath Your Feet */}
+        <section id="lincolnville-history" className="land-teaser" aria-labelledby="land-teaser-title">
+          <Link href={tractsPage.href} className="wrap land-teaser-card">
+            <p className="land-teaser-year" aria-hidden="true">
+              1866
+            </p>
+            <div>
+              <p className="section-label">{tractsTeaser.label}</p>
+              <h2 id="land-teaser-title" className="h-medium">
+                {tractsTeaser.title}
+              </h2>
+              <p>{tractsTeaser.body}</p>
+              <span className="text-link">{tractsTeaser.link}</span>
+            </div>
           </Link>
         </section>
 

@@ -238,6 +238,12 @@ const SHARED_FOLDERS = {
   "5 Projects and landmarks": "Projects and landmarks",
   "6 Guides": "Guides",
   "8 Demolition records": "Demolition records",
+  // Mohlman research: members only, one shelf per kind of source. Internal audit notes stay in _Never share.
+  "9 Mohlman research/1 Narratives": "Mohlman research: Narratives",
+  "9 Mohlman research/2 Directories": "Mohlman research: Directories",
+  "9 Mohlman research/3 Maps": "Mohlman research: Maps",
+  "9 Mohlman research/4 Photographs": "Mohlman research: Photographs",
+  "9 Mohlman research/5 Original documents": "Mohlman research: Original documents",
 };
 const tidyTitle = (name) =>
   stripNumber(name)

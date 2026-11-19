@@ -48,6 +48,11 @@ export const DOCUMENT_CATEGORIES = [
   "Projects and landmarks",
   "Guides",
   "Demolition records",
+  "Mohlman research: Narratives",
+  "Mohlman research: Directories",
+  "Mohlman research: Maps",
+  "Mohlman research: Photographs",
+  "Mohlman research: Original documents",
 ] as const;
 
 /**

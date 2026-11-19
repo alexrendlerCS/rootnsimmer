@@ -18,12 +18,27 @@ export const site = {
 };
 
 /**
- * Top menu. Links starting with "/#" jump to a section of the home page
- * ("About" opens the home page at Mission; Values, Our work and About Kimberly follow it there).
+ * Top menu. Links starting with "/#" jump to a section of the home page.
  * Everything else is its own page. "Membership" is the Digital Records page, where the Lincolnville Connection is.
+ * "Our Story" is a small drop-down; its links are listed under `items`.
  */
-export const nav = [
-  { href: "/#mission", label: "About" },
+export type NavLink = { href: string; label: string };
+export type NavItem = NavLink & { items?: NavLink[] };
+
+export const nav: NavItem[] = [
+  {
+    href: "/#mission",
+    label: "Our Story",
+    items: [
+      { href: "/#mission", label: "About Root & Simmer" },
+      { href: "/lincolnville-history/tracts", label: "Lincolnville History: The Land Beneath Your Feet" },
+      { href: "/lincolnville-history/directory", label: "The Little Africa Directory" },
+      { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research · Members" },
+      { href: "/lincolnville-history/residents-map", label: "Historic Residents Map · Members" },
+      { href: "/#root", label: "ROOT: Lincolnville Community Committee" },
+      { href: "/#kimberly", label: "Meet Kimberly" },
+    ],
+  },
   { href: "/homes-not-hotels", label: "Homes, Not Hotels" },
   { href: "/cra-lincolnville", label: "CRA – Lincolnville" },
   { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },

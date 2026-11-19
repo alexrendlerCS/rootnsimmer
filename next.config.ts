@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     return [
       // ROOT now lives on the home page; posters and newsletters still point to /root.
       { source: "/root", destination: "/#root", permanent: true },
+      // The Lincolnville History section starts with The Land Beneath Your Feet.
+      { source: "/lincolnville-history", destination: "/lincolnville-history/tracts", permanent: false },
     ];
   },
 };

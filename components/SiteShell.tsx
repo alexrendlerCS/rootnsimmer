@@ -29,6 +29,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
               <Link href="/library">Library</Link>
               <Link href="/newsletter">Newsletter</Link>
+              <Link href="/lincolnville-history/tracts">Lincolnville History: The Land Beneath Your Feet</Link>
+              <Link href="/lincolnville-history/directory">The Little Africa Directory</Link>
+              <Link href="/lincolnville-history/mohlman-research">Mohlman Research (members)</Link>
+              <Link href="/lincolnville-history/residents-map">Historic Residents Map (members)</Link>
               <Link href="/locator-map">Lincolnville Locator Map</Link>
               <Link href="/visitor-map">Lincolnville on the Visitor Map</Link>
               <Link href="/what-if/washington-street">What if…? Washington Street</Link>

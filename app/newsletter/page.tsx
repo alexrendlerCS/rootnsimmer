@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { site } from "@/content/site";
-import { latestIssue, newsletterAdvertise, newsletterContents, newsletterHero, newsletterSignup, supportLocally } from "@/content/newsletter";
+import { latestIssue, newsletterAdvertise, newsletterContents, newsletterHero, newsletterSignup, supportLocally, thisMonth } from "@/content/newsletter";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
 
@@ -19,6 +20,55 @@ export default function NewsletterPage() {
           <h1 className="page-title">{newsletterHero.title}</h1>
           <p className="page-lede">{newsletterHero.lede}</p>
         </header>
+
+        <section id="this-month" className="this-month" aria-labelledby="this-month-title">
+          <p className="section-label">
+            {thisMonth.label} · {thisMonth.month}
+          </p>
+          <h2 id="this-month-title" className="h-medium">
+            {thisMonth.title}
+          </h2>
+          <div className="this-month-body">
+            {thisMonth.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+
+          <h3 className="this-month-sub">{thisMonth.galleryTitle}</h3>
+          <ul className="nl-gallery">
+            {thisMonth.gallery.map((g) => (
+              <li key={g.src} className="nl-photo">
+                <a href={g.src} target="_blank" rel="noopener" className="nl-photo-frame">
+                  <Image src={g.src} alt={g.alt} width={1050} height={1400} sizes="(max-width: 640px) 90vw, 360px" />
+                  <span className="sr-only"> (opens the full-size photo in a new tab)</span>
+                </a>
+                <h4>{g.title}</h4>
+                <p>{g.caption}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="fine">{thisMonth.galleryNote}</p>
+
+          <h3 className="this-month-sub">{thisMonth.updatesTitle}</h3>
+          {thisMonth.updates.length === 0 ? (
+            <p className="muted">{thisMonth.updatesEmpty}</p>
+          ) : (
+            <ul className="entries">
+              {thisMonth.updates.map((u) => (
+                <li key={u.date + u.title}>
+                  <p className="nl-update-date">{u.date}</p>
+                  <h4>{u.title}</h4>
+                  <p>{u.body}</p>
+                  {u.link && (
+                    <a className="text-link" href={u.link.href}>
+                      {u.link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
 
         <section className="latest newsletter-latest" aria-labelledby="latest-title">
           <p className="latest-label">{latestIssue.label}</p>
