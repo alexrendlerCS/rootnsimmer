@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     siteName: site.fullName,
     type: "website",
     locale: "en_US",
-    images: [{ url: "/lincolnville-home.jpeg", width: 1920, height: 1440, alt: "A Lincolnville cottage with a screened front porch" }],
+    images: [{ url: "/share-card.jpg", width: 1200, height: 630, alt: "Root & Simmer Hospitality Co. live-oak logo. Exclusively for Lincolnville, St. Augustine, Florida. Every home has a history. Every family has a voice. Lincolnville’s story lives in both. www.rootnsimmer.com" }],
   },
-  twitter: { card: "summary_large_image", title: site.title, description: site.description },
+  twitter: { card: "summary_large_image", title: site.title, description: site.description, images: ["/share-card.jpg"] },
 };
 
 export const viewport: Viewport = {
