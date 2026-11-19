@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { gaps, lines, ourWorkPage as p } from "@/content/gaps";
 import { GapCards } from "@/components/Gaps";
 import { SiteShell } from "@/components/SiteShell";
+import { ProspectusLink } from "@/components/ProspectusLink";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
 
@@ -17,6 +18,7 @@ export default function OurWorkPage() {
           <p className="section-label">{p.label}</p>
           <h1 className="page-title land-title">{p.title}</h1>
           <p className="page-lede">{p.lede}</p>
+          <ProspectusLink />
         </div>
       </header>
       <HistoryFact fact={facts.march} />

@@ -2071,3 +2071,12 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .kimberly-side { display: block; order: -1; }
   .kimberly-photo { max-width: 320px; }
 }
+
+/* Home hero: the approved live-oak logo as the centerpiece (never redrawn) */
+.hero-logo { margin: 0; justify-self: center; width: min(100%, 480px); }
+.hero-logo img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+@media (max-width: 900px) { .home-hero-grid { grid-template-columns: 1fr; } .hero-logo { order: -1; width: min(78vw, 340px); } }
+
+.prospectus-link { margin-top: 1rem; }
+.prospectus-link .muted { display: block; margin-top: 4px; font-size: 0.875rem; }
+.prospectus-link .doc-link { max-width: 100%; white-space: normal; height: auto; text-align: left; }

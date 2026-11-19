@@ -5,6 +5,7 @@ import { workWithUs as w } from "@/content/services";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
 import { GapNote } from "@/components/Gaps";
+import { ProspectusLink } from "@/components/ProspectusLink";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
 
@@ -19,6 +20,7 @@ export default function WorkWithUsPage() {
           <p className="section-label">{w.label}</p>
           <h1 className="page-title land-title">{w.title}</h1>
           <p className="page-lede">{w.lede}</p>
+          <ProspectusLink />
         </div>
       </header>
       <HistoryFact fact={facts.directories} />

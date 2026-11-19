@@ -24,10 +24,11 @@ import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { ConnectionForm } from "@/components/ConnectionForm";
 import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
-import { Doorway } from "@/components/HomesHero";
+import logo from "@/public/logo.jpeg";
 import { SiteShell } from "@/components/SiteShell";
 import { GapsSection } from "@/components/Gaps";
 import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
+import { ProspectusLink } from "@/components/ProspectusLink";
 import { HistoryFact } from "@/components/HistoryFact";
 import { facts } from "@/content/facts";
 
@@ -36,7 +37,8 @@ const LETTER_PREVIEW = 3;
 export default function Home() {
   return (
     <SiteShell>
-        {/* Hero: Kimberly's brand promise, with the house in its porch doorway */}
+        {/* Hero: Kimberly's brand promise, with the approved live-oak logo as the centerpiece (Nov 19, 2026).
+            The then-and-now house photos stay on the Homes Not Hotels page. */}
         <section id="top" className="home-hero" aria-labelledby="home-hero-title">
           <div className="wrap home-hero-grid">
             <div className="home-hero-copy">
@@ -58,7 +60,15 @@ export default function Home() {
               </div>
               <p className="home-hero-fine">{homeHero.fine}</p>
             </div>
-            <Doorway />
+            <figure className="hero-logo">
+              <Image
+                src={logo}
+                alt="Root & Simmer Hospitality Co. logo: a live oak with deep roots and a rising sun, the outline of Africa in its trunk, framed by flowers"
+                priority
+                placeholder="blur"
+                sizes="(max-width: 900px) 78vw, 480px"
+              />
+            </figure>
           </div>
         </section>
 
@@ -349,6 +359,7 @@ export default function Home() {
                   <li key={i}>{i}</li>
                 ))}
               </ul>
+              <ProspectusLink />
               <p className="fine">{connection.fine}</p>
             </div>
             <ConnectionForm />

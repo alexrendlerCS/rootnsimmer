@@ -32,6 +32,7 @@ export const nav: NavItem[] = [
     items: [
       { href: "/#mission", label: "About Root & Simmer" },
       { href: "/our-work", label: "Our four lines of work" },
+      { href: "/documents/root-simmer-public-prospectus-and-interest-form.pdf", label: "Public Prospectus and Interest Form (PDF)" },
       { href: "/#gaps", label: "What’s missing in Lincolnville, and how we fill it" },
       { href: "/#root", label: "ROOT: Lincolnville Community Committee" },
       { href: "/#kimberly", label: "Meet Kimberly" },

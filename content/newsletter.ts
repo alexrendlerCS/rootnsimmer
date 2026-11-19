@@ -85,7 +85,7 @@ export const partnersSection = {
       visit: "Curbside parking available.",
       website: "https://www.royalbeets.com/",
       websiteLabel: "royalbeets.com",
-      photo: { src: "/photos/newsletter/corner-market-flyer.jpg", alt: "Corner Market Lincolnville flyer: historic Corner Market, established 1920, café and New Year’s Eve reopening party coming soon" },
+      photo: { src: "/photos/newsletter/corner-market-flyer-digital.jpg", alt: "Corner Market Lincolnville flyer: historic Corner Market, established 1920, café and New Year’s Eve reopening party coming soon" },
     },
   ] satisfies LocalPlace[],
 };
@@ -149,7 +149,7 @@ export const thisMonth = {
   gallery: [
     { src: "/photos/newsletter/liberation-lot-book.jpg", alt: "Cover of the book From Liberation Lot to Lincolnville by Gigi Onyinye Best", title: "From Liberation Lot to Lincolnville", caption: "Gigi Onyinye Best’s book on the six freedmen and women leaseholders and the Gullah heritage that helped shape Lincolnville." },
     { src: "/photos/newsletter/leaseholders-bookmark.jpg", alt: "Bookmark listing the 1866 Lincolnville leaseholders, with historic views of Maria Sanchez Creek", title: "The six 1866 leaseholders", caption: "A bookmark from the BRADLC Museum and Books naming the six leaseholders, with a view of Maria Sanchez Creek around 1885." },
-    { src: "/photos/newsletter/corner-market-flyer.jpg", alt: "Corner Market Lincolnville flyer: Historic Corner Market, established 1920, coming soon", title: "The Corner Market’s next chapter", caption: "The historic Corner Market at 97 M.L. King Avenue, established 1920, announces a café and reopening. Check with the market for current details." },
+    { src: "/photos/newsletter/corner-market-flyer-digital.jpg", alt: "Corner Market Lincolnville flyer: Historic Corner Market, established 1920, coming soon", title: "The Corner Market’s next chapter", caption: "The historic Corner Market at 97 M.L. King Avenue, established 1920, announces a café and reopening. Check with the market for current details." },
     { src: "/photos/newsletter/first-friday-art-walk.jpg", alt: "Flyer for the First Friday Art Walk at the BRADLC Museum, showcasing Gullah, folk, multicultural art and jazz", title: "First Friday Art Walk", caption: "Gullah, folk and multicultural art and jazz at the Best Richardson museum, 83 Washington Street. The flyer lists 4 to 7 p.m.; confirm the date with the museum." },
     { src: "/photos/newsletter/corner-market-mural-brochure.jpg", alt: "Brochure for the Corner Market Mural Project on the African American history of Lincolnville", title: "The Corner Market Mural Project", caption: "A mural project on the African American history of Lincolnville at 97 M.L. King Avenue." },
     { src: "/photos/newsletter/mural-history-panel-1.jpg", alt: "Brochure panel: Lincolnville history depicted on the mural, with historic photographs", title: "History on the mural, panel one", caption: "The brochure’s background on the people, places and businesses the mural remembers." },
