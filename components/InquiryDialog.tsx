@@ -30,7 +30,7 @@ export function InquiryDialog() {
           <p>Nothing added yet. Add the offerings you’re curious about and send them to Kimberly as one inquiry.</p>
           <a
             className="button"
-            href="/#work"
+            href="/contact#work"
             onClick={() => {
               close();
             }}

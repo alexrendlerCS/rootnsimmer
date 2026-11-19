@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { gaps, lines, ourWorkPage as p } from "@/content/gaps";
+import { gaps, lines, ourWorkPage as p, gapsIntro } from "@/content/gaps";
 import { GapCards } from "@/components/Gaps";
 import { SiteShell } from "@/components/SiteShell";
 import { ProspectusLink } from "@/components/ProspectusLink";
@@ -87,11 +87,14 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      <section className="page-section" aria-labelledby="gaps-detail-title">
+      <section id="gaps" className="page-section" aria-labelledby="gaps-detail-title">
         <div className="wrap">
+          <p className="section-label">{gapsIntro.label}</p>
           <h2 id="gaps-detail-title" className="guide-h2">
-            The six gaps, in the City’s own words
+            {gapsIntro.title}
           </h2>
+          <p className="muted gaps-lede">{gapsIntro.lede}</p>
+          <h3>The six gaps, in the City’s own words</h3>
           <GapCards />
           <p className="notice">
             The Lincolnville Community Redevelopment Agency (CRA) sunsets on December 31, 2033. Root &amp; Simmer Hospitality Co. is an independent

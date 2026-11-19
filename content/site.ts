@@ -27,18 +27,17 @@ export type NavItem = NavLink & { items?: NavLink[] };
 
 export const nav: NavItem[] = [
   {
-    href: "/#mission",
+    href: "/our-story",
     label: "Our Story",
     items: [
-      { href: "/#mission", label: "About Root & Simmer" },
+      { href: "/our-story", label: "About Root & Simmer" },
       { href: "/our-work", label: "Our four lines of work" },
-      { href: "/documents/root-simmer-public-prospectus-and-interest-form.pdf", label: "Public Prospectus and Interest Form (PDF)" },
-      { href: "/#gaps", label: "What’s missing in Lincolnville, and how we fill it" },
+      { href: "/our-work#gaps", label: "What’s missing in Lincolnville, and how we fill it" },
       { href: "/#root", label: "ROOT: Lincolnville Community Committee" },
       { href: "/#kimberly", label: "Meet Kimberly" },
+      { href: "/documents/root-simmer-public-prospectus-and-interest-form.pdf", label: "Public Prospectus and Interest Form (PDF)" },
     ],
   },
-  { href: "/homes-not-hotels", label: "Homes Not Hotels" },
   {
     href: "/homeowner-help",
     label: "For Homeowners",
@@ -47,6 +46,7 @@ export const nav: NavItem[] = [
       { href: "/homeowner-help", label: "Help for homeowners: City and CRA programs" },
       { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
       { href: "/preserve-historic-homes/map", label: "The Lincolnville Home Map" },
+      { href: "/homes-not-hotels", label: "Homes Not Hotels" },
     ],
   },
   {
@@ -64,9 +64,10 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    href: "/cra-lincolnville",
+    href: "/community",
     label: "Community",
     items: [
+      { href: "/community", label: "Lincolnville community: the CRA and What if…? ideas" },
       { href: "/cra-lincolnville", label: "CRA – Lincolnville, in plain words" },
       { href: "/cra-lincolnville/take-part", label: "How to take part" },
       { href: "/cra-lincolnville/requests", label: "Community requests for the CRA" },
@@ -78,18 +79,25 @@ export const nav: NavItem[] = [
       { href: "/what-if/stable-bodega", label: "What if…? The Stable Bodega" },
     ],
   },
-  { href: "/work-with-us", label: "Work With Us" },
-  { href: "/partners", label: "Partners" },
   {
-    href: "/digital-records",
-    label: "Membership",
+    href: "/work-with-us",
+    label: "Work With Us",
+    items: [
+      { href: "/work-with-us", label: "Work with Root & Simmer" },
+      { href: "/partners", label: "Lincolnville Partners" },
+    ],
+  },
+  {
+    href: "/support",
+    label: "Join",
     items: [
       { href: "/digital-records#dr-membership", label: "Homeowner membership: the Home Story Package" },
       { href: "/support#friend", label: "Friend of Lincolnville: three invitations with each membership" },
       { href: "/support", label: "Support Lincolnville’s History" },
+      { href: "/digital-records", label: "Membership and Digital Records" },
     ],
   },
-  { href: "/#records", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 /** Home page hero (top of /). Wording from Kimberly's Mission, Vision and Brand Core. */
@@ -109,7 +117,7 @@ export const hero = {
   subtitle: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
   lede:
     "Root & Simmer brings historical records and family memories together, helps homeowners document the stories behind their homes, and connects guests to Lincolnville with understanding and respect.",
-  primary: { href: "/#work", label: "Explore our work" },
+  primary: { href: "/contact#work", label: "Explore our work" },
   secondary: { href: "/#kimberly", label: "Meet Kimberly" },
   /** Directly under the hero. */
   hope: {
@@ -159,7 +167,7 @@ export const why = {
     "At the City’s 2016 Historic Preservation Master Plan forums, residents called for neighborhoods to tell their own stories, oral histories to be recorded, places beyond downtown to be documented, buildings to be photographed before demolition, and introductory guidance for new historic property owners. Lincolnville was named in that public input.",
     "Root & Simmer’s research, home histories and documentation respond to those community requests. The forum record is community input; it does not mean the City or CRA directs, sponsors or endorses Root & Simmer.",
   ],
-  link: { href: "#records", label: "Ask about a home or family history" },
+  link: { href: "/contact#records", label: "Ask about a home or family history" },
 };
 
 /** How a home history comes together. These are real steps, in order. */
