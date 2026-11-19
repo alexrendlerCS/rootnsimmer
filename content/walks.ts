@@ -6,12 +6,12 @@ export type WalkSummary = { slug: string; title: string; subtitle: string; summa
 
 export const walkSummaries: WalkSummary[] = [
   {
-    slug: "land-beneath-your-feet",
-    title: "The Land Beneath Your Feet",
+    slug: "land-beneath-our-feet",
+    title: "The Land Beneath Our Feet",
     subtitle: "From Little Africa to Lincolnville: how freedom became community",
-    summary: "Ten stops from the creek-side land where Little Africa took shape to the homes, churches, schools and businesses that made Lincolnville a community.",
-    start: "Maria Sanchez Creek, beside Riberia Street",
-    stops: 10,
+    summary: "A two-day walk in eighteen stops. Day 1 walks the land where Little Africa took shape; Day 2 follows the faith, schools, work and enterprise that made Lincolnville a community.",
+    start: "Ragga Surf Cafe, 134 Riberia Street (both days)",
+    stops: 18,
   },
   {
     slug: "civil-rights-walk",

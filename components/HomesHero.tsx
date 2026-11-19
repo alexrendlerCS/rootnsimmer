@@ -3,7 +3,7 @@ import { hero } from "@/content/site";
 import homePhoto from "@/public/lincolnville-home.jpeg";
 import homeThenPhoto from "@/public/photos/home-story-then.jpg";
 
-/** "Homes, Not Hotels." hero: the house framed as a doorway (formerly the top of the home page). */
+/** "Homes Not Hotels." hero: the house framed as a doorway (formerly the top of the home page). */
 export function HomesHero() {
   return (
     <section id="top" className="hero">

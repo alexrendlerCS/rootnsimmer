@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { directory, directoryPage as d } from "@/content/africa-directory";
+import { directoryPage as d } from "@/content/africa-directory";
+import { loadDirectory } from "@/lib/africa-directory";
 import { SiteShell } from "@/components/SiteShell";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `${d.title} | ${site.fullName}`,
@@ -12,7 +15,9 @@ export const metadata: Metadata = {
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-export default function DirectoryPage() {
+export default async function DirectoryPage() {
+  const data = await loadDirectory();
+  const directory = data?.streets ?? [];
   const count = directory.reduce((n, s) => n + s.people.length, 0);
   return (
     <SiteShell>
@@ -22,8 +27,25 @@ export default function DirectoryPage() {
           <h1 className="page-title land-title">{d.title}</h1>
           <p className="land-subtitle">{d.subtitle}</p>
           <p className="page-lede">{d.intro}</p>
+          {!data && (
+            <div className="panel research-join">
+              <p>{d.members}</p>
+              <p className="latest-actions">
+                <Link className="button" href={`/members/sign-in?next=${encodeURIComponent(d.href)}`}>
+                  Member sign-in
+                </Link>
+                <Link className="text-link" href="/digital-records#dr-membership">
+                  Become a member
+                </Link>
+              </p>
+            </div>
+          )}
         </div>
       </header>
+      <HistoryFact fact={facts.teachers} />
+
+      {data && (
+        <>
 
       <section className="page-section" aria-labelledby="narrative-title">
         <div className="wrap split">
@@ -31,7 +53,7 @@ export default function DirectoryPage() {
             <h2 id="narrative-title" className="guide-h2">
               {d.narrativeTitle}
             </h2>
-            {d.narrative.map((p) => (
+            {data.narrative.map((p) => (
               <p key={p}>{p}</p>
             ))}
             <p className="evidence">
@@ -92,11 +114,13 @@ export default function DirectoryPage() {
             </Link>
             {"  ·  "}
             <Link className="text-link" href="/lincolnville-history/tracts">
-              The Land Beneath Your Feet
+              The Land Beneath Our Feet
             </Link>
           </p>
         </div>
       </section>
+        </>
+      )}
     </SiteShell>
   );
 }

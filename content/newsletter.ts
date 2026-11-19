@@ -46,32 +46,54 @@ export type LocalPlace = {
   visit?: string;
   website: string;
   websiteLabel: string;
+  /** The ad photo: a flyer or brochure the place shared (files in public/photos/newsletter/). */
+  photo?: { src: string; alt: string };
+};
+
+/** Paid partners (approved by Kimberly, Nov 19, 2026; written approvals kept in the Partnerships folder).
+ *  Facts only from each partner's own flyer, brochure or website. Shown marked "Partner". */
+export const partnersSection = {
+  title: "Our partners",
+  intro: "Root & Simmer partners with Lincolnville museums and businesses that carry the neighborhood’s story forward.",
+  badge: "Partner",
+  places: [
+    {
+      name: "BRADLC Museum & Books",
+      kind: "Museum, bookstore and gift shop",
+      about: "The Best Richardson African Diaspora Literature & Culture Museum shares educational artifacts and information on African Diaspora literary and cultural history with youth and adults.",
+      where: "83 Washington Street · (904) 217-8255",
+      visit: "Visits by reservation, booked at least an hour ahead. First Friday Art Walk, 4 to 7 p.m., with the museum free during the event.",
+      website: "https://www.bradlcmuseum.com/",
+      websiteLabel: "bradlcmuseum.com",
+      photo: { src: "/photos/newsletter/first-friday-art-walk.jpg", alt: "BRADLC Museum’s First Friday Art Walk flyer: Gullah, folk and multicultural art and jazz at 83 Washington Street" },
+    },
+    {
+      name: "ACCORD Civil Rights Museum and Freedom Trail",
+      kind: "Civil rights museum and walking trail",
+      about: "“Remembering, recognizing and honoring all those who risked their lives to attain civil rights for all.” The museum at 79 Bridge Street and the Freedom Trail, a self-guided audio walk past 34 historic markers in and around St. Augustine.",
+      where: "79 Bridge Street · (904) 347-1382",
+      visit: "Tuesday to Friday, 10 a.m. to 3 p.m., or by appointment.",
+      website: "https://www.accordfreedomtrail.org/",
+      websiteLabel: "accordfreedomtrail.org",
+      photo: { src: "/photos/newsletter/accord-brochure.jpg", alt: "ACCORD Civil Rights Museum brochure showing the museum at 79 Bridge Street and a Freedom Trail marker" },
+    },
+    {
+      name: "The Corner Market of Lincolnville",
+      kind: "Historic corner market and café",
+      about: "The historic Corner Market, established 1920. Café opening soon: peach cobbler, gourmet chocolates, Kenyan coffee, beet-infused honey and more. New Year’s Eve reopening party.",
+      where: "97 M. L. King Avenue",
+      visit: "Curbside parking available.",
+      website: "https://www.royalbeets.com/",
+      websiteLabel: "royalbeets.com",
+      photo: { src: "/photos/newsletter/corner-market-flyer.jpg", alt: "Corner Market Lincolnville flyer: historic Corner Market, established 1920, café and New Year’s Eve reopening party coming soon" },
+    },
+  ] satisfies LocalPlace[],
 };
 
 export const supportLocally = {
   title: "Support Locally",
-  intro: "The first places featured in our newsletter. Each one carries part of Lincolnville’s story forward. Visit them, buy from them, and tell them Root & Simmer sent you.",
+  intro: "Free community listings in our newsletter. Each one carries part of Lincolnville’s story forward. Visit them, buy from them, and tell them Root & Simmer sent you.",
   places: [
-    {
-      name: "ACCORD Civil Rights Museum and Freedom Trail",
-      kind: "Civil rights museum and walking trail",
-      about:
-        "Remembering, recognizing and honoring all those who risked their lives to attain civil rights for all. ACCORD runs the museum and a self-guided Freedom Trail of 31 civil rights markers across St. Augustine.",
-      where: "79 Bridge Street, St. Augustine",
-      visit: "Open Tuesday to Friday, with Mondays and Saturdays by appointment. Call or text (904) 347-1382.",
-      website: "https://www.accordfreedomtrail.org/",
-      websiteLabel: "accordfreedomtrail.org",
-    },
-    {
-      name: "BRADLC Museum & Books",
-      kind: "Museum, bookstore and gift shop",
-      about:
-        "The Best Richardson African Diaspora Literature & Culture Museum shares educational artifacts and information on African Diaspora literary and cultural history with youth and adults.",
-      where: "83 Washington Street, in the historic Lincolnville community",
-      visit: "Tours by reservation, booked at least an hour ahead.",
-      website: "https://www.bradlcmuseum.com/",
-      websiteLabel: "bradlcmuseum.com",
-    },
     {
       name: "Royal Beets",
       kind: "Local food maker",
@@ -85,8 +107,13 @@ export const supportLocally = {
 
 export const newsletterSignup = {
   title: "Get the newsletter",
-  body: "Send us your email address and we will add you to the list.",
+  body: "Join the list for Lincolnville news, events and new history, about once a month. We never share your email.",
   button: "Sign me up",
+  interestsLabel: "I’m most interested in (optional)",
+  interests: ["Lincolnville history and the self-guided walks", "Historic homes and preservation", "CRA meetings and community news", "Events and local businesses"],
+  thanks: "Thank you! You’re on the list.",
+  error: "Something went wrong, and you were not added. Please try again, or email rootnsimmer@gmail.com.",
+  // Used only if the sign-up list is not connected yet (the button opens an email instead).
   subject: "Newsletter sign-up",
   emailBody: "Hello Kimberly,\n\nPlease add me to the Root & Simmer newsletter.\n\nMy name:\nMy email:\nMy connection to Lincolnville (optional):",
 };
@@ -127,10 +154,23 @@ export const thisMonth = {
     { src: "/photos/newsletter/corner-market-mural-brochure.jpg", alt: "Brochure for the Corner Market Mural Project on the African American history of Lincolnville", title: "The Corner Market Mural Project", caption: "A mural project on the African American history of Lincolnville at 97 M.L. King Avenue." },
     { src: "/photos/newsletter/mural-history-panel-1.jpg", alt: "Brochure panel: Lincolnville history depicted on the mural, with historic photographs", title: "History on the mural, panel one", caption: "The brochure’s background on the people, places and businesses the mural remembers." },
     { src: "/photos/newsletter/mural-history-panel-2.jpg", alt: "Brochure panel continuing the history depicted on the Corner Market mural", title: "History on the mural, panel two", caption: "The story continues through family life, community institutions and local history." },
-    { src: "/photos/newsletter/accord-brochure.jpg", alt: "ACCORD Civil Rights Museum and Freedom Trail brochure", title: "ACCORD Civil Rights Museum and Freedom Trail", caption: "The museum at 79 Bridge Street and the Freedom Trail, a self-guided audio walk past markers of St. Augustine’s 1960s Civil Rights Movement." },
+    { src: "/photos/newsletter/accord-brochure.jpg", alt: "ACCORD Civil Rights Museum and Freedom Trail brochure", title: "ACCORD Civil Rights Museum and Freedom Trail", caption: "The museum at 79 Bridge Street and the Freedom Trail, a self-guided audio walk past 34 markers of St. Augustine’s 1960s civil rights movement." },
     { src: "/photos/newsletter/accord-brochure-inside.jpg", alt: "Inside of the ACCORD brochure describing the museum, the restored cabin and the Freedom Trail", title: "ACCORD’s museum, cabin and trail", caption: "ACCORD’s museum, the restored cabin at 94 South Street, and the Freedom Trail. Check ACCORD’s own site for current hours." },
   ] as GalleryPhoto[],
   updatesTitle: "Updates and events",
   updatesEmpty: "New dates and ways to take part will be posted here. Check back soon.",
-  updates: [] as NewsUpdate[],
+  updates: [
+    {
+      date: "Tuesday, November 24, 2026 · 10 a.m.",
+      title: "Statue unveiling at Dr. Robert B. Hayling Freedom Park",
+      body: "Join your neighbors for the unveiling of the statue honoring Dr. Robert B. Hayling, the St. Augustine dentist who led the city’s civil rights movement in the 1960s, at the new Hayling Plaza in Dr. Robert B. Hayling Freedom Park. Park at the Willie Galimore Community Center or Eddie Vickers Park (399 Riberia Street); a free shuttle runs from 8:30 a.m. RSVP through the Lincolnville CRA’s invitation.",
+      link: { href: "/cra-lincolnville/parks-and-named-places", label: "Lincolnville’s parks and named places" },
+    },
+    {
+      date: "The first Friday of every month · next: Friday, December 4",
+      title: "First Friday Art Walk at the BRADLC Museum",
+      body: "Discover Lincolnville culture at the Best Richardson African Diaspora Literature & Culture Museum, 83 Washington Street: Gullah, folk and multicultural art, Gullah baskets and jazz, with refreshments served. The museum is free during the art walk, 4 to 7 p.m. Call (904) 217-8255 to confirm.",
+      link: { href: "https://www.bradlcmuseum.com/", label: "bradlcmuseum.com" },
+    },
+  ] as NewsUpdate[],
 };

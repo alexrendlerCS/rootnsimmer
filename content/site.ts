@@ -37,7 +37,7 @@ export const nav: NavItem[] = [
       { href: "/#kimberly", label: "Meet Kimberly" },
     ],
   },
-  { href: "/homes-not-hotels", label: "Homes, Not Hotels" },
+  { href: "/homes-not-hotels", label: "Homes Not Hotels" },
   {
     href: "/homeowner-help",
     label: "For Homeowners",
@@ -53,8 +53,8 @@ export const nav: NavItem[] = [
     label: "Explore History",
     items: [
       { href: "/walks", label: "Self-guided walks" },
-      { href: "/lincolnville-history/tracts", label: "The Land Beneath Your Feet" },
-      { href: "/lincolnville-history/directory", label: "The Little Africa Directory" },
+      { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet" },
+      { href: "/lincolnville-history/directory", label: "The Little Africa Directory · Members" },
       { href: "/locator-map", label: "Lincolnville Locator Map" },
       { href: "/places-map", label: "Lincolnville Places Map: parks, food, churches, businesses" },
       { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },
@@ -68,6 +68,7 @@ export const nav: NavItem[] = [
     items: [
       { href: "/cra-lincolnville", label: "CRA – Lincolnville, in plain words" },
       { href: "/cra-lincolnville/take-part", label: "How to take part" },
+      { href: "/cra-lincolnville/requests", label: "Community requests for the CRA" },
       { href: "/newsletter", label: "Newsletter" },
       { href: "/library", label: "Library" },
       { href: "/what-if/washington-street", label: "What if…? Washington Street" },
@@ -97,13 +98,13 @@ export const homeHero = {
     "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and community. We research the story of each home, record the voices of the families who made it home, and carry both forward, so that 160 years of Lil Africa are known, kept and heard from generation to generation.",
   signature: "Know your home’s story. Add yours before you go.",
   primary: { href: "#root", label: "Meet ROOT" },
-  secondary: { href: "/homes-not-hotels", label: "Homes, Not Hotels" },
+  secondary: { href: "/homes-not-hotels", label: "Homes Not Hotels" },
   fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
 };
 
-/** Hero of the Homes, Not Hotels page (/homes-not-hotels), formerly the home page hero. */
+/** Hero of the Homes Not Hotels page (/homes-not-hotels), formerly the home page hero. */
 export const hero = {
-  title: "Homes, Not Hotels.",
+  title: "Homes Not Hotels.",
   subtitle: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
   lede:
     "Root & Simmer brings historical records and family memories together, helps homeowners document the stories behind their homes, and connects guests to Lincolnville with understanding and respect.",
@@ -114,7 +115,7 @@ export const hero = {
     line: "Preserve Lincolnville’s homes. Share its history. Respect its community.",
     label: "What we hope to see:",
     body: "Homes remain homes. Residents remain at the heart. Guests leave with understanding and respect.",
-    link: { href: "/digital-records#homes-not-hotels", label: "Read the proposal: Homes, Not Hotels" },
+    link: { href: "/digital-records#homes-not-hotels", label: "Read the proposal: Homes Not Hotels" },
   },
   photoAlt: "A Lincolnville cottage with a screened front porch and a red iron handrail",
   caption: "A home is a doorway into history.",

@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { CraGuide, GuideSection, Sources } from "@/components/CraGuide";
 
 export const metadata: Metadata = {
-  title: `Homes, Not Hotels | ${site.fullName}`,
+  title: `Homes Not Hotels | ${site.fullName}`,
   description: craHomesNotHotels.lede,
   alternates: { canonical: "/cra-lincolnville/homes-not-hotels" },
 };

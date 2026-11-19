@@ -41,6 +41,7 @@ export default async function WalkPage({ params }: { params: Promise<{ slug: str
     <SiteShell>
       <p className="walk-print-note">This walk guide can’t be printed. © Root &amp; Simmer Hospitality Co.</p>
       <div className="walk-guide" style={{ backgroundImage: `url("data:image/svg+xml,${mark}")` }}>
+        <p className="walk-respect">Respect private homes and current residents. Stay on public sidewalks.</p>
         <header className="page-hero land-hero">
           <div className="wrap">
             <p className="section-label">Self-guided walk · {access.name}</p>

@@ -4,6 +4,8 @@ import { site } from "@/content/site";
 import { supportPage as s, tiers, ways } from "@/content/support";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `${s.title} | ${site.fullName}`,
@@ -21,6 +23,7 @@ export default function SupportPage() {
           <p className="page-lede">{s.lede}</p>
         </div>
       </header>
+      <HistoryFact fact={facts.twine} />
 
       <section className="page-section" aria-labelledby="join-title">
         <div className="wrap">

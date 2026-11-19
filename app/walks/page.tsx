@@ -6,10 +6,12 @@ import { walkSummaries as walks } from "@/content/walks";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
 import { GapNote } from "@/components/Gaps";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `Self-Guided Walks | ${site.fullName}`,
-  description: "Self-guided walks through Lincolnville’s history on your phone: The Land Beneath Your Feet, the Civil Rights Walk and Washington Street.",
+  description: "Self-guided walks through Lincolnville’s history on your phone: The Land Beneath Our Feet, the Civil Rights Walk and Washington Street.",
   alternates: { canonical: "/walks" },
 };
 
@@ -32,8 +34,7 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
             <div className="panel research-join walk-access">
               <h2 className="newsletter-panel-title">Open the walks</h2>
               <p>
-                <strong>Members</strong> walk free, and every membership includes three walk codes a year to share. <strong>Visitors and guests:</strong> walk codes ($15 per guest)
-                open once the City confirms its licensing rules for self-guided walks. Ask us and we’ll tell you first.
+                <strong>Members</strong> walk free, and every membership includes three walk codes a year to share with family, friends and guests.
               </p>
               <form action="/walks/redeem" method="post" className="walk-code-form">
                 <label htmlFor="walk-code">Have a walk code?</label>
@@ -59,6 +60,7 @@ export default async function WalksPage({ searchParams }: { searchParams: Promis
           )}
         </div>
       </header>
+      <HistoryFact fact={facts.oneida} />
 
       <section className="page-section land-tracts" aria-label="The walks">
         <div className="wrap">

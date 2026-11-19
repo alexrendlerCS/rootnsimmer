@@ -35,13 +35,13 @@ export const drCollection = {
   note: "Public records stay public. Anyone can request them from the City directly; the City may charge for copies. Our guides describe what the records said on their dates; the City confirms a property’s current status. Family stories are never sold, and nothing a family shares appears in a guide without their written permission.",
 };
 
-/** Only these three documents are shown. Homes, Not Hotels comes first. */
+/** Only these three documents are shown. Homes Not Hotels comes first. */
 export const recordGuides: RecordGuide[] = [
   {
     id: "homes-not-hotels",
-    artTitle: "Homes, Not Hotels",
+    artTitle: "Homes Not Hotels",
     kind: "Homes and vacation rentals",
-    title: "Homes, Not Hotels: A Lincolnville Proposal",
+    title: "Homes Not Hotels: A Lincolnville Proposal",
     description:
       "The full proposal: Lincolnville by the numbers, the one-week rule, the problems we share, where current trends point, and ways to raise resident attendance and participation.",
   },
@@ -69,11 +69,11 @@ export const drMembership = {
   intro: "Membership comes only with a Home Story Package.",
   included: [
     { title: "Digital welcome packet", body: "A sourced history of your home: records gathered in one place, historical context, and your family’s memories in your own words. Scope agreed together." },
-    { title: "Electronic documents", body: "The three member documents above: Homes, Not Hotels, Why Lincolnville Homes Are Lost, and the Lincolnville Places and People Guide." },
+    { title: "Electronic documents", body: "The three member documents above: Homes Not Hotels, Why Lincolnville Homes Are Lost, and the Lincolnville Places and People Guide." },
     { title: "Membership", body: "One year in the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection. Updates on events and CRA votes, a voice, and knowing what is happening in Lincolnville." },
     { title: "Your home’s records, requested and kept", body: "Root & Simmer requests the City, County and State records behind your home: deeds, permits, Historic Architectural Review Board files, site files and more. We track each one until it arrives, then add it to your home file with a plain-words note on what it means. Members can also open the records behind demolished and threatened Lincolnville homes, such as 103 South Street.", href: "/preserve-historic-homes/demolition#103-south", linkLabel: "See a records trail" },
     { title: "Three Friend of Lincolnville invitations", body: "Each year, give three family members or friends an invitation code to join as a Friend of Lincolnville for $50 a year, with the Mohlman Research, the Historic Residents Map, the newsletter and the self-guided walk guide.", href: "/support#friend", linkLabel: "About Friend membership" },
-    { title: "Three self-guided walk codes", body: "Each year, three codes for the self-guided walk guide to give to family, friends or guests. Visitors without a code can buy the guide for $15.", href: "/support#walk", linkLabel: "About the walk guide" },
+    { title: "Three self-guided walk codes", body: "Each year, three codes for the self-guided walk guide to give to family, friends or guests.", href: "/support#walk", linkLabel: "About the walk guide" },
     { title: "The full Library", body: "Every plan, budget, meeting record and City interview in the Library, including the members-only documents, with new ones added as they come in.", href: "/library", linkLabel: "See what is in the Library" },
   ],
   votes: {

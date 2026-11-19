@@ -27,7 +27,9 @@ import { RecordsForm } from "@/components/RecordsForm";
 import { Doorway } from "@/components/HomesHero";
 import { SiteShell } from "@/components/SiteShell";
 import { GapsSection } from "@/components/Gaps";
-import logo from "@/public/logo.jpeg";
+import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 const LETTER_PREVIEW = 3;
 
@@ -117,6 +119,7 @@ export default function Home() {
         </section>
 
         {/* What is missing in Lincolnville, and how the four lines of work fill it */}
+        <HistoryFact fact={facts.founding} />
         <GapsSection />
 
         {/* The promise, read as a path across the threshold */}
@@ -140,7 +143,7 @@ export default function Home() {
           </Link>
         </section>
 
-        {/* Lincolnville history: The Land Beneath Your Feet */}
+        {/* Lincolnville history: The Land Beneath Our Feet */}
         <section id="lincolnville-history" className="land-teaser" aria-labelledby="land-teaser-title">
           <Link href={tractsPage.href} className="wrap land-teaser-card">
             <p className="land-teaser-year" aria-hidden="true">
@@ -294,7 +297,13 @@ export default function Home() {
         <section id="kimberly" className="section kimberly">
           <div className="wrap kimberly-grid">
             <aside className="kimberly-side">
-              <Image src={logo} alt="Root & Simmer Hospitality Co. live oak logo" placeholder="blur" sizes="(max-width: 760px) 70vw, 360px" className="kimberly-logo" />
+              <Image
+                src={headshot}
+                alt="Kimberly Joyce, founder of Root & Simmer Hospitality Co., smiling, with long wavy brown hair and a purple ruffled blouse, outdoors in warm evening light."
+                placeholder="blur"
+                sizes="(max-width: 760px) 80vw, 380px"
+                className="kimberly-photo"
+              />
               <blockquote>
                 <p>“{kimberly.quote}”</p>
                 <footer>

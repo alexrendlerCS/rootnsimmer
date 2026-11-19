@@ -1,5 +1,5 @@
 /**
- * Root & Simmer — The Land Beneath Your Feet (/lincolnville-history/tracts).
+ * Root & Simmer — The Land Beneath Our Feet (/lincolnville-history/tracts).
  * Wording from Kimberly's brief (November 2026). Same rules as content/site.ts:
  * edit the text between the quotes and save.
  *
@@ -12,7 +12,7 @@ export type Evidence = "St. Augustine Historical Society" | "National Register (
 
 export const tractsPage = {
   href: "/lincolnville-history/tracts",
-  title: "The Land Beneath Your Feet",
+  title: "The Land Beneath Our Feet",
   subtitle: "From Little Africa to Lincolnville — How a Community Took Root",
   intro:
     "Before Lincolnville became the neighborhood we know today, its land held centuries of history. Following emancipation, newly freed African Americans established a community known as Africa or Little Africa. From this settlement grew a neighborhood of homeowners, churches, schools, businesses, and families whose contributions helped shape St. Augustine.",
@@ -24,7 +24,7 @@ export const tractsPage = {
 /** Home page preview, under the "Where it began" story. */
 export const tractsTeaser = {
   label: "Lincolnville history",
-  title: "The Land Beneath Your Feet",
+  title: "The Land Beneath Our Feet",
   body: "From Little Africa to Lincolnville: how a community took root, from the land grants of 1838 to the six freed people who leased land by Maria Sanchez Creek in 1866, and the streets and additions that grew from there.",
   link: "Explore the history",
 };

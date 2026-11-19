@@ -79,7 +79,7 @@ export default async function MohlmanResearchPage() {
           <p className="notice">{m.rule}</p>
           <p>
             <Link className="text-link" href="/lincolnville-history/tracts">
-              The Land Beneath Your Feet
+              The Land Beneath Our Feet
             </Link>
             {"  ·  "}
             <Link className="text-link" href="/lincolnville-history/directory">

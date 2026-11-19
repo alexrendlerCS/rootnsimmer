@@ -3,9 +3,11 @@ import Link from "next/link";
 import { hero } from "@/content/site";
 import { HomesHero } from "@/components/HomesHero";
 import { SiteShell } from "@/components/SiteShell";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
-  title: { absolute: "Homes, Not Hotels | Root & Simmer Hospitality Co." },
+  title: { absolute: "Homes Not Hotels | Root & Simmer Hospitality Co." },
   description: hero.lede,
   alternates: { canonical: "/homes-not-hotels" },
 };
@@ -27,6 +29,7 @@ export default function HomesNotHotels() {
           </Link>
         </div>
       </section>
+      <HistoryFact fact={facts.before1930} />
     </SiteShell>
   );
 }

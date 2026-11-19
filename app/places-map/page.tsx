@@ -6,6 +6,8 @@ import { site } from "@/content/site";
 import { SiteShell } from "@/components/SiteShell";
 import { PlacesMapLoader } from "@/components/PlacesMapLoader";
 import { GROUPS, type PlacesData } from "@/lib/places";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `Lincolnville Places Map | ${site.fullName}`,
@@ -31,6 +33,7 @@ export default function PlacesMapPage() {
           </p>
         </div>
       </header>
+      <HistoryFact fact={facts.churches} />
 
       <section className="page-section" aria-labelledby="pm-title">
         <div className="wrap">

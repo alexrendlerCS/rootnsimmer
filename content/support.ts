@@ -2,7 +2,7 @@
  * Root & Simmer — Support Lincolnville's History (/support) and the thank-you page (/support/thank-you).
  * Decisions by Kimberly (November 2026): Homeowner $1,200; Friend of Lincolnville $50 a year, by invitation code
  * from a homeowner member (3 codes a year); Supporter = any amount the giver chooses; self-guided walk guide $15,
- * free with any membership; sponsors "ask us" (no prices on the site).
+ * free with any membership (the $15 visitor walk code stays hidden until the City answers on licensing); sponsors "ask us" (no prices on the site).
  * Payment for now: every button opens an email draft and Kimberly replies with an invoice. When card payment is
  * set up, the buttons will point to the checkout instead. Same rules as content/site.ts: edit the words between the quotes.
  */
@@ -89,11 +89,11 @@ export const ways: Way[] = [
   {
     id: "walk",
     title: "Visitors and guests: the self-guided walk",
-    body: "Staying in Lincolnville? The self-guided walk guide brings its streets, homes and history to life on your phone, at your own pace, from the public sidewalk. Every membership includes the walk guide, plus three walk codes a year to share with guests. Visitor walk codes ($15 per guest) open once the City confirms its licensing rules for self-guided walks.",
+    body: "Staying in Lincolnville? The self-guided walk guide brings its streets, homes and history to life on your phone, at your own pace, from the public sidewalk. Every membership includes the walk guide, plus three walk codes a year to share with guests.",
     button: "Ask about the walk guide",
     subject: "Self-guided walk guide",
     emailBody: "Hello Kimberly,\n\nI would like the self-guided walk guide.\n\nMy name:\nNumber of guests:\nDates of my visit:\nBest way to reach me:",
-    note: "Each guide is for one guest, for the length of the visit. See the walks at rootnsimmer.vercel.app/walks. © Root & Simmer Hospitality Co. All rights reserved.",
+    note: "Each guide is for one guest, for the length of the visit. See the walks at rootnsimmer.com/walks. © Root & Simmer Hospitality Co. All rights reserved.",
   },
   {
     id: "partners",

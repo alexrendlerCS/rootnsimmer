@@ -5,6 +5,8 @@ import { homeownerHelp as h } from "@/content/services";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
 import { GapNote } from "@/components/Gaps";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = { title: `${h.title} | ${site.fullName}`, description: h.lede, alternates: { canonical: "/homeowner-help" } };
 
@@ -19,6 +21,7 @@ export default function HomeownerHelpPage() {
           <p className="page-lede">{h.lede}</p>
         </div>
       </header>
+      <HistoryFact fact={facts.welters} />
       <section className="page-section" aria-labelledby="programs-title">
         <div className="wrap">
           <h2 id="programs-title" className="guide-h2">

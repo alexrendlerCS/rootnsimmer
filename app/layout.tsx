@@ -7,7 +7,7 @@ const display = Young_Serif({ subsets: ["latin"], weight: "400", variable: "--fo
 const body = Libre_Franklin({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://rootnsimmer.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.rootnsimmer.com"),
   title: site.title,
   description: site.description,
   openGraph: {

@@ -6,7 +6,7 @@
    ========================================================================== */
 :root {
   --porch: #fbfaf6;      /* page background */
-  --paper: #ffffff;
+  --paper: #fffbf2;      /* ivory cards on screen; white only when printing (Kimberly, Nov 19, 2026) */
   --bark: #2a2019;       /* body text */
   --muted: #5b584e;      /* secondary text (AA on porch + haint-soft) */
   --line: #dcd7ca;
@@ -844,7 +844,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .site-nav a { font-size: 0.875rem; }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 900px) {
   .offerings { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1720,7 +1720,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 @media (max-width: 560px) { .records-on-file li { grid-template-columns: 1fr auto; } .records-status { grid-column: 1 / -1; justify-self: start; } }
 
 /* ==========================================================================
-   The Land Beneath Your Feet (/lincolnville-history/tracts)
+   The Land Beneath Our Feet (/lincolnville-history/tracts)
    ========================================================================== */
 .land-title { max-width: 16ch; }
 .land-subtitle { font: italic clamp(1.25rem, 2.4vw, 1.625rem)/1.35 var(--font-display); color: var(--rail); margin: 0.5rem 0 1.5rem; max-width: 36rem; }
@@ -2019,3 +2019,55 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .pm-group li { padding: 4px 0; border-bottom: 1px solid var(--line); }
 .pm-group li strong { display: block; color: var(--oak); }
 .pm-group li span { font-size: 0.875rem; color: var(--muted); }
+
+/* History facts sprinkled through the site (components/HistoryFact.tsx) */
+.history-fact { padding-block: clamp(20px, 3vw, 32px); }
+.history-fact-inner { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(16px, 3vw, 32px); align-items: center; max-width: 900px; border-left: 3px solid var(--gold); padding-left: clamp(16px, 2.5vw, 28px); }
+.history-fact-mark { margin: 0; font: clamp(2.25rem, 5vw, 3.25rem)/1 var(--font-display); color: var(--gold); }
+.history-fact-text { margin: 0; font-size: 1.0625rem; line-height: 1.55; color: var(--ink, inherit); max-width: 62ch; }
+.history-fact-source { margin: 6px 0 0; font-size: 0.8125rem; color: var(--muted); }
+@media (max-width: 480px) { .history-fact-inner { grid-template-columns: 1fr; gap: 6px; } }
+@media print { .history-fact { display: none; } }
+
+/* Community requests for the CRA (/cra-lincolnville/requests) */
+.cra-requests { list-style: none; margin: 1rem 0 0; padding: 0; counter-reset: req; }
+.cra-requests li { counter-increment: req; position: relative; padding: 1.25rem 0 1.25rem 3rem; border-top: 1px solid var(--line); }
+.cra-requests li::before { content: counter(req); position: absolute; left: 0; top: 1.15rem; font: 1.75rem/1 var(--font-display); color: var(--gold); }
+.cra-requests p { margin: 0.4rem 0 0; }
+.cra-request-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.cra-request-head h3 { margin: 0; font-size: 1.1875rem; }
+.cra-request-status { font-size: 0.8125rem; font-weight: 600; color: var(--oak); background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+
+/* Newsletter ads: Support Locally cards with each place's flyer or brochure */
+.local-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.local-photo { display: block; width: 100%; margin: 0 0 1rem; aspect-ratio: 4 / 5; object-fit: contain; object-position: center; border-radius: var(--radius); background: var(--cream); }
+
+.evidence-example { display: block; margin-top: 2px; font-size: 0.875rem; color: var(--muted); font-style: italic; }
+.evidence-rules { margin: 1rem 0 0; padding-left: 1.25rem; }
+.evidence-rules li { margin: 0.35rem 0; }
+.walk-respect { margin: 0 0 1rem; padding: 10px 14px; border-left: 3px solid var(--gold); background: var(--cream); font-weight: 600; color: var(--oak); }
+
+/* Newsletter sign-up form */
+.signup-form { display: grid; gap: 12px; margin-top: 0.75rem; }
+.signup-form label { display: grid; gap: 4px; font-weight: 600; color: var(--oak); }
+.signup-form input[type="email"], .signup-form input[name="name"] { min-height: 44px; padding: 0 12px; border: 1px solid var(--line); border-radius: var(--radius); font: inherit; background: var(--paper); }
+.signup-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; }
+.signup-form legend { font-weight: 600; color: var(--oak); margin-bottom: 4px; }
+.signup-form .signup-check { display: flex; align-items: flex-start; gap: 8px; font-weight: 400; color: inherit; }
+.signup-form .signup-check input { margin-top: 4px; }
+.signup-form .button { justify-self: start; }
+.signup-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.signup-thanks { font-weight: 600; color: var(--oak); padding: 12px 14px; background: var(--cream); border-radius: var(--radius); }
+
+.partner-badge { align-self: flex-start; margin: 0 0 0.5rem; padding: 2px 10px; border-radius: 999px; background: var(--oak); color: #fff; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; }
+.local-card > p.partner-badge { color: #fff; font-size: 0.8125rem; }
+
+/* Brand colors on screen; plain white paper only when printing */
+@media print { :root { --paper: #ffffff; } }
+
+/* Meet Kimberly: founder headshot beside the letter on desktop, above it on phones */
+.kimberly-photo { display: block; width: 100%; max-width: 380px; height: auto; margin-bottom: 1.75rem; border-radius: 8px; box-shadow: 0 0 0 1px var(--line); }
+@media (max-width: 900px) {
+  .kimberly-side { display: block; order: -1; }
+  .kimberly-photo { max-width: 320px; }
+}

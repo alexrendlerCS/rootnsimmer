@@ -77,7 +77,7 @@ export const workWithUs = {
   examples: [
     { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },
     { href: "/walks", label: "The self-guided walks" },
-    { href: "/lincolnville-history/tracts", label: "The Land Beneath Your Feet" },
+    { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet" },
     { href: "/cra-lincolnville", label: "Understanding the Lincolnville CRA, in plain words" },
     { href: "/what-if/washington-street", label: "What if…? Washington Street" },
   ],

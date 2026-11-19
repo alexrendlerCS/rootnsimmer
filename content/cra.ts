@@ -35,7 +35,8 @@ export const craPages = [
   { slug: "historic-district", title: "The Historic District and Home History" },
   { slug: "fix-it-up", title: "Fix-It-Up and Staying in Place" },
   { slug: "take-part", title: "How to Take Part" },
-  { slug: "homes-not-hotels", title: "Homes, Not Hotels" },
+  { slug: "requests", title: "Community Requests for the CRA" },
+  { slug: "homes-not-hotels", title: "Homes Not Hotels" },
   { slug: "home-story-package", title: "Every Home Known: The Home Story Package" },
 ] as const;
 
@@ -242,7 +243,7 @@ export const craParks = {
     items: [
       { name: "Eddie Vickers Park", body: "The sports courts were rebuilt with pickleball and basketball courts and reopened in April 2025." },
       { name: "Lincolnville Park, honoring George and Ollie Smith", body: "A neighborhood pocket park, reported complete in the CRA’s 2024 annual report." },
-      { name: "Robert B. Hayling Park", body: "A passive park for walking and views, where a plaza with a statue honoring Dr. Hayling has been planned." },
+      { name: "Robert B. Hayling Park", body: "A passive park for walking and views. Its new Hayling Plaza holds a statue honoring Dr. Hayling, with the statue unveiling set for Tuesday, November 24, 2026, at 10 a.m." },
     ],
     sources: "Sources: CRA 2024 annual report; The Break Room, Sept 2024.",
   },
@@ -365,7 +366,7 @@ export const craTakePart = {
 };
 
 /* --------------------------------------------------------------------------
-   7. Homes, Not Hotels
+   7. Homes Not Hotels
    -------------------------------------------------------------------------- */
 export const craHomesNotHotels = {
   lede: "One in four Lincolnville homes is now a registered vacation rental, and the Lincolnville Community Redevelopment Area has about seven years left before it sunsets on December 31, 2033. This page brings the facts into one place, so residents, owners, the City and the CRA can make choices together from the same clear picture.",
@@ -473,7 +474,7 @@ export const craHomeStory = {
     columns: ["Included", "Details"],
     rows: [
       ["Digital welcome packet", "A sourced history of your home: records gathered in one place, historical context, and your family’s memories in your own words. Scope agreed together."],
-      ["Electronic documents", "Three member documents: Homes, Not Hotels: A Lincolnville Proposal; Why Lincolnville Homes Are Lost: Risks and Protections; and the Lincolnville Places and People Guide."],
+      ["Electronic documents", "Three member documents: Homes Not Hotels: A Lincolnville Proposal; Why Lincolnville Homes Are Lost: Risks and Protections; and the Lincolnville Places and People Guide."],
       ["Membership", "One year in the Root & Simmer Hospitality Exclusively for Lincolnville Community Connection. Updates on events and CRA votes, a voice, and knowing what is happening in Lincolnville."],
     ],
   },

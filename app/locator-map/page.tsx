@@ -4,6 +4,8 @@ import { site } from "@/content/site";
 import { directoryPage, directoryTeaser, mapStory } from "@/content/africa-directory";
 import { SiteShell } from "@/components/SiteShell";
 import { LocatorMap } from "@/components/LocatorMap";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `Historic Lincolnville Locator Map | ${site.fullName}`,
@@ -18,6 +20,7 @@ export default function LocatorMapPage() {
         <LocatorMap />
       </div>
 
+      <HistoryFact fact={facts.washington} />
       <section className="page-section locator-story" aria-labelledby="map-story-title">
         <div className="wrap split">
           <div className="prose">

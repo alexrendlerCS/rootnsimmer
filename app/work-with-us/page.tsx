@@ -5,6 +5,8 @@ import { workWithUs as w } from "@/content/services";
 import { EmailDraftButton } from "@/components/EmailDraftButton";
 import { SiteShell } from "@/components/SiteShell";
 import { GapNote } from "@/components/Gaps";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = { title: `${w.title} | ${site.fullName}`, description: w.lede, alternates: { canonical: "/work-with-us" } };
 
@@ -19,6 +21,7 @@ export default function WorkWithUsPage() {
           <p className="page-lede">{w.lede}</p>
         </div>
       </header>
+      <HistoryFact fact={facts.directories} />
       <section className="page-section" aria-labelledby="services-title">
         <div className="wrap">
           <h2 id="services-title" className="guide-h2">

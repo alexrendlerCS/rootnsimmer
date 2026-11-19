@@ -10,6 +10,9 @@
  *   See every code and whether it has been used:
  *     node --env-file=.env.local scripts/walks.mjs list-codes
  *
+ *   Upload the members-only Little Africa Directory:
+ *     node --env-file=.env.local scripts/walks.mjs upload-directory --file "C:UserskimbeDocumentsRoot & Simmer Member LibraryLittle Africa Directory (private)little-africa-directory.json"
+ *
  * A code opens every walk for one guest. It starts counting when first used and lasts --days (default 3).
  * An unused code stops working 60 days after it is made.
  */
@@ -36,6 +39,11 @@ if (command === "upload") {
   const { error } = await write(WALKS, walks);
   if (error) throw error;
   console.log(`Uploaded ${walks.walks.length} walks: ${walks.walks.map((w) => w.title).join(", ")}`);
+} else if (command === "upload-directory") {
+  const dir = JSON.parse(fs.readFileSync(String(args.file), "utf8"));
+  const { error } = await write("data/little-africa-directory.json", dir);
+  if (error) throw error;
+  console.log(`Uploaded the Little Africa Directory: ${dir.streets.length} streets, ${dir.streets.reduce((n, s) => n + s.people.length, 0)} people`);
 } else if (command === "add-code") {
   if (!args.name) throw new Error("--name is required");
   const store = await readJson(CODES, { codes: [] });

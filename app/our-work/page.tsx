@@ -4,6 +4,8 @@ import { site } from "@/content/site";
 import { gaps, lines, ourWorkPage as p } from "@/content/gaps";
 import { GapCards } from "@/components/Gaps";
 import { SiteShell } from "@/components/SiteShell";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = { title: `Our Work | ${site.fullName}`, description: p.lede, alternates: { canonical: "/our-work" } };
 
@@ -17,6 +19,7 @@ export default function OurWorkPage() {
           <p className="page-lede">{p.lede}</p>
         </div>
       </header>
+      <HistoryFact fact={facts.march} />
 
       <section className="page-section" aria-labelledby="lines-title">
         <div className="wrap">

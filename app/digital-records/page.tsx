@@ -9,6 +9,8 @@ import heroPhoto from "@/public/photos/washington-street-home.jpg";
 import membershipPhoto from "@/public/photos/yellow-two-story-home.jpg";
 import { SiteShell } from "@/components/SiteShell";
 import { EvidenceLegend } from "@/components/EvidenceLegend";
+import { HistoryFact } from "@/components/HistoryFact";
+import { facts } from "@/content/facts";
 
 export const metadata: Metadata = {
   title: `Digital Records | ${site.fullName}`,
@@ -50,6 +52,7 @@ export default function DigitalRecordsPage() {
       </section>
 
       {/* The three member documents */}
+      <HistoryFact fact={facts.records} />
       <section id="dr-collection" className="page-section work" aria-labelledby="dr-collection-title">
         <div className="wrap">
           <div className="section-head">
