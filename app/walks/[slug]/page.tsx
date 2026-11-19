@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { site } from "@/content/site";
 import { loadWalks, walkAccess, type WalkStop } from "@/lib/walks";
 import { SiteShell } from "@/components/SiteShell";
+import { walkSummaries } from "@/content/walks";
 
 export const metadata: Metadata = { title: `Self-Guided Walk | ${site.fullName}`, robots: { index: false } };
 
@@ -27,8 +28,11 @@ export default async function WalkPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const [walks, access] = await Promise.all([loadWalks(), walkAccess()]);
   const walk = walks.find((w) => w.slug === slug);
-  if (!walk) notFound();
-  if (!access) redirect("/walks");
+  // No access yet (or the private walk text is not reachable): send people to the walks page and its code box.
+  if (!access || !walk) {
+    if (walkSummaries.some((w) => w.slug === slug)) redirect("/walks");
+    notFound();
+  }
   // The guest's name, faint across the page: a shared screenshot shows whose guide it was.
   const mark = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180'><text x='10' y='100' transform='rotate(-24 160 90)' font-family='Georgia' font-size='16' fill='rgba(31,58,44,0.07)'>${access.name.replace(/[<&>'"]/g, "")} · Root &amp; Simmer</text></svg>`,
