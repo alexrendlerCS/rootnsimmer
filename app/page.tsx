@@ -55,9 +55,6 @@ export default function Home() {
                 <a className="button" href={homeHero.primary.href}>
                   {homeHero.primary.label}
                 </a>
-                <Link className="button button-ghost" href={homeHero.secondary.href}>
-                  {homeHero.secondary.label}
-                </Link>
               </div>
               <p className="home-hero-fine">{homeHero.fine}</p>
             </div>

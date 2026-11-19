@@ -98,9 +98,8 @@ export const homeHero = {
   headline: ["Every home known.", "Every voice kept.", "Every generation connected."],
   body:
     "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and community. We research the story of each home, record the voices of the families who made it home, and carry both forward, so that 160 years of Lil Africa are known, kept and heard from generation to generation.",
-  signature: "Know your home’s story. Add yours before you go.",
+  signature: "Every home has a history. Every family has a voice. Lincolnville’s story lives in both.",
   primary: { href: "#root", label: "Meet ROOT" },
-  secondary: { href: "/homes-not-hotels", label: "Homes Not Hotels" },
   fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
 };
 
