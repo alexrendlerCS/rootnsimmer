@@ -32,6 +32,7 @@ export const nav: NavItem[] = [
     items: [
       { href: "/#mission", label: "About Root & Simmer" },
       { href: "/lincolnville-history/tracts", label: "Lincolnville History: The Land Beneath Your Feet" },
+      { href: "/walks", label: "Self-guided walks" },
       { href: "/lincolnville-history/directory", label: "The Little Africa Directory" },
       { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research · Members" },
       { href: "/lincolnville-history/residents-map", label: "Historic Residents Map · Members" },
@@ -44,7 +45,15 @@ export const nav: NavItem[] = [
   { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
   { href: "/library", label: "Library" },
   { href: "/newsletter", label: "Newsletter" },
-  { href: "/digital-records", label: "Membership" },
+  {
+    href: "/digital-records",
+    label: "Membership",
+    items: [
+      { href: "/digital-records#dr-membership", label: "Homeowner membership: the Home Story Package" },
+      { href: "/support#friend", label: "Friend of Lincolnville: three invitations with each membership" },
+      { href: "/support", label: "Support Lincolnville’s History" },
+    ],
+  },
   { href: "/#records", label: "Contact" },
 ];
 

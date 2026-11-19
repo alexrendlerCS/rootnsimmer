@@ -26,6 +26,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <Link href="/#root">ROOT: Lincolnville Community Committee</Link>
               <Link href="/cra-lincolnville">Understanding the Lincolnville CRA</Link>
               <Link href="/digital-records">Digital Records</Link>
+              <Link href="/support">Support Lincolnville’s History</Link>
+              <Link href="/walks">Self-guided walks</Link>
               <Link href="/preserve-historic-homes">Preserve Historic Homes</Link>
               <Link href="/library">Library</Link>
               <Link href="/newsletter">Newsletter</Link>

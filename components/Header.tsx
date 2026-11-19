@@ -4,35 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav, site } from "@/content/site";
+import { nav, site, type NavLink } from "@/content/site";
 import { useInquiry } from "./InquiryProvider";
 
 export function Header() {
   const { count, open } = useInquiry();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [groupOpen, setGroupOpen] = useState(false);
-  const groupRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
-  // Close the Our Story drop-down on Escape or a click elsewhere.
-  useEffect(() => {
-    if (!groupOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setGroupOpen(false);
-        groupRef.current?.querySelector("button")?.focus();
-      }
-    };
-    const onClick = (e: MouseEvent) => {
-      if (!groupRef.current?.contains(e.target as Node)) setGroupOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("click", onClick);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("click", onClick);
-    };
-  }, [groupOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -55,44 +33,7 @@ export function Header() {
         <nav id="site-nav" className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Main">
           {nav.map((item) =>
             item.items ? (
-              <div
-                key={item.label}
-                className="nav-group"
-                ref={groupRef}
-                onBlur={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget as Node)) setGroupOpen(false);
-                }}
-              >
-                <button
-                  type="button"
-                  className="nav-group-button"
-                  aria-expanded={groupOpen}
-                  aria-controls="nav-group-list"
-                  aria-current={item.items.some((l) => l.href === pathname) ? "page" : undefined}
-                  onClick={() => setGroupOpen((v) => !v)}
-                >
-                  {item.label}
-                  <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">
-                    <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                  </svg>
-                </button>
-                <ul id="nav-group-list" className={`nav-group-list ${groupOpen ? "is-open" : ""}`}>
-                  {item.items.map((l) => (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        aria-current={l.href === pathname ? "page" : undefined}
-                        onClick={() => {
-                          setGroupOpen(false);
-                          setMenuOpen(false);
-                        }}
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <NavGroup key={item.label} label={item.label} items={item.items} pathname={pathname} onNavigate={() => setMenuOpen(false)} />
             ) : (
             <Link
               key={item.href}
@@ -132,5 +73,72 @@ export function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+/** One drop-down in the top menu (Our Story, Membership). On phones its links show as an indented list. */
+function NavGroup({ label, items, pathname, onNavigate }: { label: string; items: NavLink[]; pathname: string; onNavigate: () => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const listId = `nav-group-${label.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+
+  // Close on Escape or a click elsewhere.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        ref.current?.querySelector("button")?.focus();
+      }
+    };
+    const onClick = (e: MouseEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("click", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("click", onClick);
+    };
+  }, [open]);
+
+  return (
+    <div
+      className="nav-group"
+      ref={ref}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        className="nav-group-button"
+        aria-expanded={open}
+        aria-controls={listId}
+        aria-current={items.some((l) => { const h = l.href.split("#")[0]; return h !== "/" && h === pathname; }) ? "page" : undefined}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {label}
+        <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">
+          <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      </button>
+      <ul id={listId} className={`nav-group-list ${open ? "is-open" : ""}`}>
+        {items.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              aria-current={l.href === pathname ? "page" : undefined}
+              onClick={() => {
+                setOpen(false);
+                onNavigate();
+              }}
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
