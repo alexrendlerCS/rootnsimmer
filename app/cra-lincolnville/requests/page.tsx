@@ -34,9 +34,9 @@ export default function CraRequestsPage() {
 
       <GuideSection id="send" title={r.sendTitle}>
         <p>{r.sendBody}</p>
-        <p>
+        <div>
           <EmailDraftButton label={r.button} subject={r.subject} body={r.body} />
-        </p>
+        </div>
         <p className="notice">{r.note}</p>
       </GuideSection>
     </CraGuide>
