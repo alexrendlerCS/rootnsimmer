@@ -2241,3 +2241,7 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
 .library-pointer { margin: 2rem 0; max-width: 46rem; }
 .library-pointer h3 { margin: 0 0 0.5rem; }
 .library-pointer-groups { font-size: 0.875rem; color: var(--muted); }
+
+/* Members' page: administrator-only staging block inside Research Archive */
+.library-staging { margin-top: 1.5rem; padding: 16px; border: 2px dashed var(--rail); border-radius: var(--radius); background: var(--porch); }
+.library-staging-subject { font: 600 1rem/1.3 var(--font-body); color: var(--oak); margin: 1rem 0 0.5rem; }

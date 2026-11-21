@@ -31,6 +31,11 @@ export const LIBRARY_GROUPS: { area: LibraryAreaId; title: string }[] = [
   { area: "research", title: "Mohlman Research: Maps" },
   { area: "research", title: "Mohlman Research: Photographs" },
   { area: "research", title: "Mohlman Research: Original Documents" },
+  // The 16-document Mohlman archive (Nov 21, 2026), grouped by its manifest categories.
+  { area: "research", title: "Mohlman Research: People & Community" },
+  { area: "research", title: "Mohlman Research: Streets, Transportation & Development" },
+  { area: "research", title: "Mohlman Research: Civil Rights & Historical Records" },
+  { area: "research", title: "Mohlman Research: Directories & Resident Research" },
   { area: "research", title: "City Historical Interviews" },
   { area: "projects", title: "Projects & Landmarks" },
   { area: "other", title: "Other documents" },
@@ -63,3 +68,14 @@ export function libraryGroupOf(d: LibraryDoc): string {
  *   its own 6-page "Record 3.2 Site File form photos c1979". Kimberly, Nov 21, 2026: hide the shared listing.
  */
 export const hiddenFromLibrary = (d: LibraryDoc) => /^Florida Master Site File 8SJ2204\b/i.test(d.title);
+
+/**
+ * Mohlman files staged for Kimberly's review (Nov 2026). Stored as archived records with this category prefix, so
+ * row-level security returns them only to administrators and the document route refuses everyone else.
+ * The subject follows the prefix, e.g. "Mohlman staging: Transportation".
+ */
+export const STAGING_PREFIX = "Mohlman staging: ";
+export const STAGING_SUBJECTS = [
+  "People", "Directory Cards", "Directories", "Maps & Streets", "Buildings & Property", "Churches & Religious Life",
+  "Schools", "Transportation", "Civil Rights", "Newspapers & Correspondence", "Photographs", "Internal",
+];

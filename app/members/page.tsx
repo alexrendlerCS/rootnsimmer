@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { addressOf, homeOfDoc } from "@/lib/home-map-data";
 import { SiteShell } from "@/components/SiteShell";
 import { MembersLibrary } from "@/components/MembersLibrary";
-import { hiddenFromLibrary } from "@/lib/library-view";
+import { STAGING_PREFIX, hiddenFromLibrary } from "@/lib/library-view";
 import { HOME_FILE_VIEW, featured, isCopyOrBundle, longAddress, sectionOf } from "@/lib/home-file";
 
 export const metadata: Metadata = {
@@ -55,6 +55,17 @@ export default async function MembersPage() {
   );
   // The shared library, minus listings kept only in a Home File (lib/library-view.ts).
   const shared = docs.filter((d) => d.visibility === "shared" && !hiddenFromLibrary(d));
+  // Administrator only: Mohlman files staged for review (archived records, which row-level security shows only to admins).
+  let staged: Doc[] = [];
+  if (member.role === "admin") {
+    const { data: st } = await supabase
+      .from("documents")
+      .select("id, title, category, description, visibility, size_bytes, file_name, member_id, storage_path")
+      .eq("archived", true)
+      .like("category", `${STAGING_PREFIX}%`)
+      .order("file_name", { ascending: true });
+    staged = (st ?? []) as Doc[];
+  }
   const firstName = member.full_name?.split(" ")[0];
 
   return (
@@ -88,7 +99,7 @@ export default async function MembersPage() {
         ))}
 
         {shared.length > 0 ? (
-          <MembersLibrary docs={shared} renderDoc={(d) => <DocRow key={d.id} doc={d} />} />
+          <MembersLibrary docs={shared} staged={staged} renderDoc={(d) => <DocRow key={d.id} doc={d} />} />
         ) : (
           <p className="muted">The shared library is being filled in. Check back soon.</p>
         )}
