@@ -43,8 +43,11 @@ export default function Home() {
             <div className="home-hero-copy">
               <p className="home-hero-eyebrow">{homeHero.eyebrow}</p>
               <h1 id="home-hero-title" className="home-hero-title">
-                {homeHero.headline.map((line) => (
-                  <span key={line}>{line}</span>
+                {homeHero.headline.map((line, i) => (
+                  <span key={line}>
+                    {i > 0 && " "}
+                    {line}
+                  </span>
                 ))}
               </h1>
               <p className="home-hero-promise">{homeHero.promise}</p>
@@ -73,10 +76,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 2. What Can Root & Simmer Do for You? */}
+        {/* 2. Rooted Together. (three audience cards) */}
         <section id="help" className="section home-cards" aria-labelledby="home-cards-title">
           <div className="wrap">
-            <h2 id="home-cards-title">{homeCards.title}</h2>
+            <header className="home-cards-head">
+              <h2 id="home-cards-title">{homeCards.title}</h2>
+              <p className="home-cards-sub">{homeCards.subtitle}</p>
+              <p className="home-cards-line">{homeCards.line}</p>
+            </header>
             <ul className="home-cards-list">
               {homeCards.cards.map((c) => (
                 <li key={c.title} className="home-card">

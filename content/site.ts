@@ -105,35 +105,34 @@ export const nav: NavItem[] = [
 /** Home page hero (top of /). Approved wording from the Final Website Master Plan (November 2026). */
 export const homeHero = {
   eyebrow: "Root & Simmer Hospitality Co.",
-  headline: ["Rooted in History.", "Growing Through Community."],
+  headline: ["Rooted in History.", "United Through Community."],
   promise: "Every Home Known. Every Voice Heard. Every Generation Connected.",
-  body: [
-    "Root & Simmer brings Lincolnville’s homes, history, people, and places together. Through historical research, preservation, hospitality, and community partnerships, we help protect the neighborhood’s heritage, celebrate its local businesses and landmarks, and create opportunities for residents and homeowners to shape its future.",
-    "Our work complements the City’s historic preservation and neighborhood revitalization goals while keeping Lincolnville’s history, long-term residents, and community identity at the heart of what comes next.",
-  ],
+  body: ["Preserving Lincolnville’s history, connecting its people, and carrying Lil Africa’s legacy forward."],
   signature: "Every home has a history. Every family has a voice. Lincolnville’s story lives in both.",
   primary: { href: "#help", label: "See what we can do for you" },
   fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
 };
 
-/** Home page: "What Can Root & Simmer Do for You?" — three audience cards. */
+/** Home page: "Rooted Together." — three audience cards (Kimberly, Nov 21, 2026). */
 export const homeCards = {
-  title: "What Can Root & Simmer Do for You?",
+  title: "Rooted Together.",
+  subtitle: "Discover. Connect. Preserve.",
+  line: "Your home. Your neighborhood. Your community.",
   cards: [
     {
-      title: "Discover Your Home’s Story",
-      body: "Research your home’s history, preserve family memories, and understand the records behind your property.",
+      title: "Discover Your Home",
+      body: "Explore your home’s history, discover the people and places that shaped it, and help preserve its story for future generations.",
       link: { href: "/cra-lincolnville/home-story-package", label: "Explore the Home Story Package" },
     },
     {
       title: "Discover Lincolnville",
-      body: "Explore the people, businesses, churches, museums, parks, landmarks, and stories that make Lincolnville a living community.",
+      body: "Explore the neighborhood’s history, businesses, landmarks, and the people whose stories continue to shape Lincolnville.",
       link: { href: "/places-map", label: "Explore Lincolnville Places" },
     },
     {
-      title: "Make a Lasting Impact",
-      body: "Share your voice, support preservation, or partner on historical research, community projects, and neighborhood initiatives.",
-      link: { href: "/work-with-us", label: "Explore Partnerships" },
+      title: "Grow Your Roots",
+      body: "Connect with Lincolnville’s homeowners, residents, descendants, and supporters through ROOT Member. Together, we preserve our history and strengthen our community.",
+      link: { href: "/root", label: "Discover ROOT" },
     },
   ],
 };
