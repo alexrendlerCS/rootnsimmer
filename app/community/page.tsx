@@ -3,6 +3,7 @@ import { seo } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  communityMore,
   closing,
   connection,
   contactEmail,
@@ -28,6 +29,7 @@ import { Offerings } from "@/components/Offerings";
 import { RecordsForm } from "@/components/RecordsForm";
 import logo from "@/public/logo.jpeg";
 import { SiteShell } from "@/components/SiteShell";
+import { MoreLinks } from "@/components/MoreLinks";
 import { GapsSection } from "@/components/Gaps";
 import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
 import { LetterMore } from "@/components/LetterMore";
@@ -93,6 +95,9 @@ export default function CommunityPage() {
             ))}
           </div>
         </section>
+
+        {/* Everything in the Community menu, grouped (Nov 2026) */}
+        <MoreLinks id="community-more" title="More in Community" groups={communityMore} />
     </SiteShell>
   );
 }

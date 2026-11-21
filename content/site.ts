@@ -50,31 +50,20 @@ export const nav: NavItem[] = [
     href: "/lincolnville-history/tracts",
     label: "Explore",
     items: [
-      { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet: Lil Africa to Lincolnville" },
-      { href: "/places-map", label: "Lincolnville Places Map: parks, food, churches, businesses" },
-      { href: "/locator-map", label: "Lincolnville Locator Map" },
-      { href: "/walks", label: "Self-guided walks" },
-      { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },
-      { href: "/lincolnville-history/directory", label: "The Lil Africa Directory · Members" },
-      { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map · Members" },
-      { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research · Members" },
-      { href: "/lincolnville-history/residents-map", label: "Historic Residents Map · Members" },
+      { href: "/lincolnville-history/tracts", label: "Lincolnville History" },
+      { href: "/lincolnville-history/tracts#explore-maps", label: "Interactive Maps" },
+      { href: "/walks", label: "Self-Guided Walks" },
+      { href: "/lincolnville-history/tracts#member-archives", label: "Member Archives" },
     ],
   },
   {
     href: "/community",
     label: "Community",
     items: [
-      { href: "/community", label: "Lincolnville community: the CRA and What if…? ideas" },
-      { href: "/cra-lincolnville", label: "CRA – Lincolnville, in plain words" },
-      { href: "/cra-lincolnville/take-part", label: "How to take part" },
-      { href: "/cra-lincolnville/requests", label: "Community requests for the CRA" },
+      { href: "/community", label: "Community Updates" },
+      { href: "/cra-lincolnville", label: "CRA Information" },
+      { href: "/community#what-if", label: "Projects & Ideas" },
       { href: "/newsletter", label: "Newsletter" },
-      { href: "/library", label: "Library" },
-      { href: "/what-if/washington-street", label: "What if…? Washington Street" },
-      { href: "/what-if/visitor-welcome", label: "What if…? A Visitor Welcome" },
-      { href: "/what-if/twine-park", label: "What if…? Twine Park" },
-      { href: "/what-if/stable-bodega", label: "What if…? The Stable Bodega" },
     ],
   },
   {
@@ -102,11 +91,76 @@ export const nav: NavItem[] = [
   },
 ];
 
+export type LinkGroup = { id: string; title: string; intro?: string; links: (NavLink & { note?: string })[] };
+
+/** Explore page (/lincolnville-history/tracts): every Explore destination, grouped. The short Explore menu points here. */
+export const exploreMore: LinkGroup[] = [
+  {
+    id: "explore-maps",
+    title: "Interactive Maps",
+    links: [
+      { href: "/places-map", label: "Lincolnville Places Map", note: "Parks, food, churches, museums and businesses" },
+      { href: "/locator-map", label: "Lincolnville Locator Map", note: "Find your way around the neighborhood" },
+      { href: "/preserve-historic-homes/map", label: "The Lincolnville Home Map", note: "Streets and homes of the historic district" },
+      { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map", note: "Public introduction; the full map is for members" },
+    ],
+  },
+  {
+    id: "explore-walks",
+    title: "Self-Guided Walks",
+    links: [
+      { href: "/walks", label: "Self-guided walks", note: "Walk Lincolnville’s history at your own pace" },
+      { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map", note: "Where Root & Simmer began" },
+    ],
+  },
+  {
+    id: "member-archives",
+    title: "Member Archives",
+    intro: "These research collections open for signed-in members.",
+    links: [
+      { href: "/lincolnville-history/directory", label: "The Lil Africa Directory", note: "Members" },
+      { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map", note: "Members" },
+      { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research", note: "Members" },
+      { href: "/lincolnville-history/residents-map", label: "Historic Residents Map", note: "Members" },
+    ],
+  },
+];
+
+/** Community page (/community): every Community destination, grouped. The short Community menu points here. */
+export const communityMore: LinkGroup[] = [
+  {
+    id: "community-cra",
+    title: "CRA Information",
+    intro: "Independent public education from Root & Simmer. Not an official City of St. Augustine or Community Redevelopment Agency (CRA) program or publication.",
+    links: [
+      { href: "/cra-lincolnville", label: "CRA – Lincolnville, in plain words" },
+      { href: "/cra-lincolnville/take-part", label: "How to take part" },
+      { href: "/cra-lincolnville/requests", label: "Community requests for the CRA" },
+      { href: "/library", label: "Library: plans, budgets and meeting records" },
+    ],
+  },
+  {
+    id: "community-ideas",
+    title: "Projects & Ideas",
+    links: [
+      { href: "/what-if/washington-street", label: "What if…? Washington Street" },
+      { href: "/what-if/visitor-welcome", label: "What if…? A Visitor Welcome" },
+      { href: "/what-if/twine-park", label: "What if…? Twine Park" },
+      { href: "/what-if/stable-bodega", label: "What if…? The Stable Bodega" },
+    ],
+  },
+  {
+    id: "community-news",
+    title: "Newsletter",
+    links: [{ href: "/newsletter", label: "The Lincolnville newsletter" }],
+  },
+];
+
 /** Home page hero (top of /). Approved wording from the Final Website Master Plan (November 2026). */
 export const homeHero = {
   eyebrow: "Root & Simmer Hospitality Co.",
   headline: ["Rooted in History.", "United Through Community."],
-  promise: "Every Home Known. Every Voice Heard. Every Generation Connected.",
+  promise: "Every Home Holds a History. Every Family Has a Story. Together, They Tell Lincolnville’s Story.",
   body: ["Preserving Lincolnville’s history, connecting its people, and carrying Lil Africa’s legacy forward."],
   signature: "Every home has a history. Every family has a voice. Lincolnville’s story lives in both.",
   primary: { href: "#help", label: "See what we can do for you" },

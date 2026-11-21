@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { site } from "@/content/site";
+import { exploreMore, site } from "@/content/site";
+import { MoreLinks } from "@/components/MoreLinks";
 import { archive, mapNote, sources, timeline, tracts, tractsPage as t } from "@/content/tracts";
 import { SiteShell } from "@/components/SiteShell";
 import { TractTimeline } from "@/components/TractTimeline";
@@ -139,6 +140,9 @@ export default function TractsPage() {
           </div>
         </div>
       </section>
+
+      {/* Everything in the Explore menu, grouped (Nov 2026): the short menu links to these groups */}
+      <MoreLinks id="explore-more" title="Explore Lincolnville" groups={exploreMore} />
     </SiteShell>
   );
 }
