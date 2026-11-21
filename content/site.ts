@@ -31,35 +31,32 @@ export const nav: NavItem[] = [
     label: "Our Story",
     items: [
       { href: "/our-story", label: "About Root & Simmer" },
+      { href: "/visitor-map#kimberly-story", label: "Meet Kimberly: her full story" },
       { href: "/our-work", label: "Our four lines of work" },
       { href: "/our-work#gaps", label: "What’s missing in Lincolnville, and how we fill it" },
-      { href: "/#root", label: "ROOT: Lincolnville Community Committee" },
-      { href: "/#kimberly", label: "Meet Kimberly" },
       { href: "/documents/root-simmer-public-prospectus-and-interest-form.pdf", label: "Public Prospectus and Interest Form (PDF)" },
     ],
   },
   {
-    href: "/homeowner-help",
-    label: "For Homeowners",
+    href: "/root",
+    label: "ROOT Member",
     items: [
-      { href: "/cra-lincolnville/home-story-package", label: "The Home Story Package" },
-      { href: "/homeowner-help", label: "Help for homeowners: City and CRA programs" },
-      { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
-      { href: "/preserve-historic-homes/map", label: "The Lincolnville Home Map" },
-      { href: "/homes-not-hotels", label: "Homes Not Hotels" },
+      { href: "/root", label: "Discover ROOT" },
+      { href: "/cra-lincolnville/home-story-package", label: "Your Home Story" },
+      { href: "/preserve-historic-homes/map", label: "Explore the Map" },
     ],
   },
   {
-    href: "/walks",
-    label: "Explore History",
+    href: "/lincolnville-history/tracts",
+    label: "Explore",
     items: [
+      { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet: Lil Africa to Lincolnville" },
+      { href: "/places-map", label: "Lincolnville Places Map: parks, food, churches, businesses" },
+      { href: "/locator-map", label: "Lincolnville Locator Map" },
       { href: "/walks", label: "Self-guided walks" },
-      { href: "/lincolnville-history/tracts", label: "The Land Beneath Our Feet" },
+      { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },
       { href: "/lincolnville-history/directory", label: "The Lil Africa Directory · Members" },
       { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map · Members" },
-      { href: "/locator-map", label: "Lincolnville Locator Map" },
-      { href: "/places-map", label: "Lincolnville Places Map: parks, food, churches, businesses" },
-      { href: "/visitor-map", label: "Bringing Lincolnville onto the Visitor Map" },
       { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research · Members" },
       { href: "/lincolnville-history/residents-map", label: "Historic Residents Map · Members" },
     ],
@@ -82,34 +79,93 @@ export const nav: NavItem[] = [
   },
   {
     href: "/work-with-us",
-    label: "Work With Us",
+    label: "Services",
     items: [
+      { href: "/cra-lincolnville/home-story-package", label: "The Home Story Package" },
+      { href: "/homeowner-help", label: "Help for homeowners: City and CRA programs" },
+      { href: "/preserve-historic-homes", label: "Preserve Historic Homes" },
+      { href: "/homes-not-hotels", label: "Homes Not Hotels" },
       { href: "/work-with-us", label: "Work with Root & Simmer" },
       { href: "/partners", label: "Lincolnville Partners" },
+      { href: "/contact", label: "Contact" },
     ],
   },
   {
     href: "/support",
-    label: "Join",
+    label: "Support",
     items: [
-      { href: "/digital-records#dr-membership", label: "Homeowner membership: the Home Story Package" },
+      { href: "/support", label: "Support Our Mission" },
       { href: "/support#friend", label: "Friend of Lincolnville: three invitations with each membership" },
-      { href: "/support", label: "Support Lincolnville’s History" },
+      { href: "/digital-records#dr-membership", label: "Homeowner membership: the Home Story Package" },
       { href: "/digital-records", label: "Membership and Digital Records" },
     ],
   },
-  { href: "/contact", label: "Contact" },
 ];
 
-/** Home page hero (top of /). Wording from Kimberly's Mission, Vision and Brand Core. */
+/** Home page hero (top of /). Approved wording from the Final Website Master Plan (November 2026). */
 export const homeHero = {
-  eyebrow: "Root & Simmer Hospitality Co. · Lincolnville, St. Augustine",
-  headline: ["Every home known.", "Every voice kept.", "Every generation connected."],
-  body:
-    "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and community. We research the story of each home, record the voices of the families who made it home, and carry both forward, so that 160 years of Lil Africa are known, kept and heard from generation to generation.",
+  eyebrow: "Root & Simmer Hospitality Co.",
+  headline: ["Rooted in History.", "Growing Through Community."],
+  promise: "Every Home Known. Every Voice Heard. Every Generation Connected.",
+  body: [
+    "Root & Simmer brings Lincolnville’s homes, history, people, and places together. Through historical research, preservation, hospitality, and community partnerships, we help protect the neighborhood’s heritage, celebrate its local businesses and landmarks, and create opportunities for residents and homeowners to shape its future.",
+    "Our work complements the City’s historic preservation and neighborhood revitalization goals while keeping Lincolnville’s history, long-term residents, and community identity at the heart of what comes next.",
+  ],
   signature: "Every home has a history. Every family has a voice. Lincolnville’s story lives in both.",
-  primary: { href: "#root", label: "Meet ROOT" },
+  primary: { href: "#help", label: "See what we can do for you" },
   fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
+};
+
+/** Home page: "What Can Root & Simmer Do for You?" — three audience cards. */
+export const homeCards = {
+  title: "What Can Root & Simmer Do for You?",
+  cards: [
+    {
+      title: "Discover Your Home’s Story",
+      body: "Research your home’s history, preserve family memories, and understand the records behind your property.",
+      link: { href: "/cra-lincolnville/home-story-package", label: "Explore the Home Story Package" },
+    },
+    {
+      title: "Discover Lincolnville",
+      body: "Explore the people, businesses, churches, museums, parks, landmarks, and stories that make Lincolnville a living community.",
+      link: { href: "/places-map", label: "Explore Lincolnville Places" },
+    },
+    {
+      title: "Make a Lasting Impact",
+      body: "Share your voice, support preservation, or partner on historical research, community projects, and neighborhood initiatives.",
+      link: { href: "/work-with-us", label: "Explore Partnerships" },
+    },
+  ],
+};
+
+/** Home page: short introduction to Kimberly. Her full first-person story is on /visitor-map#kimberly-story. */
+export const kimberlyIntro = {
+  label: "The person behind Root & Simmer",
+  title: "Meet Kimberly Joyce",
+  subtitle: "A Personal Welcome. A Lasting Impact.",
+  /** In the second paragraph, "The Corner Market" becomes a link to its website. */
+  paragraphs: [
+    "For more than 30 years, my work has been rooted in listening, advocating for others, solving problems, and building trusted relationships.",
+    "When I arrived in St. Augustine with a visitor map in hand, I discovered something was missing. The map showed me where tourists go, but it didn’t lead me to Sweet Mama’s Peach Cobbler at The Corner Market or the deeper history of Lincolnville.",
+    "The people I met changed that. Their stories inspired me to research the neighborhood’s homes, honor the families who shaped them, and help bring Lincolnville’s history and living community into greater view.",
+    "Preservation is the foundation of my work. Relationships are how we carry it forward.",
+  ],
+  link: { href: "/visitor-map#kimberly-story", label: "Read Kimberly’s Story" },
+};
+
+/** The Corner Market's own website; linked wherever Kimberly's story names it. */
+export const cornerMarketUrl = "https://cornermarket.vercel.app/";
+
+/** Home page: Help Move the Mission Forward. Card payments are not set up yet, so no amounts are shown. */
+export const homeSupport = {
+  title: "Help Move the Mission Forward",
+  paragraphs: [
+    "Every home researched, every story documented, and every neighborhood connection takes time, care, and resources.",
+    "Your contribution helps Root & Simmer continue preserving Lincolnville’s history, sharing its stories, supporting community connections, and making this research accessible for future generations.",
+  ],
+  closing: "Give what feels meaningful to you. Every contribution helps move the mission forward.",
+  link: { href: "/support", label: "Support Our Mission" },
+  fine: "Root & Simmer Hospitality Co. is an independent business. Contributions are not tax-deductible.",
 };
 
 /** Hero of the Homes Not Hotels page (/homes-not-hotels), formerly the home page hero. */
@@ -398,6 +454,8 @@ export const kimberly = {
     "Root & Simmer Hospitality Co. grew from my belief that a personal welcome can do more than help someone find the door. It can invite guests to slow down, meet new friends, understand the community’s history and challenges, support locally rooted businesses, fall in love with Lincolnville and want to return. It can help a homeowner stand apart, bring a new customer to a local business and carry the community’s story, both past and present, forward so Lincolnville can thrive.",
     "I am here to listen, build trusted partnerships and use hospitality to support and strengthen what is already here.",
   ],
+  /** Separate closing statement shown beneath the letter (Kimberly, Nov 21, 2026). The letter above stays exactly as written. */
+  closing: "Because a personal welcome can do more than open a door. It can create a lasting impact.",
 };
 
 export const connection = {

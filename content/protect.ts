@@ -58,7 +58,7 @@ export const preserveIntro = {
   mission:
     "Root & Simmer Hospitality Co. preserves Lincolnville’s homes, history and heritage. Independent and rooted in the neighborhood, we research the story of each home, record the voices of the families who made it home, and carry both forward, so 160 years of Lil Africa are known, kept and heard from generation to generation.",
   body: "This page begins with what demolition leaves behind: an empty lot where a century-old house stood, and steps standing alone in a yard. Then it shows how the City reviews demolition, how neighbors can speak up, and what an owner must file, so the next house can stay standing.",
-  tagline: "Every home known. Every voice kept. Every generation connected.",
+  tagline: "Every Home Known. Every Voice Heard. Every Generation Connected.",
 };
 
 /**

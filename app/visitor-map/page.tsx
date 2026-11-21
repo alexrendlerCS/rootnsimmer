@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/content/site";
+import { kimberly, kimberlyIntro, site } from "@/content/site";
+import { CornerMarketLinked } from "@/components/CornerMarketLinked";
+import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
 import { visitorMap as v } from "@/content/visitor-map";
 import { SiteShell } from "@/components/SiteShell";
 import { WhatIfVote } from "@/components/WhatIf";
@@ -38,13 +40,49 @@ export default function VisitorMapPage() {
           </figure>
         </header>
 
+        {/* Kimberly’s full first-person story (moved here from the home page, Nov 2026; wording unchanged) */}
+        <section id="kimberly-story" className="bodega-section kimberly-story" aria-labelledby="kimberly-story-title">
+          <div className="kimberly-story-grid">
+            <aside className="kimberly-side">
+              <Image
+                src={headshot}
+                alt="Kimberly Joyce, founder of Root & Simmer Hospitality Co., smiling, with long wavy brown hair and a purple ruffled blouse, outdoors in warm evening light."
+                placeholder="blur"
+                sizes="(max-width: 760px) 80vw, 320px"
+                className="kimberly-photo"
+              />
+              <blockquote>
+                <p>“{kimberly.quote}”</p>
+                <footer>
+                  {kimberly.name}
+                  <span>{kimberly.role}</span>
+                </footer>
+              </blockquote>
+            </aside>
+            <div className="letter">
+              <p className="section-label">{kimberlyIntro.label}</p>
+              <h2 id="kimberly-story-title" className="guide-h2">
+                {kimberlyIntro.title}
+              </h2>
+              <p className="kimberly-subtitle">{kimberlyIntro.subtitle}</p>
+              {kimberly.letter.map((p) => (
+                <p key={p}>
+                  <CornerMarketLinked text={p} />
+                </p>
+              ))}
+              <p className="stairs-closing story-quote kimberly-closing">{kimberly.closing}</p>
+              <p className="signature">{kimberly.name}</p>
+            </div>
+          </div>
+        </section>
+
         <section className="bodega-section" aria-labelledby="walk-title">
           <h2 id="walk-title" className="guide-h2">
             {v.walk.title}
           </h2>
           {v.walk.paragraphs.map((p, i) => (
             <p key={p.slice(0, 30)} className={i === 0 ? "bodega-feel" : undefined}>
-              {p}
+              <CornerMarketLinked text={p} />
             </p>
           ))}
           <p className="stairs-closing story-quote">{v.walk.quote}</p>

@@ -2,44 +2,16 @@ import type { Metadata } from "next";
 import { seo } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  closing,
-  connection,
-  contactEmail,
-  homeHero,
-  kimberly,
-  method,
-  mission,
-  records,
-  respect,
-  threshold,
-  values,
-  why,
-  work,
-} from "@/content/site";
-import { pillars, rootIntro, rootJoin, rootMotto, rootNote, rootWork } from "@/content/root";
-import { craTeaser } from "@/content/cra";
-import { tractsPage, tractsTeaser } from "@/content/tracts";
-import { whatIfTeasers } from "@/content/stable-bodega";
-import { visitorMapTeaser } from "@/content/visitor-map";
-import { EmailDraftButton } from "@/components/EmailDraftButton";
-import { ConnectionForm } from "@/components/ConnectionForm";
-import { Offerings } from "@/components/Offerings";
-import { RecordsForm } from "@/components/RecordsForm";
+import { homeCards, homeHero, homeSupport, kimberly, kimberlyIntro } from "@/content/site";
+import { rootHome, rootIntro } from "@/content/root";
 import logo from "@/public/logo.jpeg";
 import { SiteShell } from "@/components/SiteShell";
-import { FourLines } from "@/components/FourLines";
+import { CornerMarketLinked } from "@/components/CornerMarketLinked";
 import headshot from "@/public/photos/kimberly-joyce-headshot.jpg";
-import { LetterMore } from "@/components/LetterMore";
-import { ProspectusLink } from "@/components/ProspectusLink";
-import { HistoryFact } from "@/components/HistoryFact";
-import { facts } from "@/content/facts";
-
-const LETTER_PREVIEW = 3;
 
 export const metadata: Metadata = seo(
   "Root & Simmer - Lincolnville History, St. Augustine FL",
-  "Preserving Lincolnville's home and family histories in St. Augustine, FL. Founded in 1866 as Lil Africa. Every home known. Every voice kept.",
+  "Preserving Lincolnville's home and family histories in St. Augustine, FL. Founded in 1866 as Lil Africa. Every Home Known. Every Voice Heard.",
   "/",
 );
 
@@ -61,8 +33,11 @@ export default function Home() {
   return (
     <SiteShell>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessListing) }} />
-        {/* Hero: Kimberly's brand promise, with the approved live-oak logo as the centerpiece (Nov 19, 2026).
-            The then-and-now house photos stay on the Homes Not Hotels page. */}
+        {/* Home page: five sections (Final Website Master Plan, Nov 2026). Sections that used to be here were moved, not deleted:
+            the four lines of work are on /our-work, The Land Beneath Our Feet teaser is on /our-story,
+            the Community Connection form is on /root, and Kimberly’s full letter is on /visitor-map#kimberly-story. */}
+
+        {/* 1. Hero */}
         <section id="top" className="home-hero" aria-labelledby="home-hero-title">
           <div className="wrap home-hero-grid">
             <div className="home-hero-copy">
@@ -72,7 +47,12 @@ export default function Home() {
                   <span key={line}>{line}</span>
                 ))}
               </h1>
-              <p className="home-hero-body">{homeHero.body}</p>
+              <p className="home-hero-promise">{homeHero.promise}</p>
+              {homeHero.body.map((p) => (
+                <p key={p} className="home-hero-body">
+                  {p}
+                </p>
+              ))}
               <p className="home-hero-signature">{homeHero.signature}</p>
               <div className="hero-actions">
                 <a className="button" href={homeHero.primary.href}>
@@ -93,11 +73,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What we do: the four lines of work, each linking to its own page */}
-        <FourLines />
+        {/* 2. What Can Root & Simmer Do for You? */}
+        <section id="help" className="section home-cards" aria-labelledby="home-cards-title">
+          <div className="wrap">
+            <h2 id="home-cards-title">{homeCards.title}</h2>
+            <ul className="home-cards-list">
+              {homeCards.cards.map((c) => (
+                <li key={c.title} className="home-card">
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                  <Link className="text-link home-card-link" href={c.link.href}>
+                    {c.link.label} <span aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-        {/* Kimberly */}
-        <section id="kimberly" className="section kimberly">
+        {/* 3. Meet Kimberly Joyce */}
+        <section id="kimberly" className="section kimberly" aria-labelledby="kimberly-title">
           <div className="wrap kimberly-grid">
             <aside className="kimberly-side">
               <Image
@@ -107,34 +102,34 @@ export default function Home() {
                 sizes="(max-width: 760px) 80vw, 380px"
                 className="kimberly-photo"
               />
-              <blockquote>
-                <p>“{kimberly.quote}”</p>
-                <footer>
-                  {kimberly.name}
-                  <span>{kimberly.role}</span>
-                </footer>
-              </blockquote>
+              <p className="kimberly-caption">
+                {kimberly.name}
+                <span>{kimberly.role}</span>
+              </p>
             </aside>
             <div className="letter">
-              <p className="section-label">About Kimberly Joyce</p>
-              <h2>{kimberly.title}</h2>
-              {kimberly.letter.slice(0, LETTER_PREVIEW).map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-              <LetterMore>
-                {kimberly.letter.slice(LETTER_PREVIEW).map((p) => (
+              <p className="section-label">{kimberlyIntro.label}</p>
+              <h2 id="kimberly-title">{kimberlyIntro.title}</h2>
+              <p className="kimberly-subtitle">{kimberlyIntro.subtitle}</p>
+              {kimberlyIntro.paragraphs.map((p, i) =>
+                i === 1 ? (
+                  <p key={p}>
+                    <CornerMarketLinked text={p} />
+                  </p>
+                ) : (
                   <p key={p}>{p}</p>
-                ))}
-              </LetterMore>
+                ),
+              )}
               <p>
-                <Link href={visitorMapTeaser.href}>How it began: bringing Lincolnville onto the visitor map</Link>
+                <Link className="button" href={kimberlyIntro.link.href}>
+                  {kimberlyIntro.link.label} <span aria-hidden="true">→</span>
+                </Link>
               </p>
-              <p className="signature">{kimberly.name}</p>
             </div>
           </div>
         </section>
 
-        {/* ROOT: Lincolnville Community Committee (old /root address forwards here) */}
+        {/* 4. ROOT Member (short; the full story is on /root) */}
         <section id="root" className="root-home" aria-labelledby="root-title">
           <div className="wrap">
             <header className="root-intro">
@@ -143,91 +138,39 @@ export default function Home() {
                 <span className="root-intro-title">{rootIntro.title}</span>
               </h2>
               <div className="root-rule" aria-hidden="true" />
-              <p className="root-intro-lead">{rootIntro.lead}</p>
-              <p className="root-intro-body">{rootIntro.body}</p>
-            </header>
-
-            <h3 className="sr-only">The four pillars</h3>
-            <ol className="root-pillars">
-              {pillars.map((p) => (
-                <li key={p.name} className="root-pillar">
-                  <span className="root-letter" aria-hidden="true">
-                    {p.letter}
-                  </span>
-                  <h4 className="root-pillar-name">{p.name}</h4>
-                  <p className="root-pillar-subtitle">{p.subtitle}</p>
-                  <p className="root-pillar-line">{p.line}</p>
-                </li>
-              ))}
-            </ol>
-            <p className="root-motto">{rootMotto}</p>
-
-            <div className="root-work">
-              <h3 className="sr-only">Preserve, educate, unite</h3>
-              <ul className="root-work-list">
-                {rootWork.map((w) => (
-                  <li key={w.word}>
-                    <p className="root-word">{w.word}</p>
-                    <p>{w.body}</p>
-                    <Link className="root-work-link" href={w.href}>
-                      {w.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="root-place" aria-hidden="true">
-                Lincolnville
+              <p className="root-intro-lead">{rootIntro.tagline}</p>
+              <p className="root-intro-sub">{rootIntro.subtagline}</p>
+              <p className="root-intro-body">{rootHome.body}</p>
+              <p className="root-intro-line">{rootHome.line}</p>
+              <p className="root-actions">
+                <Link className="button button-red" href={rootHome.primary.href}>
+                  {rootHome.primary.label}
+                </Link>
+                <Link className="text-link" href={rootHome.homeStory.href}>
+                  {rootHome.homeStory.label}
+                </Link>
               </p>
-            </div>
-
-            <div className="panel root-join">
-              <h3 className="newsletter-panel-title">{rootJoin.title}</h3>
-              <p>{rootJoin.body}</p>
-              <EmailDraftButton label={rootJoin.button} subject={rootJoin.subject} body={rootJoin.emailBody} />
-            </div>
-
-            <p className="notice root-note">{rootNote}</p>
+            </header>
           </div>
         </section>
 
-        {/* Lincolnville history: The Land Beneath Our Feet */}
-        <section id="lincolnville-history" className="land-teaser" aria-labelledby="land-teaser-title">
-          <Link href={tractsPage.href} className="wrap land-teaser-card">
-            <p className="land-teaser-year" aria-hidden="true">
-              1866
+        {/* 5. Help Move the Mission Forward (no amounts until card payments are set up and tested) */}
+        <section id="support" className="section home-support" aria-labelledby="home-support-title">
+          <div className="wrap home-support-inner">
+            <h2 id="home-support-title">{homeSupport.title}</h2>
+            {homeSupport.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+            <p className="home-support-closing">{homeSupport.closing}</p>
+            <p>
+              <Link className="button" href={homeSupport.link.href}>
+                {homeSupport.link.label}
+              </Link>
             </p>
-            <div>
-              <p className="section-label">{tractsTeaser.label}</p>
-              <h2 id="land-teaser-title" className="h-medium">
-                {tractsTeaser.title}
-              </h2>
-              <p>{tractsTeaser.body}</p>
-              <span className="text-link">{tractsTeaser.link}</span>
-            </div>
-          </Link>
-        </section>
-
-        {/* Community Connection sign-up */}
-        <section id="connection" className="section connection">
-          <div className="wrap split">
-            <div className="prose">
-              <p className="section-label">Root & Simmer Hospitality Exclusively for Lincolnville Community Connection</p>
-              <h2>{connection.title}</h2>
-              {connection.body.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-              <ul className="invite-list">
-                {connection.invitations.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-              <ProspectusLink />
-              <p className="fine">{connection.fine}</p>
-            </div>
-            <ConnectionForm />
+            <p className="fine">{homeSupport.fine}</p>
           </div>
         </section>
-
     </SiteShell>
   );
 }
+

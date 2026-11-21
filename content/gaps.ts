@@ -144,7 +144,7 @@ export const lines: Line[] = [
       { href: "/cra-lincolnville", label: "Understanding the Lincolnville CRA" },
       { href: "/newsletter", label: "Newsletter" },
       { href: "/library", label: "Library" },
-      { href: "/#root", label: "ROOT" },
+      { href: "/root", label: "ROOT Member" },
       { href: "/what-if/washington-street", label: "What if…? Washington Street" },
     ],
     earns: "Lincolnville Partners at $1,500 a year; sponsorship inquiries for the newsletter, walk stops and Locator Map",

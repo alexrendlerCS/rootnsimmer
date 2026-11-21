@@ -31,7 +31,7 @@ export const twinePark = {
     title: "The vision",
     quote:
       "A Lincolnville where every home is known by its story. Every family’s voice is kept, the neighborhood’s heritage stands as proudly as its oldest walls, and that living record welcomes visitors, roots new neighbors and heals across generations.",
-    tagline: "Every home known. Every voice kept. Every generation connected.",
+    tagline: "Every Home Known. Every Voice Heard. Every Generation Connected.",
     passion:
       "I rise as an independent voice for Lincolnville’s homes. My passion is listening: to families on their porches, to deeds and old maps, to the steps that still stand where a workshop once was. My purpose is preservation: of the homes, of the history they hold, and of the heritage that belongs to the families who built and kept them. I research it, record it and hand it back, so no family’s story leaves with them, and every family knows their place here mattered and still does.",
     who: "Kimberly Joyce, Founder & Director of Community Partnerships",

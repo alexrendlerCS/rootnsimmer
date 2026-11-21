@@ -152,6 +152,23 @@ export default function OurStoryPage() {
             <p>{respect.body}</p>
           </div>
         </section>
+
+        {/* Lincolnville history: The Land Beneath Our Feet (moved here from the home page, Nov 2026) */}
+        <section id="lincolnville-history" className="land-teaser" aria-labelledby="land-teaser-title">
+          <Link href={tractsPage.href} className="wrap land-teaser-card">
+            <p className="land-teaser-year" aria-hidden="true">
+              1866
+            </p>
+            <div>
+              <p className="section-label">{tractsTeaser.label}</p>
+              <h2 id="land-teaser-title" className="h-medium">
+                {tractsTeaser.title}
+              </h2>
+              <p>{tractsTeaser.body}</p>
+              <span className="text-link">{tractsTeaser.link}</span>
+            </div>
+          </Link>
+        </section>
     </SiteShell>
   );
 }
