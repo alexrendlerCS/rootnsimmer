@@ -6,6 +6,7 @@ import { CraGuide, craHref, GuideSection, JoinCta } from "@/components/CraGuide"
 import { Photo } from "@/components/Photo";
 import markerPhoto from "@/public/photos/lincolnville-historic-district-marker.jpg";
 import { seo } from "@/lib/seo";
+import { MembersLibraryLink } from "@/components/MembersLibraryLink";
 
 export const metadata: Metadata = seo(
   "Lincolnville Community & CRA - St. Augustine",
@@ -184,6 +185,8 @@ export default function CraLandingPage() {
           Lincolnville Connection
         </Link>
       </JoinCta>
+
+      <MembersLibraryLink area="cra" intro="Steering Committee minutes and meeting packets, budgets and financial records, and City interviews about the CRA, kept in the members’ library." />
 
       <p className="notice">{l.disclaimer}</p>
     </CraGuide>

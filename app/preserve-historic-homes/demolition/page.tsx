@@ -9,6 +9,7 @@ import { ProjectHelp } from "@/components/ProjectSupport";
 import { RecordsOnFile } from "@/components/RecordsOnFile";
 import { recordLinks } from "@/lib/record-links";
 import { PacketCards, PreserveGuide } from "@/components/PreserveGuide";
+import { MembersLibraryLink } from "@/components/MembersLibraryLink";
 
 export const metadata: Metadata = {
   title: `Demolition | Preserve Historic Homes | ${site.fullName}`,
@@ -150,6 +151,8 @@ export default async function DemolitionPage() {
       <GuideSection id="packets" title="The member packet">
         <PacketCards ids={["packet-1"]} />
       </GuideSection>
+
+      <MembersLibraryLink area="demolition" intro="The City’s demolition lists and surveys, and the 103 South Street records, kept in the members’ library." />
     </PreserveGuide>
   );
 }

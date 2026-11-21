@@ -122,6 +122,7 @@ export const exploreMore: LinkGroup[] = [
       { href: "/lincolnville-history/story-map", label: "Lil Africa Neighborhood Story Map", note: "Members" },
       { href: "/lincolnville-history/mohlman-research", label: "Mohlman Research", note: "Members" },
       { href: "/lincolnville-history/residents-map", label: "Historic Residents Map", note: "Members" },
+      { href: "/members#library-research", label: "Members’ Library: Research Archive", note: "Mohlman research and City historical interviews · Members" },
     ],
   },
 ];
@@ -137,6 +138,7 @@ export const communityMore: LinkGroup[] = [
       { href: "/cra-lincolnville/take-part", label: "How to take part" },
       { href: "/cra-lincolnville/requests", label: "Community requests for the CRA" },
       { href: "/library", label: "Library: plans, budgets and meeting records" },
+      { href: "/members#library-cra", label: "Members’ Library: CRA documents", note: "Minutes, budgets and City research · Members" },
     ],
   },
   {
@@ -147,6 +149,7 @@ export const communityMore: LinkGroup[] = [
       { href: "/what-if/visitor-welcome", label: "What if…? A Visitor Welcome" },
       { href: "/what-if/twine-park", label: "What if…? Twine Park" },
       { href: "/what-if/stable-bodega", label: "What if…? The Stable Bodega" },
+      { href: "/members#library-projects", label: "Members’ Library: Projects & Landmarks", note: "Project proposals and dedication programs · Members" },
     ],
   },
   {

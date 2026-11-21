@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { DOCUMENT_CATEGORIES, HOME_FILE_SECTIONS, requireMember } from "@/lib/members";
+import { HOME_FILE_SECTIONS, requireMember } from "@/lib/members";
 import { createClient } from "@/lib/supabase/server";
 import { addressOf, homeOfDoc } from "@/lib/home-map-data";
 import { SiteShell } from "@/components/SiteShell";
+import { MembersLibrary } from "@/components/MembersLibrary";
+import { hiddenFromLibrary } from "@/lib/library-view";
 import { HOME_FILE_VIEW, featured, isCopyOrBundle, longAddress, sectionOf } from "@/lib/home-file";
 
 export const metadata: Metadata = {
@@ -51,12 +53,8 @@ export default async function MembersPage() {
       docs: mine.filter((d) => !parcel || homeOfDoc(d.storage_path, member.home_parcels) === parcel),
     })),
   );
-  const shared = docs.filter((d) => d.visibility === "shared");
-  const order = (c: string) => {
-    const i = (DOCUMENT_CATEGORIES as readonly string[]).indexOf(c);
-    return i === -1 ? 99 : i;
-  };
-  const categories = [...new Set(shared.map((d) => d.category))].sort((a, b) => order(a) - order(b));
+  // The shared library, minus listings kept only in a Home File (lib/library-view.ts).
+  const shared = docs.filter((d) => d.visibility === "shared" && !hiddenFromLibrary(d));
   const firstName = member.full_name?.split(" ")[0];
 
   return (
@@ -89,21 +87,11 @@ export default async function MembersPage() {
           <HomeFile key={parcel || "home"} parcel={parcel} address={address} docs={homeDocs} several={homes.length > 1} first={i === 0} />
         ))}
 
-        {categories.map((c) => (
-          <section key={c} className="members-section" aria-labelledby={`cat-${order(c)}`}>
-            <h2 id={`cat-${order(c)}`} className="guide-h2">
-              {c}
-            </h2>
-            <ul className="docs">
-              {shared
-                .filter((d) => d.category === c)
-                .map((d) => (
-                  <DocRow key={d.id} doc={d} />
-                ))}
-            </ul>
-          </section>
-        ))}
-        {shared.length === 0 && <p className="muted">The shared library is being filled in. Check back soon.</p>}
+        {shared.length > 0 ? (
+          <MembersLibrary docs={shared} renderDoc={(d) => <DocRow key={d.id} doc={d} />} />
+        ) : (
+          <p className="muted">The shared library is being filled in. Check back soon.</p>
+        )}
 
         <p className="notice">
           These documents are for Lincolnville Connection members. Please do not post them publicly. Root &amp; Simmer

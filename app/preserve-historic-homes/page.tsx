@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { preservePaths, protectFacts, protectHero, protectOwn, protectRegister, protectQuote } from "@/content/protect";
 import { GuideSection } from "@/components/CraGuide";
 import { PreserveGuide, preserveHref } from "@/components/PreserveGuide";
+import { MembersLibraryLink } from "@/components/MembersLibraryLink";
 
 export const metadata: Metadata = {
   title: `Preserve Historic Homes | ${site.fullName}`,
@@ -72,6 +73,8 @@ export default function PreserveOverviewPage() {
           </Link>
         </p>
       </GuideSection>
+
+      <MembersLibraryLink area="preservation" intro="Homeowner packets and guides, and the City’s historic preservation planning records, kept in the members’ library." />
     </PreserveGuide>
   );
 }

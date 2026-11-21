@@ -2232,3 +2232,12 @@ input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: v
   .home-file-part > summary { padding: 12px 14px; }
   .home-file-part-body { padding: 0 12px 14px; }
 }
+
+/* Members' page: shared library, grouped by subject (Nov 2026) */
+.members-library { margin-top: 1.5rem; border-top: 1px solid var(--gold); }
+.members-library-intro { margin: -0.75rem 0 1rem; }
+.members-library-note { font-size: 0.875rem; margin: 0 0 0.75rem; }
+.members-library .home-file-section { margin-top: 0.75rem; }
+.library-pointer { margin: 2rem 0; max-width: 46rem; }
+.library-pointer h3 { margin: 0 0 0.5rem; }
+.library-pointer-groups { font-size: 0.875rem; color: var(--muted); }
