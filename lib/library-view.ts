@@ -36,12 +36,17 @@ export const LIBRARY_GROUPS: { area: LibraryAreaId; title: string }[] = [
   { area: "research", title: "Mohlman Research: Streets, Transportation & Development" },
   { area: "research", title: "Mohlman Research: Civil Rights & Historical Records" },
   { area: "research", title: "Mohlman Research: Directories & Resident Research" },
+  // Four narratives added Nov 21, 2026.
+  { area: "research", title: "Mohlman Research: Washington Street Commerce — Palace Market" },
+  { area: "research", title: "Mohlman Research: Transportation History — St. Augustine Transfer Company" },
+  { area: "research", title: "Mohlman Research: Historical Directories — City Directories" },
+  { area: "research", title: "Mohlman Research: Historical Documents — Records and Correspondence" },
   { area: "research", title: "City Historical Interviews" },
   { area: "projects", title: "Projects & Landmarks" },
   { area: "other", title: "Other documents" },
 ];
 
-const mohlman = (c: string) => `Mohlman Research: ${c.replace(/^Mohlman research:\s*/i, "").replace(/\b\w/g, (m) => m.toUpperCase())}`;
+const mohlman = (c: string) => `Mohlman Research: ${c.replace(/^Mohlman research:\s*/i, "").replace(/\b(?!(?:and|of|the)\b)\w/g, (m) => m.toUpperCase())}`;
 
 /** The one group a shared document is listed under. */
 export function libraryGroupOf(d: LibraryDoc): string {
