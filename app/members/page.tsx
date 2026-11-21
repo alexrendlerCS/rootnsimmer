@@ -5,6 +5,7 @@ import { DOCUMENT_CATEGORIES, HOME_FILE_SECTIONS, requireMember } from "@/lib/me
 import { createClient } from "@/lib/supabase/server";
 import { addressOf, homeOfDoc } from "@/lib/home-map-data";
 import { SiteShell } from "@/components/SiteShell";
+import { HOME_FILE_VIEW, featured, isCopyOrBundle, longAddress, sectionOf } from "@/lib/home-file";
 
 export const metadata: Metadata = {
   title: `Members’ library | ${site.fullName}`,
@@ -113,54 +114,90 @@ export default async function MembersPage() {
   );
 }
 
+/**
+ * One home file in five collapsible sections (lib/home-file.ts decides where each stored document is listed).
+ * The welcome letter and the home history are featured at the top. Copies (printed folder, presentation,
+ * compiled collection, ZIP) stay available under "Other copies and downloads".
+ */
 function HomeFile({ parcel, address, docs, several, first }: { parcel: string; address: string; docs: Doc[]; several: boolean; first: boolean }) {
-  const welcome = docs.find((d) => d.category === "Start here");
-  const rest = docs.filter((d) => d !== welcome);
-  const sections = [...new Set(rest.map((d) => d.category))];
   const titleId = `home-${parcel || "mine"}-title`;
+  const { welcome, history } = featured(docs);
+  const featuredIds = new Set([welcome?.id, history?.id].filter(Boolean));
+  const listed = docs.filter((d) => !featuredIds.has(d.id));
+  const copies = listed.filter(isCopyOrBundle);
+  const name = parcel ? longAddress(address) : "your home";
   return (
     <section className="members-section" aria-labelledby={titleId} id={parcel ? `home-${parcel}` : "my-home"}>
       {first && parcel && <span id="my-home" />}
-      {several && <p className="section-label">Your home history</p>}
+      <p className="section-label">Your Home File</p>
       <h2 id={titleId} className="guide-h2">
-        {several ? address : "Your home history"}
+        {parcel ? address : "Your home history"}
       </h2>
-      {welcome ? (
-        <>
-          <div className="welcome-card">
-            <p className="latest-label">Start here</p>
-            <h3 className="latest-title">{welcome.title}</h3>
-            {welcome.description && <p>{welcome.description}</p>}
-            <p className="latest-actions">
-              <a className="button button-red" href={`/members/document/${welcome.id}`} target="_blank" rel="noopener">
-                {/welcome/i.test(welcome.title) ? "Read your welcome letter" : `Open the ${welcome.title}`}
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </p>
-          </div>
-          {sections.map((section) => (
-            <div key={section} className="home-file-section">
-              <h3 className="home-file-title">{section}</h3>
-              <ul className="docs">
-                {rest
-                  .filter((d) => d.category === section)
-                  .map((d) => (
-                    <DocRow key={d.id} doc={d} />
-                  ))}
-              </ul>
-            </div>
-          ))}
-        </>
-      ) : docs.length ? (
-        <ul className="docs">
-          {docs.map((d) => (
-            <DocRow key={d.id} doc={d} />
-          ))}
-        </ul>
-      ) : (
+      {docs.length === 0 ? (
         <p className="muted">Your home history packet will appear here when it is ready.</p>
+      ) : (
+        <div className="home-file">
+          {HOME_FILE_VIEW.map((section, i) => {
+            const items = listed.filter((d) => !isCopyOrBundle(d) && sectionOf(d) === section.id);
+            const showFeatured = section.id === "welcome" && (welcome || history);
+            const showCopies = section.id === "welcome" && copies.length > 0;
+            if (!items.length && !showFeatured && !showCopies) return null;
+            const count = items.length + (section.id === "welcome" ? featuredIds.size + copies.length : 0);
+            return (
+              <details key={section.id} className="home-file-part" open={i === 0}>
+                <summary>
+                  <span className="home-file-part-title">{section.title}</span>
+                  <span className="home-file-part-count">
+                    {count} {count === 1 ? "document" : "documents"}
+                  </span>
+                </summary>
+                <div className="home-file-part-body">
+                  {showFeatured && (
+                    <div className="home-file-featured">
+                      {welcome && <FeaturedDoc doc={welcome} label="Start here" title="Welcome to Your Home File" />}
+                      {history && <FeaturedDoc doc={history} label="Your home’s story" title={`The History of ${name}`} />}
+                    </div>
+                  )}
+                  {items.length > 0 && (
+                    <ul className="docs">
+                      {items.map((d) => (
+                        <DocRow key={d.id} doc={d} />
+                      ))}
+                    </ul>
+                  )}
+                  {showCopies && (
+                    <div className="home-file-copies">
+                      <h3 className="home-file-title">Other copies and downloads</h3>
+                      <p className="muted">The same documents gathered together, to print or keep.</p>
+                      <ul className="docs">
+                        {copies.map((d) => (
+                          <DocRow key={d.id} doc={d} />
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </details>
+            );
+          })}
+        </div>
       )}
     </section>
+  );
+}
+
+function FeaturedDoc({ doc, label, title }: { doc: Doc; label: string; title: string }) {
+  return (
+    <div className="welcome-card">
+      <p className="latest-label">{label}</p>
+      <h3 className="latest-title">{title}</h3>
+      {doc.description && <p>{doc.description}</p>}
+      <p className="latest-actions">
+        <a className="button button-red" href={`/members/document/${doc.id}`} target="_blank" rel="noopener">
+          Open PDF<span className="sr-only">: {title} (opens in a new tab)</span>
+        </a>
+      </p>
+    </div>
   );
 }
 
