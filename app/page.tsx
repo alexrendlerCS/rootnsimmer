@@ -50,13 +50,13 @@ export default function Home() {
                   </span>
                 ))}
               </h1>
+              <p className="home-hero-exclusive">{homeHero.exclusive}</p>
               <p className="home-hero-promise">{homeHero.promise}</p>
               {homeHero.body.map((p) => (
                 <p key={p} className="home-hero-body">
                   {p}
                 </p>
               ))}
-              <p className="home-hero-signature">{homeHero.signature}</p>
               <div className="hero-actions">
                 <a className="button" href={homeHero.primary.href}>
                   {homeHero.primary.label}

@@ -160,9 +160,12 @@ export const communityMore: LinkGroup[] = [
 export const homeHero = {
   eyebrow: "Root & Simmer Hospitality Co.",
   headline: ["Rooted in History.", "United Through Community."],
-  promise: "Every Home Holds a History. Every Family Has a Story. Together, They Tell Lincolnville’s Story.",
-  body: ["Preserving Lincolnville’s history, connecting its people, and carrying Lil Africa’s legacy forward."],
-  signature: "Every home has a history. Every family has a voice. Lincolnville’s story lives in both.",
+  /** Directly under the headline. */
+  exclusive: "Exclusively for Lincolnville.",
+  promise: "Every home has a history. Every family has a voice.",
+  body: [
+    "Root & Simmer brings people, history, and opportunity together to preserve Lincolnville’s character, strengthen community connections, and create a lasting impact for generations to come.",
+  ],
   primary: { href: "#help", label: "See what we can do for you" },
   fine: "Independent preservation research and family story recording. Not real estate listing, sales, rentals or property management.",
 };
